@@ -4,15 +4,15 @@
 
 # Site
 title: Yvette's blog
-subtitle: 天气好得就好像走着走着就能碰见你
-description: Description
-author: Yang Chengyu
+subtitle: 天气好得就好像走着走着就能遇见你
+description: 天气好得就好像走着走着就能遇见你
+author: 玉宇澄清
 language: zh-CN
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://www.yvette.space/blog
+url: http://yvette.space/blog
 root: /blog/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -62,7 +62,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
