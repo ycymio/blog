@@ -60,8 +60,7 @@
 <meta name="description" content="算法谜题
 [美]Anany Levitin  Maria Levitin 著赵勇 徐章宁 高博 译人民邮电出版社 2014年3月
 
-该笔记是对本书的总体笔记，如果感觉此谜很有意思，可能有单独的博客，来叙述该问题。
-第一章 概要1.1.1 穷举搜索(exhaustive search)直截了当地试遍所有的可能解，直到找到问题的解为止。很少需要人工计算，为计算机准备，可能复杂度是指数级的，效率低下。">
+该笔记是对本书的总体笔记，如果感觉此谜很有意思，可能有单独的博客，来叙述该问题。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Reading in 《Algorithmic puzzles》">
 <meta property="og:url" content="http://yvette.space/blog/2016/02/25/Algorithmic-puzzles/index.html">
@@ -69,17 +68,14 @@
 <meta property="og:description" content="算法谜题
 [美]Anany Levitin  Maria Levitin 著赵勇 徐章宁 高博 译人民邮电出版社 2014年3月
 
-该笔记是对本书的总体笔记，如果感觉此谜很有意思，可能有单独的博客，来叙述该问题。
-第一章 概要1.1.1 穷举搜索(exhaustive search)直截了当地试遍所有的可能解，直到找到问题的解为止。很少需要人工计算，为计算机准备，可能复杂度是指数级的，效率低下。">
-<meta property="og:image" content="http://yvette.space/blog/source/_posts/img/soldier.jpg">
-<meta property="og:updated_time" content="2016-02-25T03:31:43.000Z">
+该笔记是对本书的总体笔记，如果感觉此谜很有意思，可能有单独的博客，来叙述该问题。">
+<meta property="og:updated_time" content="2016-02-26T03:11:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Reading in 《Algorithmic puzzles》">
 <meta name="twitter:description" content="算法谜题
 [美]Anany Levitin  Maria Levitin 著赵勇 徐章宁 高博 译人民邮电出版社 2014年3月
 
-该笔记是对本书的总体笔记，如果感觉此谜很有意思，可能有单独的博客，来叙述该问题。
-第一章 概要1.1.1 穷举搜索(exhaustive search)直截了当地试遍所有的可能解，直到找到问题的解为止。很少需要人工计算，为计算机准备，可能复杂度是指数级的，效率低下。">
+该笔记是对本书的总体笔记，如果感觉此谜很有意思，可能有单独的博客，来叙述该问题。">
 
 
 
@@ -287,27 +283,39 @@
         <h1 id="算法谜题"><a href="#算法谜题" class="headerlink" title="算法谜题"></a>算法谜题</h1><hr>
 <p>[美]Anany Levitin  Maria Levitin 著<br>赵勇 徐章宁 高博 译<br>人民邮电出版社 2014年3月</p>
 <hr>
-<p>该笔记是对本书的总体笔记，如果感觉此谜很有意思，可能有单独的博客，来叙述该问题。</p>
-<h2 id="第一章-概要"><a href="#第一章-概要" class="headerlink" title="第一章 概要"></a>第一章 概要</h2><h3 id="1-1-1-穷举搜索-exhaustive-search"><a href="#1-1-1-穷举搜索-exhaustive-search" class="headerlink" title="1.1.1 穷举搜索(exhaustive search)"></a>1.1.1 穷举搜索(exhaustive search)</h3><p>直截了当地试遍所有的可能解，直到找到问题的解为止。很少需要人工计算，为计算机准备，可能复杂度是指数级的，效率低下。</p>
-<h3 id="1-1-2-回溯法-backtracking"><a href="#1-1-2-回溯法-backtracking" class="headerlink" title="1.1.2 回溯法(backtracking)"></a>1.1.2 回溯法(backtracking)</h3><p>一次添加一个组件，并进行以下评估：如果这个中间构造可以再向前推进一步，而不违反题设的约束，则选择第一个合法组件作为下一个组件；如果找不到合法构造，则不再考虑任何其余部件，此时需回溯。<br>回溯算法可以对应一颗反映决策过程的树，称为<strong>状态空间树</strong>。状态空间树的叶节点有两种可能的类型：</p>
+<p>该笔记是对本书的总体笔记，如果感觉此谜很有意思，可能有单独的博客，来叙述该问题。<br><a id="more"></a></p>
+<h2 id="第一章-概要"><a href="#第一章-概要" class="headerlink" title="第一章 概要"></a>第一章 概要</h2><h3 id="穷举搜索-exhaustive-search"><a href="#穷举搜索-exhaustive-search" class="headerlink" title="穷举搜索(exhaustive search)"></a>穷举搜索(exhaustive search)</h3><p>直截了当地试遍所有的可能解，直到找到问题的解为止。很少需要人工计算，为计算机准备，可能复杂度是指数级的，效率低下。</p>
+<h3 id="回溯法-backtracking"><a href="#回溯法-backtracking" class="headerlink" title="回溯法(backtracking)"></a>回溯法(backtracking)</h3><p>一次添加一个组件，并进行以下评估：如果这个中间构造可以再向前推进一步，而不违反题设的约束，则选择第一个合法组件作为下一个组件；如果找不到合法构造，则不再考虑任何其余部件，此时需回溯。<br>回溯算法可以对应一颗反映决策过程的树，称为<strong>状态空间树</strong>。状态空间树的叶节点有两种可能的类型：</p>
 <ol>
 <li><strong>无望结点(nonpromising node)或死路结点(dead end)</strong> 即不可能达成解得半成品。一旦构造出这类点，回溯算法会中止该节点(称为树的<strong>剪枝</strong>)。</li>
-<li><strong>解结点</strong><br>经典场景：<br>n皇后问题(回溯+对称)<br>//（1）装载问题（2）0-1背包问题（3）旅行售货员问题（4）八皇后问题（5）迷宫问题（6）图的m着色问题</li>
+<li><strong>解结点</strong><br>经典场景：n皇后问题(回溯+对称)<br>//（1）装载问题（2）0-1背包问题（3）旅行售货员问题（4）八皇后问题（5）迷宫问题（6）图的m着色问题</li>
 </ol>
-<h2 id="第二章-谜"><a href="#第二章-谜" class="headerlink" title="第二章 谜"></a>第二章 谜</h2><h3 id="2-1-简单题"><a href="#2-1-简单题" class="headerlink" title="2.1 简单题"></a>2.1 简单题</h3><h4 id="2-1-1-狼羊菜过河"><a href="#2-1-1-狼羊菜过河" class="headerlink" title="2.1.1 狼羊菜过河"></a>2.1.1 狼羊菜过河</h4><p>还可以用立方体的定点表示(见[Ste09])<br>这个谜题到现在依然能够吸引数学家和计算机科学家的研究兴趣(见[Cso08])</p>
+<h3 id="减而治之-decrease-and-conquer"><a href="#减而治之-decrease-and-conquer" class="headerlink" title="减而治之(decrease-and-conquer)"></a>减而治之(decrease-and-conquer)</h3><p>从给定问题的解及其较小规模谜面的解之间找到某种关系，导向某种<strong>递归</strong>算法。可以从最大规模谜面出发，或者从最小规模谜面出发。<br>经典场景：名流问题(任选两人——甲和乙，甲认识乙-&gt;甲不是名流，甲不认识乙-&gt;乙不是名流)、猜数字</p>
+<h3 id="分而治之-divide-and-conquer"><a href="#分而治之-divide-and-conquer" class="headerlink" title="分而治之(divide-and-conquer)"></a>分而治之(divide-and-conquer)</h3><p>把一个问题划分成若干较小的子问题，然后各个击破，最后在必要时把子问题的解组合起来，就得到了原始问题的解。<br>经典场景：三格骨牌谜题(中间放个L使得四块都缺一格)<br>+分而治之和减而治之的区别在于每一步需要解决的子问题个数: 分治算法每一步需要解决多个子问题，而减治算法则仅需要解决一个。</p>
+<h2 id="第二章-谜"><a href="#第二章-谜" class="headerlink" title="第二章 谜"></a>第二章 谜</h2><h3 id="简单题"><a href="#简单题" class="headerlink" title="简单题"></a>简单题</h3><h4 id="狼羊菜过河"><a href="#狼羊菜过河" class="headerlink" title="狼羊菜过河"></a>狼羊菜过河</h4><p>还可以用立方体的定点表示(见[Ste09])<br>这个谜题到现在依然能够吸引数学家和计算机科学家的研究兴趣(见[Cso08])</p>
 <hr>
 <p>[Ste09]Steinhaus H. One hundred problems in elementary mathematics[M]. Courier Corporation, 1964.<br>[Cso08]Csorba P, Hurkens C A J, Woeginger G J. The Alcuin number of a graph[M]//Algorithms-ESA 2008. Springer Berlin Heidelberg, 2008: 320-331. </p>
 <hr>
-<h4 id="2-1-2-手套选择"><a href="#2-1-2-手套选择" class="headerlink" title="2.1.2 手套选择"></a>2.1.2 手套选择</h4><p>手套有左右之分。</p>
-<h4 id="2-1-3-矩形切割"><a href="#2-1-3-矩形切割" class="headerlink" title="2.1.3 矩形切割"></a>2.1.3 矩形切割</h4><p>对于一个直角三角形而言，沿着它的高切割。<br>对于矩形而言，可以切成两个矩形，或者沿着矩形对角线切割成两个直角三角形。</p>
-<h4 id="2-1-4-士兵摆渡"><a href="#2-1-4-士兵摆渡" class="headerlink" title="2.1.4 士兵摆渡"></a>2.1.4 士兵摆渡</h4><ul>
+<h4 id="手套选择"><a href="#手套选择" class="headerlink" title="手套选择"></a>手套选择</h4><p>手套有左右之分。</p>
+<h4 id="矩形切割"><a href="#矩形切割" class="headerlink" title="矩形切割"></a>矩形切割</h4><p>对于一个直角三角形而言，沿着它的高切割。<br>对于矩形而言，可以切成两个矩形，或者沿着矩形对角线切割成两个直角三角形。</p>
+<h4 id="士兵摆渡"><a href="#士兵摆渡" class="headerlink" title="士兵摆渡"></a>士兵摆渡</h4><ul>
 <li>两个男孩-&gt;</li>
 <li>一个男孩&lt;-</li>
 <li>一个士兵-&gt;</li>
 <li>一个男孩&lt;-<br>一个士兵过去需要两个来回，25个士兵需要50个来回(累死男孩的节奏╮(╯▽╰)╭)</li>
 </ul>
-<h3 id="2-1-5-行列变换"><a href="#2-1-5-行列变换" class="headerlink" title="2.1.5 行列变换"></a>2.1.5 行列变换</h3><p>第四列到了第一列 第二列未变 原来的第一列第三列混搭；第一行到了第四行 第三行到了第一行 原来的第二行第四行混搭了。<br><img src="/source/_posts/img/soldier.jpg" alt="矩阵变换"></p>
-<p> ^ 行变换维持行上的数字不变，列变换维持列上的数字不变。</p>
+<h4 id="行列变换"><a href="#行列变换" class="headerlink" title="行列变换"></a>行列变换</h4><p>不能<br> ^ 行变换维持行上的数字不变，列变换维持列上的数字不变。</p>
+<h4 id="数数的手指"><a href="#数数的手指" class="headerlink" title="数数的手指"></a>数数的手指</h4><p>余数问题</p>
+<h4 id="夜过吊桥"><a href="#夜过吊桥" class="headerlink" title="夜过吊桥"></a>夜过吊桥</h4><p>第1个和第2个先过，第3个和第4个一起过<br>此谜题也被称为桥和电筒问题，Torsten Sillke的网站[Sillke]上有一系列与这道谜题相关的有趣材料，包括此题的一个更为普遍情况的算法，即n个人在同样的约束条件下过桥，对每个人过桥的次数不做限制。该算法的最优化证明由Günter Rote在2002年出版[Rot02]。想做进一步的延伸，参见Moshe Sniedovich的网站[Sni02]以及Roland Backhouse的论文[Bac08].</p>
+<hr>
+<p>[Sillke] Sillke, T.Crossing the bridge in an hour. www.mathematik.uni-bielefeld.de/~sillke/PUZZLES/crossing-bridge(accessed Oct. 4, 2010)<br>[Rot02] Rote G. Crossing the bridge at night[J]. Bulletin of the EATCS, 2002, 78: 241-246.<br>[Sni02] Sniedovich, M. The bridge and torch problem. Feb. 2002. www.tutor.ms.unimelb.edu.au/bridge(accessed Oct.4, 2010).<br>[Bac08] Backhouse R. The capacity-C torch problem[C]//Mathematics of Program Construction. Springer Berlin Heidelberg, 2008: 57-78.</p>
+<hr>
+<h4 id="拼图问题"><a href="#拼图问题" class="headerlink" title="拼图问题"></a>拼图问题</h4><p>基于不变量的思想</p>
+<h4 id="心算求和"><a href="#心算求和" class="headerlink" title="心算求和"></a>心算求和</h4><p>和值公式</p>
+<h4 id="硬币中的假币"><a href="#硬币中的假币" class="headerlink" title="硬币中的假币"></a>硬币中的假币</h4><p>2次，因为知道轻重。<br>^可以通过比2大的因子简化问题。还说明了一个处理特定数字信息问题时会遇到的窘境:有时是可以利用给定数据的特点来解题，但有时也会被误导。<br>还存在另一种解法，使得第二次称重不依赖于第一次称重的结果。用字母A、B、C、D、E、F、G、H来标记硬币。第一次称重，比较ABC和FGH。第二次称重比较ADF和CEH。如果ABC=FGH(第一次称重的结果是平衡)，则所有6枚硬币都是真的，因此第二次称重等同于比较D和E的重量。如果ABC<fgh，则只有a、b、c可能是假的，因此如果第二次称重adf=ceh，则b是假币；如果adf<ceh，则a是假币；如果adf>CEH，则C是假币。同理可用于ABC&gt;FGH。<br>此谜题有一个更为一般化的版本，即针对任意数目的硬币。不过，division-into-thirds算法最优化证明需要引用到更为高阶的技术，例如决策树(如[Lev06,Section11.2])。</fgh，则只有a、b、c可能是假的，因此如果第二次称重adf=ceh，则b是假币；如果adf<ceh，则a是假币；如果adf></p>
+<hr>
+<p>[Lev06] Levitin, A. Introduction to the Design &amp; Analysis of Algorithms, 2nd edition[M], Pearson, 2006.</p>
+<hr>
 
       
     </div>
@@ -332,6 +340,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2016/02/26/thinking-201602/" rel="prev" title="thinking in Feb. 2016">
+                thinking in Feb. 2016 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -399,7 +411,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -407,7 +419,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/blog/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -475,7 +487,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#算法谜题"><span class="nav-number">1.</span> <span class="nav-text">算法谜题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一章-概要"><span class="nav-number">1.1.</span> <span class="nav-text">第一章 概要</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-1-穷举搜索-exhaustive-search"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1.1 穷举搜索(exhaustive search)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-2-回溯法-backtracking"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.1.2 回溯法(backtracking)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二章-谜"><span class="nav-number">1.2.</span> <span class="nav-text">第二章 谜</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-简单题"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 简单题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-1-狼羊菜过河"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">2.1.1 狼羊菜过河</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-2-手套选择"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">2.1.2 手套选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-3-矩形切割"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">2.1.3 矩形切割</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-4-士兵摆渡"><span class="nav-number">1.2.1.4.</span> <span class="nav-text">2.1.4 士兵摆渡</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-5-行列变换"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.1.5 行列变换</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#算法谜题"><span class="nav-number">1.</span> <span class="nav-text">算法谜题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一章-概要"><span class="nav-number">1.1.</span> <span class="nav-text">第一章 概要</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#穷举搜索-exhaustive-search"><span class="nav-number">1.1.1.</span> <span class="nav-text">穷举搜索(exhaustive search)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回溯法-backtracking"><span class="nav-number">1.1.2.</span> <span class="nav-text">回溯法(backtracking)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#减而治之-decrease-and-conquer"><span class="nav-number">1.1.3.</span> <span class="nav-text">减而治之(decrease-and-conquer)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分而治之-divide-and-conquer"><span class="nav-number">1.1.4.</span> <span class="nav-text">分而治之(divide-and-conquer)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二章-谜"><span class="nav-number">1.2.</span> <span class="nav-text">第二章 谜</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单题"><span class="nav-number">1.2.1.</span> <span class="nav-text">简单题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#狼羊菜过河"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">狼羊菜过河</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#手套选择"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">手套选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#矩形切割"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">矩形切割</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#士兵摆渡"><span class="nav-number">1.2.1.4.</span> <span class="nav-text">士兵摆渡</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#行列变换"><span class="nav-number">1.2.1.5.</span> <span class="nav-text">行列变换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数数的手指"><span class="nav-number">1.2.1.6.</span> <span class="nav-text">数数的手指</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#夜过吊桥"><span class="nav-number">1.2.1.7.</span> <span class="nav-text">夜过吊桥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#拼图问题"><span class="nav-number">1.2.1.8.</span> <span class="nav-text">拼图问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#心算求和"><span class="nav-number">1.2.1.9.</span> <span class="nav-text">心算求和</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#硬币中的假币"><span class="nav-number">1.2.1.10.</span> <span class="nav-text">硬币中的假币</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
