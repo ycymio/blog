@@ -41,7 +41,7 @@
 <link href="/blog/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="LeetCode," />
 
 
 
@@ -57,15 +57,16 @@
 
 
 
-<meta name="description" content="天气好得就好像走着走着就能遇见你">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Yvette's tech-blog">
-<meta property="og:url" content="http://yvette.space/blog/index.html">
+<meta name="description" content="Write a function to delete a node (except the tail) in a singly linked list, given only access to that node.   Supposed the linked list is 1 -&amp;gt; 2 -&amp;gt; 3 -&amp;gt; 4 and you are given the third node wi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode 237 Delete Node in a Linked List">
+<meta property="og:url" content="http://yvette.space/blog/2016/03/09/leetcode237/index.html">
 <meta property="og:site_name" content="Yvette's tech-blog">
-<meta property="og:description" content="天气好得就好像走着走着就能遇见你">
+<meta property="og:description" content="Write a function to delete a node (except the tail) in a singly linked list, given only access to that node.   Supposed the linked list is 1 -&amp;gt; 2 -&amp;gt; 3 -&amp;gt; 4 and you are given the third node wi">
+<meta property="og:updated_time" content="2016-03-09T01:14:05.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yvette's tech-blog">
-<meta name="twitter:description" content="天气好得就好像走着走着就能遇见你">
+<meta name="twitter:title" content="LeetCode 237 Delete Node in a Linked List">
+<meta name="twitter:description" content="Write a function to delete a node (except the tail) in a singly linked list, given only access to that node.   Supposed the linked list is 1 -&amp;gt; 2 -&amp;gt; 3 -&amp;gt; 4 and you are given the third node wi">
 
 
 
@@ -83,7 +84,7 @@
   };
 </script>
 
-  <title> Yvette's tech-blog </title>
+  <title> LeetCode 237 Delete Node in a Linked List | Yvette's tech-blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -102,9 +103,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -193,24 +192,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
 
+  <div id="posts" class="posts-expand">
     
-
-    
-    
-      
-      
-        
-        
-        
-      
-
-      
-    
-
-    
-      
 
   
   
@@ -230,10 +214,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/blog/2016/03/09/leetcode237/" itemprop="url">
-                  LeetCode 237 Delete Node in a Linked List
-                </a>
+                LeetCode 237 Delete Node in a Linked List
               
             
           </h1>
@@ -314,39 +295,67 @@
       
 
       
-        
-          <blockquote class="blockquote-center"><br><div style="padding-left: 50px; text-align: left"><br> <strong>Write a function to delete a node (except the tail) in a singly linked list, given only access to that node.<br>   Supposed the linked list is 1 -&gt; 2 -&gt; 3 -&gt; 4 and you are given the third node with value 3, the linked list should become 1 -&gt; 2 -&gt; 4 after calling your function.
+        <blockquote class="blockquote-center"><br><div style="padding-left: 50px; text-align: left"><br> <strong>Write a function to delete a node (except the tail) in a singly linked list, given only access to that node.<br>   Supposed the linked list is 1 -&gt; 2 -&gt; 3 -&gt; 4 and you are given the third node with value 3, the linked list should become 1 -&gt; 2 -&gt; 4 after calling your function.
 
 </strong><br></div><br><br></blockquote>
 
-<p>&#x7ED9;&#x5B9A;&#x94FE;&#x8868;&#x7684;&#x67D0;&#x4E2A;&#x7ED3;&#x70B9;&#xFF0C;&#x8981;&#x6C42;&#x5220;&#x9664;&#x8BE5;&#x7ED3;&#x70B9;(&#x8BE5;&#x7ED3;&#x70B9;&#x4E0D;&#x662F;&#x5C3E;&#x7ED3;&#x70B9;)&#x3002;<br></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/blog/2016/03/09/leetcode237/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
+<p>&#x7ED9;&#x5B9A;&#x94FE;&#x8868;&#x7684;&#x67D0;&#x4E2A;&#x7ED3;&#x70B9;&#xFF0C;&#x8981;&#x6C42;&#x5220;&#x9664;&#x8BE5;&#x7ED3;&#x70B9;(&#x8BE5;&#x7ED3;&#x70B9;&#x4E0D;&#x662F;&#x5C3E;&#x7ED3;&#x70B9;)&#x3002;<br><a id="more"></a><br><strong>&#x601D;&#x8DEF;: </strong><br>    &#x4E4B;&#x524D;&#x6709;&#x60F3;&#x5230;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x77E5;&#x9053;&#x8BE5;&#x7ED3;&#x70B9;&#x7684;&#x524D;&#x9762;&#x7684;&#x90A3;&#x4E2A;&#x7ED3;&#x70B9;&#xFF0C;&#x5C31;&#x65E0;&#x6CD5;&#x4FEE;&#x6539;&#x5B83;&#x7684;&#x94FE;&#x63A5;&#xFF0C;&#x90A3;&#x8BE5;&#x5982;&#x4F55;&#x5904;&#x7406;&#xFF1F;<br>    &#x8DF3;&#x51FA;&#x8FD9;&#x4E2A;&#x5708;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x662F;&#x4E00;&#x5B9A;&#x8981;&#x4FEE;&#x6539;&#x8BE5;&#x94FE;&#x63A5;&#xFF0C;&#x53EA;&#x662F;&#x5220;&#x9664;&#x4E00;&#x4E2A;&#x7ED3;&#x70B9;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x91CA;&#x653E;&#x7ED9;&#x5B9A;&#x7ED3;&#x70B9;&#x7684;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x5220;&#x9664;&#x6240;&#x7ED9;&#x7ED3;&#x70B9;&#x7684;&#x540E;&#x4E00;&#x4E2A;&#x7ED3;&#x70B9;&#xFF0C;&#x800C;&#x8FD9;&#x540E;&#x4E00;&#x4E2A;&#x7ED3;&#x70B9;&#x7684;&#x503C;&#x5B8C;&#x5168;&#x590D;&#x5236;&#x7ED9;&#x6240;&#x7ED9;&#x7684;&#x7ED3;&#x70B9;&#x3002;</p>
+<p><strong>&#x4EE3;&#x7801;&#xFF1A;</strong></p>
+<pre><code>/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+ public class Solution {
+     public void deleteNode(ListNode node) {
+         // copy the node.
+         node.val = node.next.val;
+         node.next = node.next.next;
+     }
+ }
+</code></pre>
       
     </div>
 
     <footer class="post-footer">
       
-
+        <div class="post-tags">
+          
+            <a href="/blog/tags/LeetCode/" rel="tag">#LeetCode</a>
+          
+        </div>
       
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2016/03/07/Algorithmic-puzzles/" rel="next" title="Reading in 《Algorithmic puzzles》">
+                <i class="fa fa-chevron-left"></i> Reading in 《Algorithmic puzzles》
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
-        <div class="post-eof"></div>
+
+      
       
     </footer>
   </article>
 
 
-    
 
-  </section>
-
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -354,6 +363,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -373,8 +386,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/blog/uploads/avatar.jpg"
@@ -460,6 +482,23 @@
       </section>
 
       
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
 
     </div>
   </aside>
@@ -533,6 +572,167 @@
   
 
   
+  
+<script type="text/javascript" src="/blog/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
 
   
 
