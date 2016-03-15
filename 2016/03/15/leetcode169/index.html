@@ -57,22 +57,16 @@
 
 
 
-<meta name="description" content="Given a linked list, return the node where the cycle begins. If there is no cycle, return null.   Note: Do not modify the linked list.   Follow up:      Can you solve it without using extra space?
-
-&amp;#">
+<meta name="description" content="Given an array of size n, find the majority element. The majority element is the element that appears more than &amp;#x230A; n/2 &amp;#x230B; times.You may assume that the array is non-empty and the majority">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode 142 Linked List Cycle II">
-<meta property="og:url" content="http://yvette.space/blog/2016/03/07/leetcode142/index.html">
+<meta property="og:title" content="LeetCode 169 Majority Element">
+<meta property="og:url" content="http://yvette.space/blog/2016/03/15/leetcode169/index.html">
 <meta property="og:site_name" content="Yvette's tech-blog">
-<meta property="og:description" content="Given a linked list, return the node where the cycle begins. If there is no cycle, return null.   Note: Do not modify the linked list.   Follow up:      Can you solve it without using extra space?
-
-&amp;#">
-<meta property="og:updated_time" content="2016-03-09T01:08:11.000Z">
+<meta property="og:description" content="Given an array of size n, find the majority element. The majority element is the element that appears more than &amp;#x230A; n/2 &amp;#x230B; times.You may assume that the array is non-empty and the majority">
+<meta property="og:updated_time" content="2016-03-15T02:49:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode 142 Linked List Cycle II">
-<meta name="twitter:description" content="Given a linked list, return the node where the cycle begins. If there is no cycle, return null.   Note: Do not modify the linked list.   Follow up:      Can you solve it without using extra space?
-
-&amp;#">
+<meta name="twitter:title" content="LeetCode 169 Majority Element">
+<meta name="twitter:description" content="Given an array of size n, find the majority element. The majority element is the element that appears more than &amp;#x230A; n/2 &amp;#x230B; times.You may assume that the array is non-empty and the majority">
 
 
 
@@ -90,7 +84,7 @@
   };
 </script>
 
-  <title> LeetCode 142 Linked List Cycle II | Yvette's tech-blog </title>
+  <title> LeetCode 169 Majority Element | Yvette's tech-blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -220,7 +214,7 @@
             
             
               
-                LeetCode 142 Linked List Cycle II
+                LeetCode 169 Majority Element
               
             
           </h1>
@@ -232,8 +226,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-07T11:04:22+08:00" content="2016-03-07">
-              2016-03-07
+            <time itemprop="dateCreated" datetime="2016-03-15T10:38:08+08:00" content="2016-03-15">
+              2016-03-15
             </time>
           </span>
 
@@ -290,7 +284,7 @@
 
           
           
-             <span id="/blog/2016/03/07/leetcode142/" class="leancloud_visitors" data-flag-title="LeetCode 142 Linked List Cycle II">
+             <span id="/blog/2016/03/15/leetcode169/" class="leancloud_visitors" data-flag-title="LeetCode 169 Majority Element">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -310,50 +304,41 @@
       
 
       
-        <blockquote class="blockquote-center"><br><div style="padding-left: 50px; text-align: left"><br> <strong>Given a linked list, return the node where the cycle begins. If there is no cycle, return null.<br>   Note: Do not modify the linked list.<br>   Follow up:<br>      Can you solve it without using extra space?</strong><br></div><br></blockquote>
+        <blockquote class="blockquote-center"><br><div style="padding-left: 50px; text-align: left"><br> <strong><br>Given an array of size n, find the majority element. The majority element is the element that appears more than &#x230A; n/2 &#x230B; times.<br><br>You may assume that the array is non-empty and the majority element always exist in the array.
+</strong><br></div><br><br></blockquote>
 
-<p>&#x5728;&#x4E0D;&#x4FEE;&#x6539;&#x94FE;&#x8868;&#x548C;&#x4E0D;&#x4F7F;&#x7528;&#x989D;&#x5916;&#x7A7A;&#x95F4;&#x7684;&#x524D;&#x63D0;&#x4E0B;&#xFF0C;&#x8FD4;&#x56DE;&#x94FE;&#x8868;&#x4E2D;&#x73AF;&#x8DEF;&#x7684;&#x8D77;&#x59CB;&#x8282;&#x70B9;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x5219;&#x8FD4;&#x56DE; null&#x3002;<br><a id="more"></a><br><strong>&#x601D;&#x8DEF;: </strong><br>    &#x5728;LeetCode 141&#x9898;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;&#x9700;&#x8981;&#x83B7;&#x5F97;&#x94FE;&#x8868;&#x4E2D;&#x73AF;&#x8DEF;&#x7684;&#x8D77;&#x59CB;&#x8282;&#x70B9;&#x3002;<br>    (&#x672C;&#x6765;&#x601D;&#x8003;&#x7B2C;&#x4E00;&#x6B21;while&#x5FAA;&#x73AF;&#xFF0C;&#x5373;LeetCode 141&#x7684;while&#x5FAA;&#x73AF;&#xFF0C;&#x53EF;&#x4EE5;&#x83B7;&#x5F97;&#x73AF;&#x7684;&#x957F;&#x5EA6;&#xFF0C;&#x7136;&#x540E;&#x4E00;&#x4E2A;&#x70B9;&#x4E00;&#x4E2A;&#x70B9;&#x7684;&#x904D;&#x5386;&#xFF0C;&#x7136;&#x800C;Time Limit Exceeded&#x2026;&#x51B5;&#x4E14;&#x8FD9;&#x4E5F;&#x6CA1;&#x6280;&#x5DE7;&#xFF0C;&#x5E94;&#x8BE5;&#x627E;&#x5230;&#x5185;&#x5728;&#x89C4;&#x5F8B;&#x518D;&#x7EE7;&#x7EED;&#x7684;&#x2026;)<br>    &#x25A1; - &#x25A1; - &#x25A1; - &#x2026; - 1 (&#x73AF;&#x8DEF;&#x5F00;&#x59CB;) - &#x2026; - (&#x5FEB;&#x6162;&#x6307;&#x9488;&#x76F8;&#x9047;) - &#x2026; - (&#x8FDE;&#x63A5;1) - &#x2026;<br>    &#x8FD9;&#x91CC;&#x8BBE;&#x73AF;&#x8DEF;&#x5F00;&#x59CB;&#x7ED3;&#x70B9;&#x8DDD;&#x5934;&#x7ED3;&#x70B9;&#x7684;&#x8DDD;&#x79BB;&#x4E3A;C, &#x6162;&#x6307;&#x9488;&#x8FFD;&#x4E0A;&#x5FEB;&#x6307;&#x9488;&#x8DDD;&#x73AF;&#x8DEF;&#x5F00;&#x59CB;&#x7684;&#x8DDD;&#x79BB;&#x4E3A;S, &#x73AF;&#x8DEF;&#x7684;&#x957F;&#x5EA6;&#x4E3A;L&#x3002;&#x90A3;&#x4E48;:</p>
-<ol>
-<li>&#x6162;&#x6307;&#x9488;&#x6240;&#x8D70;&#x7684;&#x8DDD;&#x79BB;&#x4E3A; C+S&#xFF0C;&#x5FEB;&#x6307;&#x9488;&#x6240;&#x8D70;&#x7684;&#x8DDD;&#x79BB;&#x4E3A; C+S+L&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4E3A; 2*(C+S)&#x3002;-&gt; L = C+S</li>
-<li>&#x6211;&#x4EEC;&#x8981;&#x8D70;&#x5230;&#x73AF;&#x8DEF;&#x5F00;&#x59CB;&#x7684;&#x7ED3;&#x70B9;&#xFF0C;&#x53EF;&#x4EE5;&#x5F00;&#x59CB;&#x8D70;&#x7684;&#x7ED3;&#x70B9;-&gt;&#x5934;&#x7ED3;&#x70B9;&amp;&#x5FEB;&#x6162;&#x6307;&#x9488;&#x6240;&#x5728;&#x7684;&#x7ED3;&#x70B9;&#x3002;&#x5BF9;&#x4E8E;&#x5934;&#x7ED3;&#x70B9;&#xFF0C;&#x9700;&#x8981;&#x8D70;C&#x6B21;; &#x5BF9;&#x4E8E;&#x5FEB;/&#x6162;&#x7ED3;&#x70B9;&#xFF0C;&#x9700;&#x8981;&#x8D70;(L-S=)C&#x6B21;&#xFF0C;&#x6240;&#x4EE5;&#x5934;&#x7ED3;&#x70B9;&#x4E0E;&#x6162;&#x8282;&#x70B9;&#x4E00;&#x8D77;&#x904D;&#x5386;&#xFF0C;&#x5F53;&#x5B83;&#x4EEC;&#x76F8;&#x9047;&#x65F6;&#xFF0C;&#x5373;&#x662F;&#x73AF;&#x8DEF;&#x5F00;&#x59CB;&#x7684;&#x7ED3;&#x70B9;&#x3002;</li>
-</ol>
-<p><strong>&#x4EE3;&#x7801;: </strong></p>
-<pre><code>/**
- * Definition for singly-linked list.
- * class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) {
- *         val = x;
- *         next = null;
- *     }
- * }
- */
+<p>&#x7ED9;&#x5B9A;&#x5927;&#x5C0F;&#x4E3A;n&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x627E;&#x5230;&#x5360;&#x5927;&#x591A;&#x6570;(&#x51FA;&#x73B0;&#x4E86;&#x8D85;&#x8FC7;&#x230A;n/2&#x230B;&#x6B21;)&#x7684;&#x5143;&#x7D20;&#x3002;<br>&#x5047;&#x8BBE;&#x7ED9;&#x5B9A;&#x7684;&#x6570;&#x7EC4;&#x4E0D;&#x4E3A;&#x7A7A;&#xFF0C;&#x5E76;&#x4E14;&#x5360;&#x5927;&#x591A;&#x6570;&#x7684;&#x5143;&#x7D20;&#x4E00;&#x5B9A;&#x5B58;&#x5728;&#x3002;</p>
+<a id="more"></a>
+<p><strong>&#x601D;&#x8DEF;: </strong><br>&#x4EE5;&#x524D;&#x4E00;&#x76F4;&#x7528;&#x7684;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;:<br>&#x9996;&#x5148;&#x8BB0;&#x5F55;&#x7B2C;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x53CA;&#x5176;&#x51FA;&#x73B0;&#x6B21;&#x6570;n=1&#xFF0C;&#x4E0B;&#x4E00;&#x4E2A;&#x5982;&#x679C;&#x518D;&#x9047;&#x5230;&#x8BE5;&#x5143;&#x7D20;&#x5219;n++&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x9047;&#x89C1;&#x5219;n&#x2013;&#xFF0C;&#x4E00;&#x65E6;n&#x5C0F;&#x4E8E;0&#xFF0C;&#x5C31;&#x7528;&#x5F53;&#x524D;&#x5143;&#x7D20;&#x6765;&#x4EE3;&#x66FF;&#x539F;&#x5148;&#x8BB0;&#x5F55;&#x7684;&#x5143;&#x7D20;&#x3002;&#x904D;&#x5386;&#x5230;&#x6700;&#x540E;&#xFF0C;&#x6700;&#x540E;&#x8BB0;&#x5F55;&#x7684;&#x90A3;&#x4E2A;&#x5143;&#x7D20;&#x5373;&#x662F;&#x6211;&#x4EEC;&#x6240;&#x9700;&#x7684;&#x5143;&#x7D20;&#x3002;<br>&#x7136;&#x800C;&#x2026;Java&#x91CC;&#x7684;&#x901F;&#x5EA6;&#x6CA1;&#x6709;Array.sort()&#x6392;&#x5217;&#x5B8C;&#x53BB;&#x6700;&#x4E2D;&#x95F4;&#x7684;&#x6570;(&#x56E0;&#x4E3A;&#x80AF;&#x5B9A;&#x662F;&#x4E00;&#x534A;)&#x5FEB;&#x2026;</p>
+<p><strong>&#x4EE3;&#x7801;&#xFF1A;</strong></p>
+<pre><code>// &#x4EE5;&#x524D;&#x7684;&#x65B9;&#x6CD5;
 public class Solution {
-    public ListNode detectCycle(ListNode head) {
-        if( head == null || head.next == null){
-            return null;
-        }
-        ListNode fast = head;
-        ListNode slow = head;
-        int length = 0;
-        while( fast != null &amp;&amp; fast.next != null){
-            fast = fast.next.next;
-            slow = slow.next;
-            length++;
-            if(fast == slow){
-                break;
+    public int majorityElement(int[] nums) {
+        int x = nums[0];
+        int num = 1;
+        for( int i = 1; i &lt; nums.length; i++){
+            if( x == nums[i]){
+                num++;
+            }
+            else{
+                num--;
+            }
+            if( num &lt; 0 ){
+                x = nums[i];
+                num = 1;
             }
         }
-        if( fast != slow ){
-            return null;
-        }
-        while( head != slow ){
-            head = head.next;
-            slow = slow.next;
-        }
-        return head;
-    }
+        return x;
+    } 
+}
+
+// Java sort()
+public class Solution {
+    public int majorityElement(int[] nums) {
+        int len = nums.length;
+        Arrays.sort(nums);
+        return nums[len/2];
+    } 
 }
 </code></pre>
       
@@ -372,17 +357,13 @@ public class Solution {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/2016/03/06/leetcode141/" rel="next" title="LeetCode 141 Linked List Cycle">
-                <i class="fa fa-chevron-left"></i> LeetCode 141 Linked List Cycle
+              <a href="/blog/2016/03/14/Algorithmic-puzzles/" rel="next" title="Reading in 《Algorithmic puzzles》">
+                <i class="fa fa-chevron-left"></i> Reading in 《Algorithmic puzzles》
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/blog/2016/03/09/leetcode237/" rel="prev" title="LeetCode 237 Delete Node in a Linked List">
-                LeetCode 237 Delete Node in a Linked List <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
