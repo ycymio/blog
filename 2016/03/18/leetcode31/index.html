@@ -57,16 +57,16 @@
 
 
 
-<meta name="description" content="Given an array of size n, find the majority element. The majority element is the element that appears more than &amp;#x230A; n/2 &amp;#x230B; times.You may assume that the array is non-empty and the majority">
+<meta name="description" content="Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.If such arrangement is not possible, it must rearrange it as the lowest possible ord">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode 169 Majority Element">
-<meta property="og:url" content="http://yvette.space/blog/2016/03/15/leetcode169/index.html">
+<meta property="og:title" content="LeetCode 31 Next Permutation">
+<meta property="og:url" content="http://yvette.space/blog/2016/03/18/leetcode31/index.html">
 <meta property="og:site_name" content="Yvette's tech-blog">
-<meta property="og:description" content="Given an array of size n, find the majority element. The majority element is the element that appears more than &amp;#x230A; n/2 &amp;#x230B; times.You may assume that the array is non-empty and the majority">
-<meta property="og:updated_time" content="2016-03-15T02:49:39.000Z">
+<meta property="og:description" content="Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.If such arrangement is not possible, it must rearrange it as the lowest possible ord">
+<meta property="og:updated_time" content="2016-03-18T08:21:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode 169 Majority Element">
-<meta name="twitter:description" content="Given an array of size n, find the majority element. The majority element is the element that appears more than &amp;#x230A; n/2 &amp;#x230B; times.You may assume that the array is non-empty and the majority">
+<meta name="twitter:title" content="LeetCode 31 Next Permutation">
+<meta name="twitter:description" content="Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.If such arrangement is not possible, it must rearrange it as the lowest possible ord">
 
 
 
@@ -84,7 +84,7 @@
   };
 </script>
 
-  <title> LeetCode 169 Majority Element | Yvette's tech-blog </title>
+  <title> LeetCode 31 Next Permutation | Yvette's tech-blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -214,7 +214,7 @@
             
             
               
-                LeetCode 169 Majority Element
+                LeetCode 31 Next Permutation
               
             
           </h1>
@@ -226,8 +226,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-15T10:38:08+08:00" content="2016-03-15">
-              2016-03-15
+            <time itemprop="dateCreated" datetime="2016-03-18T16:17:38+08:00" content="2016-03-18">
+              2016-03-18
             </time>
           </span>
 
@@ -284,7 +284,7 @@
 
           
           
-             <span id="/blog/2016/03/15/leetcode169/" class="leancloud_visitors" data-flag-title="LeetCode 169 Majority Element">
+             <span id="/blog/2016/03/18/leetcode31/" class="leancloud_visitors" data-flag-title="LeetCode 31 Next Permutation">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -304,41 +304,97 @@
       
 
       
-        <blockquote class="blockquote-center"><br><div style="padding-left: 50px; text-align: left"><br> <strong><br>Given an array of size n, find the majority element. The majority element is the element that appears more than &#x230A; n/2 &#x230B; times.<br><br>You may assume that the array is non-empty and the majority element always exist in the array.
-</strong><br></div><br><br></blockquote>
+        <blockquote class="blockquote-center"><br><div style="padding-left: 50px; text-align: left"><br><strong>Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.<br>If such arrangement is not possible, it must rearrange it as the lowest possible order (ie, sorted in ascending order).<br>The replacement must be in-place, do not allocate extra memory.
+</strong><br>Here are some examples. Inputs are in the left-hand column and its corresponding outputs are in the right-hand column.<br>1,2,3 &#x2192; 1,3,2<br>3,2,1 &#x2192; 1,2,3<br>1,1,5 &#x2192; 1,5,1<br></div><br></blockquote>
 
-<p>&#x7ED9;&#x5B9A;&#x5927;&#x5C0F;&#x4E3A;n&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x627E;&#x5230;&#x5360;&#x5927;&#x591A;&#x6570;(&#x51FA;&#x73B0;&#x4E86;&#x8D85;&#x8FC7;&#x230A;n/2&#x230B;&#x6B21;)&#x7684;&#x5143;&#x7D20;&#x3002;<br>&#x5047;&#x8BBE;&#x7ED9;&#x5B9A;&#x7684;&#x6570;&#x7EC4;&#x4E0D;&#x4E3A;&#x7A7A;&#xFF0C;&#x5E76;&#x4E14;&#x5360;&#x5927;&#x591A;&#x6570;&#x7684;&#x5143;&#x7D20;&#x4E00;&#x5B9A;&#x5B58;&#x5728;&#x3002;</p>
+<p>&#x627E;&#x5230;&#x6309;&#x6570;&#x5B57;&#x5927;&#x5C0F;&#x6392;&#x5217;&#x7684;&#x5168;&#x6392;&#x5217;&#x4E2D;&#x5728;&#x7ED9;&#x5B9A;&#x6392;&#x5217;&#x4EE5;&#x540E;&#x7684;&#x5168;&#x6392;&#x5217;&#xFF0C;&#x5982;&#x679C;&#x8BE5;&#x5168;&#x6392;&#x5217;&#x6700;&#x5927;&#xFF0C;&#x90A3;&#x5C31;&#x8FD4;&#x56DE;&#x6700;&#x5C0F;&#x7684;&#x5168;&#x6392;&#x5217;&#x3002;</p>
 <a id="more"></a>
-<p><strong>&#x601D;&#x8DEF;: </strong><br>&#x4EE5;&#x524D;&#x4E00;&#x76F4;&#x7528;&#x7684;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;:<br>&#x9996;&#x5148;&#x8BB0;&#x5F55;&#x7B2C;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x53CA;&#x5176;&#x51FA;&#x73B0;&#x6B21;&#x6570;n=1&#xFF0C;&#x4E0B;&#x4E00;&#x4E2A;&#x5982;&#x679C;&#x518D;&#x9047;&#x5230;&#x8BE5;&#x5143;&#x7D20;&#x5219;n++&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x9047;&#x89C1;&#x5219;n&#x2013;&#xFF0C;&#x4E00;&#x65E6;n&#x5C0F;&#x4E8E;0&#xFF0C;&#x5C31;&#x7528;&#x5F53;&#x524D;&#x5143;&#x7D20;&#x6765;&#x4EE3;&#x66FF;&#x539F;&#x5148;&#x8BB0;&#x5F55;&#x7684;&#x5143;&#x7D20;&#x3002;&#x904D;&#x5386;&#x5230;&#x6700;&#x540E;&#xFF0C;&#x6700;&#x540E;&#x8BB0;&#x5F55;&#x7684;&#x90A3;&#x4E2A;&#x5143;&#x7D20;&#x5373;&#x662F;&#x6211;&#x4EEC;&#x6240;&#x9700;&#x7684;&#x5143;&#x7D20;&#x3002;<br>&#x7136;&#x800C;&#x2026;Java&#x91CC;&#x7684;&#x901F;&#x5EA6;&#x6CA1;&#x6709;Array.sort()&#x6392;&#x5217;&#x5B8C;&#x53BB;&#x6700;&#x4E2D;&#x95F4;&#x7684;&#x6570;(&#x56E0;&#x4E3A;&#x80AF;&#x5B9A;&#x662F;&#x4E00;&#x534A;)&#x5FEB;&#x2026;</p>
-<p><strong>&#x4EE3;&#x7801;&#xFF1A;</strong></p>
-<pre><code>// &#x4EE5;&#x524D;&#x7684;&#x65B9;&#x6CD5;
+<p><strong>&#x601D;&#x8DEF;:</strong><br>&#x521D;&#x7EA7;&#x7248;: // &#x672A;&#x8003;&#x8651;&#x4E0D;&#x80FD;&#x7528;&#x989D;&#x5916;&#x7A7A;&#x95F4;<br>&#x5047;&#x8BBE;&#x6570;&#x7EC4;&#x662F;&#x8FD9;&#x6837;&#x7684; [&#x2026;(A), a(pos1), &#x2026;(B)]</p>
+<ol>
+<li>&#x627E;&#x5230;&#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x67D0;&#x4F4D;&#x7F6E;pos1&#xFF0C;&#x8BE5;&#x4F4D;&#x7F6E;&#x4EE5;&#x540E;&#x90FD;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x6392;&#x5217;&#x3002;(&#x5373;[a(pos1), ..(B)])</li>
+<li>&#x91CD;&#x65B0;&#x5347;&#x5E8F;&#x6392;&#x5217;&#x8BE5;&#x4F4D;&#x7F6E;&#x4EE5;&#x540E;&#x7684;&#x503C;&#x3002;(&#x5047;&#x8BBE;[a(pos1), ..(B)]&#x53D8;&#x4E3A;[&#x2026;(C), a(pos1), b(posb), &#x2026;(D)], &#x6B64;&#x65F6;a(pos1)&#x4F4D;&#x4E8E;&#x8BE5;&#x6570;&#x7EC4;&#x7684;pos2&#x4F4D;&#x7F6E;) </li>
+<li>&#x627E;&#x5230;&#x6BD4;&#x8BE5;&#x4F4D;&#x7F6E;pos1&#x7684;&#x503C;&#x521A;&#x597D;&#x5927;&#x4E00;&#x70B9;(&#x5927;&amp;&amp;&#x6700;&#x63A5;&#x8FD1;)&#x7684;&#x503C;&#x7684;&#x4F4D;&#x7F6E;posb&#xFF0C;&#x628A;&#x503C;&#x8D4B;&#x4E88;&#x539F;&#x6570;&#x7EC4;&#x7684;pos1&#x3002;</li>
+<li>pos1&#x540E;&#x590D;&#x5236;&#x6570;&#x7EC4;C&#xFF0C;&#x63A5;&#x7740;&#x518D;&#x590D;&#x5236;&#x6570;&#x7EC4;D&#x3002;([a(pos1), ..(B)]&#x53D8;&#x4E3A;[b(posb),&#x2026;(C), a(pos1),&#x2026;(D)])&#x3002;</li>
+</ol>
+<p>&#x5347;&#x7EA7;&#x7248;:</p>
+<ul>
+<li>&#x8FD9;&#x4E9B;&#x6392;&#x5E8F;&#x548C;&#x6570;&#x7EC4;&#x79FB;&#x52A8;&#x90FD;&#x76F4;&#x63A5;&#x5728;&#x539F;&#x6570;&#x7EC4;&#x8FDB;&#x884C;&#x3002;</li>
+<li>&#x4E8C;&#x5206;&#x67E5;&#x627E;&#x4E0D;&#x4E00;&#x5B9A;&#x4F18;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x91CC;&#x6709;&#x91CD;&#x590D;&#x7684;&#x5143;&#x7D20;&#xFF0C;&#x800C;&#x4E8C;&#x5206;&#x67E5;&#x627E;&#x5728;&#x67E5;&#x5230;&#x91CD;&#x590D;&#x7684;&#x5143;&#x7D20;&#x4EE5;&#x540E;&#x5411;&#x540E;&#x904D;&#x5386;&#x624D;&#x80FD;&#x627E;&#x5230;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x6240;&#x627E;&#x5143;&#x7D20;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</li>
+<li>&#x8BE5;&#x5168;&#x5E8F;&#x5217;&#x662F;&#x6240;&#x6709;&#x5168;&#x5E8F;&#x5217;&#x4E2D;&#x7684;&#x6700;&#x5927;&#x60C5;&#x51B5;&#x65F6;&#xFF0C;&#x8981;&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x6700;&#x5C0F;&#x60C5;&#x51B5;&#xFF0C;&#x53EF;&#x4EE5;&#x4E0D;&#x8FDB;&#x884C;&#x6392;&#x5E8F;&#xFF0C;&#x76F4;&#x63A5;&#x7FFB;&#x8F6C;&#x6570;&#x7EC4;&#x5373;&#x53EF;&#x3002;</li>
+<li>&#x7B2C;&#x4E8C;&#x4E2A;&#x5347;&#x5E8F;&#x6392;&#x5E8F;&#x4E5F;&#x4E0D;&#x9700;&#x8981;&#xFF0C;&#x56E0;&#x4E3A;&#x627E;&#x5230;&#x6570;&#x7EC4;&#x4E2D;&#x67D0;&#x4F4D;&#x7F6E;pos1&#x7684;&#x65B9;&#x6CD5;&#x5C31;&#x662F;&#x8FD9;&#x4E2A;&#x4F4D;&#x7F6E;&#x4E4B;&#x540E;(&#x4E0D;&#x5305;&#x62EC;&#x8FD9;&#x4E2A;&#x4F4D;&#x7F6E;&#x7684;&#x5143;&#x7D20;)&#x7684;&#x5143;&#x7D20;&#x90FD;&#x662F;&#x964D;&#x5E8F;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x518D;&#x4ECE;&#x5C3E;&#x5230;&#x5934;&#x641C;&#x7D22;&#x4E00;&#x904D;&#x5373;&#x53EF;&#x3002;&#x5C31;&#x80FD;&#x627E;&#x5230;&#x521A;&#x597D;&#x6BD4;&#x8BE5;&#x4F4D;&#x7F6E;&#x5927;&#x7684;&#x503C;&#x4E86;&#x3002;<br>&#x8FD9;&#x6837;&#x7684;&#x8BDD;&#xFF0C;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x53D8;&#x6362;&#x4E00;&#x4E0B;: &#x627E;&#x5230;&#x8FD9;&#x4E2A;&#x521A;&#x597D;&#x6BD4;&#x8BE5;&#x4F4D;&#x7F6E;&#x5927;&#x7684;&#x503C;&#x540E;&#xFF0C;&#x628A;&#x8FD9;&#x4E24;&#x4E2A;&#x503C;&#x4EA4;&#x6362;&#x4F4D;&#x7F6E;&#xFF0C;&#x4EA4;&#x6362;&#x540E;pos1&#x4EE5;&#x540E;&#x7684;&#x503C;&#x8FD8;&#x662F;&#x964D;&#x5E8F;&#x6392;&#x5217;&#x7684;(&#x56E0;&#x4E3A;&#x4E24;&#x4E2A;&#x503C;&#x63A5;&#x8FD1;&#x8FDE;&#x7EED;)&#xFF0C;&#x6240;&#x4EE5;&#x518D;&#x7FFB;&#x8F6C;pos1&#x4EE5;&#x540E;&#x7684;&#x6570;&#x7EC4;&#x5373;&#x53EF;&#x3002;</li>
+<li>nums&#x957F;&#x5EA6;&#x4E3A;0&#x6216;1&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x7528;&#x8BE5;&#x65B9;&#x6CD5;&#x4E86;&#x3002;&#x4E0D;&#x9700;&#x8981;&#x591A;&#x52A0;&#x5224;&#x65AD;&#x3002;</li>
+<li>&#x6709;&#x65F6;&#x5019;&#x5C11;&#x4E00;&#x4E2A;&#x8D4B;&#x503C;&#x8BED;&#x53E5;&#x6216;&#x8005;&#x5224;&#x65AD;&#x8BED;&#x53E5;&#x4E5F;&#x80FD;&#x63D0;&#x9AD8;1ms&#xFF0C;&#x53EF;&#x80FD;&#x65E5;&#x79EF;&#x6708;&#x7D2F;&#x5C31;&#x63D0;&#x9AD8;&#x4E86;&#xFF0C;&#x6216;&#x8005;&#x6D4B;&#x8BD5;&#x6570;&#x636E;&#x4E0D;&#x540C;&#x5427;&#x3002;</li>
+</ul>
+<p><strong>&#x7279;&#x6B8A;&#x60C5;&#x51B5;:</strong></p>
+<ul>
+<li>&#x6570;&#x7EC4;&#x957F;&#x5EA6;&#x4E3A;0&#x6216;1</li>
+<li>&#x8BE5;&#x5168;&#x5E8F;&#x5217;&#x662F;&#x6240;&#x6709;&#x5168;&#x5E8F;&#x5217;&#x4E2D;&#x7684;&#x6700;&#x5927;&#x60C5;&#x51B5;&#x65F6;</li>
+<li>&#x6709;&#x91CD;&#x590D;&#x7684;&#x6570;&#x5B57;&#x65F6;(&#x5224;&#x65AD;&#x9700;&#x8981;&#x6539;&#x53D8;&#x7684;&#x6570;&#x7EC4;&#x7684;&#x7D22;&#x5F15;&amp;&amp;&#x9009;&#x53D6;&#x65B0;&#x7684;&#x90E8;&#x5206;&#x5168;&#x5E8F;&#x5217;) </li>
+</ul>
+<p><strong>&#x4EE3;&#x7801;:</strong></p>
+<pre><code>// &#x521D;&#x7EA7;&#x7248;&#xFF1A;&#x7B2C;&#x4E00;&#x6B21;AC&#x7684;
 public class Solution {
-    public int majorityElement(int[] nums) {
-        int x = nums[0];
-        int num = 1;
-        for( int i = 1; i &lt; nums.length; i++){
-            if( x == nums[i]){
-                num++;
-            }
-            else{
-                num--;
-            }
-            if( num &lt; 0 ){
-                x = nums[i];
-                num = 1;
-            }
+    public void nextPermutation(int[] nums) {
+        int tmp = nums.length-2;
+        if(nums.length &lt; 2){
+            return;
         }
-        return x;
-    } 
+        while( tmp != -1 &amp;&amp; nums[tmp+1] &lt;= nums[tmp]){
+            tmp--;
+        }
+        if( tmp == -1 ){
+            Arrays.sort(nums);
+            return;
+        }
+        // which number tmp represents is the position after which will be changed.
+        int[] tmpnums = new int[nums.length-tmp];
+        System.arraycopy(nums, tmp, tmpnums, 0, nums.length-tmp);
+        Arrays.sort(tmpnums);
+        int pos = Arrays.binarySearch(tmpnums, nums[tmp]);
+        if( tmpnums[pos+1] == tmpnums[pos]){
+            pos++;
+        }
+        int nextNum = tmpnums[pos+1]; // &#x6309;&#x7406;&#x800C;&#x8A00;&#x4E0D;&#x4F1A;&#x8D8A;&#x754C;
+        // pos+1 -&gt; &#x653E;&#x7F6E;&#x7684;&#x503C;&#x7684;&#x4F4D;&#x7F6E; [...(pos+1), pos+1, ...(length-pos-1)] 
+        nums[tmp] = nextNum;
+        System.arraycopy(tmpnums, 0, nums, tmp+1, pos+1);
+        System.arraycopy(tmpnums, pos+2, nums, tmp+pos+2, nums.length-tmp-pos-2);
+        // System.arraycopy(tmpnums, 0, nums, tmp, nums.length-tmp);
+        // ... nums.length-tmp = pos+1+1+(nums.length-tmp-pos-1); -1
+    }
 }
-
-// Java sort()
+</code></pre><hr>
+<pre><code>// &#x5347;&#x7EA7;&#x7248;: 1ms
 public class Solution {
-    public int majorityElement(int[] nums) {
-        int len = nums.length;
-        Arrays.sort(nums);
-        return nums[len/2];
-    } 
+    public void nextPermutation(int[] nums) {
+        int tmp = nums.length-2;
+        while( tmp &gt;= 0 &amp;&amp; nums[tmp+1] &lt;= nums[tmp]){
+            tmp--;
+        }
+        if( tmp &lt; 0 ){
+            // [3,2,1]: To reverse the array is enough.
+            reverse(nums, 0, nums.length-1);
+            return;
+        }
+        // which number tmp represents is the position after which will be changed.
+        int i = nums.length-1;
+        for( ; nums[i] &lt;= nums[tmp]; i--){
+        }
+        int pos = i;
+        int nextNum = nums[pos];
+        nums[pos] = nums[tmp];
+        nums[tmp] = nextNum;
+        reverse(nums, tmp+1, nums.length-1);
+        return;
+    }
+
+    private void reverse(int[] a, int from, int to){
+        for(; from &lt; to; from++, to--){
+            int tmp = a[from];
+            a[from] = a[to];
+            a[to] = tmp;
+        }
+    }
 }
 </code></pre>
       
@@ -357,17 +413,13 @@ public class Solution {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/2016/03/14/Algorithmic-puzzles/" rel="next" title="Reading in 《Algorithmic puzzles》">
-                <i class="fa fa-chevron-left"></i> Reading in 《Algorithmic puzzles》
+              <a href="/blog/2016/03/17/leetcode15/" rel="next" title="LeetCode 15 3Sum">
+                <i class="fa fa-chevron-left"></i> LeetCode 15 3Sum
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/blog/2016/03/17/leetcode15/" rel="prev" title="LeetCode 15 3Sum">
-                LeetCode 15 3Sum <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
