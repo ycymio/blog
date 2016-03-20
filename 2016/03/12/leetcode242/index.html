@@ -63,7 +63,7 @@
 <meta property="og:url" content="http://yvette.space/blog/2016/03/12/leetcode242/index.html">
 <meta property="og:site_name" content="Yvette's tech-blog">
 <meta property="og:description" content="Given two strings s and t, write a function to determine if t is an anagram of s.For example,s = &amp;#x201C;anagram&amp;#x201D;, t = &amp;#x201C;nagaram&amp;#x201D;, return true.s = &amp;#x201C;rat&amp;#x201D;, t = &amp;#x201C;">
-<meta property="og:updated_time" content="2016-03-12T08:12:16.000Z">
+<meta property="og:updated_time" content="2016-03-20T09:14:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode 242 Valid Anagram">
 <meta name="twitter:description" content="Given two strings s and t, write a function to determine if t is an anagram of s.For example,s = &amp;#x201C;anagram&amp;#x201D;, t = &amp;#x201C;nagaram&amp;#x201D;, return true.s = &amp;#x201C;rat&amp;#x201D;, t = &amp;#x201C;">
@@ -307,39 +307,15 @@
         <blockquote class="blockquote-center"><br><div style="padding-left: 50px; text-align: left"><br> <strong><br> Given two strings s and t, write a function to determine if t is an anagram of s.<br>For example,<br>s = &#x201C;anagram&#x201D;, t = &#x201C;nagaram&#x201D;, return true.<br>s = &#x201C;rat&#x201D;, t = &#x201C;car&#x201D;, return false.<br>Note:<br>You may assume the string contains only lowercase alphabets.<br>Follow up:<br>What if the inputs contain unicode characters? How would you adapt your solution to such case?
 </strong><br></div><br><br></blockquote>
 
-<p>&#x67E5;&#x770B;&#x4E24;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x5426;&#x7531;&#x4E00;&#x6837;&#x7684;&#x5B57;&#x7B26;&#x7EC4;&#x6210;(&#x6570;&#x91CF;&amp;&#x79CD;&#x7C7B;)&#x3002;<br><a id="more"></a><br><strong>&#x601D;&#x8DEF;: </strong><br>&#x8FD9;&#x91CC;&#x53EA;&#x8003;&#x8651;&#x4E86;ASCII&#x7684;&#x3002;</p>
+<p>&#x67E5;&#x770B;&#x4E24;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x5426;&#x7531;&#x4E00;&#x6837;&#x7684;&#x5B57;&#x7B26;&#x7EC4;&#x6210;(&#x6570;&#x91CF;&amp;&#x79CD;&#x7C7B;)&#x3002;</p>
+<a id="more"></a>
+<h4 id="&#x601D;&#x8DEF;"><a href="#&#x601D;&#x8DEF;" class="headerlink" title="&#x601D;&#x8DEF;:"></a>&#x601D;&#x8DEF;:</h4><p>&#x8FD9;&#x91CC;&#x53EA;&#x8003;&#x8651;&#x4E86;ASCII&#x7684;&#x3002;</p>
 <ul>
 <li>&#x4E00;&#x5F00;&#x59CB;&#x8C03;&#x7528;&#x4E86;getBytes()&#x8F6C;&#x6362;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x540E;&#x6362;&#x6210;&#x4E86;toCharArray()&#x3002;&#x540E;&#x8005;&#x6548;&#x7387;&#x8981;&#x9AD8;&#x5F88;&#x591A;&#x3002;</li>
 <li>&#x5B57;&#x7B26;&#x6570;s&#x4E2D;&#x6BCF;&#x9047;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#xFF0C;&#x76F8;&#x5E94;&#x7684;&#x52A0;&#x4E00;&#xFF1B;&#x5B57;&#x7B26;&#x4E32;t&#x4E2D;&#x6BCF;&#x9047;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#xFF0C;&#x76F8;&#x5E94;&#x7684;&#x51CF;&#x4E00;&#xFF0C;&#x6700;&#x540E;&#x6BD4;&#x8F83;&#x5B58;&#x50A8;&#x6570;&#x91CF;&#x7684;&#x6570;&#x7EC4;&#x7684;&#x5927;&#x5C0F;&#x662F;&#x5426;&#x4E3A;0&#x3002;&#x8FD9;&#x8981;&#x6BD4;&#x4E24;&#x8005;&#x52A0;&#x4E00;&#xFF0C;&#x518D;&#x6BD4;&#x8F83;&#x662F;&#x5426;&#x76F8;&#x5E94;&#x76F8;&#x7B49;&#x8981;&#x5FEB;&#x4E00;&#x70B9;&#x3002;</li>
 <li>&#x770B;&#x4E86;&#x522B;&#x4EBA;3ms&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x5B83;&#x628A;&#x4E24;&#x8005;&#x5206;&#x5F00;&#x4E86;&#xFF0C;&#x5B57;&#x7B26;&#x4E32;s&#x7684;&#x904D;&#x5386;&#x4E3A;&#x7B2C;&#x4E00;&#x8F6E;&#xFF0C;&#x5B57;&#x7B26;&#x4E32;t&#x7684;&#x904D;&#x5386;&#x4E3A;&#x7B2C;&#x4E8C;&#x8F6E;&#x3002;&#x7B2C;&#x4E8C;&#x8F6E;&#x4E2D;&#x4E00;&#x9047;&#x5230;&#x6570;&#x91CF;&#x6570;&#x7EC4;&#x7684;&#x503C;&#x5C0F;&#x4E8E;0&#xFF0C;&#x5219;&#x9000;&#x51FA;&#x3002;&#x76F8;&#x5F53;&#x4E8E;&#x4E0D;&#x9700;&#x8981;&#x5B8C;&#x5168;&#x904D;&#x5386;&#x5B57;&#x7B26;&#x4E32;t&#xFF0C;&#x76F8;&#x8F83;&#x800C;&#x8A00;&#x5FEB;&#x4E86;1ms&#x3002;</li>
 </ul>
-<p><strong>&#x4EE3;&#x7801;&#xFF1A;</strong></p>
-<pre><code>public class Solution {
-    public boolean isAnagram(String s, String t) {
-        if( s.length() != t.length()){
-            return false;
-        }
-        char[] sChar = s.toCharArray();
-        char[] tChar = t.toCharArray();
-        int max_char = (int)(&apos;z&apos;);
-        int[] sNum = new int[max_char+1];
-        // int[] tNum = new int[max_char+1];
-        boolean sign = true;
-        for(int i = 0; i &lt; s.length(); i++){
-            sNum[(int)(sChar[i])]++;
-            sNum[(int)(tChar[i])]--;
-            // tNum[(int)(tChar[i])]++;
-        }
-        for(int i = 0; i &lt; max_char; i++){
-            if( sNum[i] != 0 ){
-                sign = false;
-                break;
-            }
-        }
-        return sign;
-    }
-}
-</code></pre>
+<h4 id="&#x4EE3;&#x7801;&#xFF1A;"><a href="#&#x4EE3;&#x7801;&#xFF1A;" class="headerlink" title="&#x4EE3;&#x7801;&#xFF1A;"></a>&#x4EE3;&#x7801;&#xFF1A;</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isAnagram</span><span class="params">(String s, String t)</span> </span>{</span><br><span class="line">        <span class="keyword">if</span>( s.length() != t.length()){</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">char</span>[] sChar = s.toCharArray();</span><br><span class="line">        <span class="keyword">char</span>[] tChar = t.toCharArray();</span><br><span class="line">        <span class="keyword">int</span> max_char = (<span class="keyword">int</span>)(<span class="string">&apos;z&apos;</span>);</span><br><span class="line">        <span class="keyword">int</span>[] sNum = <span class="keyword">new</span> <span class="keyword">int</span>[max_char+<span class="number">1</span>];</span><br><span class="line">        <span class="comment">// int[] tNum = new int[max_char+1];</span></span><br><span class="line">        <span class="keyword">boolean</span> sign = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++){</span><br><span class="line">            sNum[(<span class="keyword">int</span>)(sChar[i])]++;</span><br><span class="line">            sNum[(<span class="keyword">int</span>)(tChar[i])]--;</span><br><span class="line">            <span class="comment">// tNum[(int)(tChar[i])]++;</span></span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; max_char; i++){</span><br><span class="line">            <span class="keyword">if</span>( sNum[i] != <span class="number">0</span> ){</span><br><span class="line">                sign = <span class="keyword">false</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> sign;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -434,7 +410,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -518,7 +494,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">1.</span> <span class="nav-text">思路:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码："><span class="nav-number">2.</span> <span class="nav-text">代码：</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

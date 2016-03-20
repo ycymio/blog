@@ -63,7 +63,7 @@
 <meta property="og:url" content="http://yvette.space/blog/2016/03/18/leetcode31/index.html">
 <meta property="og:site_name" content="Yvette's tech-blog">
 <meta property="og:description" content="Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.If such arrangement is not possible, it must rearrange it as the lowest possible ord">
-<meta property="og:updated_time" content="2016-03-18T08:21:19.000Z">
+<meta property="og:updated_time" content="2016-03-20T09:19:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode 31 Next Permutation">
 <meta name="twitter:description" content="Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.If such arrangement is not possible, it must rearrange it as the lowest possible ord">
@@ -309,7 +309,7 @@
 
 <p>&#x627E;&#x5230;&#x6309;&#x6570;&#x5B57;&#x5927;&#x5C0F;&#x6392;&#x5217;&#x7684;&#x5168;&#x6392;&#x5217;&#x4E2D;&#x5728;&#x7ED9;&#x5B9A;&#x6392;&#x5217;&#x4EE5;&#x540E;&#x7684;&#x5168;&#x6392;&#x5217;&#xFF0C;&#x5982;&#x679C;&#x8BE5;&#x5168;&#x6392;&#x5217;&#x6700;&#x5927;&#xFF0C;&#x90A3;&#x5C31;&#x8FD4;&#x56DE;&#x6700;&#x5C0F;&#x7684;&#x5168;&#x6392;&#x5217;&#x3002;</p>
 <a id="more"></a>
-<p><strong>&#x601D;&#x8DEF;:</strong><br>&#x521D;&#x7EA7;&#x7248;: // &#x672A;&#x8003;&#x8651;&#x4E0D;&#x80FD;&#x7528;&#x989D;&#x5916;&#x7A7A;&#x95F4;<br>&#x5047;&#x8BBE;&#x6570;&#x7EC4;&#x662F;&#x8FD9;&#x6837;&#x7684; [&#x2026;(A), a(pos1), &#x2026;(B)]</p>
+<h4 id="&#x601D;&#x8DEF;"><a href="#&#x601D;&#x8DEF;" class="headerlink" title="&#x601D;&#x8DEF;:"></a>&#x601D;&#x8DEF;:</h4><p>&#x521D;&#x7EA7;&#x7248;: // &#x672A;&#x8003;&#x8651;&#x4E0D;&#x80FD;&#x7528;&#x989D;&#x5916;&#x7A7A;&#x95F4;<br>&#x5047;&#x8BBE;&#x6570;&#x7EC4;&#x662F;&#x8FD9;&#x6837;&#x7684; [&#x2026;(A), a(pos1), &#x2026;(B)]</p>
 <ol>
 <li>&#x627E;&#x5230;&#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x67D0;&#x4F4D;&#x7F6E;pos1&#xFF0C;&#x8BE5;&#x4F4D;&#x7F6E;&#x4EE5;&#x540E;&#x90FD;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x6392;&#x5217;&#x3002;(&#x5373;[a(pos1), ..(B)])</li>
 <li>&#x91CD;&#x65B0;&#x5347;&#x5E8F;&#x6392;&#x5217;&#x8BE5;&#x4F4D;&#x7F6E;&#x4EE5;&#x540E;&#x7684;&#x503C;&#x3002;(&#x5047;&#x8BBE;[a(pos1), ..(B)]&#x53D8;&#x4E3A;[&#x2026;(C), a(pos1), b(posb), &#x2026;(D)], &#x6B64;&#x65F6;a(pos1)&#x4F4D;&#x4E8E;&#x8BE5;&#x6570;&#x7EC4;&#x7684;pos2&#x4F4D;&#x7F6E;) </li>
@@ -325,78 +325,13 @@
 <li>nums&#x957F;&#x5EA6;&#x4E3A;0&#x6216;1&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x7528;&#x8BE5;&#x65B9;&#x6CD5;&#x4E86;&#x3002;&#x4E0D;&#x9700;&#x8981;&#x591A;&#x52A0;&#x5224;&#x65AD;&#x3002;</li>
 <li>&#x6709;&#x65F6;&#x5019;&#x5C11;&#x4E00;&#x4E2A;&#x8D4B;&#x503C;&#x8BED;&#x53E5;&#x6216;&#x8005;&#x5224;&#x65AD;&#x8BED;&#x53E5;&#x4E5F;&#x80FD;&#x63D0;&#x9AD8;1ms&#xFF0C;&#x53EF;&#x80FD;&#x65E5;&#x79EF;&#x6708;&#x7D2F;&#x5C31;&#x63D0;&#x9AD8;&#x4E86;&#xFF0C;&#x6216;&#x8005;&#x6D4B;&#x8BD5;&#x6570;&#x636E;&#x4E0D;&#x540C;&#x5427;&#x3002;</li>
 </ul>
-<p><strong>&#x7279;&#x6B8A;&#x60C5;&#x51B5;:</strong></p>
-<ul>
+<h4 id="&#x7279;&#x6B8A;&#x60C5;&#x51B5;"><a href="#&#x7279;&#x6B8A;&#x60C5;&#x51B5;" class="headerlink" title="&#x7279;&#x6B8A;&#x60C5;&#x51B5;:"></a>&#x7279;&#x6B8A;&#x60C5;&#x51B5;:</h4><ul>
 <li>&#x6570;&#x7EC4;&#x957F;&#x5EA6;&#x4E3A;0&#x6216;1</li>
 <li>&#x8BE5;&#x5168;&#x5E8F;&#x5217;&#x662F;&#x6240;&#x6709;&#x5168;&#x5E8F;&#x5217;&#x4E2D;&#x7684;&#x6700;&#x5927;&#x60C5;&#x51B5;&#x65F6;</li>
 <li>&#x6709;&#x91CD;&#x590D;&#x7684;&#x6570;&#x5B57;&#x65F6;(&#x5224;&#x65AD;&#x9700;&#x8981;&#x6539;&#x53D8;&#x7684;&#x6570;&#x7EC4;&#x7684;&#x7D22;&#x5F15;&amp;&amp;&#x9009;&#x53D6;&#x65B0;&#x7684;&#x90E8;&#x5206;&#x5168;&#x5E8F;&#x5217;) </li>
 </ul>
-<p><strong>&#x4EE3;&#x7801;:</strong></p>
-<pre><code>// &#x521D;&#x7EA7;&#x7248;&#xFF1A;&#x7B2C;&#x4E00;&#x6B21;AC&#x7684;
-public class Solution {
-    public void nextPermutation(int[] nums) {
-        int tmp = nums.length-2;
-        if(nums.length &lt; 2){
-            return;
-        }
-        while( tmp != -1 &amp;&amp; nums[tmp+1] &lt;= nums[tmp]){
-            tmp--;
-        }
-        if( tmp == -1 ){
-            Arrays.sort(nums);
-            return;
-        }
-        // which number tmp represents is the position after which will be changed.
-        int[] tmpnums = new int[nums.length-tmp];
-        System.arraycopy(nums, tmp, tmpnums, 0, nums.length-tmp);
-        Arrays.sort(tmpnums);
-        int pos = Arrays.binarySearch(tmpnums, nums[tmp]);
-        if( tmpnums[pos+1] == tmpnums[pos]){
-            pos++;
-        }
-        int nextNum = tmpnums[pos+1]; // &#x6309;&#x7406;&#x800C;&#x8A00;&#x4E0D;&#x4F1A;&#x8D8A;&#x754C;
-        // pos+1 -&gt; &#x653E;&#x7F6E;&#x7684;&#x503C;&#x7684;&#x4F4D;&#x7F6E; [...(pos+1), pos+1, ...(length-pos-1)] 
-        nums[tmp] = nextNum;
-        System.arraycopy(tmpnums, 0, nums, tmp+1, pos+1);
-        System.arraycopy(tmpnums, pos+2, nums, tmp+pos+2, nums.length-tmp-pos-2);
-        // System.arraycopy(tmpnums, 0, nums, tmp, nums.length-tmp);
-        // ... nums.length-tmp = pos+1+1+(nums.length-tmp-pos-1); -1
-    }
-}
-</code></pre><hr>
-<pre><code>// &#x5347;&#x7EA7;&#x7248;: 1ms
-public class Solution {
-    public void nextPermutation(int[] nums) {
-        int tmp = nums.length-2;
-        while( tmp &gt;= 0 &amp;&amp; nums[tmp+1] &lt;= nums[tmp]){
-            tmp--;
-        }
-        if( tmp &lt; 0 ){
-            // [3,2,1]: To reverse the array is enough.
-            reverse(nums, 0, nums.length-1);
-            return;
-        }
-        // which number tmp represents is the position after which will be changed.
-        int i = nums.length-1;
-        for( ; nums[i] &lt;= nums[tmp]; i--){
-        }
-        int pos = i;
-        int nextNum = nums[pos];
-        nums[pos] = nums[tmp];
-        nums[tmp] = nextNum;
-        reverse(nums, tmp+1, nums.length-1);
-        return;
-    }
-
-    private void reverse(int[] a, int from, int to){
-        for(; from &lt; to; from++, to--){
-            int tmp = a[from];
-            a[from] = a[to];
-            a[to] = tmp;
-        }
-    }
-}
-</code></pre>
+<h4 id="&#x4EE3;&#x7801;"><a href="#&#x4EE3;&#x7801;" class="headerlink" title="&#x4EE3;&#x7801;:"></a>&#x4EE3;&#x7801;:</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// &#x521D;&#x7EA7;&#x7248;&#xFF1A;&#x7B2C;&#x4E00;&#x6B21;AC&#x7684;</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">nextPermutation</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>{</span><br><span class="line">        <span class="keyword">int</span> tmp = nums.length-<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(nums.length &lt; <span class="number">2</span>){</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">while</span>( tmp != -<span class="number">1</span> &amp;&amp; nums[tmp+<span class="number">1</span>] &lt;= nums[tmp]){</span><br><span class="line">            tmp--;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span>( tmp == -<span class="number">1</span> ){</span><br><span class="line">            Arrays.sort(nums);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="comment">// which number tmp represents is the position after which will be changed.</span></span><br><span class="line">        <span class="keyword">int</span>[] tmpnums = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length-tmp];</span><br><span class="line">        System.arraycopy(nums, tmp, tmpnums, <span class="number">0</span>, nums.length-tmp);</span><br><span class="line">        Arrays.sort(tmpnums);</span><br><span class="line">        <span class="keyword">int</span> pos = Arrays.binarySearch(tmpnums, nums[tmp]);</span><br><span class="line">        <span class="keyword">if</span>( tmpnums[pos+<span class="number">1</span>] == tmpnums[pos]){</span><br><span class="line">            pos++;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">int</span> nextNum = tmpnums[pos+<span class="number">1</span>]; <span class="comment">// &#x6309;&#x7406;&#x800C;&#x8A00;&#x4E0D;&#x4F1A;&#x8D8A;&#x754C;</span></span><br><span class="line">        <span class="comment">// pos+1 -&gt; &#x653E;&#x7F6E;&#x7684;&#x503C;&#x7684;&#x4F4D;&#x7F6E; [...(pos+1), pos+1, ...(length-pos-1)] </span></span><br><span class="line">        nums[tmp] = nextNum;</span><br><span class="line">        System.arraycopy(tmpnums, <span class="number">0</span>, nums, tmp+<span class="number">1</span>, pos+<span class="number">1</span>);</span><br><span class="line">        System.arraycopy(tmpnums, pos+<span class="number">2</span>, nums, tmp+pos+<span class="number">2</span>, nums.length-tmp-pos-<span class="number">2</span>);</span><br><span class="line">        <span class="comment">// System.arraycopy(tmpnums, 0, nums, tmp, nums.length-tmp);</span></span><br><span class="line">        <span class="comment">// ... nums.length-tmp = pos+1+1+(nums.length-tmp-pos-1); -1</span></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// &#x5347;&#x7EA7;&#x7248;: 1ms</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">nextPermutation</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>{</span><br><span class="line">        <span class="keyword">int</span> tmp = nums.length-<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">while</span>( tmp &gt;= <span class="number">0</span> &amp;&amp; nums[tmp+<span class="number">1</span>] &lt;= nums[tmp]){</span><br><span class="line">            tmp--;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span>( tmp &lt; <span class="number">0</span> ){</span><br><span class="line">            <span class="comment">// [3,2,1]: To reverse the array is enough.</span></span><br><span class="line">            reverse(nums, <span class="number">0</span>, nums.length-<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="comment">// which number tmp represents is the position after which will be changed.</span></span><br><span class="line">        <span class="keyword">int</span> i = nums.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>( ; nums[i] &lt;= nums[tmp]; i--){</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">int</span> pos = i;</span><br><span class="line">        <span class="keyword">int</span> nextNum = nums[pos];</span><br><span class="line">        nums[pos] = nums[tmp];</span><br><span class="line">        nums[tmp] = nextNum;</span><br><span class="line">        reverse(nums, tmp+<span class="number">1</span>, nums.length-<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span> from, <span class="keyword">int</span> to)</span></span>{</span><br><span class="line">        <span class="keyword">for</span>(; from &lt; to; from++, to--){</span><br><span class="line">            <span class="keyword">int</span> tmp = a[from];</span><br><span class="line">            a[from] = a[to];</span><br><span class="line">            a[to] = tmp;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -491,7 +426,7 @@ public class Solution {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -575,7 +510,7 @@ public class Solution {
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">1.</span> <span class="nav-text">思路:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特殊情况"><span class="nav-number">2.</span> <span class="nav-text">特殊情况:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码:</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

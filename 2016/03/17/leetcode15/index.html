@@ -63,7 +63,7 @@
 <meta property="og:url" content="http://yvette.space/blog/2016/03/17/leetcode15/index.html">
 <meta property="og:site_name" content="Yvette's tech-blog">
 <meta property="og:description" content="Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.Note:Elements in a triplet (a,b,c) must be in">
-<meta property="og:updated_time" content="2016-03-17T11:31:04.000Z">
+<meta property="og:updated_time" content="2016-03-20T09:20:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode 15 3Sum">
 <meta name="twitter:description" content="Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.Note:Elements in a triplet (a,b,c) must be in">
@@ -309,7 +309,7 @@
 
 <p>&#x7ED9;&#x5B9A;n&#x4E2A;&#x6574;&#x578B;&#x7EC4;&#x6210;&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x5224;&#x65AD;&#x5176;&#x4E2D;&#x662F;&#x5426;&#x5B58;&#x5728;&#x5143;&#x7D20;a,b,c&#xFF0C;&#x5176;&#x548C;&#x4E3A;0&#xFF1F;&#x627E;&#x51FA;&#x6240;&#x6709;&#x7684;&#x975E;&#x91CD;&#x590D;&#x7684;&#x89E3;&#x3002;</p>
 <a id="more"></a>
-<p><strong>&#x601D;&#x8DEF;&#xFF1A;</strong><br>&#x6709;&#x5173; Two Pointers &#x7684;&#x9898;&#x3002;<br>&#x901A;&#x8FC7;&#x5143;&#x7D20;a&#x5728;&#x6570;&#x7EC4;nums&#x7684;&#x904D;&#x5386;&#xFF0C;&#x53EF;&#x8F6C;&#x5316;&#x4E3A;&#x6C42;&#x4E24;&#x8005;&#x4E4B;&#x548C;&#x7B49;&#x4E8E;&#x7279;&#x5B9A;&#x503C;&#x3002;</p>
+<h4 id="&#x601D;&#x8DEF;&#xFF1A;"><a href="#&#x601D;&#x8DEF;&#xFF1A;" class="headerlink" title="&#x601D;&#x8DEF;&#xFF1A;"></a>&#x601D;&#x8DEF;&#xFF1A;</h4><p>&#x6709;&#x5173; Two Pointers &#x7684;&#x9898;&#x3002;<br>&#x901A;&#x8FC7;&#x5143;&#x7D20;a&#x5728;&#x6570;&#x7EC4;nums&#x7684;&#x904D;&#x5386;&#xFF0C;&#x53EF;&#x8F6C;&#x5316;&#x4E3A;&#x6C42;&#x4E24;&#x8005;&#x4E4B;&#x548C;&#x7B49;&#x4E8E;&#x7279;&#x5B9A;&#x503C;&#x3002;</p>
 <ol>
 <li>&#x6570;&#x7EC4;&#x6392;&#x5E8F;</li>
 <li>&#x7528;a&#x5BF9;&#x6570;&#x7EC4;nums&#x8FDB;&#x884C;&#x904D;&#x5386;&#xFF0C;&#x6BCF;&#x4E00;&#x6B21;&#x904D;&#x5386;&#x65F6;&#xFF0C;&#x5BFB;&#x627E;a&#x4EE5;&#x540E;&#x7684;&#x53EF;&#x80FD;&#x51FA;&#x73B0;&#x7684;&#x548C;&#x4E3A;-a&#x7684;&#x4E24;&#x4E2A;&#x503C;&#x3002; </li>
@@ -317,61 +317,14 @@
 <li>&#x5982;&#x679C;nums[a]+nums[low]+nums[high]&#x7684;&#x503C;&#x5927;&#x4E8E;0&#xFF0C;&#x5219;&#x8BF4;&#x660E;high&#x6307;&#x5411;&#x7684;&#x503C;&#x6BD4;&#x9700;&#x8981;&#x7684;&#x5927;&#xFF0C;&#x6240;&#x4EE5;&#x4F7F;high&#x6307;&#x5411;&#x66F4;&#x4F4E;&#x7684;&#x503C;(high&#x2013;)&#xFF1B;<br>&#x5982;&#x679C;nums[a]+nums[low]+nums[high]&#x7684;&#x503C;&#x5C0F;&#x4E8E;0&#xFF0C;&#x5219;&#x8BF4;&#x660E;low&#x6307;&#x5411;&#x7684;&#x503C;&#x6BD4;&#x9700;&#x8981;&#x7684;&#x5C0F;&#xFF0C;&#x6240;&#x4EE5;&#x4F7F;low&#x6307;&#x5411;&#x66F4;&#x5927;&#x7684;&#x503C;(low++)&#xFF1B;<br>&#x5982;&#x679C;&#x6B63;&#x597D;&#x4E3A;0&#xFF0C;&#x5219;&#x8BB0;&#x5F55;&#x8BE5;&#x7ED3;&#x679C;&#xFF0C;&#x518D;&#x589E;&#x52A0;low&amp;&#x51CF;&#x5C0F;high&#xFF0C;&#x627E;&#x5BFB;&#x4E0D;&#x540C;&#x7684;&#x60C5;&#x51B5;&#x3002;&#x76F4;&#x5230;low&gt;=high&#xFF0C;&#x6240;&#x6709;&#x60C5;&#x51B5;&#x90FD;&#x904D;&#x5386;&#x4E86;&#x3002;</li>
 </ol>
 <p>&#x8FD9;&#x6837;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x4E3A;O(n<sup>2</sup>)&#xFF0C;&#x4E0D;&#x4F1A;&#x9519;&#x8FC7;&#x4EFB;&#x4F55;&#x60C5;&#x51B5;&#x3002;&#x800C;&#x6309;&#x7167;&#x7A77;&#x4E3E;&#x6CD5;&#xFF0C;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x4E3A;O(n<sup>3</sup>)&#x3002;</p>
-<p><strong>&#x4F18;&#x5316;:</strong><br>&#x9488;&#x5BF9;&#x7279;&#x5B9A;&#x60C5;&#x51B5;&#x7684;&#x4F18;&#x5316;&#x6548;&#x679C;&#x4E0D;&#x540C;:</p>
+<h4 id="&#x4F18;&#x5316;"><a href="#&#x4F18;&#x5316;" class="headerlink" title="&#x4F18;&#x5316;:"></a>&#x4F18;&#x5316;:</h4><p>&#x9488;&#x5BF9;&#x7279;&#x5B9A;&#x60C5;&#x51B5;&#x7684;&#x4F18;&#x5316;&#x6548;&#x679C;&#x4E0D;&#x540C;:</p>
 <ul>
 <li>&#x5982;&#x679C;a&#x4E5F;&#x5927;&#x4E8E;0&#xFF0C;&#x5219;&#x7531;&#x4E8E;a &#x2264; b &#x2264; c&#xFF0C;&#x641C;&#x7D22;&#x7EC8;&#x6B62;&#x3002;(&#x4F46;&#x7531;&#x4E8E;&#x6BCF;&#x6B21;&#x5FAA;&#x73AF;&#x90FD;&#x8981;&#x5224;&#x65AD;&#xFF0C;&#x5728;&#x6570;&#x7EC4;&#x91CC;&#x7684;&#x8D1F;&#x6570;&#x8FDC;&#x591A;&#x4E8E;&#x6B63;&#x6570;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x53EF;&#x80FD;&#x4F7F;&#x5F97;&#x6548;&#x7387;&#x964D;&#x4F4E;)</li>
 <li>&#x7531;&#x4E8E;&#x8981;&#x627E;&#x5230;&#x975E;&#x91CD;&#x590D;&#x7684;&#x89E3;&#xFF0C;&#x5982;&#x679C;a&#x91CD;&#x590D;&#xFF0C;&#x5219;&#x8DF3;&#x8FC7;&#x3002;&#x5982;&#x679C;b(low)&#x91CD;&#x590D;&#x5219;low&#x7EE7;&#x7EED;&#x52A0;1&#xFF0C;&#x5982;&#x679C;c(high)&#x91CD;&#x590D;&#x5219;high&#x7EE7;&#x7EED;&#x51CF;1(&#x589E;&#x52A0;&#x4E86;&#x5224;&#x65AD;&#xFF0C;&#x53EF;&#x80FD;&#x4F7F;&#x5F97;&#x6548;&#x7387;&#x53D8;&#x4F4E;)&#x3002;</li>
 <li>Arrays.asList(&#x2026;); &#x6BD4;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;List&#x518D;&#x4E00;&#x4E2A;&#x4E00;&#x4E2A;add&#x66F4;&#x7B80;&#x6D01;&#x65B9;&#x4FBF;&#x3002;</li>
 </ul>
-<p><strong>&#x4EE3;&#x7801;&#xFF1A;</strong></p>
-<pre><code>public class Solution {
-    public List&lt;List&lt;Integer&gt;&gt; threeSum(int[] nums) {
-        Arrays.sort(nums);
-        List&lt;List&lt;Integer&gt;&gt; set = new ArrayList();
-        for( int i = 0; i &lt; nums.length -2; i++){
-            if(nums[i] &gt; 0) break; 
-            if( i == 0 || nums[i] != nums[i-1]){
-                int low = i+1;
-                int high = nums.length-1;
-                while( low &lt; high ){
-                    int sum = nums[i] + nums[low] + nums[high];
-                    if( sum &gt; 0 ){
-                        high--;
-                        while( high &gt; low &amp;&amp; nums[high] == nums[high+1] ){
-                            high--;
-                        }
-                    }
-                    else if(sum &lt; 0){
-                        low++;
-                        while( low &lt; nums.length &amp;&amp; nums[low] == nums[low-1] ){
-                            low++;
-                        }
-                        if( low == nums.length ){
-                            break;
-                        }
-                    }
-                    else{
-                        List&lt;Integer&gt; tmp = new ArrayList(3);
-                        set.add(Arrays.asList(nums[i], nums[low], nums[high]));
-                        low++;
-                        while( low &lt; nums.length &amp;&amp; nums[low] == nums[low-1] ){
-                            low++;
-                        }
-                        high--;
-                        while( high &gt; low &amp;&amp; nums[high] == nums[high+1] ){
-                            high--;
-                        }
-                        if( low == nums.length ){
-                            break;
-                        }
-                    }
-                } 
-            }
-        }
-        return set;
-    }
-}
-</code></pre>
+<h4 id="&#x4EE3;&#x7801;&#xFF1A;"><a href="#&#x4EE3;&#x7801;&#xFF1A;" class="headerlink" title="&#x4EE3;&#x7801;&#xFF1A;"></a>&#x4EE3;&#x7801;&#xFF1A;</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>{</span><br><span class="line">	<span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; threeSum(<span class="keyword">int</span>[] nums) {</span><br><span class="line">	    Arrays.sort(nums);</span><br><span class="line">    	List&lt;List&lt;Integer&gt;&gt; set = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    	<span class="keyword">for</span>( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length -<span class="number">2</span>; i++){</span><br><span class="line">    	    <span class="keyword">if</span>(nums[i] &gt; <span class="number">0</span>) <span class="keyword">break</span>; </span><br><span class="line">    	    <span class="keyword">if</span>( i == <span class="number">0</span> || nums[i] != nums[i-<span class="number">1</span>]){</span><br><span class="line">    	        <span class="keyword">int</span> low = i+<span class="number">1</span>;</span><br><span class="line">    	        <span class="keyword">int</span> high = nums.length-<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">while</span>( low &lt; high ){</span><br><span class="line">                    <span class="keyword">int</span> sum = nums[i] + nums[low] + nums[high];</span><br><span class="line">                    <span class="keyword">if</span>( sum &gt; <span class="number">0</span> ){</span><br><span class="line">                        high--;</span><br><span class="line">                        <span class="keyword">while</span>( high &gt; low &amp;&amp; nums[high] == nums[high+<span class="number">1</span>] ){</span><br><span class="line">                            high--;</span><br><span class="line">                        }</span><br><span class="line">                    }</span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span>(sum &lt; <span class="number">0</span>){</span><br><span class="line">                        low++;</span><br><span class="line">                        <span class="keyword">while</span>( low &lt; nums.length &amp;&amp; nums[low] == nums[low-<span class="number">1</span>] ){</span><br><span class="line">                            low++;</span><br><span class="line">                        }</span><br><span class="line">                        <span class="keyword">if</span>( low == nums.length ){</span><br><span class="line">                            <span class="keyword">break</span>;</span><br><span class="line">                        }</span><br><span class="line">                    }</span><br><span class="line">                    <span class="keyword">else</span>{</span><br><span class="line">                        List&lt;Integer&gt; tmp = <span class="keyword">new</span> ArrayList(<span class="number">3</span>);</span><br><span class="line">                        set.add(Arrays.asList(nums[i], nums[low], nums[high]));</span><br><span class="line">                        low++;</span><br><span class="line">                        <span class="keyword">while</span>( low &lt; nums.length &amp;&amp; nums[low] == nums[low-<span class="number">1</span>] ){</span><br><span class="line">                            low++;</span><br><span class="line">                        }</span><br><span class="line">                        high--;</span><br><span class="line">                        <span class="keyword">while</span>( high &gt; low &amp;&amp; nums[high] == nums[high+<span class="number">1</span>] ){</span><br><span class="line">                            high--;</span><br><span class="line">                        }</span><br><span class="line">                        <span class="keyword">if</span>( low == nums.length ){</span><br><span class="line">                            <span class="keyword">break</span>;</span><br><span class="line">                        }</span><br><span class="line">                    }</span><br><span class="line">                } </span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> set;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -466,7 +419,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -550,7 +503,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路："><span class="nav-number">1.</span> <span class="nav-text">思路：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优化"><span class="nav-number">2.</span> <span class="nav-text">优化:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码："><span class="nav-number">3.</span> <span class="nav-text">代码：</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

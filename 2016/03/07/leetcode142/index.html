@@ -67,7 +67,7 @@
 <meta property="og:description" content="Given a linked list, return the node where the cycle begins. If there is no cycle, return null.   Note: Do not modify the linked list.   Follow up:      Can you solve it without using extra space?
 
 &amp;#">
-<meta property="og:updated_time" content="2016-03-09T01:08:11.000Z">
+<meta property="og:updated_time" content="2016-03-20T09:16:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode 142 Linked List Cycle II">
 <meta name="twitter:description" content="Given a linked list, return the node where the cycle begins. If there is no cycle, return null.   Note: Do not modify the linked list.   Follow up:      Can you solve it without using extra space?
@@ -312,50 +312,16 @@
       
         <blockquote class="blockquote-center"><br><div style="padding-left: 50px; text-align: left"><br> <strong>Given a linked list, return the node where the cycle begins. If there is no cycle, return null.<br>   Note: Do not modify the linked list.<br>   Follow up:<br>      Can you solve it without using extra space?</strong><br></div><br></blockquote>
 
-<p>&#x5728;&#x4E0D;&#x4FEE;&#x6539;&#x94FE;&#x8868;&#x548C;&#x4E0D;&#x4F7F;&#x7528;&#x989D;&#x5916;&#x7A7A;&#x95F4;&#x7684;&#x524D;&#x63D0;&#x4E0B;&#xFF0C;&#x8FD4;&#x56DE;&#x94FE;&#x8868;&#x4E2D;&#x73AF;&#x8DEF;&#x7684;&#x8D77;&#x59CB;&#x8282;&#x70B9;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x5219;&#x8FD4;&#x56DE; null&#x3002;<br><a id="more"></a><br><strong>&#x601D;&#x8DEF;: </strong><br>    &#x5728;LeetCode 141&#x9898;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;&#x9700;&#x8981;&#x83B7;&#x5F97;&#x94FE;&#x8868;&#x4E2D;&#x73AF;&#x8DEF;&#x7684;&#x8D77;&#x59CB;&#x8282;&#x70B9;&#x3002;<br>    (&#x672C;&#x6765;&#x601D;&#x8003;&#x7B2C;&#x4E00;&#x6B21;while&#x5FAA;&#x73AF;&#xFF0C;&#x5373;LeetCode 141&#x7684;while&#x5FAA;&#x73AF;&#xFF0C;&#x53EF;&#x4EE5;&#x83B7;&#x5F97;&#x73AF;&#x7684;&#x957F;&#x5EA6;&#xFF0C;&#x7136;&#x540E;&#x4E00;&#x4E2A;&#x70B9;&#x4E00;&#x4E2A;&#x70B9;&#x7684;&#x904D;&#x5386;&#xFF0C;&#x7136;&#x800C;Time Limit Exceeded&#x2026;&#x51B5;&#x4E14;&#x8FD9;&#x4E5F;&#x6CA1;&#x6280;&#x5DE7;&#xFF0C;&#x5E94;&#x8BE5;&#x627E;&#x5230;&#x5185;&#x5728;&#x89C4;&#x5F8B;&#x518D;&#x7EE7;&#x7EED;&#x7684;&#x2026;)<br>    &#x25A1; - &#x25A1; - &#x25A1; - &#x2026; - 1 (&#x73AF;&#x8DEF;&#x5F00;&#x59CB;) - &#x2026; - (&#x5FEB;&#x6162;&#x6307;&#x9488;&#x76F8;&#x9047;) - &#x2026; - (&#x8FDE;&#x63A5;1) - &#x2026;<br>    &#x8FD9;&#x91CC;&#x8BBE;&#x73AF;&#x8DEF;&#x5F00;&#x59CB;&#x7ED3;&#x70B9;&#x8DDD;&#x5934;&#x7ED3;&#x70B9;&#x7684;&#x8DDD;&#x79BB;&#x4E3A;C, &#x6162;&#x6307;&#x9488;&#x8FFD;&#x4E0A;&#x5FEB;&#x6307;&#x9488;&#x8DDD;&#x73AF;&#x8DEF;&#x5F00;&#x59CB;&#x7684;&#x8DDD;&#x79BB;&#x4E3A;S, &#x73AF;&#x8DEF;&#x7684;&#x957F;&#x5EA6;&#x4E3A;L&#x3002;&#x90A3;&#x4E48;:</p>
-<ol>
+<p>&#x5728;&#x4E0D;&#x4FEE;&#x6539;&#x94FE;&#x8868;&#x548C;&#x4E0D;&#x4F7F;&#x7528;&#x989D;&#x5916;&#x7A7A;&#x95F4;&#x7684;&#x524D;&#x63D0;&#x4E0B;&#xFF0C;&#x8FD4;&#x56DE;&#x94FE;&#x8868;&#x4E2D;&#x73AF;&#x8DEF;&#x7684;&#x8D77;&#x59CB;&#x8282;&#x70B9;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x5219;&#x8FD4;&#x56DE; null&#x3002;<br><a id="more"></a></p>
+<h4 id="&#x601D;&#x8DEF;"><a href="#&#x601D;&#x8DEF;" class="headerlink" title="&#x601D;&#x8DEF;:"></a>&#x601D;&#x8DEF;:</h4><pre><code>&#x5728;LeetCode 141&#x9898;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;&#x9700;&#x8981;&#x83B7;&#x5F97;&#x94FE;&#x8868;&#x4E2D;&#x73AF;&#x8DEF;&#x7684;&#x8D77;&#x59CB;&#x8282;&#x70B9;&#x3002;
+(&#x672C;&#x6765;&#x601D;&#x8003;&#x7B2C;&#x4E00;&#x6B21;while&#x5FAA;&#x73AF;&#xFF0C;&#x5373;LeetCode 141&#x7684;while&#x5FAA;&#x73AF;&#xFF0C;&#x53EF;&#x4EE5;&#x83B7;&#x5F97;&#x73AF;&#x7684;&#x957F;&#x5EA6;&#xFF0C;&#x7136;&#x540E;&#x4E00;&#x4E2A;&#x70B9;&#x4E00;&#x4E2A;&#x70B9;&#x7684;&#x904D;&#x5386;&#xFF0C;&#x7136;&#x800C;Time Limit Exceeded...&#x51B5;&#x4E14;&#x8FD9;&#x4E5F;&#x6CA1;&#x6280;&#x5DE7;&#xFF0C;&#x5E94;&#x8BE5;&#x627E;&#x5230;&#x5185;&#x5728;&#x89C4;&#x5F8B;&#x518D;&#x7EE7;&#x7EED;&#x7684;...)
+&#x25A1; - &#x25A1; - &#x25A1; - &#x2026; - 1 (&#x73AF;&#x8DEF;&#x5F00;&#x59CB;) - &#x2026; - (&#x5FEB;&#x6162;&#x6307;&#x9488;&#x76F8;&#x9047;) - &#x2026; - (&#x8FDE;&#x63A5;1) - &#x2026; 
+&#x8FD9;&#x91CC;&#x8BBE;&#x73AF;&#x8DEF;&#x5F00;&#x59CB;&#x7ED3;&#x70B9;&#x8DDD;&#x5934;&#x7ED3;&#x70B9;&#x7684;&#x8DDD;&#x79BB;&#x4E3A;C, &#x6162;&#x6307;&#x9488;&#x8FFD;&#x4E0A;&#x5FEB;&#x6307;&#x9488;&#x8DDD;&#x73AF;&#x8DEF;&#x5F00;&#x59CB;&#x7684;&#x8DDD;&#x79BB;&#x4E3A;S, &#x73AF;&#x8DEF;&#x7684;&#x957F;&#x5EA6;&#x4E3A;L&#x3002;&#x90A3;&#x4E48;:
+</code></pre><ol>
 <li>&#x6162;&#x6307;&#x9488;&#x6240;&#x8D70;&#x7684;&#x8DDD;&#x79BB;&#x4E3A; C+S&#xFF0C;&#x5FEB;&#x6307;&#x9488;&#x6240;&#x8D70;&#x7684;&#x8DDD;&#x79BB;&#x4E3A; C+S+L&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4E3A; 2*(C+S)&#x3002;-&gt; L = C+S</li>
 <li>&#x6211;&#x4EEC;&#x8981;&#x8D70;&#x5230;&#x73AF;&#x8DEF;&#x5F00;&#x59CB;&#x7684;&#x7ED3;&#x70B9;&#xFF0C;&#x53EF;&#x4EE5;&#x5F00;&#x59CB;&#x8D70;&#x7684;&#x7ED3;&#x70B9;-&gt;&#x5934;&#x7ED3;&#x70B9;&amp;&#x5FEB;&#x6162;&#x6307;&#x9488;&#x6240;&#x5728;&#x7684;&#x7ED3;&#x70B9;&#x3002;&#x5BF9;&#x4E8E;&#x5934;&#x7ED3;&#x70B9;&#xFF0C;&#x9700;&#x8981;&#x8D70;C&#x6B21;; &#x5BF9;&#x4E8E;&#x5FEB;/&#x6162;&#x7ED3;&#x70B9;&#xFF0C;&#x9700;&#x8981;&#x8D70;(L-S=)C&#x6B21;&#xFF0C;&#x6240;&#x4EE5;&#x5934;&#x7ED3;&#x70B9;&#x4E0E;&#x6162;&#x8282;&#x70B9;&#x4E00;&#x8D77;&#x904D;&#x5386;&#xFF0C;&#x5F53;&#x5B83;&#x4EEC;&#x76F8;&#x9047;&#x65F6;&#xFF0C;&#x5373;&#x662F;&#x73AF;&#x8DEF;&#x5F00;&#x59CB;&#x7684;&#x7ED3;&#x70B9;&#x3002;</li>
 </ol>
-<p><strong>&#x4EE3;&#x7801;: </strong></p>
-<pre><code>/**
- * Definition for singly-linked list.
- * class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) {
- *         val = x;
- *         next = null;
- *     }
- * }
- */
-public class Solution {
-    public ListNode detectCycle(ListNode head) {
-        if( head == null || head.next == null){
-            return null;
-        }
-        ListNode fast = head;
-        ListNode slow = head;
-        int length = 0;
-        while( fast != null &amp;&amp; fast.next != null){
-            fast = fast.next.next;
-            slow = slow.next;
-            length++;
-            if(fast == slow){
-                break;
-            }
-        }
-        if( fast != slow ){
-            return null;
-        }
-        while( head != slow ){
-            head = head.next;
-            slow = slow.next;
-        }
-        return head;
-    }
-}
-</code></pre>
+<h4 id="&#x4EE3;&#x7801;"><a href="#&#x4EE3;&#x7801;" class="headerlink" title="&#x4EE3;&#x7801;:"></a>&#x4EE3;&#x7801;:</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * class ListNode {</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode next;</span><br><span class="line"> *     ListNode(int x) {</span><br><span class="line"> *         val = x;</span><br><span class="line"> *         next = null;</span><br><span class="line"> *     }</span><br><span class="line"> * }</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">detectCycle</span><span class="params">(ListNode head)</span> </span>{</span><br><span class="line">        <span class="keyword">if</span>( head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>){</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        }</span><br><span class="line">        ListNode fast = head;</span><br><span class="line">        ListNode slow = head;</span><br><span class="line">        <span class="keyword">int</span> length = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>( fast != <span class="keyword">null</span> &amp;&amp; fast.next != <span class="keyword">null</span>){</span><br><span class="line">            fast = fast.next.next;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            length++;</span><br><span class="line">            <span class="keyword">if</span>(fast == slow){</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span>( fast != slow ){</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">while</span>( head != slow ){</span><br><span class="line">            head = head.next;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -450,7 +416,7 @@ public class Solution {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -534,7 +500,7 @@ public class Solution {
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">1.</span> <span class="nav-text">思路:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码"><span class="nav-number">2.</span> <span class="nav-text">代码:</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
