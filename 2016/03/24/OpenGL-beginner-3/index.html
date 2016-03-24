@@ -1,0 +1,958 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="OpenGL,class," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#x8F6C;&amp;#x8F7D;/&amp;#x53C2;&amp;#x8003;&amp;#x81EA;: OpenGL&amp;#x5165;&amp;#x95E8;&amp;#x5B66;&amp;#x4E60;
+&amp;#x5305;&amp;#x62EC;&amp;#x5217;&amp;#x8868;&amp;#x663E;&amp;#x793A;&amp;#x3001;&amp;#x6570;&amp;#x7EC4;&amp;#x7684;&amp;#x4ECB;&amp;#x5165;&amp;#x3002;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenGL入门学习系列集(三)">
+<meta property="og:url" content="http://yvette.space/blog/2016/03/24/OpenGL-beginner-3/index.html">
+<meta property="og:site_name" content="Yvette's tech-blog">
+<meta property="og:description" content="&amp;#x8F6C;&amp;#x8F7D;/&amp;#x53C2;&amp;#x8003;&amp;#x81EA;: OpenGL&amp;#x5165;&amp;#x95E8;&amp;#x5B66;&amp;#x4E60;
+&amp;#x5305;&amp;#x62EC;&amp;#x5217;&amp;#x8868;&amp;#x663E;&amp;#x793A;&amp;#x3001;&amp;#x6570;&amp;#x7EC4;&amp;#x7684;&amp;#x4ECB;&amp;#x5165;&amp;#x3002;">
+<meta property="og:updated_time" content="2016-03-24T02:49:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenGL入门学习系列集(三)">
+<meta name="twitter:description" content="&amp;#x8F6C;&amp;#x8F7D;/&amp;#x53C2;&amp;#x8003;&amp;#x81EA;: OpenGL&amp;#x5165;&amp;#x95E8;&amp;#x5B66;&amp;#x4E60;
+&amp;#x5305;&amp;#x62EC;&amp;#x5217;&amp;#x8868;&amp;#x663E;&amp;#x793A;&amp;#x3001;&amp;#x6570;&amp;#x7EC4;&amp;#x7684;&amp;#x4ECB;&amp;#x5165;&amp;#x3002;">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> OpenGL入门学习系列集(三) | Yvette's tech-blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Yvette's tech-blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">天气好得就好像走着走着就能遇见你</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            博客
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                OpenGL入门学习系列集(三)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-24T10:49:50+08:00" content="2016-03-24">
+              2016-03-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/OpenGL/" itemprop="url" rel="index">
+                    <span itemprop="name">OpenGL</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/blog/2016/03/24/OpenGL-beginner-3/" class="leancloud_visitors" data-flag-title="OpenGL入门学习系列集(三)">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&#x8F6C;&#x8F7D;/&#x53C2;&#x8003;&#x81EA;: <a href="http://www.cnblogs.com/crazyxiaom/articles/2073586.html" title="OpenGL&#x5165;&#x95E8;&#x5B66;&#x4E60;" target="_blank" rel="external">OpenGL&#x5165;&#x95E8;&#x5B66;&#x4E60;</a></p>
+<p>&#x5305;&#x62EC;&#x5217;&#x8868;&#x663E;&#x793A;&#x3001;&#x6570;&#x7EC4;&#x7684;&#x4ECB;&#x5165;&#x3002;</p>
+<a id="more"></a>
+<h3 id="OpenGL&#x5165;&#x95E8;&#x5B66;&#x4E60;-&#x516B;-&#x5217;&#x8868;&#x663E;&#x793A;"><a href="#OpenGL&#x5165;&#x95E8;&#x5B66;&#x4E60;-&#x516B;-&#x5217;&#x8868;&#x663E;&#x793A;" class="headerlink" title="OpenGL&#x5165;&#x95E8;&#x5B66;&#x4E60;[&#x516B;] &#x5217;&#x8868;&#x663E;&#x793A;"></a>OpenGL&#x5165;&#x95E8;&#x5B66;&#x4E60;[&#x516B;] &#x5217;&#x8868;&#x663E;&#x793A;</h3><p>&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x77E5;&#x9053;&#xFF0C;&#x4F7F;&#x7528;OpenGL&#x5176;&#x5B9E;&#x53EA;&#x8981;&#x8C03;&#x7528;&#x4E00;&#x7CFB;&#x5217;&#x7684;OpenGL&#x51FD;&#x6570;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002;&#x7136;&#x800C;&#xFF0C;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x5728;&#x4E00;&#x4E9B;&#x65F6;&#x5019;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x95EE;&#x9898;&#x3002;&#x6BD4;&#x5982;&#x67D0;&#x4E2A;&#x753B;&#x9762;&#x4E2D;&#xFF0C;&#x4F7F;&#x7528;&#x4E86;&#x6570;&#x5343;&#x4E2A;&#x591A;&#x8FB9;&#x5F62;&#x6765;&#x8868;&#x73B0;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x771F;&#x5B9E;&#x7684;&#x4EBA;&#x7269;&#xFF0C;OpenGL&#x4E3A;&#x4E86;&#x4EA7;&#x751F;&#x8FD9;&#x6570;&#x5343;&#x4E2A;&#x591A;&#x8FB9;&#x5F62;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x4E0D;&#x505C;&#x7684;&#x8C03;&#x7528; glVertex<em> &#x51FD;&#x6570;&#xFF0C;&#x6BCF;&#x4E00;&#x4E2A;&#x591A;&#x8FB9;&#x5F62;&#x5C06;&#x81F3;&#x5C11;&#x8C03;&#x7528;&#x4E09;&#x6B21;&#xFF08;&#x56E0;&#x4E3A;&#x591A;&#x8FB9;&#x5F62;&#x81F3;&#x5C11;&#x6709;&#x4E09;&#x4E2A;&#x9876;&#x70B9;&#xFF09;&#xFF0C;&#x4E8E;&#x662F;&#x7ED8;&#x5236;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x771F;&#x5B9E;&#x7684;&#x4EBA;&#x7269;&#x5C31;&#x9700;&#x8981;&#x8C03;&#x7528;&#x4E0A;&#x4E07;&#x6B21;&#x7684;glVertex</em> &#x51FD;&#x6570;&#x3002;&#x66F4;&#x7CDF;&#x7CD5;&#x7684;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x6BCF;&#x79D2;&#x949F;&#x7ED8;&#x5236;60&#x5E45;&#x753B;&#x9762;&#xFF0C;&#x5219;&#x6BCF;&#x79D2;&#x8C03;&#x7528;&#x7684;glVertex* &#x51FD;&#x6570;&#x6B21;&#x6570;&#x5C31;&#x4F1A;&#x8D85;&#x8FC7;&#x6570;&#x5341;&#x4E07;&#x6B21;&#xFF0C;&#x4E43;&#x81F3;&#x63A5;&#x8FD1;&#x767E;&#x4E07;&#x6B21;&#x3002;&#x8FD9;&#x6837;&#x7684;&#x60C5;&#x51B5;&#x662F;&#x6211;&#x4EEC;&#x6240;&#x4E0D;&#x613F;&#x610F;&#x770B;&#x5230;&#x7684;&#x3002;<br>&#x540C;&#x65F6;&#xFF0C;&#x8003;&#x8651;&#x8FD9;&#x6837;&#x4E00;&#x6BB5;&#x4EE3;&#x7801;&#xFF1A;<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> segments = <span class="number">100</span>;</span><br><span class="line"><span class="keyword">const</span> GLfloat pi = <span class="number">3.14f</span>;</span><br><span class="line"><span class="keyword">int</span> i;</span><br><span class="line">glLineWidth(<span class="number">10.0</span>);</span><br><span class="line">glBegin(GL_LINE_LOOP);</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;segments; ++i)</span><br><span class="line">{</span><br><span class="line">     GLfloat tmp = <span class="number">2</span> * pi * i / segments;</span><br><span class="line">     glVertex2f(<span class="built_in">cos</span>(tmp), <span class="built_in">sin</span>(tmp));</span><br><span class="line">}</span><br><span class="line">glEnd();</span><br></pre></td></tr></table></figure></p>
+<p>&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x5C06;&#x7ED8;&#x5236;&#x4E00;&#x4E2A;&#x5706;&#x73AF;&#x3002;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5728;&#x6BCF;&#x6B21;&#x7ED8;&#x5236;&#x56FE;&#x8C61;&#x65F6;&#x8C03;&#x7528;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#xFF0C;&#x5219;&#x867D;&#x7136;&#x53EF;&#x4EE5;&#x8FBE;&#x5230;&#x7ED8;&#x5236;&#x5706;&#x73AF;&#x7684;&#x76EE;&#x7684;&#xFF0C;&#x4F46;&#x662F;<strong>cos&#x3001;sin&#x7B49;&#x5F00;&#x9500;&#x8F83;&#x5927;&#x7684;&#x51FD;&#x6570;&#x88AB;&#x591A;&#x6B21;&#x8C03;&#x7528;&#xFF0C;&#x6D6A;&#x8D39;&#x4E86;CPU&#x8D44;&#x6E90;</strong>&#x3002;&#x5982;&#x679C;&#x6BCF;&#x4E00;&#x4E2A;&#x9876;&#x70B9;&#x4E0D;&#x662F;&#x901A;&#x8FC7;cos&#x3001;sin&#x7B49;&#x51FD;&#x6570;&#x5F97;&#x5230;&#xFF0C;&#x800C;&#x662F;&#x4F7F;&#x7528;&#x66F4;&#x590D;&#x6742;&#x7684;&#x8FD0;&#x7B97;&#x65B9;&#x5F0F;&#x6765;&#x5F97;&#x5230;&#xFF0C;&#x5219;&#x6D6A;&#x8D39;&#x7684;&#x73B0;&#x8C61;&#x5C31;&#x66F4;&#x52A0;&#x660E;&#x663E;&#x3002;</p>
+<p>&#x7ECF;&#x8FC7;&#x5206;&#x6790;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x4E0A;&#x8FF0;&#x4E24;&#x4E2A;&#x95EE;&#x9898;&#x7684;&#x5171;&#x540C;&#x70B9;&#xFF1A;&#x7A0B;&#x5E8F;&#x591A;&#x6B21;&#x6267;&#x884C;&#x4E86;&#x91CD;&#x590D;&#x7684;&#x5DE5;&#x4F5C;&#xFF0C;&#x5BFC;&#x81F4;CPU&#x8D44;&#x6E90;&#x6D6A;&#x8D39;&#x548C;&#x8FD0;&#x884C;&#x901F;&#x5EA6;&#x7684;&#x4E0B;&#x964D;&#x3002;&#x4F7F;&#x7528;&#x663E;&#x793A;&#x5217;&#x8868;&#x53EF;&#x4EE5;&#x8F83;&#x597D;&#x7684;&#x89E3;&#x51B3;&#x4E0A;&#x8FF0;&#x4E24;&#x4E2A;&#x95EE;&#x9898;&#x3002;<br>&#x5728;&#x7F16;&#x5199;&#x7A0B;&#x5E8F;&#x65F6;&#xFF0C;&#x9047;&#x5230;&#x91CD;&#x590D;&#x7684;&#x5DE5;&#x4F5C;&#xFF0C;&#x6211;&#x4EEC;&#x5F80;&#x5F80;&#x662F;&#x5C06;&#x91CD;&#x590D;&#x7684;&#x5DE5;&#x4F5C;&#x7F16;&#x5199;&#x4E3A;&#x51FD;&#x6570;&#xFF0C;&#x5728;&#x9700;&#x8981;&#x7684;&#x5730;&#x65B9;&#x8C03;&#x7528;&#x5B83;&#x3002;&#x7C7B;&#x4F3C;&#x7684;&#xFF0C;&#x5728;&#x7F16;&#x5199;OpenGL&#x7A0B;&#x5E8F;&#x65F6;&#xFF0C;&#x9047;&#x5230;&#x91CD;&#x590D;&#x7684;&#x5DE5;&#x4F5C;&#xFF0C;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x663E;&#x793A;&#x5217;&#x8868;&#xFF0C;&#x628A;&#x91CD;&#x590D;&#x7684;&#x5DE5;&#x4F5C;&#x88C5;&#x5165;&#x5176;&#x4E2D;&#xFF0C;&#x5E76;&#x5728;&#x9700;&#x8981;&#x7684;&#x5730;&#x65B9;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x663E;&#x793A;&#x5217;&#x8868;&#x3002;<br>&#x4F7F;&#x7528;&#x663E;&#x793A;&#x5217;&#x8868;&#x4E00;&#x822C;&#x6709;&#x56DB;&#x4E2A;&#x6B65;&#x9AA4;&#xFF1A;<strong>&#x5206;&#x914D;&#x663E;&#x793A;&#x5217;&#x8868;&#x7F16;&#x53F7;&#x3001;&#x521B;&#x5EFA;&#x663E;&#x793A;&#x5217;&#x8868;&#x3001;&#x8C03;&#x7528;&#x663E;&#x793A;&#x5217;&#x8868;&#x3001;&#x9500;&#x6BC1;&#x663E;&#x793A;&#x5217;&#x8868;</strong>&#x3002;</p>
+<h4 id="&#x5206;&#x914D;&#x663E;&#x793A;&#x5217;&#x8868;&#x7F16;&#x53F7;"><a href="#&#x5206;&#x914D;&#x663E;&#x793A;&#x5217;&#x8868;&#x7F16;&#x53F7;" class="headerlink" title="&#x5206;&#x914D;&#x663E;&#x793A;&#x5217;&#x8868;&#x7F16;&#x53F7;"></a>&#x5206;&#x914D;&#x663E;&#x793A;&#x5217;&#x8868;&#x7F16;&#x53F7;</h4><p>OpenGL&#x5141;&#x8BB8;&#x591A;&#x4E2A;&#x663E;&#x793A;&#x5217;&#x8868;&#x540C;&#x65F6;&#x5B58;&#x5728;&#xFF0C;&#x5C31;&#x597D;&#x8C61;C&#x8BED;&#x8A00;&#x5141;&#x8BB8;&#x7A0B;&#x5E8F;&#x4E2D;&#x6709;&#x591A;&#x4E2A;&#x51FD;&#x6570;&#x540C;&#x65F6;&#x5B58;&#x5728;&#x3002;C&#x8BED;&#x8A00;&#x4E2D;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x51FD;&#x6570;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x540D;&#x5B57;&#x6765;&#x533A;&#x5206;&#xFF0C;&#x800C;&#x5728;OpenGL&#x4E2D;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x663E;&#x793A;&#x5217;&#x8868;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x6B63;&#x6574;&#x6570;&#x6765;&#x533A;&#x5206;&#x3002;<br>&#x4F60;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x6307;&#x5B9A;&#x4E00;&#x4E9B;&#x5404;&#x4E0D;&#x76F8;&#x540C;&#x7684;&#x6B63;&#x6574;&#x6570;&#x6765;&#x8868;&#x793A;&#x4E0D;&#x540C;&#x7684;&#x663E;&#x793A;&#x5217;&#x8868;&#x3002;&#x4F46;&#x662F;&#x5982;&#x679C;&#x4F60;&#x4E0D;&#x591F;&#x5C0F;&#x5FC3;&#xFF0C;&#x53EF;&#x80FD;&#x51FA;&#x73B0;&#x4E00;&#x4E2A;&#x663E;&#x793A;&#x5217;&#x8868;&#x5C06;&#x53E6;&#x4E00;&#x4E2A;&#x663E;&#x793A;&#x5217;&#x8868;&#x8986;&#x76D6;&#x7684;&#x60C5;&#x51B5;&#x3002;&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x8FD9;&#x4E00;&#x95EE;&#x9898;&#xFF0C;&#x4F7F;&#x7528; <font color="red">glGenLists&#x51FD;&#x6570;</font> &#x6765;&#x81EA;&#x52A8;&#x5206;&#x914D;&#x4E00;&#x4E2A;&#x6CA1;&#x6709;&#x4F7F;&#x7528;&#x7684;&#x663E;&#x793A;&#x5217;&#x8868;&#x7F16;&#x53F7;&#x3002;<br>glGenLists&#x51FD;&#x6570;&#x6709;&#x4E00;&#x4E2A;&#x53C2;&#x6570;i&#xFF0C;&#x8868;&#x793A;&#x8981;&#x5206;&#x914D;i&#x4E2A;&#x8FDE;&#x7EED;&#x7684;&#x672A;&#x4F7F;&#x7528;&#x7684;&#x663E;&#x793A;&#x5217;&#x8868;&#x7F16;&#x53F7;&#x3002;&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x5206;&#x914D;&#x7684;&#x82E5;&#x5E72;&#x8FDE;&#x7EED;&#x7F16;&#x53F7;&#x4E2D;&#x6700;&#x5C0F;&#x7684;&#x4E00;&#x4E2A;&#x3002;&#x4F8B;&#x5982;&#xFF0C;glGenLists(3);&#x5982;&#x679C;&#x8FD4;&#x56DE;20&#xFF0C;&#x5219;&#x8868;&#x793A;&#x5206;&#x914D;&#x4E86;20&#x3001;21&#x3001;22&#x8FD9;&#x4E09;&#x4E2A;&#x8FDE;&#x7EED;&#x7684;&#x7F16;&#x53F7;&#x3002;<strong>&#x5982;&#x679C;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x96F6;&#xFF0C;&#x8868;&#x793A;&#x5206;&#x914D;&#x5931;&#x8D25;</strong>&#x3002;<br>&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <font color="red">glIsList&#x51FD;&#x6570;</font> &#x5224;&#x65AD;&#x4E00;&#x4E2A;&#x7F16;&#x53F7;&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x88AB;&#x7528;&#x4F5C;&#x663E;&#x793A;&#x5217;&#x8868;&#x3002;</p>
+<h4 id="&#x521B;&#x5EFA;&#x663E;&#x793A;&#x5217;&#x8868;"><a href="#&#x521B;&#x5EFA;&#x663E;&#x793A;&#x5217;&#x8868;" class="headerlink" title="&#x521B;&#x5EFA;&#x663E;&#x793A;&#x5217;&#x8868;"></a>&#x521B;&#x5EFA;&#x663E;&#x793A;&#x5217;&#x8868;</h4><p>&#x521B;&#x5EFA;&#x663E;&#x793A;&#x5217;&#x8868;&#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F;&#x628A;&#x5404;&#x79CD;OpenGL&#x51FD;&#x6570;&#x7684;&#x8C03;&#x7528;&#x88C5;&#x5165;&#x5230;&#x663E;&#x793A;&#x5217;&#x8868;&#x4E2D;&#x3002;<strong>&#x4F7F;&#x7528;glNewList&#x5F00;&#x59CB;&#x88C5;&#x5165;&#xFF0C;&#x4F7F;&#x7528;glEndList&#x7ED3;&#x675F;&#x88C5;&#x5165;&#x3002;</strong><br>glNewList&#x6709;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x4E00;&#x4E2A;&#x6B63;&#x6574;&#x6570;&#x8868;&#x793A;&#x88C5;&#x5165;&#x5230;&#x54EA;&#x4E2A;&#x663E;&#x793A;&#x5217;&#x8868;&#x3002;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x6709;&#x4E24;&#x79CD;&#x53D6;&#x503C;&#xFF0C;&#x5982;&#x679C;&#x4E3A;GL_COMPILE&#xFF0C;&#x5219;&#x8868;&#x793A;&#x4EE5;&#x4E0B;&#x7684;&#x5185;&#x5BB9;&#x53EA;&#x662F;&#x88C5;&#x5165;&#x5230;&#x663E;&#x793A;&#x5217;&#x8868;&#xFF0C;&#x4F46;&#x73B0;&#x5728;&#x4E0D;&#x6267;&#x884C;&#x5B83;&#x4EEC;&#xFF1B;&#x5982;&#x679C;&#x4E3A;GL_COMPILE_AND_EXECUTE&#xFF0C;&#x8868;&#x793A;&#x5728;&#x88C5;&#x5165;&#x7684;&#x540C;&#x65F6;&#xFF0C;&#x628A;&#x88C5;&#x5165;&#x7684;&#x5185;&#x5BB9;&#x6267;&#x884C;&#x4E00;&#x904D;&#x3002;<br>&#x4F8B;&#x5982;&#xFF0C;&#x9700;&#x8981;&#x628A;&#x201C;&#x8BBE;&#x7F6E;&#x989C;&#x8272;&#x4E3A;&#x7EA2;&#x8272;&#xFF0C;&#x5E76;&#x4E14;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x5750;&#x6807;&#x4E3A;(0, 0)&#x7684;&#x9876;&#x70B9;&#x201D;&#x8FD9;&#x4E24;&#x6761;&#x547D;&#x4EE4;&#x88C5;&#x5165;&#x5230;&#x7F16;&#x53F7;&#x4E3A;list&#x7684;&#x663E;&#x793A;&#x5217;&#x8868;&#x4E2D;&#xFF0C;&#x5E76;&#x4E14;&#x5728;&#x88C5;&#x5165;&#x7684;&#x65F6;&#x5019;&#x4E0D;&#x6267;&#x884C;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x7528;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#xFF1A;<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">glNewList(<span class="built_in">list</span>, GL_COMPILE);</span><br><span class="line">glColor3f(<span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>);</span><br><span class="line">glVertex2f(<span class="number">0.0f</span>, <span class="number">0.0f</span>);</span><br><span class="line">glEnd();</span><br></pre></td></tr></table></figure></p>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x663E;&#x793A;&#x5217;&#x8868;<strong>&#x53EA;&#x80FD;&#x88C5;&#x5165;OpenGL&#x51FD;&#x6570;</strong>&#xFF0C;&#x800C;&#x4E0D;&#x80FD;&#x88C5;&#x5165;&#x5176;&#x5B83;&#x5185;&#x5BB9;&#x3002;&#x4F8B;&#x5982;&#xFF1A;<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">3</span>;</span><br><span class="line">glNewList(<span class="built_in">list</span>, GL_COMPILE);</span><br><span class="line"><span class="keyword">if</span>( i &gt; <span class="number">20</span> )</span><br><span class="line">     glColor3f(<span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>);</span><br><span class="line">glVertex2f(<span class="number">0.0f</span>, <span class="number">0.0f</span>);</span><br><span class="line">glEnd();</span><br></pre></td></tr></table></figure></p>
+<p>&#x5176;&#x4E2D;if&#x8FD9;&#x4E2A;&#x5224;&#x65AD;&#x5C31;&#x6CA1;&#x6709;&#x88AB;&#x88C5;&#x5165;&#x5230;&#x663E;&#x793A;&#x5217;&#x8868;&#x3002;&#x4EE5;&#x540E;&#x5373;&#x4F7F;&#x4FEE;&#x6539;i&#x7684;&#x503C;&#xFF0C;&#x4F7F;i&gt;20&#x7684;&#x6761;&#x4EF6;&#x6210;&#x7ACB;&#xFF0C;&#x5219;glColor3f&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4E5F;&#x4E0D;&#x4F1A;&#x88AB;&#x6267;&#x884C;&#x3002;&#x56E0;&#x4E3A;&#x5B83;&#x6839;&#x672C;&#x5C31;&#x4E0D;&#x5B58;&#x5728;&#x4E8E;&#x663E;&#x793A;&#x5217;&#x8868;&#x4E2D;&#x3002;</p>
+<p>&#x53E6;&#x5916;&#xFF0C;<strong>&#x5E76;&#x975E;&#x6240;&#x6709;&#x7684;OpenGL&#x51FD;&#x6570;&#x90FD;&#x53EF;&#x4EE5;&#x88C5;&#x5165;&#x5230;&#x663E;&#x793A;&#x5217;&#x8868;&#x4E2D;</strong>&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5404;&#x79CD;&#x7528;&#x4E8E;&#x67E5;&#x8BE2;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x5B83;&#x4EEC;&#x65E0;&#x6CD5;&#x88AB;&#x88C5;&#x5165;&#x5230;&#x663E;&#x793A;&#x5217;&#x8868;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x90FD;&#x5177;&#x6709;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x800C;glCallList&#x548C;glCallLists&#x51FD;&#x6570;&#x90FD;&#x4E0D;&#x77E5;&#x9053;&#x5982;&#x4F55;&#x5904;&#x7406;&#x8FD9;&#x4E9B;&#x8FD4;&#x56DE;&#x503C;&#x3002;&#x5728;&#x7F51;&#x7EDC;&#x65B9;&#x5F0F;&#x4E0B;&#xFF0C;&#x8BBE;&#x7F6E;&#x5BA2;&#x6237;&#x7AEF;&#x72B6;&#x6001;&#x7684;&#x51FD;&#x6570;&#x4E5F;&#x65E0;&#x6CD5;&#x88AB;&#x88C5;&#x5165;&#x5230;&#x663E;&#x793A;&#x5217;&#x8868;&#xFF0C;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#x663E;&#x793A;&#x5217;&#x8868;&#x88AB;&#x4FDD;&#x5B58;&#x5230;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#xFF0C;&#x5404;&#x79CD;&#x8BBE;&#x7F6E;&#x5BA2;&#x6237;&#x7AEF;&#x72B6;&#x6001;&#x7684;&#x51FD;&#x6570;&#x5728;&#x53D1;&#x9001;&#x5230;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x4EE5;&#x524D;&#x5C31;&#x88AB;&#x6267;&#x884C;&#x4E86;&#xFF0C;&#x800C;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x65E0;&#x6CD5;&#x6267;&#x884C;&#x8FD9;&#x4E9B;&#x51FD;&#x6570;&#x3002;&#x5206;&#x914D;&#x3001;&#x521B;&#x5EFA;&#x3001;&#x5220;&#x9664;&#x663E;&#x793A;&#x5217;&#x8868;&#x7684;&#x52A8;&#x4F5C;&#x4E5F;&#x65E0;&#x6CD5;&#x88AB;&#x88C5;&#x5165;&#x5230;&#x53E6;&#x4E00;&#x4E2A;&#x663E;&#x793A;&#x5217;&#x8868;&#xFF0C;&#x4F46;<strong>&#x8C03;&#x7528;&#x663E;&#x793A;&#x5217;&#x8868;&#x7684;&#x52A8;&#x4F5C;&#x5219;&#x53EF;&#x4EE5;&#x88AB;&#x88C5;&#x5165;&#x5230;&#x53E6;&#x4E00;&#x4E2A;&#x663E;&#x793A;&#x5217;&#x8868;</strong>&#x3002;</p>
+<h4 id="&#x8C03;&#x7528;&#x663E;&#x793A;&#x5217;&#x8868;"><a href="#&#x8C03;&#x7528;&#x663E;&#x793A;&#x5217;&#x8868;" class="headerlink" title="&#x8C03;&#x7528;&#x663E;&#x793A;&#x5217;&#x8868;"></a>&#x8C03;&#x7528;&#x663E;&#x793A;&#x5217;&#x8868;</h4><p>&#x4F7F;&#x7528; <font color="red">glCallList&#x51FD;&#x6570;</font> &#x53EF;&#x4EE5;&#x8C03;&#x7528;&#x4E00;&#x4E2A;&#x663E;&#x793A;&#x5217;&#x8868;&#x3002;&#x8BE5;&#x51FD;&#x6570;&#x6709;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x8868;&#x793A;&#x8981;&#x8C03;&#x7528;&#x7684;&#x663E;&#x793A;&#x5217;&#x8868;&#x7684;&#x7F16;&#x53F7;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x8981;&#x8C03;&#x7528;&#x7F16;&#x53F7;&#x4E3A;10&#x7684;&#x663E;&#x793A;&#x5217;&#x8868;&#xFF0C;&#x76F4;&#x63A5;&#x4F7F;&#x7528;glCallList(10);&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002;<br>&#x4F7F;&#x7528;glCallLists&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x8C03;&#x7528;&#x4E00;&#x7CFB;&#x5217;&#x7684;&#x663E;&#x793A;&#x5217;&#x8868;&#x3002;&#x8BE5;&#x51FD;&#x6570;&#x6709;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x8868;&#x793A;&#x4E86;&#x8981;&#x8C03;&#x7528;&#x591A;&#x5C11;&#x4E2A;&#x663E;&#x793A;&#x5217;&#x8868;&#x3002;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x8868;&#x793A;&#x4E86;&#x8FD9;&#x4E9B;&#x663E;&#x793A;&#x5217;&#x8868;&#x7684;&#x7F16;&#x53F7;&#x7684;&#x50A8;&#x5B58;&#x683C;&#x5F0F;&#xFF0C;&#x53EF;&#x4EE5;&#x662F;GL_BYTE&#xFF08;&#x6BCF;&#x4E2A;&#x7F16;&#x53F7;&#x7528;&#x4E00;&#x4E2A;GLbyte&#x8868;&#x793A;&#xFF09;&#xFF0C;GL_UNSIGNED_BYTE&#xFF08;&#x6BCF;&#x4E2A;&#x7F16;&#x53F7;&#x7528;&#x4E00;&#x4E2A;GLubyte&#x8868;&#x793A;&#xFF09;&#xFF0C;GL_SHORT&#xFF0C;GL_UNSIGNED_SHORT&#xFF0C;GL_INT&#xFF0C;GL_UNSIGNED_INT&#xFF0C;GL_FLOAT&#x3002;&#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x8868;&#x793A;&#x4E86;&#x8FD9;&#x4E9B;&#x663E;&#x793A;&#x5217;&#x8868;&#x7684;&#x7F16;&#x53F7;&#x6240;&#x5728;&#x7684;&#x4F4D;&#x7F6E;&#x3002;&#x5728;&#x4F7F;&#x7528;&#x8BE5;&#x51FD;&#x6570;&#x524D;&#xFF0C;&#x9700;&#x8981;&#x7528; <font color="red"> glListBase&#x51FD;&#x6570;</font> &#x6765;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x504F;&#x79FB;&#x91CF;&#x3002;&#x5047;&#x8BBE;&#x504F;&#x79FB;&#x91CF;&#x4E3A;k&#xFF0C;&#x4E14;glCallLists&#x4E2D;&#x8981;&#x6C42;&#x8C03;&#x7528;&#x7684;&#x663E;&#x793A;&#x5217;&#x8868;&#x7F16;&#x53F7;&#x4F9D;&#x6B21;&#x4E3A;l1, l2, l3, &#x2026;&#xFF0C;&#x5219;&#x5B9E;&#x9645;&#x8C03;&#x7528;&#x7684;&#x663E;&#x793A;&#x5217;&#x8868;&#x4E3A;l1+k, l2+k, l3+k, &#x2026;&#x3002;<br>&#x4F8B;&#x5982;&#xFF1A;<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GLuint lists[] = {<span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">8</span>};</span><br><span class="line">glListBase(<span class="number">10</span>);</span><br><span class="line">glCallLists(<span class="number">4</span>, GL_UNSIGNED_INT, lists);</span><br></pre></td></tr></table></figure></p>
+<p>&#x5219;&#x5B9E;&#x9645;&#x4E0A;&#x8C03;&#x7528;&#x7684;&#x662F;&#x7F16;&#x53F7;&#x4E3A;11, 13, 14, 18&#x7684;&#x56DB;&#x4E2A;&#x663E;&#x793A;&#x5217;&#x8868;&#x3002;<br>&#x6CE8;&#xFF1A;&#x201C;&#x8C03;&#x7528;&#x663E;&#x793A;&#x5217;&#x8868;&#x201D;&#x8FD9;&#x4E2A;&#x52A8;&#x4F5C;&#x672C;&#x8EAB;&#x4E5F;&#x53EF;&#x4EE5;&#x88AB;&#x88C5;&#x5728;&#x53E6;&#x4E00;&#x4E2A;&#x663E;&#x793A;&#x5217;&#x8868;&#x4E2D;&#x3002;</p>
+<h4 id="&#x9500;&#x6BC1;&#x663E;&#x793A;&#x5217;&#x8868;"><a href="#&#x9500;&#x6BC1;&#x663E;&#x793A;&#x5217;&#x8868;" class="headerlink" title="&#x9500;&#x6BC1;&#x663E;&#x793A;&#x5217;&#x8868;"></a>&#x9500;&#x6BC1;&#x663E;&#x793A;&#x5217;&#x8868;</h4><p>&#x9500;&#x6BC1;&#x663E;&#x793A;&#x5217;&#x8868;&#x53EF;&#x4EE5;&#x56DE;&#x6536;&#x8D44;&#x6E90;&#x3002;&#x4F7F;&#x7528;<font color="red">glDeleteLists</font> &#x6765;&#x9500;&#x6BC1;&#x4E00;&#x4E32;&#x7F16;&#x53F7;&#x8FDE;&#x7EED;&#x7684;&#x663E;&#x793A;&#x5217;&#x8868;&#x3002;<br>&#x4F8B;&#x5982;&#xFF0C;&#x4F7F;&#x7528;glDeleteLists(20, 4);&#x5C06;&#x9500;&#x6BC1;20&#xFF0C;21&#xFF0C;22&#xFF0C;23&#x8FD9;&#x56DB;&#x4E2A;&#x663E;&#x793A;&#x5217;&#x8868;&#x3002;</p>
+<p>&#x4F7F;&#x7528;&#x663E;&#x793A;&#x5217;&#x8868;&#x5C06;&#x4F1A;&#x5E26;&#x6765;&#x4E00;&#x4E9B;&#x5F00;&#x9500;&#xFF0C;&#x4F8B;&#x5982;&#xFF0C;&#x628A;&#x5404;&#x79CD;&#x52A8;&#x4F5C;&#x4FDD;&#x5B58;&#x5230;&#x663E;&#x793A;&#x5217;&#x8868;&#x4E2D;&#x4F1A;&#x5360;&#x7528;&#x4E00;&#x5B9A;&#x6570;&#x91CF;&#x7684;&#x5185;&#x5B58;&#x8D44;&#x6E90;&#x3002;&#x4F46;&#x5982;&#x679C;&#x4F7F;&#x7528;&#x5F97;&#x5F53;&#xFF0C;&#x663E;&#x793A;&#x5217;&#x8868;&#x53EF;&#x4EE5;&#x63D0;&#x5347;&#x7A0B;&#x5E8F;&#x7684;&#x6027;&#x80FD;&#x3002;&#x8FD9;&#x4E3B;&#x8981;&#x8868;&#x73B0;&#x5728;&#x4EE5;&#x4E0B;&#x65B9;&#x9762;&#xFF1A;<br>1&#x3001;&#x660E;&#x663E;&#x7684;&#x51CF;&#x5C11;OpenGL&#x51FD;&#x6570;&#x7684;&#x8C03;&#x7528;&#x6B21;&#x6570;&#x3002;&#x5982;&#x679C;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x662F;&#x901A;&#x8FC7;&#x7F51;&#x7EDC;&#x8FDB;&#x884C;&#x7684;&#xFF08;Linux&#x7B49;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x652F;&#x6301;&#x8FD9;&#x6837;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x5373;&#x7531;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x51FA;OpenGL&#x8BF7;&#x6C42;&#xFF0C;&#x7531;&#x7F51;&#x7EDC;&#x4E0A;&#x7684;&#x53E6;&#x4E00;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x8FDB;&#x884C;&#x5B9E;&#x9645;&#x7684;&#x7ED8;&#x56FE;&#x64CD;&#x4F5C;&#xFF09;&#xFF0C;&#x5C06;&#x663E;&#x793A;&#x5217;&#x8868;&#x4FDD;&#x5B58;&#x5728;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#xFF0C;&#x53EF;&#x4EE5;&#x5927;&#x5927;&#x51CF;&#x5C11;&#x7F51;&#x7EDC;&#x8D1F;&#x62C5;&#x3002;<br>2&#x3001;&#x4FDD;&#x5B58;&#x4E2D;&#x95F4;&#x7ED3;&#x679C;&#xFF0C;&#x907F;&#x514D;&#x4E00;&#x4E9B;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x8BA1;&#x7B97;&#x3002;&#x4F8B;&#x5982;&#x524D;&#x9762;&#x7684;&#x6837;&#x4F8B;&#x7A0B;&#x5E8F;&#x4E2D;&#xFF0C;cos&#x3001;sin&#x51FD;&#x6570;&#x7684;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#x88AB;&#x76F4;&#x63A5;&#x4FDD;&#x5B58;&#x5230;&#x663E;&#x793A;&#x5217;&#x8868;&#x4E2D;&#xFF0C;&#x4EE5;&#x540E;&#x4F7F;&#x7528;&#x65F6;&#x5C31;&#x4E0D;&#x5FC5;&#x91CD;&#x590D;&#x8BA1;&#x7B97;&#x3002;<br>3&#x3001;&#x4FBF;&#x4E8E;&#x4F18;&#x5316;&#x3002;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x77E5;&#x9053;&#xFF0C;&#x4F7F;&#x7528;glTranslate<em> &#x3001;glRotate</em> &#x3001;glScale* &#x7B49;&#x51FD;&#x6570;&#x65F6;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x6267;&#x884C;&#x77E9;&#x9635;&#x4E58;&#x6CD5;&#x64CD;&#x4F5C;&#xFF0C;&#x7531;&#x4E8E;&#x8FD9;&#x4E9B;&#x51FD;&#x6570;&#x7ECF;&#x5E38;&#x88AB;&#x7EC4;&#x5408;&#x5728;&#x4E00;&#x8D77;&#x4F7F;&#x7528;&#xFF0C;&#x901A;&#x5E38;&#x4F1A;&#x51FA;&#x73B0;&#x77E9;&#x9635;&#x7684;&#x8FDE;&#x4E58;&#x3002;&#x8FD9;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x628A;&#x8FD9;&#x4E9B;&#x64CD;&#x4F5C;&#x4FDD;&#x5B58;&#x5230;&#x663E;&#x793A;&#x5217;&#x8868;&#x4E2D;&#xFF0C;&#x5219;&#x4E00;&#x4E9B;&#x590D;&#x6742;&#x7684;OpenGL&#x7248;&#x672C;&#x4F1A;&#x5C1D;&#x8BD5;&#x5148;&#x8BA1;&#x7B97;&#x51FA;&#x8FDE;&#x4E58;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x7ED3;&#x679C;&#xFF0C;&#x4ECE;&#x800C;&#x63D0;&#x9AD8;&#x7A0B;&#x5E8F;&#x7684;&#x8FD0;&#x884C;&#x901F;&#x5EA6;&#x3002;&#x5728;&#x5176;&#x5B83;&#x65B9;&#x9762;&#x4E5F;&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x7C7B;&#x4F3C;&#x7684;&#x4F8B;&#x5B50;&#x3002;<br>&#x540C;&#x65F6;&#xFF0C;&#x663E;&#x793A;&#x5217;&#x8868;&#x4E5F;&#x4E3A;&#x7A0B;&#x5E8F;&#x7684;&#x8BBE;&#x8BA1;&#x5E26;&#x6765;&#x65B9;&#x4FBF;&#x3002;&#x6211;&#x4EEC;&#x5728;&#x8BBE;&#x7F6E;&#x4E00;&#x4E9B;&#x5C5E;&#x6027;&#x65F6;&#xFF0C;&#x7ECF;&#x5E38;&#x628A;&#x4E00;&#x4E9B;&#x76F8;&#x5173;&#x7684;&#x51FD;&#x6570;&#x653E;&#x5728;&#x4E00;&#x8D77;&#x8C03;&#x7528;&#xFF0C;&#xFF08;&#x6BD4;&#x5982;&#xFF0C;&#x628A;&#x8BBE;&#x7F6E;&#x5149;&#x6E90;&#x7684;&#x5404;&#x79CD;&#x5C5E;&#x6027;&#x7684;&#x51FD;&#x6570;&#x653E;&#x5230;&#x4E00;&#x8D77;&#xFF09;&#x8FD9;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x628A;&#x8FD9;&#x4E9B;&#x8BBE;&#x7F6E;&#x5C5E;&#x6027;&#x7684;&#x64CD;&#x4F5C;&#x88C5;&#x5165;&#x5230;&#x663E;&#x793A;&#x5217;&#x8868;&#x4E2D;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x5C5E;&#x6027;&#x7684;&#x6210;&#x7EC4;&#x7684;&#x5207;&#x6362;&#x3002;<br>&#x5F53;&#x7136;&#x4E86;&#xFF0C;&#x5373;&#x4F7F;&#x4F7F;&#x7528;&#x663E;&#x793A;&#x5217;&#x8868;&#x5728;&#x67D0;&#x4E9B;&#x60C5;&#x51B5;&#x4E0B;&#x53EF;&#x4EE5;&#x63D0;&#x9AD8;&#x6027;&#x80FD;&#xFF0C;&#x4F46;&#x8FD9;&#x79CD;&#x63D0;&#x9AD8;&#x5F88;&#x53EF;&#x80FD;&#x5E76;&#x4E0D;&#x660E;&#x663E;&#x3002;&#x6BD5;&#x7ADF;&#xFF0C;&#x5728;&#x786C;&#x4EF6;&#x914D;&#x7F6E;&#x548C;&#x5927;&#x81F4;&#x7684;&#x8F6F;&#x4EF6;&#x7B97;&#x6CD5;&#x90FD;&#x4E0D;&#x53D8;&#x7684;&#x524D;&#x63D0;&#x4E0B;&#xFF0C;&#x6027;&#x80FD;&#x53EF;&#x63D0;&#x5347;&#x7684;&#x7A7A;&#x95F4;&#x5E76;&#x4E0D;&#x5927;&#x3002;</p>
+<p>&#x663E;&#x793A;&#x5217;&#x8868;&#x7684;&#x5185;&#x5BB9;&#x5C31;&#x662F;&#x8FD9;&#x4E48;&#x591A;&#x4E86;&#xFF0C;&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x770B;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#x3002;<br>&#x5047;&#x8BBE;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x7ED8;&#x5236;&#x4E00;&#x4E2A;&#x65CB;&#x8F6C;&#x7684;&#x5F69;&#x8272;&#x6B63;&#x56DB;&#x9762;&#x4F53;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x8003;&#x8651;&#xFF1A;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x5168;&#x5C40;&#x53D8;&#x91CF;angle&#xFF0C;&#x7136;&#x540E;&#x8BA9;&#x5B83;&#x7684;&#x503C;&#x4E0D;&#x65AD;&#x7684;&#x589E;&#x52A0;&#xFF08;&#x5230;&#x8FBE;360&#x540E;&#x53C8;&#x6062;&#x590D;&#x4E3A;0&#xFF0C;&#x5468;&#x800C;&#x590D;&#x59CB;&#xFF09;&#x3002;&#x6BCF;&#x6B21;&#x9700;&#x8981;&#x7ED8;&#x5236;&#x56FE;&#x5F62;&#x65F6;&#xFF0C;&#x6839;&#x636E;angle&#x7684;&#x503C;&#x8FDB;&#x884C;&#x65CB;&#x8F6C;&#xFF0C;&#x7136;&#x540E;&#x7ED8;&#x5236;&#x6B63;&#x56DB;&#x9762;&#x4F53;&#x3002;&#x8FD9;&#x91CC;&#x6B63;&#x56DB;&#x9762;&#x4F53;&#x91C7;&#x7528;&#x663E;&#x793A;&#x5217;&#x8868;&#x6765;&#x5B9E;&#x73B0;&#xFF0C;&#x5373;&#x628A;&#x7ED8;&#x5236;&#x6B63;&#x56DB;&#x9762;&#x4F53;&#x7684;&#x82E5;&#x5E72;OpenGL&#x51FD;&#x6570;&#x88C5;&#x5230;&#x4E00;&#x4E2A;&#x663E;&#x793A;&#x5217;&#x8868;&#x4E2D;&#xFF0C;&#x7136;&#x540E;&#x6BCF;&#x6B21;&#x9700;&#x8981;&#x7ED8;&#x5236;&#x65F6;&#xFF0C;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x663E;&#x793A;&#x5217;&#x8868;&#x5373;&#x53EF;&#x3002;<br>&#x5C06;&#x6B63;&#x56DB;&#x9762;&#x4F53;&#x7684;&#x56DB;&#x4E2A;&#x9876;&#x70B9;&#x989C;&#x8272;&#x5206;&#x522B;&#x8BBE;&#x7F6E;&#x4E3A;&#x7EA2;&#x3001;&#x9EC4;&#x3001;&#x7EFF;&#x3001;&#x84DD;&#xFF0C;&#x901A;&#x8FC7;&#x6570;&#x5B66;&#x8BA1;&#x7B97;&#xFF0C;&#x5C06;&#x5750;&#x6807;&#x8BBE;&#x7F6E;&#x4E3A;&#xFF1A;<br>(-0.5, -5 <em> sqrt(5) / 48,   sqrt(3) / 6),<br>( 0.5, -5 </em> sqrt(5) / 48,   sqrt(3) / 6),<br>(   0, -5 <em> sqrt(5) / 48,  -sqrt(3) / 3),<br>(   0, 11 </em> sqrt(6) / 48,             0)<br>2007&#x5E74;4&#x6708;24&#x65E5;&#x4FEE;&#x6B63;&#xFF1A;&#x4EE5;&#x4E0A;&#x7ED3;&#x679C;&#x6709;&#x8BEF;&#xFF0C;&#x901A;&#x8FC7;&#x8BA1;&#x7B97;AB, AC, AD, BC, BD, CD&#x7684;&#x957F;&#x5EA6;&#xFF0C;&#x53D1;&#x73B0;AD, BD, CD&#x7684;&#x957F;&#x5EA6;&#x4E0E;1.0&#x6709;&#x8F83;&#x5927;&#x504F;&#x5DEE;&#x3002;&#x6B63;&#x786E;&#x7684;&#x5750;&#x6807;&#x5E94;&#x8BE5;&#x662F;&#xFF1A;</p>
+<ul>
+<li>A&#x70B9;&#xFF1A;(   0.5,    -sqrt(6)/12,  -sqrt(3)/6)</li>
+<li>B&#x70B9;&#xFF1A;(  -0.5,    -sqrt(6)/12,  -sqrt(3)/6)</li>
+<li>C&#x70B9;&#xFF1A;(     0,    -sqrt(6)/12,   sqrt(3)/3)</li>
+<li>D&#x70B9;&#xFF1A;(     0,     sqrt(6)/4,            0)<br>&#x7A0B;&#x5E8F;&#x4EE3;&#x7801;&#x4E2D;&#x4E5F;&#x505A;&#x4E86;&#x76F8;&#x5E94;&#x7684;&#x4FEE;&#x6539;&#x3002;</li>
+</ul>
+<p>&#x4E0B;&#x9762;&#x7ED9;&#x51FA;&#x7A0B;&#x5E8F;&#x4EE3;&#x7801;&#xFF0C;&#x5927;&#x5BB6;&#x53EF;&#x4EE5;&#x4ECE;&#x4E2D;&#x4F53;&#x4F1A;&#x4E00;&#x4E0B;&#x663E;&#x793A;&#x5217;&#x8868;&#x7684;&#x7528;&#x6CD5;&#x3002;<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;gl/glut.h&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="comment">// &#x5B9A;&#x4E49;&#x521D;&#x59CB;&#x7A97;&#x53E3;&#x5927;&#x5C0F;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> WIDTH <span class="number">400</span> </span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> HEIGHT <span class="number">400</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> ColoredVertex(c, v) do{ glColor3fv(c); glVertex3fv(v); }while(<span class="number">0</span>)</span></span><br><span class="line">GLfloat angle = <span class="number">0.0f</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">myDisplay</span><span class="params">(<span class="keyword">void</span>)</span></span><br><span class="line"></span>{</span><br><span class="line">     <span class="keyword">static</span> <span class="keyword">int</span> <span class="built_in">list</span> = <span class="number">0</span>;</span><br><span class="line">     <span class="keyword">if</span>( <span class="built_in">list</span> == <span class="number">0</span> )</span><br><span class="line">     {</span><br><span class="line">         <span class="comment">// &#x5982;&#x679C;&#x663E;&#x793A;&#x5217;&#x8868;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x5219;&#x521B;&#x5EFA;</span></span><br><span class="line">        <span class="comment">/* GLfloat</span><br><span class="line">             PointA[] = {-0.5, -5*sqrt(5)/48,   sqrt(3)/6},</span><br><span class="line">             PointB[] = { 0.5, -5*sqrt(5)/48,   sqrt(3)/6},</span><br><span class="line">             PointC[] = {   0, -5*sqrt(5)/48,  -sqrt(3)/3},</span><br><span class="line">             PointD[] = {   0, 11*sqrt(6)/48,           0}; */</span></span><br><span class="line">         GLfloat</span><br><span class="line">             PointA[] = { <span class="number">0.5f</span>, -<span class="built_in">sqrt</span>(<span class="number">6.0f</span>)/<span class="number">12</span>, -<span class="built_in">sqrt</span>(<span class="number">3.0f</span>)/<span class="number">6</span>},</span><br><span class="line">             PointB[] = {-<span class="number">0.5f</span>, -<span class="built_in">sqrt</span>(<span class="number">6.0f</span>)/<span class="number">12</span>, -<span class="built_in">sqrt</span>(<span class="number">3.0f</span>)/<span class="number">6</span>},</span><br><span class="line">             PointC[] = { <span class="number">0.0f</span>, -<span class="built_in">sqrt</span>(<span class="number">6.0f</span>)/<span class="number">12</span>,  <span class="built_in">sqrt</span>(<span class="number">3.0f</span>)/<span class="number">3</span>},</span><br><span class="line">             PointD[] = { <span class="number">0.0f</span>,  <span class="built_in">sqrt</span>(<span class="number">6.0f</span>)/ <span class="number">4</span>,             <span class="number">0</span>};</span><br><span class="line">         GLfloat</span><br><span class="line">             ColorR[] = {<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>},</span><br><span class="line">             ColorG[] = {<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>},</span><br><span class="line">             ColorB[] = {<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>},</span><br><span class="line">             ColorY[] = {<span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>};</span><br><span class="line">         <span class="built_in">list</span> = glGenLists(<span class="number">1</span>);</span><br><span class="line">         glNewList(<span class="built_in">list</span>, GL_COMPILE);</span><br><span class="line">         glBegin(GL_TRIANGLES);</span><br><span class="line">         <span class="comment">// &#x5E73;&#x9762;ABC</span></span><br><span class="line">         ColoredVertex(ColorR, PointA);</span><br><span class="line">         ColoredVertex(ColorG, PointB);</span><br><span class="line">         ColoredVertex(ColorB, PointC);</span><br><span class="line">         <span class="comment">// &#x5E73;&#x9762;ACD</span></span><br><span class="line">         ColoredVertex(ColorR, PointA);</span><br><span class="line">         ColoredVertex(ColorB, PointC);</span><br><span class="line">         ColoredVertex(ColorY, PointD);</span><br><span class="line">         <span class="comment">// &#x5E73;&#x9762;CBD</span></span><br><span class="line">         ColoredVertex(ColorB, PointC);</span><br><span class="line">         ColoredVertex(ColorG, PointB);</span><br><span class="line">         ColoredVertex(ColorY, PointD);</span><br><span class="line">         <span class="comment">// &#x5E73;&#x9762;BAD</span></span><br><span class="line">         ColoredVertex(ColorG, PointB);</span><br><span class="line">         ColoredVertex(ColorR, PointA);</span><br><span class="line">         ColoredVertex(ColorY, PointD);</span><br><span class="line">         glEnd();</span><br><span class="line">         glEndList();</span><br><span class="line">         glEnable(GL_DEPTH_TEST);</span><br><span class="line">     }</span><br><span class="line">     <span class="comment">// &#x5DF2;&#x7ECF;&#x521B;&#x5EFA;&#x4E86;&#x663E;&#x793A;&#x5217;&#x8868;&#xFF0C;&#x5728;&#x6BCF;&#x6B21;&#x7ED8;&#x5236;&#x6B63;&#x56DB;&#x9762;&#x4F53;&#x65F6;&#x5C06;&#x8C03;&#x7528;&#x5B83;</span></span><br><span class="line">     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);</span><br><span class="line">     glPushMatrix(); <span class="comment">// &#x5C06;&#x5F53;&#x524D;&#x77E9;&#x9635;&#x4FDD;&#x5B58;&#x5165;&#x5806;&#x6808;&#x9876;(&#x4FDD;&#x5B58;&#x5F53;&#x524D;&#x77E9;&#x9635;)</span></span><br><span class="line">     glRotatef(angle, <span class="number">1</span>, <span class="number">0.5</span>, <span class="number">0</span>);</span><br><span class="line">     glCallList(<span class="built_in">list</span>);</span><br><span class="line">     glPopMatrix();</span><br><span class="line">     glutSwapBuffers(); <span class="comment">// &#x8981;&#x5728;&#x7ED8;&#x5236;&#x5B8C;&#x6210;&#x65F6;&#x8C03;&#x7528;&#x5B9E;&#x73B0;&#x53CC;&#x7F13;&#x51B2;</span></span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">myIdle</span><span class="params">(<span class="keyword">void</span>)</span></span><br><span class="line"></span>{</span><br><span class="line">     ++angle;</span><br><span class="line">     <span class="keyword">if</span>( angle &gt;= <span class="number">360.0f</span> )</span><br><span class="line">         angle = <span class="number">0.0f</span>;</span><br><span class="line">     myDisplay();</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span></span><br><span class="line"></span>{</span><br><span class="line">     glutInit(&amp;argc, argv);</span><br><span class="line">     glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE); <span class="comment">// GLUT_DOUBLE: &#x53CC;&#x7F13;&#x51B2;&#x529F;&#x80FD;&#xFF0C;&#x505A;&#x52A8;&#x753B;&#x7528;</span></span><br><span class="line">     glutInitWindowPosition(<span class="number">200</span>, <span class="number">200</span>);</span><br><span class="line">     glutInitWindowSize(WIDTH, HEIGHT);</span><br><span class="line">     glutCreateWindow(<span class="string">&quot;OpenGL &#x7A97;&#x53E3;&quot;</span>);</span><br><span class="line">     glutDisplayFunc(&amp;myDisplay);</span><br><span class="line">     glutIdleFunc(&amp;myIdle); <span class="comment">// glutIdleFunc: &#x5728;CPU&#x7A7A;&#x95F2;&#x7684;&#x65F6;&#x95F4;&#x8C03;&#x7528;&#x67D0;&#x4E00;&#x51FD;&#x6570;</span></span><br><span class="line">     glutMainLoop();</span><br><span class="line">     <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x5728;&#x7A0B;&#x5E8F;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x7ED8;&#x5236;&#x6B63;&#x56DB;&#x9762;&#x4F53;&#x7684;OpenGL&#x51FD;&#x6570;&#x88C5;&#x5230;&#x4E86;&#x4E00;&#x4E2A;&#x663E;&#x793A;&#x5217;&#x8868;&#x4E2D;&#xFF0C;&#x4F46;&#x662F;&#xFF0C;&#x5173;&#x4E8E;&#x65CB;&#x8F6C;&#x7684;&#x64CD;&#x4F5C;&#x5374;&#x5728;&#x663E;&#x793A;&#x5217;&#x8868;&#x4E4B;&#x5916;&#x8FDB;&#x884C;&#x3002;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#x5982;&#x679C;&#x628A;&#x65CB;&#x8F6C;&#x7684;&#x64CD;&#x4F5C;&#x4E5F;&#x88C5;&#x5165;&#x5230;&#x663E;&#x793A;&#x5217;&#x8868;&#xFF0C;&#x5219;&#x6BCF;&#x6B21;&#x65CB;&#x8F6C;&#x7684;&#x89D2;&#x5EA6;&#x90FD;&#x662F;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x4E0D;&#x4F1A;&#x968F;&#x7740;angle&#x7684;&#x503C;&#x7684;&#x53D8;&#x5316;&#x800C;&#x53D8;&#x5316;&#xFF0C;&#x4E8E;&#x662F;&#x5C31;&#x4E0D;&#x80FD;&#x8868;&#x73B0;&#x51FA;&#x52A8;&#x6001;&#x7684;&#x65CB;&#x8F6C;&#x6548;&#x679C;&#x4E86;&#x3002;<br>&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;&#x53EF;&#x80FD;&#x611F;&#x89C9;&#x5230;&#x753B;&#x9762;&#x7684;&#x7ACB;&#x4F53;&#x611F;&#x4E0D;&#x8DB3;&#xFF0C;&#x8FD9;&#x4E3B;&#x8981;&#x662F;&#x56E0;&#x4E3A;&#x6CA1;&#x6709;&#x4F7F;&#x7528;&#x5149;&#x7167;&#x7684;&#x7F18;&#x6545;&#x3002;&#x5982;&#x679C;&#x5C06;glColor3fv&#x51FD;&#x6570;&#x53BB;&#x6389;&#xFF0C;&#x6539;&#x4E3A;&#x8BBE;&#x7F6E;&#x5404;&#x79CD;&#x6750;&#x8D28;&#xFF0C;&#x7136;&#x540E;&#x5F00;&#x542F;&#x5149;&#x7167;&#x6548;&#x679C;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x4EA7;&#x751F;&#x66F4;&#x597D;&#x7684;&#x7ACB;&#x4F53;&#x611F;&#x3002;&#x5927;&#x5BB6;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x8BD5;&#x7740;&#x4F7F;&#x7528;&#x5149;&#x7167;&#x6548;&#x679C;&#xFF0C;&#x552F;&#x4E00;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x5730;&#x65B9;&#x5C31;&#x662F;&#x6CD5;&#x7EBF;&#x5411;&#x91CF;&#x7684;&#x8BA1;&#x7B97;&#x3002;&#x7531;&#x4E8E;&#x8FD9;&#x91CC;&#x7684;&#x6B63;&#x56DB;&#x9762;&#x4F53;&#x56DB;&#x4E2A;&#x9876;&#x70B9;&#x5750;&#x6807;&#x9009;&#x53D6;&#x5F97;&#x6BD4;&#x8F83;&#x7279;&#x6B8A;&#xFF0C;&#x4F7F;&#x5F97;&#x6B63;&#x56DB;&#x9762;&#x4F53;&#x7684;&#x4E2D;&#x5FC3;&#x5750;&#x6807;&#x6B63;&#x597D;&#x662F;(0, 0, 0)&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x6BCF;&#x4E09;&#x4E2A;&#x9876;&#x70B9;&#x5750;&#x6807;&#x7684;&#x5E73;&#x5747;&#x503C;&#x6B63;&#x597D;&#x5C31;&#x662F;&#x8FD9;&#x4E09;&#x4E2A;&#x9876;&#x70B9;&#x6240;&#x7EC4;&#x6210;&#x7684;&#x5E73;&#x9762;&#x7684;&#x6CD5;&#x7EBF;&#x5411;&#x91CF;&#x7684;&#x503C;&#x3002;<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setNormal</span><span class="params">(GLfloat* Point1, GLfloat* Point2, GLfloat* Point3)</span></span><br><span class="line"></span>{</span><br><span class="line">     GLfloat normal[<span class="number">3</span>];</span><br><span class="line">     <span class="keyword">int</span> i;</span><br><span class="line">     <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;<span class="number">3</span>; ++i)</span><br><span class="line">         normal[i] = (Point1[i]+Point2[i]+Point3[i]) / <span class="number">3</span>;</span><br><span class="line">     glNormal3fv(normal);</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x9650;&#x4E8E;&#x7BC7;&#x5E45;&#xFF0C;&#x8FD9;&#x91CC;&#x5C31;&#x4E0D;&#x7ED9;&#x51FA;&#x5B8C;&#x6574;&#x7684;&#x7A0B;&#x5E8F;&#x4E86;&#x3002;&#x4E0D;&#x8FC7;&#xFF0C;&#x5927;&#x5BB6;&#x53EF;&#x4EE5;&#x81EA;&#x884C;&#x5C1D;&#x8BD5;&#xFF0C;&#x770B;&#x770B;&#x4F7F;&#x7528;&#x5149;&#x7167;&#x540E;&#x6548;&#x679C;&#x6709;&#x4F55;&#x79CD;&#x6539;&#x89C2;&#x3002;&#x5C24;&#x5176;&#x662F;&#x6CE8;&#x610F;&#x56DB;&#x9762;&#x4F53;&#x5404;&#x4E2A;&#x8868;&#x9762;&#x4EA4;&#x754C;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x5728;&#x672A;&#x4F7F;&#x7528;&#x5149;&#x7167;&#x524D;&#xFF0C;&#x51E0;&#x4E4E;&#x770B;&#x4E0D;&#x6E05;&#x8F6E;&#x5ED3;&#xFF0C;&#x5728;&#x4F7F;&#x7528;&#x5149;&#x7167;&#x540E;&#xFF0C;&#x53EF;&#x6BD4;&#x8F83;&#x5BB9;&#x6613;&#x7684;&#x533A;&#x5206;&#x5404;&#x4E2A;&#x5E73;&#x9762;&#xFF0C;&#x56E0;&#x6B64;&#x7ACB;&#x4F53;&#x611F;&#x5F97;&#x5230;&#x52A0;&#x5F3A;&#x3002;&#x5F53;&#x7136;&#x4E86;&#xFF0C;&#x8FD9;&#x6837;&#x7684;&#x6548;&#x679C;&#x8FD8;&#x4E0D;&#x591F;&#x3002;&#x5982;&#x679C;&#x5728;&#x5404;&#x8868;&#x9762;&#x7684;&#x4EA4;&#x754C;&#x5904;&#x8BBE;&#x7F6E;&#x5F88;&#x591A;&#x7EC6;&#x5C0F;&#x7684;&#x5E73;&#x9762;&#xFF0C;&#x8FDB;&#x884C;&#x5E73;&#x6ED1;&#x5904;&#x7406;&#xFF0C;&#x5219;&#x5149;&#x7167;&#x540E;&#x7684;&#x6548;&#x679C;&#x5C06;&#x66F4;&#x771F;&#x5B9E;&#x3002;&#x4F46;&#x8FD9;&#x5DF2;&#x7ECF;&#x8FDC;&#x79BB;&#x672C;&#x8BFE;&#x7684;&#x5185;&#x5BB9;&#x4E86;&#x3002;</p>
+<h3 id="OpenGL&#x5165;&#x95E8;&#x5B66;&#x4E60;-&#x5341;&#x4E94;-&#x6570;&#x7EC4;&#x7684;&#x4ECB;&#x5165;"><a href="#OpenGL&#x5165;&#x95E8;&#x5B66;&#x4E60;-&#x5341;&#x4E94;-&#x6570;&#x7EC4;&#x7684;&#x4ECB;&#x5165;" class="headerlink" title="OpenGL&#x5165;&#x95E8;&#x5B66;&#x4E60;[&#x5341;&#x4E94;] &#x6570;&#x7EC4;&#x7684;&#x4ECB;&#x5165;"></a>OpenGL&#x5165;&#x95E8;&#x5B66;&#x4E60;[&#x5341;&#x4E94;] &#x6570;&#x7EC4;&#x7684;&#x4ECB;&#x5165;</h3><p>&#x7ED8;&#x5236;&#x4E00;&#x4E2A;&#x7ACB;&#x65B9;&#x4F53;&#xFF0C;&#x7B80;&#x5355;&#x5440;&#xFF0C;&#x6211;&#x4EEC;&#x5B66;&#x4E86;&#x7B2C;&#x4E00;&#x8BFE;&#x7B2C;&#x4E8C;&#x8BFE;&#xFF0C;&#x65E9;&#x5C31;&#x4F1A;&#x4E86;&#x3002;<br>&#x5148;&#x522B;&#x7740;&#x6025;&#xFF0C;&#x7ACB;&#x65B9;&#x4F53;&#x662F;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x91CC;&#x53EA;&#x662F;&#x62FF;&#x7ACB;&#x65B9;&#x4F53;&#x505A;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x6765;&#x8BF4;&#x660E;OpenGL&#x5728;&#x7ED8;&#x5236;&#x65B9;&#x6CD5;&#x4E0A;&#x7684;&#x6539;&#x8FDB;&#x3002;<br>&#x4ECE;&#x539F;&#x59CB;&#x4E00;&#x70B9;&#x7684;&#x529E;&#x6CD5;&#x5F00;&#x59CB;:<br>&#x4E00;&#x4E2A;&#x7ACB;&#x65B9;&#x4F53;&#x6709;&#x516D;&#x4E2A;&#x9762;&#xFF0C;&#x6BCF;&#x4E2A;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x6B63;&#x65B9;&#x5F62;&#xFF0C;&#x597D;&#xFF0C;&#x7ED8;&#x5236;&#x516D;&#x4E2A;&#x6B63;&#x65B9;&#x5F62;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002;<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">glBegin(GL_QUADS);</span><br><span class="line">     glVertex3f(...);</span><br><span class="line">     glVertex3f(...);</span><br><span class="line">     glVertex3f(...);</span><br><span class="line">     glVertex3f(...);</span><br><span class="line">     <span class="comment">// ...</span></span><br><span class="line">glEnd();</span><br></pre></td></tr></table></figure></p>
+<p>&#x4E3A;&#x4E86;&#x7ED8;&#x5236;&#x516D;&#x4E2A;&#x6B63;&#x65B9;&#x5F62;&#xFF0C;&#x6211;&#x4EEC;&#x4E3A;&#x6BCF;&#x4E2A;&#x6B63;&#x65B9;&#x5F62;&#x6307;&#x5B9A;&#x56DB;&#x4E2A;&#x9876;&#x70B9;&#xFF0C;&#x6700;&#x7EC8;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x6307;&#x5B9A;6<em>4=24&#x4E2A;&#x9876;&#x70B9;&#x3002;&#x4F46;&#x662F;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#xFF0C;&#x4E00;&#x4E2A;&#x7ACB;&#x65B9;&#x4F53;&#x5176;&#x5B9E;&#x603B;&#x5171;&#x53EA;&#x6709;&#x516B;&#x4E2A;&#x9876;&#x70B9;&#xFF0C;&#x8981;&#x6307;&#x5B9A;24&#x6B21;&#xFF0C;&#x5C31;&#x610F;&#x5473;&#x7740;&#x6BCF;&#x4E2A;&#x9876;&#x70B9;&#x5176;&#x5B9E;<em>*&#x91CD;&#x590D;&#x4F7F;&#x7528;</em></em>&#x4E86;&#x4E09;&#x6B21;&#xFF0C;&#x8FD9;&#x6837;&#x53EF;&#x4E0D;&#x662F;&#x597D;&#x7684;&#x73B0;&#x8C61;&#x3002;&#x6700;&#x8D77;&#x7801;&#xFF0C;&#x50CF;&#x4E0A;&#x9762;&#x8FD9;&#x6837;&#x91CD;&#x590D;&#x70E6;&#x7410;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x662F;&#x5F88;&#x5BB9;&#x6613;&#x51FA;&#x9519;&#x7684;&#x3002;&#x7A0D;&#x6709;&#x4E0D;&#x614E;&#xFF0C;&#x5373;&#x4F7F;&#x76F8;&#x540C;&#x7684;&#x9876;&#x70B9;&#x4E5F;&#x53EF;&#x80FD;&#x88AB;&#x6307;&#x5B9A;&#x6210;&#x4E0D;&#x540C;&#x7684;&#x9876;&#x70B9;&#x4E86;&#x3002;<br>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#xFF0C;&#x628A;&#x516B;&#x4E2A;&#x9876;&#x70B9;&#x90FD;&#x653E;&#x5230;&#x6570;&#x7EC4;&#x91CC;&#xFF0C;&#x7136;&#x540E;&#x6BCF;&#x6B21;&#x6307;&#x5B9A;&#x9876;&#x70B9;&#x90FD;&#x4F7F;&#x7528;&#x6307;&#x9488;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x4F7F;&#x7528;&#x76F4;&#x63A5;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x907F;&#x514D;&#x4E86;&#x5728;&#x6307;&#x5B9A;&#x9876;&#x70B9;&#x65F6;&#x8003;&#x8651;&#x5927;&#x91CF;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x4E8E;&#x662F;&#x51CF;&#x5C11;&#x4E86;&#x4EE3;&#x7801;&#x51FA;&#x9519;&#x7684;&#x53EF;&#x80FD;&#x6027;&#x3002;<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// &#x5C06;&#x7ACB;&#x65B9;&#x4F53;&#x7684;&#x516B;&#x4E2A;&#x9876;&#x70B9;&#x4FDD;&#x5B58;&#x5230;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x91CC;&#x9762;</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> GLfloat vertex_list[][<span class="number">3</span>] = {</span><br><span class="line">     -<span class="number">0.5f</span>, -<span class="number">0.5f</span>, -<span class="number">0.5f</span>,</span><br><span class="line">      <span class="number">0.5f</span>, -<span class="number">0.5f</span>, -<span class="number">0.5f</span>,</span><br><span class="line">     <span class="comment">// ...</span></span><br><span class="line">};</span><br><span class="line"><span class="comment">// &#x6307;&#x5B9A;&#x9876;&#x70B9;&#x65F6;&#xFF0C;&#x7528;&#x6307;&#x9488;&#xFF0C;&#x800C;&#x4E0D;&#x7528;&#x76F4;&#x63A5;&#x7528;&#x5177;&#x4F53;&#x7684;&#x6570;&#x636E;</span></span><br><span class="line">glBegin(GL_QUADS);</span><br><span class="line">     glVertex3fv(vertex_list[<span class="number">0</span>]);</span><br><span class="line">     glVertex3fv(vertex_list[<span class="number">2</span>]);</span><br><span class="line">     glVertex3fv(vertex_list[<span class="number">3</span>]);</span><br><span class="line">     glVertex3fv(vertex_list[<span class="number">1</span>]);</span><br><span class="line">     <span class="comment">// ...</span></span><br><span class="line">glEnd();</span><br></pre></td></tr></table></figure></p>
+<p>&#x4FEE;&#x6539;&#x4E4B;&#x540E;&#xFF0C;&#x867D;&#x7136;&#x4EE3;&#x7801;&#x53D8;&#x957F;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x786E;&#x5B9E;&#x6613;&#x8BFB;&#x5F97;&#x591A;&#x3002;&#x5F88;&#x5BB9;&#x6613;&#x5C31;&#x770B;&#x51FA;&#x7B2C;0, 2, 3, 1&#x8FD9;&#x56DB;&#x4E2A;&#x9876;&#x70B9;&#x6784;&#x6210;&#x4E00;&#x4E2A;&#x6B63;&#x65B9;&#x5F62;&#x3002;<br>&#x7A0D;&#x7A0D;&#x89C2;&#x5BDF;&#x5C31;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#xFF0C;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x4E86;&#x5927;&#x91CF;&#x7684;glVertex3fv&#x51FD;&#x6570;&#xFF0C;&#x5176;&#x5B9E;&#x6BCF;&#x4E00;&#x53E5;&#x90FD;&#x53EA;&#x6709;&#x5176;&#x4E2D;&#x7684;&#x9876;&#x70B9;&#x5E8F;&#x53F7;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x518D;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x5E8F;&#x53F7;&#x6570;&#x7EC4;&#xFF0C;&#x628A;&#x6240;&#x6709;&#x7684;&#x5E8F;&#x53F7;&#x4E5F;&#x653E;&#x8FDB;&#x53BB;&#x3002;&#x8FD9;&#x6837;&#x4E00;&#x6765;&#x4EE3;&#x7801;&#x5C31;&#x66F4;&#x52A0;&#x7B80;&#x5355;&#x4E86;&#x3002;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// &#x5C06;&#x7ACB;&#x65B9;&#x4F53;&#x7684;&#x516B;&#x4E2A;&#x9876;&#x70B9;&#x4FDD;&#x5B58;&#x5230;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x91CC;&#x9762;
+static const GLfloat vertex_list[][3] = {
+     -0.5f, -0.5f, -0.5f,
+      0.5f, -0.5f, -0.5f,
+     -0.5f,  0.5f, -0.5f,
+      0.5f,  0.5f, -0.5f,
+     -0.5f, -0.5f,  0.5f,
+      0.5f, -0.5f,  0.5f,
+     -0.5f,  0.5f,  0.5f,
+      0.5f,  0.5f,  0.5f,
+};
+// &#x5C06;&#x8981;&#x4F7F;&#x7528;&#x7684;&#x9876;&#x70B9;&#x7684;&#x5E8F;&#x53F7;&#x4FDD;&#x5B58;&#x5230;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x91CC;&#x9762;
+static const GLint index_list[][4] = {
+     0, 2, 3, 1,
+     0, 4, 6, 2,
+     0, 1, 5, 4,
+     4, 5, 7, 6,
+     1, 3, 7, 5,
+     2, 6, 7, 3,
+};
+int i, j;
+// &#x7ED8;&#x5236;&#x7684;&#x65F6;&#x5019;&#x4EE3;&#x7801;&#x5F88;&#x7B80;&#x5355;
+glBegin(GL_QUADS);
+for(i=0; i&lt;6; ++i)          // &#x6709;&#x516D;&#x4E2A;&#x9762;&#xFF0C;&#x5FAA;&#x73AF;&#x516D;&#x6B21;
+    for(j=0; j&lt;4; ++j)      // &#x6BCF;&#x4E2A;&#x9762;&#x6709;&#x56DB;&#x4E2A;&#x9876;&#x70B9;&#xFF0C;&#x5FAA;&#x73AF;&#x56DB;&#x6B21;
+         glVertex3fv(vertex_list[index_list[i][j]]);
+glEnd();</span><br></pre></td></tr></table></figure></p>
+<p>&#x8FD9;&#x6837;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x5F97;&#x5230;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x6210;&#x719F;&#x7684;&#x7ED8;&#x5236;&#x7ACB;&#x65B9;&#x4F53;&#x7684;&#x7248;&#x672C;&#x4E86;&#x3002;&#x5B83;&#x7684;&#x6570;&#x636E;&#x548C;&#x7A0B;&#x5E8F;&#x4EE3;&#x7801;&#x57FA;&#x672C;&#x4E0A;&#x662F;&#x5206;&#x5F00;&#x7684;&#xFF0C;<strong>&#x6240;&#x6709;&#x7684;&#x9876;&#x70B9;&#x653E;&#x5230;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x4E2D;&#xFF0C;&#x4F7F;&#x7528;&#x9876;&#x70B9;&#x7684;&#x5E8F;&#x53F7;&#x653E;&#x5230;&#x53E6;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x4E2D;</strong>&#xFF0C;&#x800C;&#x5229;&#x7528;&#x8FD9;&#x4E24;&#x4E2A;&#x6570;&#x7EC4;&#x6765;&#x7ED8;&#x5236;&#x7ACB;&#x65B9;&#x4F53;&#x7684;&#x4EE3;&#x7801;&#x5219;&#x5F88;&#x7B80;&#x5355;&#x3002;</p>
+<p><strong>&#x6B63;&#x5BF9;&#x6211;&#x4EEC;&#x7684;&#x9762;&#xFF0C;&#x6309;&#x9006;&#x65F6;&#x9488;&#x987A;&#x5E8F;&#xFF0C;&#x80CC;&#x5BF9;&#x6211;&#x4EEC;&#x7684;&#x9762;&#xFF0C;&#x5219;&#x6309;&#x987A;&#x65F6;&#x9488;&#x987A;&#x5E8F;</strong>&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x5F97;&#x5230;&#x4E86;&#x4E0A;&#x9762;&#x90A3;&#x4E2A;index_list&#x6570;&#x7EC4;&#x3002;<br>&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x6309;&#x7167;&#x987A;&#x65F6;&#x9488;&#x9006;&#x65F6;&#x9488;&#x7684;&#x89C4;&#x5219;&#x5462;&#xFF1F;&#x56E0;&#x4E3A;&#x8FD9;&#x6837;&#x505A;&#x53EF;&#x4EE5;&#x4FDD;&#x8BC1;&#x65E0;&#x8BBA;&#x4ECE;&#x54EA;&#x4E2A;&#x89D2;&#x5EA6;&#x89C2;&#x5BDF;&#xFF0C;&#x770B;&#x5230;&#x7684;&#x90FD;&#x662F;&#x201C;&#x6B63;&#x9762;&#x201D;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x80CC;&#x9762;&#x3002;&#x5728;&#x8BA1;&#x7B97;&#x5149;&#x7167;&#x65F6;&#xFF0C;&#x6B63;&#x9762;&#x548C;&#x80CC;&#x9762;&#x7684;&#x5904;&#x7406;&#x53EF;&#x80FD;&#x662F;&#x4E0D;&#x540C;&#x7684;&#xFF0C;&#x53E6;&#x5916;&#xFF0C;<strong>&#x5254;&#x9664;&#x80CC;&#x9762;&#x53EA;&#x7ED8;&#x5236;&#x6B63;&#x9762;&#xFF0C;&#x53EF;&#x4EE5;&#x63D0;&#x9AD8;&#x7A0B;&#x5E8F;&#x7684;&#x8FD0;&#x884C;&#x6548;&#x7387;&#x3002;</strong>&#xFF08;&#x5173;&#x4E8E;&#x6B63;&#x9762;&#x3001;&#x80CC;&#x9762;&#xFF0C;&#x4EE5;&#x53CA;&#x5254;&#x9664;&#xFF0C;&#x53C2;&#x89C1;&#x7B2C;&#x4E09;&#x8BFE;&#xFF0C;&#x7ED8;&#x5236;&#x51E0;&#x4F55;&#x56FE;&#x5F62;&#x7684;&#x4E00;&#x4E9B;&#x7EC6;&#x8282;&#x95EE;&#x9898;&#xFF09;<br>&#x4F8B;&#x5982;&#x5728;&#x7ED8;&#x5236;&#x4E4B;&#x524D;&#x8C03;&#x7528;&#x5982;&#x4E0B;&#x7684;&#x4EE3;&#x7801;&#xFF1A;<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">glFrontFace(GL_CCW);</span><br><span class="line">glCullFace(GL_BACK);</span><br><span class="line">glEnable(GL_CULL_FACE);</span><br><span class="line">glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);</span><br></pre></td></tr></table></figure></p>
+<p>&#x5219;&#x7ED8;&#x5236;&#x51FA;&#x6765;&#x7684;&#x56FE;&#x5F62;&#x5C31;&#x53EA;&#x6709;&#x6B63;&#x9762;&#xFF0C;&#x5E76;&#x4E14;&#x53EA;&#x663E;&#x793A;&#x8FB9;&#x7EBF;&#xFF0C;&#x4E0D;&#x8FDB;&#x884C;&#x586B;&#x5145;&#x3002;</p>
+<h4 id="&#x9876;&#x70B9;&#x6570;&#x7EC4;"><a href="#&#x9876;&#x70B9;&#x6570;&#x7EC4;" class="headerlink" title="&#x9876;&#x70B9;&#x6570;&#x7EC4;"></a>&#x9876;&#x70B9;&#x6570;&#x7EC4;</h4><p>&#xFF08;&#x63D0;&#x793A;&#xFF1A;&#x9876;&#x70B9;&#x6570;&#x7EC4;&#x662F;OpenGL 1.1&#x6240;&#x63D0;&#x4F9B;&#x7684;&#x529F;&#x80FD;&#xFF09;<br>&#x524D;&#x9762;&#x7684;&#x65B9;&#x6CD5;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x6570;&#x636E;&#x548C;&#x4EE3;&#x7801;&#x5206;&#x79BB;&#x5F00;&#xFF0C;&#x770B;&#x8D77;&#x6765;&#x53EA;&#x8981;&#x516B;&#x4E2A;&#x9876;&#x70B9;&#x5C31;&#x53EF;&#x4EE5;&#x7ED8;&#x5236;&#x4E00;&#x4E2A;&#x7ACB;&#x65B9;&#x4F53;&#x4E86;&#x3002;&#x4F46;&#x662F;&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x5FAA;&#x73AF;&#x8FD8;&#x662F;&#x6267;&#x884C;&#x4E86;6<em>4=24&#x6B21;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x867D;&#x7136;&#x4EE3;&#x7801;&#x7684;&#x7ED3;&#x6784;&#x6E05;&#x6670;&#x4E86;&#x4E0D;&#x5C11;&#xFF0C;&#x4F46;&#x662F;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x7684;&#x6548;&#x7387;&#xFF0C;&#x8FD8;&#x662F;&#x548C;&#x6700;&#x539F;&#x59CB;&#x7684;&#x90A3;&#x4E2A;&#x65B9;&#x6CD5;&#x4E00;&#x6837;&#x3002;<br>&#x51CF;&#x5C11;&#x51FD;&#x6570;&#x7684;&#x8C03;&#x7528;&#x6B21;&#x6570;&#xFF0C;&#x662F;&#x63D0;&#x9AD8;&#x8FD0;&#x884C;&#x6548;&#x7387;&#x7684;&#x65B9;&#x6CD5;&#x4E4B;&#x4E00;&#x3002;&#x4E8E;&#x662F;&#x6211;&#x4EEC;&#x60F3;&#x5230;&#x4E86;&#x663E;&#x793A;&#x5217;&#x8868;&#x3002;&#x628A;&#x7ED8;&#x5236;&#x7ACB;&#x65B9;&#x4F53;&#x7684;&#x4EE3;&#x7801;&#x88C5;&#x5230;&#x4E00;&#x4E2A;&#x663E;&#x793A;&#x5217;&#x8868;&#x4E2D;&#xFF0C;&#x4EE5;&#x540E;&#x53EA;&#x8981;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x663E;&#x793A;&#x5217;&#x8868;&#x5373;&#x53EF;&#x3002;<br>&#x8FD9;&#x6837;&#x770B;&#x8D77;&#x6765;&#x5F88;&#x4E0D;&#x9519;&#xFF0C;&#x4F46;&#x662F;<em>*&#x663E;&#x793A;&#x5217;&#x8868;&#x6709;&#x4E00;&#x4E2A;&#x7F3A;&#x70B9;&#xFF0C;&#x90A3;&#x5C31;&#x662F;&#x4E00;&#x65E6;&#x5EFA;&#x7ACB;&#x540E;&#x4E0D;&#x53EF;&#x518D;&#x6539;</em></em>&#x3002;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x8981;&#x7ED8;&#x5236;&#x7684;&#x4E0D;&#x662F;&#x7ACB;&#x65B9;&#x4F53;&#xFF0C;&#x800C;&#x662F;&#x4E00;&#x4E2A;&#x80FD;&#x591F;&#x8D70;&#x52A8;&#x7684;&#x4EBA;&#x7269;&#xFF0C;&#x56E0;&#x4E3A;&#x4EBA;&#x7269;&#x8D70;&#x52A8;&#x65F6;&#xFF0C;&#x56DB;&#x80A2;&#x7684;&#x4F4D;&#x7F6E;&#x4E0D;&#x65AD;&#x53D8;&#x5316;&#xFF0C;&#x51E0;&#x4E4E;&#x6CA1;&#x6709;&#x529E;&#x6CD5;&#x628A;&#x6240;&#x6709;&#x7684;&#x5185;&#x5BB9;&#x88C5;&#x5230;&#x4E00;&#x4E2A;&#x663E;&#x793A;&#x5217;&#x8868;&#x4E2D;&#x3002;&#x5FC5;&#x987B;&#x6BCF;&#x79CD;&#x52A8;&#x4F5C;&#x90FD;&#x4F7F;&#x7528;&#x5355;&#x72EC;&#x7684;&#x663E;&#x793A;&#x5217;&#x8868;&#xFF0C;&#x8FD9;&#x6837;&#x4F1A;&#x5BFC;&#x81F4;&#x5927;&#x91CF;&#x7684;&#x663E;&#x793A;&#x5217;&#x8868;&#x7BA1;&#x7406;&#x56F0;&#x96BE;&#x3002;<br>&#x9876;&#x70B9;&#x6570;&#x7EC4;&#x662F;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x7684;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x3002;&#x4F7F;&#x7528;&#x9876;&#x70B9;&#x6570;&#x7EC4;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E5F;&#x662F;&#x50CF;&#x524D;&#x9762;&#x7684;&#x65B9;&#x6CD5;&#x4E00;&#x6837;&#xFF0C;&#x7528;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x4FDD;&#x5B58;&#x6240;&#x6709;&#x7684;&#x9876;&#x70B9;&#xFF0C;&#x7528;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x4FDD;&#x5B58;&#x9876;&#x70B9;&#x7684;&#x5E8F;&#x53F7;&#x3002;&#x4F46;&#x6700;&#x540E;&#x7ED8;&#x5236;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E0D;&#x662F;&#x7F16;&#x5199;&#x5FAA;&#x73AF;&#x8BED;&#x53E5;&#x9010;&#x4E2A;&#x7684;&#x6307;&#x5B9A;&#x9876;&#x70B9;&#x4E86;&#xFF0C;&#x800C;&#x662F;&#x901A;&#x77E5;OpenGL&#xFF0C;&#x201C;&#x4FDD;&#x5B58;&#x9876;&#x70B9;&#x7684;&#x6570;&#x7EC4;&#x201D;&#x548C;&#x201C;&#x4FDD;&#x5B58;&#x9876;&#x70B9;&#x5E8F;&#x53F7;&#x7684;&#x6570;&#x7EC4;&#x201D;&#x6240;&#x5728;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x7531;OpenGL&#x81EA;&#x52A8;&#x7684;&#x627E;&#x5230;&#x9876;&#x70B9;&#xFF0C;&#x5E76;&#x8FDB;&#x884C;&#x7ED8;&#x5236;&#x3002;<br>&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x8BF4;&#x660E;&#x4E86;&#x9876;&#x70B9;&#x6570;&#x7EC4;&#x662F;&#x5982;&#x4F55;&#x4F7F;&#x7528;&#x7684;&#xFF1A;</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">glEnableClientState(GL_VERTEX_ARRAY);</span><br><span class="line">glVertexPointer(<span class="number">3</span>, GL_FLOAT, <span class="number">0</span>, vertex_list);</span><br><span class="line">glDrawElements(GL_QUADS, <span class="number">24</span>, GL_UNSIGNED_INT, index_list);</span><br></pre></td></tr></table></figure>
+<p>&#x5176;&#x4E2D;&#xFF1A;</p>
+<blockquote>
+<p>glEnableClientState(GL_VERTEX_ARRAY); &#x8868;&#x793A;&#x542F;&#x7528;&#x9876;&#x70B9;&#x6570;&#x7EC4;&#x3002;<br>glVertexPointer(3, GL_FLOAT, 0, vertex_list); &#x6307;&#x5B9A;&#x9876;&#x70B9;&#x6570;&#x7EC4;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;3&#x8868;&#x793A;&#x6BCF;&#x4E2A;&#x9876;&#x70B9;&#x7531;&#x4E09;&#x4E2A;&#x91CF;&#x6784;&#x6210;&#xFF08;x, y, z&#xFF09;&#xFF0C;GL_FLOAT&#x8868;&#x793A;&#x6BCF;&#x4E2A;&#x91CF;&#x90FD;&#x662F;&#x4E00;&#x4E2A;GLfloat&#x7C7B;&#x578B;&#x7684;&#x503C;&#x3002;&#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;0&#xFF0C;&#x53C2;&#x89C1;&#x540E;&#x9762;&#x4ECB;&#x7ECD;&#x201C;stride&#x53C2;&#x6570;&#x201D;&#x3002;&#x6700;&#x540E;&#x7684;vertex_list&#x6307;&#x660E;&#x4E86;&#x6570;&#x7EC4;&#x5B9E;&#x9645;&#x7684;&#x4F4D;&#x7F6E;&#x3002;<br>glDrawElements(GL_QUADS, 24, GL_UNSIGNED_INT, index_list); &#x6839;&#x636E;&#x5E8F;&#x53F7;&#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x5E8F;&#x53F7;&#xFF0C;&#x67E5;&#x627E;&#x5230;&#x76F8;&#x5E94;&#x7684;&#x9876;&#x70B9;&#xFF0C;&#x5E76;&#x5B8C;&#x6210;&#x7ED8;&#x5236;&#x3002;GL_QUADS&#x8868;&#x793A;&#x7ED8;&#x5236;&#x7684;&#x662F;&#x56DB;&#x8FB9;&#x5F62;&#xFF0C;24&#x8868;&#x793A;&#x603B;&#x5171;&#x6709;24&#x4E2A;&#x9876;&#x70B9;&#xFF0C;GL_UNSIGNED_INT&#x8868;&#x793A;&#x5E8F;&#x53F7;&#x6570;&#x7EC4;&#x5185;&#x6BCF;&#x4E2A;&#x5E8F;&#x53F7;&#x90FD;&#x662F;&#x4E00;&#x4E2A;GLuint&#x7C7B;&#x578B;&#x7684;&#x503C;&#xFF0C;index_list&#x6307;&#x660E;&#x4E86;&#x5E8F;&#x53F7;&#x6570;&#x7EC4;&#x5B9E;&#x9645;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</p>
+</blockquote>
+<p>&#x4E0A;&#x9762;&#x4E09;&#x884C;&#x4EE3;&#x7801;&#x4EE3;&#x66FF;&#x4E86;&#x539F;&#x6765;&#x7684;&#x5FAA;&#x73AF;&#x3002;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;<strong>&#x539F;&#x6765;&#x7684;glBegin/glEnd&#x4E0D;&#x518D;&#x9700;&#x8981;&#x4E86;</strong>&#xFF0C;<strong>&#x4E5F;&#x4E0D;&#x9700;&#x8981;&#x8C03;&#x7528;glVertex* &#x7CFB;&#x5217;&#x51FD;&#x6570;&#x6765;&#x6307;&#x5B9A;&#x9876;&#x70B9;</strong>&#xFF0C;&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x660E;&#x663E;&#x7684;&#x51CF;&#x5C11;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x6B21;&#x6570;&#x3002;&#x53E6;&#x5916;&#xFF0C;&#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x5185;&#x5BB9;&#x53EF;&#x4EE5;&#x968F;&#x65F6;&#x4FEE;&#x6539;&#xFF0C;&#x6BD4;&#x663E;&#x793A;&#x5217;&#x8868;&#x66F4;&#x52A0;&#x7075;&#x6D3B;&#x3002; </p>
+<p>&#x8BE6;&#x7EC6;&#x4E00;&#x70B9;&#x7684;&#x8BF4;&#x660E;&#x3002;<br><strong>&#x9876;&#x70B9;&#x6570;&#x7EC4;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x591A;&#x4E2A;&#x6570;&#x7EC4;&#xFF0C;&#x9876;&#x70B9;&#x5750;&#x6807;&#x3001;&#x7EB9;&#x7406;&#x5750;&#x6807;&#x3001;&#x6CD5;&#x7EBF;&#x5411;&#x91CF;&#x3001;&#x9876;&#x70B9;&#x989C;&#x8272;&#x7B49;&#x7B49;&#xFF0C;&#x9876;&#x70B9;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#x90FD;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#xFF0C;&#x7136;&#x540E;&#x7528;&#x7EDF;&#x4E00;&#x7684;&#x5E8F;&#x53F7;&#x6765;&#x8FDB;&#x884C;&#x8BBF;&#x95EE;&#x3002;</strong>&#x6BD4;&#x5982;&#x5E8F;&#x53F7;3&#xFF0C;&#x5C31;&#x8868;&#x793A;&#x53D6;&#x5F97;&#x989C;&#x8272;&#x6570;&#x7EC4;&#x7684;&#x7B2C;3&#x4E2A;&#x5143;&#x7D20;&#x4F5C;&#x4E3A;&#x989C;&#x8272;&#x3001;&#x53D6;&#x5F97;&#x7EB9;&#x7406;&#x5750;&#x6807;&#x6570;&#x7EC4;&#x7684;&#x7B2C;3&#x4E2A;&#x5143;&#x7D20;&#x4F5C;&#x4E3A;&#x7EB9;&#x7406;&#x5750;&#x6807;&#x3001;&#x53D6;&#x5F97;&#x6CD5;&#x7EBF;&#x5411;&#x91CF;&#x6570;&#x7EC4;&#x7684;&#x7B2C;3&#x4E2A;&#x5143;&#x7D20;&#x4F5C;&#x4E3A;&#x6CD5;&#x7EBF;&#x5411;&#x91CF;&#x3001;&#x53D6;&#x5F97;&#x9876;&#x70B9;&#x5750;&#x6807;&#x6570;&#x7EC4;&#x7684;&#x7B2C;3&#x4E2A;&#x5143;&#x7D20;&#x4F5C;&#x4E3A;&#x9876;&#x70B9;&#x5750;&#x6807;&#x3002;&#x628A;&#x6240;&#x6709;&#x7684;&#x6570;&#x636E;&#x7EFC;&#x5408;&#x8D77;&#x6765;&#xFF0C;&#x6700;&#x7EC8;&#x5F97;&#x5230;&#x4E00;&#x4E2A;&#x9876;&#x70B9;&#x3002;<br>&#x53EF;&#x4EE5;&#x7528;glEnableClientState/glDisableClientState&#x5355;&#x72EC;&#x7684;&#x5F00;&#x542F;&#x548C;&#x5173;&#x95ED;&#x6BCF;&#x4E00;&#x79CD;&#x6570;&#x7EC4;&#x3002;<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">glEnableClientState(GL_VERTEX_ARRAY);</span><br><span class="line">glEnableClientState(GL_COLOR_ARRAY);</span><br><span class="line">glEnableClientState(GL_NORMAL_ARRAY);</span><br><span class="line">glEnableClientState(GL_TEXTURE_COORD_ARRAY);</span><br></pre></td></tr></table></figure></p>
+<p>&#x7528;&#x4EE5;&#x4E0B;&#x7684;&#x51FD;&#x6570;&#x6765;&#x6307;&#x5B9A;&#x6570;&#x7EC4;&#x7684;&#x4F4D;&#x7F6E;&#xFF1A;<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">glVertexPointer</span><br><span class="line">glColorPointer</span><br><span class="line">glNormalPointer</span><br><span class="line">glTexCoordPointer</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>&#x4E3A;&#x4EC0;&#x4E48;&#x4E0D;&#x4F7F;&#x7528;&#x539F;&#x6765;&#x7684;glEnable/glDisable&#x51FD;&#x6570;&#xFF0C;&#x800C;&#x8981;&#x4E13;&#x95E8;&#x7684;&#x89C4;&#x5B9A;&#x4E00;&#x4E2A;glEnableClientState/glDisableClientState&#x51FD;&#x6570;&#x5462;&#xFF1F;<br>&#x8FD9;&#x8DDF;OpenGL&#x7684;&#x5DE5;&#x4F5C;&#x673A;&#x5236;&#x6709;&#x5173;&#x3002;OpenGL&#x5728;&#x8BBE;&#x8BA1;&#x65F6;&#xFF0C;&#x8BA4;&#x4E3A;&#x53EF;&#x4EE5;&#x5C06;&#x6574;&#x4E2A;OpenGL&#x7CFB;&#x7EDF;&#x5206;&#x4E3A;&#x4E24;&#x90E8;&#x5206;&#xFF0C;&#x4E00;&#x90E8;&#x5206;&#x662F;&#x5BA2;&#x6237;&#x7AEF;&#xFF0C;&#x5B83;&#x8D1F;&#x8D23;&#x53D1;&#x9001;OpenGL&#x547D;&#x4EE4;&#x3002;&#x4E00;&#x90E8;&#x5206;&#x662F;&#x670D;&#x52A1;&#x7AEF;&#xFF0C;&#x5B83;&#x8D1F;&#x8D23;&#x63A5;&#x6536;OpenGL&#x547D;&#x4EE4;&#x5E76;&#x6267;&#x884C;&#x76F8;&#x5E94;&#x7684;&#x64CD;&#x4F5C;&#x3002;&#x5BF9;&#x4E8E;&#x4E2A;&#x4EBA;&#x8BA1;&#x7B97;&#x673A;&#x6765;&#x8BF4;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;CPU&#x3001;&#x5185;&#x5B58;&#x7B49;&#x786C;&#x4EF6;&#xFF0C;&#x4EE5;&#x53CA;&#x7528;&#x6237;&#x7F16;&#x5199;&#x7684;OpenGL&#x7A0B;&#x5E8F;&#x770B;&#x505A;&#x5BA2;&#x6237;&#x7AEF;&#xFF0C;&#x800C;&#x5C06;OpenGL&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x3001;&#x663E;&#x793A;&#x8BBE;&#x5907;&#x7B49;&#x770B;&#x505A;&#x670D;&#x52A1;&#x7AEF;&#x3002;<br>&#x901A;&#x5E38;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x72B6;&#x6001;&#x90FD;&#x662F;&#x4FDD;&#x5B58;&#x5728;&#x670D;&#x52A1;&#x7AEF;&#x7684;&#xFF0C;&#x4FBF;&#x4E8E;OpenGL&#x4F7F;&#x7528;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x662F;&#x5426;&#x542F;&#x7528;&#x4E86;&#x7EB9;&#x7406;&#xFF0C;&#x670D;&#x52A1;&#x7AEF;&#x5728;&#x7ED8;&#x5236;&#x65F6;&#x7ECF;&#x5E38;&#x9700;&#x8981;&#x77E5;&#x9053;&#x8FD9;&#x4E2A;&#x72B6;&#x6001;&#xFF0C;&#x800C;&#x6211;&#x4EEC;&#x7F16;&#x5199;&#x7684;&#x5BA2;&#x6237;&#x7AEF;OpenGL&#x7A0B;&#x5E8F;&#x53EA;&#x5728;&#x5F88;&#x5C11;&#x7684;&#x65F6;&#x5019;&#x9700;&#x8981;&#x77E5;&#x9053;&#x8FD9;&#x4E2A;&#x72B6;&#x6001;&#x3002;&#x6240;&#x4EE5;&#x5C06;&#x8FD9;&#x4E2A;&#x72B6;&#x6001;&#x653E;&#x5728;&#x670D;&#x52A1;&#x7AEF;&#x662F;&#x6BD4;&#x8F83;&#x6709;&#x5229;&#x7684;&#x3002;<br>&#x4F46;&#x9876;&#x70B9;&#x6570;&#x7EC4;&#x7684;&#x72B6;&#x6001;&#x5219;&#x4E0D;&#x540C;&#x3002;&#x6211;&#x4EEC;&#x6307;&#x5B9A;&#x9876;&#x70B9;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F;&#x628A;&#x9876;&#x70B9;&#x6570;&#x636E;&#x4ECE;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x5230;&#x670D;&#x52A1;&#x7AEF;&#x3002;&#x662F;&#x5426;&#x542F;&#x7528;&#x9876;&#x70B9;&#x6570;&#x7EC4;&#xFF0C;&#x53EA;&#x662F;&#x63A7;&#x5236;&#x53D1;&#x9001;&#x9876;&#x70B9;&#x6570;&#x636E;&#x7684;&#x65B9;&#x5F0F;&#x800C;&#x5DF2;&#x3002;&#x670D;&#x52A1;&#x7AEF;&#x53EA;&#x7BA1;&#x63A5;&#x6536;&#x9876;&#x70B9;&#x6570;&#x636E;&#xFF0C;&#x800C;&#x4E0D;&#x5FC5;&#x7BA1;&#x9876;&#x70B9;&#x6570;&#x636E;&#x5230;&#x5E95;&#x662F;&#x7528;&#x54EA;&#x79CD;&#x65B9;&#x5F0F;&#x6307;&#x5B9A;&#x7684;&#xFF08;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;glBegin/glEnd/glVertex*&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x9876;&#x70B9;&#x6570;&#x7EC4;&#xFF09;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x670D;&#x52A1;&#x7AEF;&#x4E0D;&#x9700;&#x8981;&#x77E5;&#x9053;&#x9876;&#x70B9;&#x6570;&#x7EC4;&#x662F;&#x5426;&#x5F00;&#x542F;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x9876;&#x70B9;&#x6570;&#x7EC4;&#x7684;&#x72B6;&#x6001;&#x653E;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x662F;&#x6BD4;&#x8F83;&#x5408;&#x7406;&#x7684;&#x3002;<br>&#x4E3A;&#x4E86;&#x8868;&#x793A;&#x670D;&#x52A1;&#x7AEF;&#x72B6;&#x6001;&#x548C;&#x5BA2;&#x6237;&#x7AEF;&#x72B6;&#x6001;&#x7684;&#x533A;&#x522B;&#xFF0C;&#x670D;&#x52A1;&#x7AEF;&#x7684;&#x72B6;&#x6001;&#x7528;glEnable/glDisable&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x72B6;&#x6001;&#x5219;&#x7528;glEnableClientState/glDisableClientState&#x3002;</p>
+</blockquote>
+<h5 id="stride&#x53C2;&#x6570;&#xFF1A;"><a href="#stride&#x53C2;&#x6570;&#xFF1A;" class="headerlink" title="stride&#x53C2;&#x6570;&#xFF1A;"></a>stride&#x53C2;&#x6570;&#xFF1A;</h5><p>&#x9876;&#x70B9;&#x6570;&#x7EC4;&#x5E76;&#x4E0D;&#x8981;&#x6C42;&#x6240;&#x6709;&#x7684;&#x6570;&#x636E;&#x90FD;&#x8FDE;&#x7EED;&#x5B58;&#x653E;&#x3002;&#x5982;&#x679C;&#x6570;&#x636E;&#x6CA1;&#x6709;&#x8FDE;&#x7EED;&#x5B58;&#x653E;&#xFF0C;&#x5219;&#x6307;&#x5B9A;&#x6570;&#x636E;&#x4E4B;&#x95F4;&#x7684;&#x95F4;&#x9694;&#x5373;&#x53EF;&#x3002;<br>&#x4F8B;&#x5982;&#xFF1A;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;struct&#x6765;&#x5B58;&#x653E;&#x9876;&#x70B9;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x3002;&#x6CE8;&#x610F;&#x6BCF;&#x4E2A;&#x9876;&#x70B9;&#x9664;&#x4E86;&#x5750;&#x6807;&#x5916;&#xFF0C;&#x8FD8;&#x6709;&#x989D;&#x5916;&#x7684;&#x6570;&#x636E;&#xFF08;&#x8FD9;&#x91CC;&#x662F;&#x4E00;&#x4E2A;int&#x7C7B;&#x578B;&#x7684;&#x503C;&#xFF09;&#x3002;<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> __point__ {</span><br><span class="line">     GLfloat position[<span class="number">3</span>];</span><br><span class="line">    <span class="keyword">int</span>      id;</span><br><span class="line">} Point;</span><br><span class="line">Point vertex_list[] = {</span><br><span class="line">     -<span class="number">0.5f</span>, -<span class="number">0.5f</span>, -<span class="number">0.5f</span>, <span class="number">1</span>,</span><br><span class="line">      <span class="number">0.5f</span>, -<span class="number">0.5f</span>, -<span class="number">0.5f</span>, <span class="number">2</span>,</span><br><span class="line">     -<span class="number">0.5f</span>,  <span class="number">0.5f</span>, -<span class="number">0.5f</span>, <span class="number">3</span>,</span><br><span class="line">      <span class="number">0.5f</span>,  <span class="number">0.5f</span>, -<span class="number">0.5f</span>, <span class="number">4</span>,</span><br><span class="line">     -<span class="number">0.5f</span>, -<span class="number">0.5f</span>,  <span class="number">0.5f</span>, <span class="number">5</span>,</span><br><span class="line">      <span class="number">0.5f</span>, -<span class="number">0.5f</span>,  <span class="number">0.5f</span>, <span class="number">6</span>,</span><br><span class="line">     -<span class="number">0.5f</span>,  <span class="number">0.5f</span>,  <span class="number">0.5f</span>, <span class="number">7</span>,</span><br><span class="line">      <span class="number">0.5f</span>,  <span class="number">0.5f</span>,  <span class="number">0.5f</span>, <span class="number">8</span>,</span><br><span class="line">};</span><br><span class="line"><span class="keyword">static</span> GLint index_list[][<span class="number">4</span>] = {</span><br><span class="line">     <span class="number">0</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>,</span><br><span class="line">     <span class="number">0</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">2</span>,</span><br><span class="line">     <span class="number">0</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">4</span>,</span><br><span class="line">     <span class="number">4</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">6</span>,</span><br><span class="line">     <span class="number">1</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">5</span>,</span><br><span class="line">     <span class="number">2</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">3</span>,</span><br><span class="line">};</span><br><span class="line">glEnableClientState(GL_VERTEX_ARRAY);</span><br><span class="line">glVertexPointer(<span class="number">3</span>, GL_FLOAT, <span class="keyword">sizeof</span>(Point), vertex_list);</span><br><span class="line">glDrawElements(GL_QUADS, <span class="number">24</span>, GL_UNSIGNED_INT, index_list);</span><br></pre></td></tr></table></figure></p>
+<p>&#x6CE8;&#x610F;&#x6700;&#x540E;&#x4E09;&#x884C;&#x4EE3;&#x7801;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x51E0;&#x4E4E;&#x6240;&#x6709;&#x7684;&#x5730;&#x65B9;&#x90FD;&#x548C;&#x539F;&#x6765;&#x4E00;&#x6837;&#xFF0C;&#x53EA;&#x5728;glVertexPointer&#x51FD;&#x6570;&#x7684;&#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x6709;&#x6240;&#x4E0D;&#x540C;&#x3002;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x5C31;&#x662F;stride&#xFF0C;&#x5B83;&#x8868;&#x793A;<strong>&#x201C;&#x4ECE;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x7684;&#x5F00;&#x59CB;&#x5230;&#x4E0B;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x7684;&#x5F00;&#x59CB;&#xFF0C;&#x6240;&#x76F8;&#x9694;&#x7684;&#x5B57;&#x8282;&#x6570;&#x201D;</strong>&#x3002;&#x8FD9;&#x91CC;&#x8BBE;&#x7F6E;&#x4E3A;sizeof(Point)&#x5C31;&#x521A;&#x521A;&#x597D;&#x3002;<strong>&#x5982;&#x679C;&#x8BBE;&#x7F6E;&#x4E3A;0&#xFF0C;&#x5219;&#x8868;&#x793A;&#x6570;&#x636E;&#x662F;&#x7D27;&#x5BC6;&#x6392;&#x5217;&#x7684;&#x3002;</strong>&#x5BF9;&#x4E8E;3&#x4E2A;GLfloat&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x6570;&#x636E;&#x7D27;&#x5BC6;&#x6392;&#x5217;&#x65F6;stride&#x5B9E;&#x9645;&#x4E0A;&#x4E3A;3*4=12&#x3002;<br>&#x6DF7;&#x5408;&#x6570;&#x7EC4;&#x3002;&#x5982;&#x679C;&#x9700;&#x8981;&#x540C;&#x65F6;&#x4F7F;&#x7528;&#x989C;&#x8272;&#x6570;&#x7EC4;&#x3001;&#x9876;&#x70B9;&#x5750;&#x6807;&#x6570;&#x7EC4;&#x3001;&#x7EB9;&#x7406;&#x5750;&#x6807;&#x6570;&#x7EC4;&#x7B49;&#x7B49;&#xFF0C;&#x6709;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#x662F;&#x628A;&#x6240;&#x6709;&#x7684;&#x6570;&#x636E;&#x90FD;&#x6DF7;&#x5408;&#x8D77;&#x6765;&#xFF0C;&#x6307;&#x5B9A;&#x5230;&#x540C;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x4E2D;&#x3002;&#x8FD9;&#x5C31;&#x662F;&#x6DF7;&#x5408;&#x6570;&#x7EC4;&#x3002;<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GLfloat arr_c3f_v3f[] = {</span><br><span class="line">     <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>,</span><br><span class="line">     <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>,</span><br><span class="line">     <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, -<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>,</span><br><span class="line">};</span><br><span class="line">GLuint index_list[] = {<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>};</span><br><span class="line">glInterleavedArrays(GL_C3F_V3F, <span class="number">0</span>, arr_c3f_v3f);</span><br><span class="line">glDrawElements(GL_TRIANGLES, <span class="number">3</span>, GL_UNSIGNED_INT, index_list);</span><br></pre></td></tr></table></figure></p>
+<p>glInterleavedArrays&#xFF0C;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x6DF7;&#x5408;&#x6570;&#x7EC4;&#x3002;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4F1A;<strong>&#x81EA;&#x52A8;&#x8C03;&#x7528;glVertexPointer, glColorPointer&#x7B49;&#x51FD;&#x6570;&#xFF0C;&#x5E76;&#x4E14;&#x81EA;&#x52A8;&#x7684;&#x5F00;&#x542F;&#x6216;&#x7981;&#x7528;&#x76F8;&#x5173;&#x7684;&#x6570;&#x7EC4;</strong>&#x3002;<br>&#x51FD;&#x6570;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x8868;&#x793A;&#x4E86;&#x6DF7;&#x5408;&#x6570;&#x7EC4;&#x7684;&#x7C7B;&#x578B;&#x3002;&#x4F8B;&#x5982;GL_C3F_V3F&#x8868;&#x793A;&#xFF1A;&#x4E09;&#x4E2A;&#x6D6E;&#x70B9;&#x6570;&#x4F5C;&#x4E3A;&#x989C;&#x8272;&#x3001;&#x4E09;&#x4E2A;&#x6D6E;&#x70B9;&#x6570;&#x4F5C;&#x4E3A;&#x9876;&#x70B9;&#x5750;&#x6807;&#x3002;&#x4E5F;&#x53EF;&#x4EE5;&#x6709;&#x5176;&#x5B83;&#x7684;&#x683C;&#x5F0F;&#xFF0C;&#x6BD4;&#x5982;GL_V2F, GL_V3F, GL_C4UB_V2F, GL_C4UB_V3F, GL_C3F_V3F, GL_N3F_V3F, GL_C4F_N3F_V3F, GL_T2F_V3F, GL_T4F_V4F, GL_T2F_C4UB_V3F, GL_T2F_C3F_V3F, GL_T2F_N3F_V3F, GL_T2F_C4F_N3F_V3F, GL_T4F_C4F_N3F_V4F&#x7B49;&#x7B49;&#x3002;&#x5176;&#x4E2D;T&#x8868;&#x793A;&#x7EB9;&#x7406;&#x5750;&#x6807;&#xFF0C;C&#x8868;&#x793A;&#x989C;&#x8272;&#xFF0C;N&#x8868;&#x793A;&#x6CD5;&#x7EBF;&#x5411;&#x91CF;&#xFF0C;V&#x8868;&#x793A;&#x9876;&#x70B9;&#x5750;&#x6807;&#x3002;</p>
+<blockquote>
+<p>&#x9876;&#x70B9;&#x6570;&#x7EC4;&#x4E0E;&#x663E;&#x793A;&#x5217;&#x8868;&#x7684;&#x533A;&#x522B;&#x3002;&#x4E24;&#x8005;&#x90FD;&#x53EF;&#x4EE5;&#x660E;&#x663E;&#x7684;&#x51CF;&#x5C11;&#x51FD;&#x6570;&#x7684;&#x8C03;&#x7528;&#x6B21;&#x6570;&#xFF0C;&#x4F46;&#x662F;&#x8FD8;&#x662F;&#x5404;&#x6709;&#x4F18;&#x70B9;&#x7684;&#x3002;<br>&#x5BF9;&#x4E8E;&#x9876;&#x70B9;&#x6570;&#x7EC4;&#xFF0C;&#x9876;&#x70B9;&#x6570;&#x636E;&#x662F;&#x5B58;&#x653E;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5B58;&#x653E;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x3002;&#x6BCF;&#x6B21;&#x7ED8;&#x5236;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9700;&#x8981;&#x628A;&#x6240;&#x6709;&#x7684;&#x9876;&#x70B9;&#x6570;&#x636E;&#x4ECE;&#x5BA2;&#x6237;&#x7AEF;&#xFF08;&#x5185;&#x5B58;&#xFF09;&#x53D1;&#x9001;&#x5230;&#x670D;&#x52A1;&#x7AEF;&#xFF08;&#x663E;&#x793A;&#x8BBE;&#x5907;&#xFF09;&#xFF0C;&#x7136;&#x540E;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;&#x5BF9;&#x4E8E;&#x663E;&#x793A;&#x5217;&#x8868;&#xFF0C;&#x9876;&#x70B9;&#x6570;&#x636E;&#x662F;&#x653E;&#x5728;&#x663E;&#x793A;&#x5217;&#x8868;&#x4E2D;&#x7684;&#xFF0C;&#x663E;&#x793A;&#x5217;&#x8868;&#x672C;&#x8EAB;&#x53C8;&#x662F;&#x5B58;&#x653E;&#x5728;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x4F1A;&#x91CD;&#x590D;&#x7684;&#x53D1;&#x9001;&#x6570;&#x636E;&#x3002;<br>&#x5BF9;&#x4E8E;&#x9876;&#x70B9;&#x6570;&#x7EC4;&#xFF0C;&#x56E0;&#x4E3A;&#x9876;&#x70B9;&#x6570;&#x636E;&#x653E;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x968F;&#x65F6;&#x4FEE;&#x6539;&#xFF0C;&#x6BCF;&#x6B21;&#x7ED8;&#x5236;&#x7684;&#x65F6;&#x5019;&#x90FD;&#x4F1A;&#x628A;&#x5F53;&#x524D;&#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x5185;&#x5BB9;&#x4F5C;&#x4E3A;&#x9876;&#x70B9;&#x6570;&#x636E;&#x53D1;&#x9001;&#x5E76;&#x8FDB;&#x884C;&#x7ED8;&#x5236;&#x3002;&#x5BF9;&#x4E8E;&#x663E;&#x793A;&#x5217;&#x8868;&#xFF0C;&#x6570;&#x636E;&#x5DF2;&#x7ECF;&#x5B58;&#x653E;&#x5230;&#x670D;&#x52A1;&#x5668;&#x6BB5;&#xFF0C;&#x5E76;&#x4E14;&#x65E0;&#x6CD5;&#x53D6;&#x51FA;&#xFF0C;&#x6240;&#x4EE5;&#x65E0;&#x6CD5;&#x4FEE;&#x6539;&#x3002;<br>&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x663E;&#x793A;&#x5217;&#x8868;&#x53EF;&#x4EE5;&#x907F;&#x514D;&#x6570;&#x636E;&#x7684;&#x91CD;&#x590D;&#x53D1;&#x9001;&#xFF0C;&#x6548;&#x7387;&#x4F1A;&#x8F83;&#x9AD8;&#xFF1B;&#x9876;&#x70B9;&#x6570;&#x7EC4;&#x867D;&#x7136;&#x4F1A;&#x91CD;&#x590D;&#x7684;&#x53D1;&#x9001;&#x6570;&#x636E;&#xFF0C;&#x4F46;&#x7531;&#x4E8E;&#x6570;&#x636E;&#x53EF;&#x4EE5;&#x968F;&#x65F6;&#x4FEE;&#x6539;&#xFF0C;&#x7075;&#x6D3B;&#x6027;&#x8F83;&#x597D;&#x3002;</p>
+</blockquote>
+<h4 id="&#x9876;&#x70B9;&#x7F13;&#x51B2;&#x533A;&#x5BF9;&#x8C61;"><a href="#&#x9876;&#x70B9;&#x7F13;&#x51B2;&#x533A;&#x5BF9;&#x8C61;" class="headerlink" title="&#x9876;&#x70B9;&#x7F13;&#x51B2;&#x533A;&#x5BF9;&#x8C61;"></a>&#x9876;&#x70B9;&#x7F13;&#x51B2;&#x533A;&#x5BF9;&#x8C61;</h4><p>&#xFF08;&#x63D0;&#x793A;&#xFF1A;&#x9876;&#x70B9;&#x7F13;&#x51B2;&#x533A;&#x5BF9;&#x8C61;&#x662F;OpenGL1.5&#x6240;&#x63D0;&#x4F9B;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x4F46;&#x5B83;&#x5728;&#x6210;&#x4E3A;&#x6807;&#x51C6;&#x524D;&#x662F;&#x4E00;&#x4E2A;ARB&#x6269;&#x5C55;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;GL_ARB_vertex_buffer_object&#x6269;&#x5C55;&#x6765;&#x4F7F;&#x7528;&#x8FD9;&#x9879;&#x529F;&#x80FD;&#x3002;&#x524D;&#x9762;&#x5DF2;&#x7ECF;&#x8BB2;&#x8FC7;&#xFF0C;ARB&#x6269;&#x5C55;&#x7684;&#x51FD;&#x6570;&#x540D;&#x79F0;&#x4EE5;&#x5B57;&#x6BCD;ARB&#x7ED3;&#x5C3E;&#xFF0C;&#x5E38;&#x91CF;&#x540D;&#x79F0;&#x4EE5;&#x5B57;&#x6BCD;_ARB&#x7ED3;&#x5C3E;&#xFF0C;&#x800C;&#x6807;&#x51C6;&#x51FD;&#x6570;&#x3001;&#x5E38;&#x91CF;&#x5219;&#x53BB;&#x6389;&#x4E86;ARB&#x5B57;&#x6837;&#x3002;&#x5F88;&#x591A;&#x7684;OpenGL&#x5B9E;&#x73B0;&#x540C;&#x65F6;&#x652F;&#x6301;vertex buffer object&#x7684;&#x6807;&#x51C6;&#x7248;&#x672C;&#x548C;ARB&#x6269;&#x5C55;&#x7248;&#x672C;&#x3002;&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x4EE5;ARB&#x6269;&#x5C55;&#x6765;&#x8BB2;&#x8FF0;&#xFF0C;&#x56E0;&#x4E3A;&#x76EE;&#x524D;&#x7EDD;&#x5927;&#x591A;&#x6570;&#x4E2A;&#x4EBA;&#x8BA1;&#x7B97;&#x673A;&#x90FD;&#x652F;&#x6301;ARB&#x6269;&#x5C55;&#x7248;&#x672C;&#xFF0C;&#x4F46;&#x5C11;&#x6570;&#x663E;&#x5361;&#x4EC5;&#x652F;&#x6301;OpenGL1.4&#xFF0C;&#x65E0;&#x6CD5;&#x4F7F;&#x7528;&#x6807;&#x51C6;&#x7248;&#x672C;&#x3002;&#xFF09;<br>&#x524D;&#x9762;&#x8BF4;&#x5230;&#x9876;&#x70B9;&#x6570;&#x7EC4;&#x548C;&#x663E;&#x793A;&#x5217;&#x8868;&#x5728;&#x7ED8;&#x5236;&#x7ACB;&#x65B9;&#x4F53;&#x65F6;&#x5404;&#x6709;&#x4F18;&#x52A3;&#xFF0C;&#x90A3;&#x4E48;&#x6709;&#x6CA1;&#x6709;&#x529E;&#x6CD5;&#x5C06;&#x5B83;&#x4EEC;&#x7684;&#x4F18;&#x70B9;&#x96C6;&#x4E2D;&#x5230;&#x4E00;&#x8D77;&#xFF0C;&#x5E76;&#x4E14;&#x5C3D;&#x53EF;&#x80FD;&#x7684;&#x51CF;&#x5C11;&#x7F3A;&#x70B9;&#x5462;&#xFF1F;&#x9876;&#x70B9;&#x7F13;&#x51B2;&#x533A;&#x5BF9;&#x8C61;&#x5C31;&#x662F;&#x4E3A;&#x4E86;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x800C;&#x8BDE;&#x751F;&#x7684;&#x3002;<strong>&#x5B83;&#x6570;&#x636E;&#x5B58;&#x653E;&#x5728;&#x670D;&#x52A1;&#x7AEF;&#xFF0C;&#x540C;&#x65F6;&#x4E5F;&#x5141;&#x8BB8;&#x5BA2;&#x6237;&#x7AEF;&#x7075;&#x6D3B;&#x7684;&#x4FEE;&#x6539;&#xFF0C;&#x517C;&#x987E;&#x4E86;&#x8FD0;&#x884C;&#x6548;&#x7387;&#x548C;&#x7075;&#x6D3B;&#x6027;&#x3002;</strong><br>&#x9876;&#x70B9;&#x7F13;&#x51B2;&#x533A;&#x5BF9;&#x8C61;&#x8DDF;&#x7EB9;&#x7406;&#x5BF9;&#x8C61;&#x6709;&#x5F88;&#x591A;&#x76F8;&#x4F3C;&#x4E4B;&#x5904;&#x3002;&#x9996;&#x5148;&#xFF0C;&#x5206;&#x914D;&#x4E00;&#x4E2A;&#x7F13;&#x51B2;&#x533A;&#x5BF9;&#x8C61;&#x7F16;&#x53F7;&#xFF0C;&#x7136;&#x540E;&#xFF0C;&#x4E3A;&#x5BF9;&#x5E94;&#x7F16;&#x53F7;&#x7684;&#x7F13;&#x51B2;&#x533A;&#x5BF9;&#x8C61;&#x6307;&#x5B9A;&#x6570;&#x636E;&#xFF0C;&#x4EE5;&#x540E;&#x53EF;&#x4EE5;&#x968F;&#x65F6;&#x4FEE;&#x6539;&#x5176;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x3002;&#x4E0B;&#x9762;&#x7684;&#x8868;&#x683C;&#x53EF;&#x4EE5;&#x5E2E;&#x52A9;&#x7C7B;&#x6BD4;&#x7406;&#x89E3;&#x3002;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">&#x7EB9;&#x7406;&#x5BF9;&#x8C61;</th>
+<th style="text-align:left">&#x9876;&#x70B9;&#x7F13;&#x51B2;&#x533A;&#x5BF9;&#x8C61;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#x5206;&#x914D;&#x7F16;&#x53F7;</td>
+<td style="text-align:left">glGenTextures</td>
+<td style="text-align:left">glGenBuffersARB</td>
+</tr>
+<tr>
+<td style="text-align:left">&#x7ED1;&#x5B9A;(&#x6307;&#x5B9A;&#x4E3A;&#x5F53;&#x524D;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x5BF9;&#x8C61;)</td>
+<td style="text-align:left">glBindTexture</td>
+<td style="text-align:left">glBindBufferARB</td>
+</tr>
+<tr>
+<td style="text-align:left">&#x6307;&#x5B9A;&#x6570;&#x636E;</td>
+<td style="text-align:left">glTexImage*</td>
+<td style="text-align:left">glBufferDataARB</td>
+</tr>
+<tr>
+<td style="text-align:left">&#x4FEE;&#x6539;&#x6570;&#x636E;</td>
+<td style="text-align:left">glTexSubImage*</td>
+<td style="text-align:left">glBufferSubDataARB</td>
+</tr>
+</tbody>
+</table>
+<p>&#x9876;&#x70B9;&#x6570;&#x636E;&#x548C;&#x5E8F;&#x53F7;&#x5404;&#x81EA;&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x7F13;&#x51B2;&#x533A;&#x3002;&#x5177;&#x4F53;&#x7684;&#x8BF4;&#xFF0C;&#x5C31;&#x662F;<strong>&#x9876;&#x70B9;&#x6570;&#x636E;&#x653E;&#x5728;GL_ARRAY_BUFFER_ARB&#x7C7B;&#x578B;&#x7684;&#x7F13;&#x51B2;&#x533A;&#x4E2D;&#xFF0C;&#x5E8F;&#x53F7;&#x6570;&#x636E;&#x653E;&#x5728;GL_ELEMENT_ARRAY_BUFFER_ARB&#x7C7B;&#x578B;&#x7684;&#x7F13;&#x51B2;&#x533A;&#x4E2D;</strong>&#x3002;<br>&#x5177;&#x4F53;&#x7684;&#x60C5;&#x51B5;&#x53EF;&#x4EE5;&#x7528;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x6765;&#x8BF4;&#x660E;&#xFF1A;<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> GLuint vertex_buffer;</span><br><span class="line"><span class="keyword">static</span> GLuint index_buffer;</span><br><span class="line"><span class="comment">// &#x5206;&#x914D;&#x4E00;&#x4E2A;&#x7F13;&#x51B2;&#x533A;&#xFF0C;&#x5E76;&#x5C06;&#x9876;&#x70B9;&#x6570;&#x636E;&#x6307;&#x5B9A;&#x5230;&#x5176;&#x4E2D;</span></span><br><span class="line">glGenBuffersARB(<span class="number">1</span>, &amp;vertex_buffer);</span><br><span class="line">glBindBufferARB(GL_ARRAY_BUFFER_ARB, vertex_buffer);</span><br><span class="line">glBufferDataARB(GL_ARRAY_BUFFER_ARB,</span><br><span class="line">    <span class="keyword">sizeof</span>(vertex_list), vertex_list, GL_STATIC_DRAW_ARB);</span><br><span class="line"><span class="comment">// &#x5206;&#x914D;&#x4E00;&#x4E2A;&#x7F13;&#x51B2;&#x533A;&#xFF0C;&#x5E76;&#x5C06;&#x5E8F;&#x53F7;&#x6570;&#x636E;&#x6307;&#x5B9A;&#x5230;&#x5176;&#x4E2D;</span></span><br><span class="line">glGenBuffersARB(<span class="number">1</span>, &amp;index_buffer);</span><br><span class="line">glBindBufferARB(GL_ELEMENT_ARRAY_BUFFER_ARB, index_buffer);</span><br><span class="line">glBufferDataARB(GL_ELEMENT_ARRAY_BUFFER_ARB,</span><br><span class="line">    <span class="keyword">sizeof</span>(index_list), index_list, GL_STATIC_DRAW_ARB);</span><br></pre></td></tr></table></figure></p>
+<p>&#x5728;&#x6307;&#x5B9A;&#x7F13;&#x51B2;&#x533A;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x5173;&#x4E8E;&#x6027;&#x80FD;&#x7684;&#x63D0;&#x793A;&#x3002;&#x4E00;&#x5171;&#x6709;STREAM_DRAW, STREAM_READ, STREAM_COPY, STATIC_DRAW, STATIC_READ, STATIC_COPY, DYNAMIC_DRAW, DYNAMIC_READ, DYNAMIC_COPY&#x8FD9;&#x4E5D;&#x79CD;&#x3002;&#x6BCF;&#x4E00;&#x79CD;&#x90FD;&#x8868;&#x793A;&#x4E86;&#x4F7F;&#x7528;&#x9891;&#x7387;&#x548C;&#x7528;&#x9014;&#xFF0C;OpenGL&#x4F1A;&#x6839;&#x636E;&#x8FD9;&#x4E9B;&#x63D0;&#x793A;&#x8FDB;&#x884C;&#x4E00;&#x5B9A;&#x7A0B;&#x5EA6;&#x7684;&#x6027;&#x80FD;&#x4F18;&#x5316;&#x3002;<br>&#xFF08;&#x63D0;&#x793A;&#x4EC5;&#x4EC5;&#x662F;&#x63D0;&#x793A;&#xFF0C;&#x4E0D;&#x662F;&#x786C;&#x6027;&#x89C4;&#x5B9A;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x5373;&#x4F7F;&#x4F7F;&#x7528;&#x4E86;STREAM_DRAW&#xFF0C;&#x544A;&#x8BC9;OpenGL&#x8FD9;&#x6BB5;&#x7F13;&#x51B2;&#x533A;&#x6570;&#x636E;&#x4E00;&#x65E6;&#x6307;&#x5B9A;&#xFF0C;&#x4EE5;&#x540E;&#x4E0D;&#x4F1A;&#x4FEE;&#x6539;&#xFF0C;&#x4F46;&#x5B9E;&#x9645;&#x4E0A;&#x4EE5;&#x540E;&#x4ECD;&#x53EF;&#x4FEE;&#x6539;&#xFF0C;&#x4E0D;&#x8FC7;&#x4FEE;&#x6539;&#x65F6;&#x53EF;&#x80FD;&#x6709;&#x8F83;&#x5927;&#x7684;&#x6027;&#x80FD;&#x4EE3;&#x4EF7;&#xFF09; </p>
+<p>&#x5F53;&#x4F7F;&#x7528;glBindBufferARB&#x540E;&#xFF0C;<strong>&#x5404;&#x79CD;&#x4F7F;&#x7528;&#x6307;&#x9488;&#x4E3A;&#x53C2;&#x6570;&#x7684;OpenGL&#x51FD;&#x6570;&#xFF0C;&#x884C;&#x4E3A;&#x4F1A;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x3002;</strong><br>&#x4EE5;glColor3fv&#x4E3A;&#x4F8B;&#xFF0C;&#x901A;&#x5E38;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x63A5;&#x53D7;&#x4E00;&#x4E2A;&#x6307;&#x9488;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x4ECE;&#x6307;&#x9488;&#x6240;&#x6307;&#x7684;&#x4F4D;&#x7F6E;&#x53D6;&#x51FA;&#x8FDE;&#x7EED;&#x7684;&#x4E09;&#x4E2A;&#x6D6E;&#x70B9;&#x6570;&#xFF0C;&#x4F5C;&#x4E3A;&#x5F53;&#x524D;&#x7684;&#x989C;&#x8272;&#x3002;&#x4F46;&#x4F7F;&#x7528;glBindBufferARB&#x540E;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4E0D;&#x518D;&#x4ECE;&#x6307;&#x9488;&#x6240;&#x6307;&#x7684;&#x4F4D;&#x7F6E;&#x53D6;&#x6570;&#x636E;&#x3002;&#x51FD;&#x6570;&#x4F1A;&#x5148;&#x628A;&#x6307;&#x9488;&#x8F6C;&#x5316;&#x4E3A;&#x6574;&#x6570;&#xFF0C;&#x5047;&#x8BBE;&#x8F6C;&#x5316;&#x540E;&#x7ED3;&#x679C;&#x4E3A;k&#xFF0C;&#x5219;&#x4F1A;&#x4ECE;&#x5F53;&#x524D;&#x7F13;&#x51B2;&#x533A;&#x7684;&#x7B2C;k&#x4E2A;&#x5B57;&#x8282;&#x5F00;&#x59CB;&#x53D6;&#x6570;&#x636E;&#x3002;&#x7279;&#x522B;&#x4E00;&#x70B9;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5199;glColor3fv(NULL);&#x56E0;&#x4E3A;NULL&#x8F6C;&#x5316;&#x4E3A;&#x6574;&#x6570;&#x540E;&#x901A;&#x5E38;&#x662F;&#x96F6;&#xFF0C;&#x6240;&#x4EE5;&#x4ECE;&#x7F13;&#x51B2;&#x533A;&#x7684;&#x7B2C;0&#x4E2A;&#x5B57;&#x8282;&#x5F00;&#x59CB;&#x53D6;&#x6570;&#x636E;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x4ECE;&#x7F13;&#x51B2;&#x533A;&#x6700;&#x5F00;&#x59CB;&#x7684;&#x4F4D;&#x7F6E;&#x53D6;&#x6570;&#x636E;&#x3002;<br>&#x8FD9;&#x6837;&#x4E00;&#x6765;&#xFF0C;&#x539F;&#x6765;&#x5199;&#x7684;<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">glVertexPointer(<span class="number">3</span>, GL_FLOAT, <span class="number">0</span>, vertex_list);</span><br><span class="line">glDrawElements(GL_QUADS, <span class="number">24</span>, GL_UNSIGNED_INT, index_list);</span><br></pre></td></tr></table></figure></p>
+<p>&#x5728;&#x4F7F;&#x7528;&#x7F13;&#x51B2;&#x533A;&#x5BF9;&#x8C61;&#x540E;&#xFF0C;&#x5C31;&#x53D8;&#x6210;&#x4E86;<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">glVertexPointer(<span class="number">3</span>, GL_FLOAT, <span class="number">0</span>, <span class="literal">NULL</span>);</span><br><span class="line">glDrawElements(GL_QUADS, <span class="number">24</span>, GL_UNSIGNED_INT, <span class="literal">NULL</span>);</span><br></pre></td></tr></table></figure></p>
+<p>&#x4EE5;&#x4E0B;&#x662F;&#x5B8C;&#x6574;&#x7684;&#x4F7F;&#x7528;&#x4E86;&#x9876;&#x70B9;&#x7F13;&#x51B2;&#x533A;&#x5BF9;&#x8C61;&#x7684;&#x4EE3;&#x7801;&#xFF1A;<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> GLfloat vertex_list[][<span class="number">3</span>] = {</span><br><span class="line">     -<span class="number">0.5f</span>, -<span class="number">0.5f</span>, -<span class="number">0.5f</span>,</span><br><span class="line">      <span class="number">0.5f</span>, -<span class="number">0.5f</span>, -<span class="number">0.5f</span>,</span><br><span class="line">     -<span class="number">0.5f</span>,  <span class="number">0.5f</span>, -<span class="number">0.5f</span>,</span><br><span class="line">      <span class="number">0.5f</span>,  <span class="number">0.5f</span>, -<span class="number">0.5f</span>,</span><br><span class="line">     -<span class="number">0.5f</span>, -<span class="number">0.5f</span>,  <span class="number">0.5f</span>,</span><br><span class="line">      <span class="number">0.5f</span>, -<span class="number">0.5f</span>,  <span class="number">0.5f</span>,</span><br><span class="line">     -<span class="number">0.5f</span>,  <span class="number">0.5f</span>,  <span class="number">0.5f</span>,</span><br><span class="line">      <span class="number">0.5f</span>,  <span class="number">0.5f</span>,  <span class="number">0.5f</span>,</span><br><span class="line">};</span><br><span class="line"><span class="keyword">static</span> GLint index_list[][<span class="number">4</span>] = {</span><br><span class="line">     <span class="number">0</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>,</span><br><span class="line">     <span class="number">0</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">2</span>,</span><br><span class="line">     <span class="number">0</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">4</span>,</span><br><span class="line">     <span class="number">4</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">6</span>,</span><br><span class="line">     <span class="number">1</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">5</span>,</span><br><span class="line">     <span class="number">2</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">3</span>,</span><br><span class="line">};</span><br><span class="line"><span class="keyword">if</span>( GLEE_ARB_vertex_buffer_object ) {</span><br><span class="line">     <span class="comment">// &#x5982;&#x679C;&#x652F;&#x6301;&#x9876;&#x70B9;&#x7F13;&#x51B2;&#x533A;&#x5BF9;&#x8C61;</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> isFirstCall = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">static</span> GLuint vertex_buffer;</span><br><span class="line">    <span class="keyword">static</span> GLuint index_buffer;</span><br><span class="line">    <span class="keyword">if</span>( isFirstCall ) {</span><br><span class="line">         <span class="comment">// &#x7B2C;&#x4E00;&#x6B21;&#x8C03;&#x7528;&#x65F6;&#xFF0C;&#x521D;&#x59CB;&#x5316;&#x7F13;&#x51B2;&#x533A;</span></span><br><span class="line">         isFirstCall = <span class="number">0</span>;</span><br><span class="line">         <span class="comment">// &#x5206;&#x914D;&#x4E00;&#x4E2A;&#x7F13;&#x51B2;&#x533A;&#xFF0C;&#x5E76;&#x5C06;&#x9876;&#x70B9;&#x6570;&#x636E;&#x6307;&#x5B9A;&#x5230;&#x5176;&#x4E2D;</span></span><br><span class="line">         glGenBuffersARB(<span class="number">1</span>, &amp;vertex_buffer);</span><br><span class="line">         glBindBufferARB(GL_ARRAY_BUFFER_ARB, vertex_buffer);</span><br><span class="line">         glBufferDataARB(GL_ARRAY_BUFFER_ARB,</span><br><span class="line">            <span class="keyword">sizeof</span>(vertex_list), vertex_list, GL_STATIC_DRAW_ARB);</span><br><span class="line">         <span class="comment">// &#x5206;&#x914D;&#x4E00;&#x4E2A;&#x7F13;&#x51B2;&#x533A;&#xFF0C;&#x5E76;&#x5C06;&#x5E8F;&#x53F7;&#x6570;&#x636E;&#x6307;&#x5B9A;&#x5230;&#x5176;&#x4E2D;</span></span><br><span class="line">         glGenBuffersARB(<span class="number">1</span>, &amp;index_buffer);</span><br><span class="line">         glBindBufferARB(GL_ELEMENT_ARRAY_BUFFER_ARB, index_buffer);</span><br><span class="line">         glBufferDataARB(GL_ELEMENT_ARRAY_BUFFER_ARB,</span><br><span class="line">            <span class="keyword">sizeof</span>(index_list), index_list, GL_STATIC_DRAW_ARB);</span><br><span class="line">     }</span><br><span class="line">     glBindBufferARB(GL_ARRAY_BUFFER_ARB, vertex_buffer);</span><br><span class="line">     glBindBufferARB(GL_ELEMENT_ARRAY_BUFFER_ARB, index_buffer);</span><br><span class="line">     <span class="comment">// &#x5B9E;&#x9645;&#x4F7F;&#x7528;&#x65F6;&#x4E0E;&#x9876;&#x70B9;&#x6570;&#x7EC4;&#x975E;&#x5E38;&#x76F8;&#x4F3C;&#xFF0C;&#x53EA;&#x662F;&#x5728;&#x6307;&#x5B9A;&#x6570;&#x7EC4;&#x65F6;&#x4E0D;&#x518D;&#x6307;&#x5B9A;&#x5B9E;&#x9645;&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x6539;&#x4E3A;&#x6307;&#x5B9A;NULL&#x5373;&#x53EF;</span></span><br><span class="line">     glEnableClientState(GL_VERTEX_ARRAY);</span><br><span class="line">     glVertexPointer(<span class="number">3</span>, GL_FLOAT, <span class="number">0</span>, <span class="literal">NULL</span>);</span><br><span class="line">     glDrawElements(GL_QUADS, <span class="number">24</span>, GL_UNSIGNED_INT, <span class="literal">NULL</span>);</span><br><span class="line">} <span class="keyword">else</span> {</span><br><span class="line">     <span class="comment">// &#x4E0D;&#x652F;&#x6301;&#x9876;&#x70B9;&#x7F13;&#x51B2;&#x533A;&#x5BF9;&#x8C61;</span></span><br><span class="line">     <span class="comment">// &#x4F7F;&#x7528;&#x9876;&#x70B9;&#x6570;&#x7EC4;</span></span><br><span class="line">     glEnableClientState(GL_VERTEX_ARRAY);</span><br><span class="line">     glVertexPointer(<span class="number">3</span>, GL_FLOAT, <span class="number">0</span>, vertex_list);</span><br><span class="line">     glDrawElements(GL_QUADS, <span class="number">24</span>, GL_UNSIGNED_INT, index_list);</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x53EF;&#x4EE5;&#x5206;&#x914D;&#x591A;&#x4E2A;&#x7F13;&#x51B2;&#x533A;&#x5BF9;&#x8C61;&#xFF0C;&#x9876;&#x70B9;&#x5750;&#x6807;&#x3001;&#x989C;&#x8272;&#x3001;&#x7EB9;&#x7406;&#x5750;&#x6807;&#x7B49;&#x6570;&#x636E;&#xFF0C;&#x53EF;&#x4EE5;&#x5404;&#x81EA;&#x5355;&#x72EC;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x7F13;&#x51B2;&#x533A;&#x3002;<br>&#x6BCF;&#x4E2A;&#x7F13;&#x51B2;&#x533A;&#x53EF;&#x4EE5;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x6027;&#x80FD;&#x63D0;&#x793A;&#xFF0C;&#x6BD4;&#x5982;&#x5728;&#x7ED8;&#x5236;&#x4E00;&#x4E2A;&#x8FD0;&#x52A8;&#x7684;&#x4EBA;&#x7269;&#x65F6;&#xFF0C;&#x9876;&#x70B9;&#x5750;&#x6807;&#x6570;&#x636E;&#x7ECF;&#x5E38;&#x53D8;&#x5316;&#xFF0C;&#x4F46;&#x6CD5;&#x7EBF;&#x5411;&#x91CF;&#x3001;&#x7EB9;&#x7406;&#x5750;&#x6807;&#x7B49;&#x5219;&#x4E0D;&#x4F1A;&#x53D8;&#x5316;&#xFF0C;&#x53EF;&#x4EE5;&#x7ED9;&#x4E88;&#x4E0D;&#x540C;&#x7684;&#x6027;&#x80FD;&#x63D0;&#x793A;&#xFF0C;&#x4EE5;&#x63D0;&#x9AD8;&#x6027;&#x80FD;&#x3002;</p>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/OpenGL/" rel="tag">#OpenGL</a>
+          
+            <a href="/blog/tags/class/" rel="tag">#class</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2016/03/21/OpenGL-beginner-2/" rel="next" title="OpenGL入门学习系列集(二)">
+                <i class="fa fa-chevron-left"></i> OpenGL入门学习系列集(二)
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/uploads/avatar.jpg"
+               alt="玉宇澄清" />
+          <p class="site-author-name" itemprop="name">玉宇澄清</p>
+          <p class="site-description motion-element" itemprop="description">天气好得就好像走着走着就能遇见你</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/blog/categories">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://yvette.space/index.html" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Website
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://yvette.space/life/" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Life Blog
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ycymio" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/ycymio" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenGL入门学习-八-列表显示"><span class="nav-number">1.</span> <span class="nav-text">OpenGL入门学习[八] 列表显示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分配显示列表编号"><span class="nav-number">1.1.</span> <span class="nav-text">分配显示列表编号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建显示列表"><span class="nav-number">1.2.</span> <span class="nav-text">创建显示列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调用显示列表"><span class="nav-number">1.3.</span> <span class="nav-text">调用显示列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#销毁显示列表"><span class="nav-number">1.4.</span> <span class="nav-text">销毁显示列表</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenGL入门学习-十五-数组的介入"><span class="nav-number">2.</span> <span class="nav-text">OpenGL入门学习[十五] 数组的介入</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#顶点数组"><span class="nav-number">2.1.</span> <span class="nav-text">顶点数组</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#stride参数："><span class="nav-number">2.1.1.</span> <span class="nav-text">stride参数：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#顶点缓冲区对象"><span class="nav-number">2.2.</span> <span class="nav-text">顶点缓冲区对象</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">玉宇澄清</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/blog/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("CYw4eqfTnGGJ358ScduxIjMN-gzGzoHsz", "DVtxWNQe67hDTYKnPMtwUKoU");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+
+</body>
+</html>
