@@ -57,22 +57,20 @@
 
 
 
-<meta name="description" content="OpenGL&amp;#x5165;&amp;#x95E8;&amp;#x5B66;&amp;#x4E60;&amp;#x7CFB;&amp;#x5217;&amp;#x96C6;(&amp;#x4E00;)
-OpenGL&amp;#x5165;&amp;#x95E8;&amp;#x5B66;&amp;#x4E60;&amp;#x7CFB;&amp;#x5217;&amp;#x96C6;(&amp;#x4E8C;)
-OpenGL&amp;#x5165;&amp;#x95E8;&amp;#x5B66;&amp;#x4E60;&amp;#x7CFB;&amp;#x5217;">
+<meta name="description" content="&amp;#x6700;&amp;#x8FD1;&amp;#x51E0;&amp;#x7BC7;&amp;#x6587;&amp;#x7AE0;&amp;#x7684;&amp;#x94FE;&amp;#x63A5;&amp;#x548C;&amp;#x6548;&amp;#x679C;&amp;#x56FE;&amp;#x7684;&amp;#x5448;&amp;#x73B0;&amp;#x3002;&amp;#x6CA1;&amp;#x6709;&amp;#x5199;z&amp;#x626B;&amp;#x63CF;&amp;#x7EBF;&amp;#x7B97;&amp;#x6CD5">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OpenGL入门集汇总">
+<meta property="og:title" content="z-buffer相关汇总">
 <meta property="og:url" content="http://ycymio.com/blog/2016/04/02/OpenGL-beginner/index.html">
 <meta property="og:site_name" content="ycy’s tech-blog">
-<meta property="og:description" content="OpenGL&amp;#x5165;&amp;#x95E8;&amp;#x5B66;&amp;#x4E60;&amp;#x7CFB;&amp;#x5217;&amp;#x96C6;(&amp;#x4E00;)
-OpenGL&amp;#x5165;&amp;#x95E8;&amp;#x5B66;&amp;#x4E60;&amp;#x7CFB;&amp;#x5217;&amp;#x96C6;(&amp;#x4E8C;)
-OpenGL&amp;#x5165;&amp;#x95E8;&amp;#x5B66;&amp;#x4E60;&amp;#x7CFB;&amp;#x5217;">
-<meta property="og:updated_time" content="2016-04-02T09:17:04.000Z">
+<meta property="og:description" content="&amp;#x6700;&amp;#x8FD1;&amp;#x51E0;&amp;#x7BC7;&amp;#x6587;&amp;#x7AE0;&amp;#x7684;&amp;#x94FE;&amp;#x63A5;&amp;#x548C;&amp;#x6548;&amp;#x679C;&amp;#x56FE;&amp;#x7684;&amp;#x5448;&amp;#x73B0;&amp;#x3002;&amp;#x6CA1;&amp;#x6709;&amp;#x5199;z&amp;#x626B;&amp;#x63CF;&amp;#x7EBF;&amp;#x7B97;&amp;#x6CD5">
+<meta property="og:image" content="http://ycymio.com/blog/blog/2016/04/02/OpenGL-beginner/ford-02.jpg">
+<meta property="og:image" content="http://ycymio.com/blog/blog/2016/04/02/OpenGL-beginner/ford-01.jpg">
+<meta property="og:image" content="http://ycymio.com/blog/blog/2016/04/02/OpenGL-beginner/teapot-01.png">
+<meta property="og:image" content="http://ycymio.com/blog/blog/2016/04/02/OpenGL-beginner/camper-02.png">
+<meta property="og:updated_time" content="2016-04-02T09:32:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OpenGL入门集汇总">
-<meta name="twitter:description" content="OpenGL&amp;#x5165;&amp;#x95E8;&amp;#x5B66;&amp;#x4E60;&amp;#x7CFB;&amp;#x5217;&amp;#x96C6;(&amp;#x4E00;)
-OpenGL&amp;#x5165;&amp;#x95E8;&amp;#x5B66;&amp;#x4E60;&amp;#x7CFB;&amp;#x5217;&amp;#x96C6;(&amp;#x4E8C;)
-OpenGL&amp;#x5165;&amp;#x95E8;&amp;#x5B66;&amp;#x4E60;&amp;#x7CFB;&amp;#x5217;">
+<meta name="twitter:title" content="z-buffer相关汇总">
+<meta name="twitter:description" content="&amp;#x6700;&amp;#x8FD1;&amp;#x51E0;&amp;#x7BC7;&amp;#x6587;&amp;#x7AE0;&amp;#x7684;&amp;#x94FE;&amp;#x63A5;&amp;#x548C;&amp;#x6548;&amp;#x679C;&amp;#x56FE;&amp;#x7684;&amp;#x5448;&amp;#x73B0;&amp;#x3002;&amp;#x6CA1;&amp;#x6709;&amp;#x5199;z&amp;#x626B;&amp;#x63CF;&amp;#x7EBF;&amp;#x7B97;&amp;#x6CD5">
 
 
 
@@ -90,7 +88,7 @@ OpenGL&amp;#x5165;&amp;#x95E8;&amp;#x5B66;&amp;#x4E60;&amp;#x7CFB;&amp;#x5217;">
   };
 </script>
 
-  <title> OpenGL入门集汇总 | ycy’s tech-blog </title>
+  <title> z-buffer相关汇总 | ycy’s tech-blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -220,7 +218,7 @@ OpenGL&amp;#x5165;&amp;#x95E8;&amp;#x5B66;&amp;#x4E60;&amp;#x7CFB;&amp;#x5217;">
             
             
               
-                OpenGL入门集汇总
+                z-buffer相关汇总
               
             
           </h1>
@@ -266,7 +264,7 @@ OpenGL&amp;#x5165;&amp;#x95E8;&amp;#x5B66;&amp;#x4E60;&amp;#x7CFB;&amp;#x5217;">
 
           
           
-             <span id="/blog/2016/04/02/OpenGL-beginner/" class="leancloud_visitors" data-flag-title="OpenGL入门集汇总">
+             <span id="/blog/2016/04/02/OpenGL-beginner/" class="leancloud_visitors" data-flag-title="z-buffer相关汇总">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -286,11 +284,24 @@ OpenGL&amp;#x5165;&amp;#x95E8;&amp;#x5B66;&amp;#x4E60;&amp;#x7CFB;&amp;#x5217;">
       
 
       
-        <p><a href="http://ycymio.com/blog/2016/03/20/OpenGL-beginner-1/" title="OpenGL&#x5165;&#x95E8;&#x5B66;&#x4E60;&#x7CFB;&#x5217;&#x96C6;(&#x4E00;)" target="_blank" rel="external" class="link">OpenGL&#x5165;&#x95E8;&#x5B66;&#x4E60;&#x7CFB;&#x5217;&#x96C6;(&#x4E00;)</a></p>
+        <p>&#x6700;&#x8FD1;&#x51E0;&#x7BC7;&#x6587;&#x7AE0;&#x7684;&#x94FE;&#x63A5;&#x548C;&#x6548;&#x679C;&#x56FE;&#x7684;&#x5448;&#x73B0;&#x3002;&#x6CA1;&#x6709;&#x5199;z&#x626B;&#x63CF;&#x7EBF;&#x7B97;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x6E90;&#x4EE3;&#x7801;&#x91CC;&#x6709;&#x4E00;&#x5B9A;&#x7684;&#x8BF4;&#x660E;&#x3002;&#x8FD9;&#x91CC;&#x63D0;&#x4E00;&#x4E0B;&#x7279;&#x6B8A;&#x5904;&#x7406;&#x7684;&#x60C5;&#x51B5;:<br>&#x5728;&#x5750;&#x6807;&#x7CFB;&#x4E2D;&#x4E0E;xOy&#x9762;&#x5E73;&#x884C;&#x7684;&#x9762;&#x7684;&#x5904;&#x7406; -&gt; &#x662F;&#x8DF3;&#x8FC7;&#x6CA1;&#x6709;&#x5904;&#x7406;&#xFF0C;&#x5C31;&#x770B;&#x6210;&#x7EBF;&#x592A;&#x7EC6;&#x770B;&#x4E0D;&#x6E05;&#x4E86;&#x3002;<br>&#x4E0E;xOy&#x5E73;&#x884C;&#x7684;&#x7EBF;&#x7684;&#x5904;&#x7406;</p>
+<a id="more"></a>
+<h4 id="&#x6587;&#x7AE0;&#x548C;&#x6E90;&#x4EE3;&#x7801;&#x7684;&#x94FE;&#x63A5;"><a href="#&#x6587;&#x7AE0;&#x548C;&#x6E90;&#x4EE3;&#x7801;&#x7684;&#x94FE;&#x63A5;" class="headerlink" title="&#x6587;&#x7AE0;&#x548C;&#x6E90;&#x4EE3;&#x7801;&#x7684;&#x94FE;&#x63A5;"></a>&#x6587;&#x7AE0;&#x548C;&#x6E90;&#x4EE3;&#x7801;&#x7684;&#x94FE;&#x63A5;</h4><p><a href="http://ycymio.com/blog/2016/03/20/OpenGL-beginner-1/" title="OpenGL&#x5165;&#x95E8;&#x5B66;&#x4E60;&#x7CFB;&#x5217;&#x96C6;(&#x4E00;)" target="_blank" rel="external" class="link">OpenGL&#x5165;&#x95E8;&#x5B66;&#x4E60;&#x7CFB;&#x5217;&#x96C6;(&#x4E00;)</a></p>
 <p><a href="http://ycymio.com/blog/2016/03/21/OpenGL-beginner-2/" title="OpenGL&#x5165;&#x95E8;&#x5B66;&#x4E60;&#x7CFB;&#x5217;&#x96C6;(&#x4E8C;)" target="_blank" rel="external" class="link">OpenGL&#x5165;&#x95E8;&#x5B66;&#x4E60;&#x7CFB;&#x5217;&#x96C6;(&#x4E8C;)</a></p>
 <p><a href="http://ycymio.com/blog/2016/03/24/OpenGL-beginner-3/" title="OpenGL&#x5165;&#x95E8;&#x5B66;&#x4E60;&#x7CFB;&#x5217;&#x96C6;(&#x4E09;)" target="_blank" rel="external" class="link">OpenGL&#x5165;&#x95E8;&#x5B66;&#x4E60;&#x7CFB;&#x5217;&#x96C6;(&#x4E09;)</a></p>
-<p><a href="http://ycymio.com/blog/2016/03/18/OpenGL-obj/" title="obj&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x7B80;&#x8FF0;" target="_blank" rel="external" class="link">OpenGL&#x5165;&#x95E8;&#x5B66;&#x4E60;&#x7CFB;&#x5217;&#x96C6;(&#x4E09;)</a></p>
+<p><a href="http://ycymio.com/blog/2016/03/18/OpenGL-obj/" title="obj&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x7B80;&#x8FF0;" target="_blank" rel="external" class="link">obj&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x7B80;&#x8FF0;</a></p>
 <p><a href="https://github.com/ycymio/z-buffer-scan-line" title="Z&#x626B;&#x63CF;&#x7EBF;&#x7B97;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;" target="_blank" rel="external" class="link">Z&#x626B;&#x63CF;&#x7EBF;&#x7B97;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;</a></p>
+<h4 id="&#x4E00;&#x5343;&#x9762;&#x7247;&#x4EE5;&#x4E0A;&#x7684;&#x5904;&#x7406;&#x6548;&#x679C;&#x56FE;"><a href="#&#x4E00;&#x5343;&#x9762;&#x7247;&#x4EE5;&#x4E0A;&#x7684;&#x5904;&#x7406;&#x6548;&#x679C;&#x56FE;" class="headerlink" title="&#x4E00;&#x5343;&#x9762;&#x7247;&#x4EE5;&#x4E0A;&#x7684;&#x5904;&#x7406;&#x6548;&#x679C;&#x56FE;"></a>&#x4E00;&#x5343;&#x9762;&#x7247;&#x4EE5;&#x4E0A;&#x7684;&#x5904;&#x7406;&#x6548;&#x679C;&#x56FE;</h4><p>3dsMax&#x81EA;&#x5E26;&#x7684;ford: &#xFF08;&#x5B83;&#x7684;&#x5448;&#x73B0;&#x6709;bug&#xFF0C;&#x4F46;&#x6CA1;&#x627E;&#x5230;&#x2026;&#x9762;&#x7247;&#x5370;&#x8C61;&#x4E2D;&#x4E0A;&#x4E07;&#x4E86;&#xFF09;</p>
+<center><img src="/blog/2016/04/02/OpenGL-beginner/ford-02.jpg" width="300px" alt="ford-02"></center>
+
+<p>&#x9762;&#x7247;&#x6A2A;&#x5411;&#x95F4;&#x4E5F;&#x6709;&#x95F4;&#x9699;&#x7248;&#xFF1A;</p>
+<center><img src="/blog/2016/04/02/OpenGL-beginner/ford-01.jpg" width="300px" alt="ford-01"></center>
+
+<p>3dsMax&#x81EA;&#x5E26;&#x7684;teapot: </p>
+<center><img src="/blog/2016/04/02/OpenGL-beginner/teapot-01.png" width="300px" alt="teapot"></center>
+
+<p>3dsMax&#x81EA;&#x5E26;&#x7684;camper: </p>
+<center><img src="/blog/2016/04/02/OpenGL-beginner/camper-02.png" width="300px" alt="camper"></center>
 
       
     </div>
@@ -468,7 +479,7 @@ OpenGL&amp;#x5165;&amp;#x95E8;&amp;#x5B66;&amp;#x4E60;&amp;#x7CFB;&amp;#x5217;">
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#文章和源代码的链接"><span class="nav-number">1.</span> <span class="nav-text">文章和源代码的链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一千面片以上的处理效果图"><span class="nav-number">2.</span> <span class="nav-text">一千面片以上的处理效果图</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
