@@ -57,22 +57,16 @@
 
 
 
-<meta name="description" content="Given a linked list, return the node where the cycle begins. If there is no cycle, return null.   Note: Do not modify the linked list.   Follow up:      Can you solve it without using extra space?
-
-&amp;#">
+<meta name="description" content="Given n non-negative integers a1, a2, &amp;#x2026;, an, where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0). Find">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode 142 Linked List Cycle II">
-<meta property="og:url" content="http://ycymio.com/blog/2016/03/07/leetcode142/index.html">
+<meta property="og:title" content="LeetCode 11 Container With Most Water">
+<meta property="og:url" content="http://ycymio.com/blog/2016/04/06/leetcode11/index.html">
 <meta property="og:site_name" content="ycy’s tech-blog">
-<meta property="og:description" content="Given a linked list, return the node where the cycle begins. If there is no cycle, return null.   Note: Do not modify the linked list.   Follow up:      Can you solve it without using extra space?
-
-&amp;#">
-<meta property="og:updated_time" content="2016-03-20T09:16:24.000Z">
+<meta property="og:description" content="Given n non-negative integers a1, a2, &amp;#x2026;, an, where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0). Find">
+<meta property="og:updated_time" content="2016-04-06T08:28:13.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode 142 Linked List Cycle II">
-<meta name="twitter:description" content="Given a linked list, return the node where the cycle begins. If there is no cycle, return null.   Note: Do not modify the linked list.   Follow up:      Can you solve it without using extra space?
-
-&amp;#">
+<meta name="twitter:title" content="LeetCode 11 Container With Most Water">
+<meta name="twitter:description" content="Given n non-negative integers a1, a2, &amp;#x2026;, an, where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0). Find">
 
 
 
@@ -90,7 +84,7 @@
   };
 </script>
 
-  <title> LeetCode 142 Linked List Cycle II | ycy’s tech-blog </title>
+  <title> LeetCode 11 Container With Most Water | ycy’s tech-blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -220,7 +214,7 @@
             
             
               
-                LeetCode 142 Linked List Cycle II
+                LeetCode 11 Container With Most Water
               
             
           </h1>
@@ -232,8 +226,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-07T11:04:22+08:00" content="2016-03-07">
-              2016-03-07
+            <time itemprop="dateCreated" datetime="2016-04-06T15:42:51+08:00" content="2016-04-06">
+              2016-04-06
             </time>
           </span>
 
@@ -286,8 +280,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/blog/2016/03/07/leetcode142/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/07/leetcode142/" itemprop="commentsCount"></span>
+                <a href="/blog/2016/04/06/leetcode11/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/06/leetcode11/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -297,7 +291,7 @@
 
           
           
-             <span id="/blog/2016/03/07/leetcode142/" class="leancloud_visitors" data-flag-title="LeetCode 142 Linked List Cycle II">
+             <span id="/blog/2016/04/06/leetcode11/" class="leancloud_visitors" data-flag-title="LeetCode 11 Container With Most Water">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -317,18 +311,14 @@
       
 
       
-        <blockquote class="blockquote-center"><br><div style="padding-left: 50px; text-align: left"><br> <strong>Given a linked list, return the node where the cycle begins. If there is no cycle, return null.<br>   Note: Do not modify the linked list.<br>   Follow up:<br>      Can you solve it without using extra space?</strong><br></div><br></blockquote>
+        <blockquote class="blockquote-center"><br><div style="padding-left: 50px; text-align: left"><br> <strong><br>Given n non-negative integers a1, a2, &#x2026;, an, where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0). Find two lines, which together with x-axis forms a container, such that the container contains the most water.<br>Note: You may not slant the container.
+</strong><br></div><br><br></blockquote>
 
-<p>&#x5728;&#x4E0D;&#x4FEE;&#x6539;&#x94FE;&#x8868;&#x548C;&#x4E0D;&#x4F7F;&#x7528;&#x989D;&#x5916;&#x7A7A;&#x95F4;&#x7684;&#x524D;&#x63D0;&#x4E0B;&#xFF0C;&#x8FD4;&#x56DE;&#x94FE;&#x8868;&#x4E2D;&#x73AF;&#x8DEF;&#x7684;&#x8D77;&#x59CB;&#x8282;&#x70B9;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x5219;&#x8FD4;&#x56DE; null&#x3002;<br><a id="more"></a></p>
-<h4 id="&#x601D;&#x8DEF;"><a href="#&#x601D;&#x8DEF;" class="headerlink" title="&#x601D;&#x8DEF;:"></a>&#x601D;&#x8DEF;:</h4><pre><code>&#x5728;LeetCode 141&#x9898;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;&#x9700;&#x8981;&#x83B7;&#x5F97;&#x94FE;&#x8868;&#x4E2D;&#x73AF;&#x8DEF;&#x7684;&#x8D77;&#x59CB;&#x8282;&#x70B9;&#x3002;
-(&#x672C;&#x6765;&#x601D;&#x8003;&#x7B2C;&#x4E00;&#x6B21;while&#x5FAA;&#x73AF;&#xFF0C;&#x5373;LeetCode 141&#x7684;while&#x5FAA;&#x73AF;&#xFF0C;&#x53EF;&#x4EE5;&#x83B7;&#x5F97;&#x73AF;&#x7684;&#x957F;&#x5EA6;&#xFF0C;&#x7136;&#x540E;&#x4E00;&#x4E2A;&#x70B9;&#x4E00;&#x4E2A;&#x70B9;&#x7684;&#x904D;&#x5386;&#xFF0C;&#x7136;&#x800C;Time Limit Exceeded...&#x51B5;&#x4E14;&#x8FD9;&#x4E5F;&#x6CA1;&#x6280;&#x5DE7;&#xFF0C;&#x5E94;&#x8BE5;&#x627E;&#x5230;&#x5185;&#x5728;&#x89C4;&#x5F8B;&#x518D;&#x7EE7;&#x7EED;&#x7684;...)
-&#x25A1; - &#x25A1; - &#x25A1; - &#x2026; - 1 (&#x73AF;&#x8DEF;&#x5F00;&#x59CB;) - &#x2026; - (&#x5FEB;&#x6162;&#x6307;&#x9488;&#x76F8;&#x9047;) - &#x2026; - (&#x8FDE;&#x63A5;1) - &#x2026; 
-&#x8FD9;&#x91CC;&#x8BBE;&#x73AF;&#x8DEF;&#x5F00;&#x59CB;&#x7ED3;&#x70B9;&#x8DDD;&#x5934;&#x7ED3;&#x70B9;&#x7684;&#x8DDD;&#x79BB;&#x4E3A;C, &#x6162;&#x6307;&#x9488;&#x8FFD;&#x4E0A;&#x5FEB;&#x6307;&#x9488;&#x8DDD;&#x73AF;&#x8DEF;&#x5F00;&#x59CB;&#x7684;&#x8DDD;&#x79BB;&#x4E3A;S, &#x73AF;&#x8DEF;&#x7684;&#x957F;&#x5EA6;&#x4E3A;L&#x3002;&#x90A3;&#x4E48;:
-</code></pre><ol>
-<li>&#x6162;&#x6307;&#x9488;&#x6240;&#x8D70;&#x7684;&#x8DDD;&#x79BB;&#x4E3A; C+S&#xFF0C;&#x5FEB;&#x6307;&#x9488;&#x6240;&#x8D70;&#x7684;&#x8DDD;&#x79BB;&#x4E3A; C+S+L&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4E3A; 2*(C+S)&#x3002;-&gt; L = C+S</li>
-<li>&#x6211;&#x4EEC;&#x8981;&#x8D70;&#x5230;&#x73AF;&#x8DEF;&#x5F00;&#x59CB;&#x7684;&#x7ED3;&#x70B9;&#xFF0C;&#x53EF;&#x4EE5;&#x5F00;&#x59CB;&#x8D70;&#x7684;&#x7ED3;&#x70B9;-&gt;&#x5934;&#x7ED3;&#x70B9;&amp;&#x5FEB;&#x6162;&#x6307;&#x9488;&#x6240;&#x5728;&#x7684;&#x7ED3;&#x70B9;&#x3002;&#x5BF9;&#x4E8E;&#x5934;&#x7ED3;&#x70B9;&#xFF0C;&#x9700;&#x8981;&#x8D70;C&#x6B21;; &#x5BF9;&#x4E8E;&#x5FEB;/&#x6162;&#x7ED3;&#x70B9;&#xFF0C;&#x9700;&#x8981;&#x8D70;(L-S=)C&#x6B21;&#xFF0C;&#x6240;&#x4EE5;&#x5934;&#x7ED3;&#x70B9;&#x4E0E;&#x6162;&#x8282;&#x70B9;&#x4E00;&#x8D77;&#x904D;&#x5386;&#xFF0C;&#x5F53;&#x5B83;&#x4EEC;&#x76F8;&#x9047;&#x65F6;&#xFF0C;&#x5373;&#x662F;&#x73AF;&#x8DEF;&#x5F00;&#x59CB;&#x7684;&#x7ED3;&#x70B9;&#x3002;</li>
-</ol>
-<h4 id="&#x4EE3;&#x7801;"><a href="#&#x4EE3;&#x7801;" class="headerlink" title="&#x4EE3;&#x7801;:"></a>&#x4EE3;&#x7801;:</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * class ListNode {</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode next;</span><br><span class="line"> *     ListNode(int x) {</span><br><span class="line"> *         val = x;</span><br><span class="line"> *         next = null;</span><br><span class="line"> *     }</span><br><span class="line"> * }</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">detectCycle</span><span class="params">(ListNode head)</span> </span>{</span><br><span class="line">        <span class="keyword">if</span>( head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>){</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        }</span><br><span class="line">        ListNode fast = head;</span><br><span class="line">        ListNode slow = head;</span><br><span class="line">        <span class="keyword">int</span> length = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>( fast != <span class="keyword">null</span> &amp;&amp; fast.next != <span class="keyword">null</span>){</span><br><span class="line">            fast = fast.next.next;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            length++;</span><br><span class="line">            <span class="keyword">if</span>(fast == slow){</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span>( fast != slow ){</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">while</span>( head != slow ){</span><br><span class="line">            head = head.next;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x7ED9;&#x5B9A;n&#x4E2A;&#x975E;&#x8D1F;&#x6574;&#x6570;a1, a2, &#x2026;, an&#xFF0C;&#x6BCF;&#x4E2A;&#x4EE3;&#x8868;&#x4E00;&#x4E2A;&#x5750;&#x6807;&#x70B9;(i, ai)&#xFF0C;&#x4EE5;(i, ai)&#x548C;(i, 0)&#x4E3A;&#x9876;&#x70B9;&#x7ED8;&#x753B;n&#x5217;&#x7EBF;&#x6BB5;&#x3002;&#x627E;&#x5230;&#x4E24;&#x4E2A;&#x7EBF;&#x6BB5;&#xFF0C;&#x5B83;&#x4EEC;&#x4E4B;&#x95F4;&#x5F62;&#x6210;&#x4E00;&#x4E2A;&#x5BB9;&#x5668;&#xFF0C;&#x8FD9;&#x4E2A;&#x5BB9;&#x5668;&#x53EF;&#x4EE5;&#x88C5;&#x6700;&#x5927;&#x5BB9;&#x91CF;&#x7684;&#x6C34;&#x3002;</p>
+<a id="more"></a>
+<h4 id="&#x601D;&#x8DEF;&#xFF1A;"><a href="#&#x601D;&#x8DEF;&#xFF1A;" class="headerlink" title="&#x601D;&#x8DEF;&#xFF1A;"></a>&#x601D;&#x8DEF;&#xFF1A;</h4><p>Tag: Array, Two Pointers<br>&#x5173;&#x4E8E;Two Pointers&#x7684;&#x9898;&#xFF0C;&#x8003;&#x8651;x&#x9879;&#x6700;&#x5927;&#x503C;&#xFF0C;&#x5373;(1, a1)&#x548C;(n, an)&#x3002;<br>&#x521D;&#x59CB;&#x7684;&#x4E24;&#x4E2A;&#x6307;&#x9488;start, finish&#x5206;&#x522B;&#x6307;&#x5411;&#x8FD9;&#x4E24;&#x4E2A;&#x70B9;&#xFF0C;&#x800C;&#x5B83;&#x73B0;&#x5728;&#x7684;&#x5BB9;&#x91CF;&#x4E3A;<strong>&#x5E95;(finish-start)&#x4E58;&#x4EE5;&#x9AD8;(height[start]&gt;height[finish]?height[finish]:height[start])</strong>&#xFF0C;&#x9AD8;&#x662F;&#x53D6;&#x4E24;&#x6761;&#x7EBF;&#x6BB5;&#x7684;&#x77ED;&#x7EBF;&#x6BB5;&#x3002;&#x800C;&#x8981;&#x6C42;&#x6700;&#x5927;&#x5BB9;&#x91CF;&#xFF0C;&#x800C;&#x5E95;&#x6700;&#x5927;&#x7684;&#x4E3A;(an-a1)&#xFF0C;&#x5982;&#x679C;&#x8981;&#x6BD4;&#x6B64;&#x65F6;&#x7684;&#x5BB9;&#x91CF;&#x5927;&#xFF0C;&#x53EA;&#x53EF;&#x80FD;&#x5728;&#x9AD8;&#x7684;&#x503C;&#x66F4;&#x5927;&#x7684;&#x65F6;&#x5019;&#x3002;&#x6240;&#x4EE5;&#x79FB;&#x52A8;&#x6307;&#x9488;(++start&#x6216;&#x8005;&#x2013;finish)&#xFF0C;&#x79FB;&#x52A8;&#x54EA;&#x4E00;&#x4E2A;&#x6307;&#x9488;&#x53D6;&#x51B3;&#x4E8E;&#x54EA;&#x4E00;&#x4E2A;&#x6307;&#x9488;&#x6307;&#x5411;&#x7684;&#x7EBF;&#x6BB5;&#x66F4;&#x77ED;&#xFF0C;&#x6BCF;&#x79FB;&#x52A8;&#x4E00;&#x6B21;&#x5224;&#x65AD;&#x4E00;&#x6B21;&#x6B64;&#x65F6;&#x7684;&#x5BB9;&#x91CF;&#xFF0C;&#x76F4;&#x5230;&#x4E24;&#x4E2A;&#x6307;&#x9488;&#x76F8;&#x9047;&#x3002;</p>
+<h4 id="&#x4F18;&#x5316;&#xFF1A;"><a href="#&#x4F18;&#x5316;&#xFF1A;" class="headerlink" title="&#x4F18;&#x5316;&#xFF1A;"></a>&#x4F18;&#x5316;&#xFF1A;</h4><p>&#x56E0;&#x4E3A;&#x4E58;&#x6CD5;&#x5F88;&#x8017;&#x65F6;&#x95F4;&#xFF0C;&#x6240;&#x4EE5;&#x5C3D;&#x91CF;&#x5224;&#x65AD;&#x4E5F;&#x4E0D;&#x901A;&#x8FC7;&#x4E58;&#x6CD5;&#x5224;&#x65AD;&#x3002;&#x6240;&#x4EE5;&#x591A;&#x52A0;&#x4E00;&#x4E2A;&#x5224;&#x65AD;&#xFF0C;&#x505A;&#x4E00;&#x4E2A;base&#x57FA;&#x503C;&#x4E3A;&#x5F53;&#x524D;&#x503C;&#xFF0C;&#x4E4B;&#x540E;&#x6BD4;&#x8FD9;&#x4E2A;&#x503C;&#x9AD8;&#x7684;&#x624D;&#x53BB;&#x505A;&#x4E58;&#x6CD5;&#x5224;&#x65AD;&#x3002;</p>
+<h4 id="&#x4EE3;&#x7801;&#xFF1A;"><a href="#&#x4EE3;&#x7801;&#xFF1A;" class="headerlink" title="&#x4EE3;&#x7801;&#xFF1A;"></a>&#x4EE3;&#x7801;&#xFF1A;</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxArea</span><span class="params">(<span class="keyword">int</span>[] height)</span> </span>{</span><br><span class="line">        <span class="keyword">if</span>( height.length == <span class="number">0</span>)   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> start = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> finish = height.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>( start &lt; finish ){</span><br><span class="line">            <span class="keyword">int</span> tmp = (finish-start)*(height[start]&gt;height[finish]?height[finish]:height[start]);</span><br><span class="line">            <span class="keyword">if</span>( tmp &gt; max ){</span><br><span class="line">                max = tmp;</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">if</span>( height[start] &gt; height[finish]){</span><br><span class="line">                <span class="keyword">int</span> base = height[finish];</span><br><span class="line">                <span class="keyword">while</span>( height[--finish] &lt; base );</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">else</span>{</span><br><span class="line">                <span class="keyword">int</span> base = height[start];</span><br><span class="line">                <span class="keyword">while</span>( height[++start] &lt; base );</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -345,17 +335,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/2016/03/06/leetcode141/" rel="next" title="LeetCode 141 Linked List Cycle">
-                <i class="fa fa-chevron-left"></i> LeetCode 141 Linked List Cycle
+              <a href="/blog/2016/04/02/OpenGL-beginner/" rel="next" title="z-buffer相关汇总">
+                <i class="fa fa-chevron-left"></i> z-buffer相关汇总
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/blog/2016/03/09/leetcode237/" rel="prev" title="LeetCode 237 Delete Node in a Linked List">
-                LeetCode 237 Delete Node in a Linked List <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -381,8 +367,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/03/07/leetcode142/"
-           data-title="LeetCode 142 Linked List Cycle II" data-url="http://ycymio.com/blog/2016/03/07/leetcode142/">
+      <div class="ds-thread" data-thread-key="2016/04/06/leetcode11/"
+           data-title="LeetCode 11 Container With Most Water" data-url="http://ycymio.com/blog/2016/04/06/leetcode11/">
       </div>
     
   </div>
@@ -511,7 +497,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">1.</span> <span class="nav-text">思路:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码"><span class="nav-number">2.</span> <span class="nav-text">代码:</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路："><span class="nav-number">1.</span> <span class="nav-text">思路：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优化："><span class="nav-number">2.</span> <span class="nav-text">优化：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码："><span class="nav-number">3.</span> <span class="nav-text">代码：</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
