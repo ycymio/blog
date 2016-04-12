@@ -41,7 +41,7 @@
 <link href="/blog/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="OpenGL,class," />
+  <meta name="keywords" content="LeetCode," />
 
 
 
@@ -57,20 +57,16 @@
 
 
 
-<meta name="description" content="&amp;#x6700;&amp;#x8FD1;&amp;#x51E0;&amp;#x7BC7;&amp;#x6587;&amp;#x7AE0;&amp;#x7684;&amp;#x94FE;&amp;#x63A5;&amp;#x548C;&amp;#x6548;&amp;#x679C;&amp;#x56FE;&amp;#x7684;&amp;#x5448;&amp;#x73B0;&amp;#x3002;&amp;#x6CA1;&amp;#x6709;&amp;#x5199;z&amp;#x626B;&amp;#x63CF;&amp;#x7EBF;&amp;#x7B97;&amp;#x6CD5">
+<meta name="description" content="Implement atoi to convert a string to an integer.Hint: Carefully consider all possible input cases. If you want a challenge, please do not see below and ask yourself what are the possible input cases.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="z-buffer相关汇总">
-<meta property="og:url" content="http://ycymio.com/blog/2016/04/02/OpenGL-beginner/index.html">
+<meta property="og:title" content="LeetCode 8 String to Integer (atoi)">
+<meta property="og:url" content="http://ycymio.com/blog/2016/04/12/leetcode8/index.html">
 <meta property="og:site_name" content="ycy’s tech-blog">
-<meta property="og:description" content="&amp;#x6700;&amp;#x8FD1;&amp;#x51E0;&amp;#x7BC7;&amp;#x6587;&amp;#x7AE0;&amp;#x7684;&amp;#x94FE;&amp;#x63A5;&amp;#x548C;&amp;#x6548;&amp;#x679C;&amp;#x56FE;&amp;#x7684;&amp;#x5448;&amp;#x73B0;&amp;#x3002;&amp;#x6CA1;&amp;#x6709;&amp;#x5199;z&amp;#x626B;&amp;#x63CF;&amp;#x7EBF;&amp;#x7B97;&amp;#x6CD5">
-<meta property="og:image" content="http://ycymio.com/blog/blog/2016/04/02/OpenGL-beginner/ford-02.jpg">
-<meta property="og:image" content="http://ycymio.com/blog/blog/2016/04/02/OpenGL-beginner/ford-01.jpg">
-<meta property="og:image" content="http://ycymio.com/blog/blog/2016/04/02/OpenGL-beginner/teapot-01.png">
-<meta property="og:image" content="http://ycymio.com/blog/blog/2016/04/02/OpenGL-beginner/camper-02.png">
-<meta property="og:updated_time" content="2016-04-02T09:32:58.000Z">
+<meta property="og:description" content="Implement atoi to convert a string to an integer.Hint: Carefully consider all possible input cases. If you want a challenge, please do not see below and ask yourself what are the possible input cases.">
+<meta property="og:updated_time" content="2016-04-12T14:31:56.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="z-buffer相关汇总">
-<meta name="twitter:description" content="&amp;#x6700;&amp;#x8FD1;&amp;#x51E0;&amp;#x7BC7;&amp;#x6587;&amp;#x7AE0;&amp;#x7684;&amp;#x94FE;&amp;#x63A5;&amp;#x548C;&amp;#x6548;&amp;#x679C;&amp;#x56FE;&amp;#x7684;&amp;#x5448;&amp;#x73B0;&amp;#x3002;&amp;#x6CA1;&amp;#x6709;&amp;#x5199;z&amp;#x626B;&amp;#x63CF;&amp;#x7EBF;&amp;#x7B97;&amp;#x6CD5">
+<meta name="twitter:title" content="LeetCode 8 String to Integer (atoi)">
+<meta name="twitter:description" content="Implement atoi to convert a string to an integer.Hint: Carefully consider all possible input cases. If you want a challenge, please do not see below and ask yourself what are the possible input cases.">
 
 
 
@@ -88,7 +84,7 @@
   };
 </script>
 
-  <title> z-buffer相关汇总 | ycy’s tech-blog </title>
+  <title> LeetCode 8 String to Integer (atoi) | ycy’s tech-blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -218,7 +214,7 @@
             
             
               
-                z-buffer相关汇总
+                LeetCode 8 String to Integer (atoi)
               
             
           </h1>
@@ -230,8 +226,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-02T17:17:04+08:00" content="2016-04-02">
-              2016-04-02
+            <time itemprop="dateCreated" datetime="2016-04-12T19:44:19+08:00" content="2016-04-12">
+              2016-04-12
             </time>
           </span>
 
@@ -244,8 +240,32 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/blog/categories/OpenGL/" itemprop="url" rel="index">
-                    <span itemprop="name">OpenGL</span>
+                  <a href="/blog/categories/OJ/" itemprop="url" rel="index">
+                    <span itemprop="name">OJ</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/OJ/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/OJ/LeetCode/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -260,8 +280,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/blog/2016/04/02/OpenGL-beginner/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/02/OpenGL-beginner/" itemprop="commentsCount"></span>
+                <a href="/blog/2016/04/12/leetcode8/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/12/leetcode8/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -271,7 +291,7 @@
 
           
           
-             <span id="/blog/2016/04/02/OpenGL-beginner/" class="leancloud_visitors" data-flag-title="z-buffer相关汇总">
+             <span id="/blog/2016/04/12/leetcode8/" class="leancloud_visitors" data-flag-title="LeetCode 8 String to Integer (atoi)">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -291,25 +311,20 @@
       
 
       
-        <p>&#x6700;&#x8FD1;&#x51E0;&#x7BC7;&#x6587;&#x7AE0;&#x7684;&#x94FE;&#x63A5;&#x548C;&#x6548;&#x679C;&#x56FE;&#x7684;&#x5448;&#x73B0;&#x3002;&#x6CA1;&#x6709;&#x5199;z&#x626B;&#x63CF;&#x7EBF;&#x7B97;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x6E90;&#x4EE3;&#x7801;&#x91CC;&#x6709;&#x4E00;&#x5B9A;&#x7684;&#x8BF4;&#x660E;&#x3002;&#x8FD9;&#x91CC;&#x63D0;&#x4E00;&#x4E0B;&#x7279;&#x6B8A;&#x5904;&#x7406;&#x7684;&#x60C5;&#x51B5;:<br>&#x5728;&#x5750;&#x6807;&#x7CFB;&#x4E2D;&#x4E0E;xOy&#x9762;&#x5E73;&#x884C;&#x7684;&#x9762;&#x7684;&#x5904;&#x7406; -&gt; &#x662F;&#x8DF3;&#x8FC7;&#x6CA1;&#x6709;&#x5904;&#x7406;&#xFF0C;&#x5C31;&#x770B;&#x6210;&#x7EBF;&#x592A;&#x7EC6;&#x770B;&#x4E0D;&#x6E05;&#x4E86;&#x3002;<br>&#x4E0E;xOy&#x5E73;&#x884C;&#x7684;&#x7EBF;&#x7684;&#x5904;&#x7406;</p>
+        <blockquote class="blockquote-center"><br><div style="padding-left: 50px; text-align: left"><br><strong><br>Implement atoi to convert a string to an integer.<br><br>Hint: Carefully consider all possible input cases. If you want a challenge, please do not see below and ask yourself what are the possible input cases.<br><br>Notes: It is intended for this problem to be specified vaguely (ie, no given input specs). You are responsible to gather all the input requirements up front.
+</strong><br></div><br><br></blockquote>
+
+<p>&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;String&#x578B;&#x8F6C;Integer&#x578B;&#x7684;&#x529F;&#x80FD;(C&#x8BED;&#x8A00;&#x7684;atoi&#x51FD;&#x6570;)</p>
 <a id="more"></a>
-<h4 id="&#x6587;&#x7AE0;&#x548C;&#x6E90;&#x4EE3;&#x7801;&#x7684;&#x94FE;&#x63A5;"><a href="#&#x6587;&#x7AE0;&#x548C;&#x6E90;&#x4EE3;&#x7801;&#x7684;&#x94FE;&#x63A5;" class="headerlink" title="&#x6587;&#x7AE0;&#x548C;&#x6E90;&#x4EE3;&#x7801;&#x7684;&#x94FE;&#x63A5;"></a>&#x6587;&#x7AE0;&#x548C;&#x6E90;&#x4EE3;&#x7801;&#x7684;&#x94FE;&#x63A5;</h4><p><a href="http://ycymio.com/blog/2016/03/20/OpenGL-beginner-1/" title="OpenGL&#x5165;&#x95E8;&#x5B66;&#x4E60;&#x7CFB;&#x5217;&#x96C6;(&#x4E00;)" target="_blank" rel="external" class="link">OpenGL&#x5165;&#x95E8;&#x5B66;&#x4E60;&#x7CFB;&#x5217;&#x96C6;(&#x4E00;)</a></p>
-<p><a href="http://ycymio.com/blog/2016/03/21/OpenGL-beginner-2/" title="OpenGL&#x5165;&#x95E8;&#x5B66;&#x4E60;&#x7CFB;&#x5217;&#x96C6;(&#x4E8C;)" target="_blank" rel="external" class="link">OpenGL&#x5165;&#x95E8;&#x5B66;&#x4E60;&#x7CFB;&#x5217;&#x96C6;(&#x4E8C;)</a></p>
-<p><a href="http://ycymio.com/blog/2016/03/24/OpenGL-beginner-3/" title="OpenGL&#x5165;&#x95E8;&#x5B66;&#x4E60;&#x7CFB;&#x5217;&#x96C6;(&#x4E09;)" target="_blank" rel="external" class="link">OpenGL&#x5165;&#x95E8;&#x5B66;&#x4E60;&#x7CFB;&#x5217;&#x96C6;(&#x4E09;)</a></p>
-<p><a href="http://ycymio.com/blog/2016/03/18/OpenGL-obj/" title="obj&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x7B80;&#x8FF0;" target="_blank" rel="external" class="link">obj&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x7B80;&#x8FF0;</a></p>
-<p><a href="https://github.com/ycymio/z-buffer-scan-line" title="Z&#x626B;&#x63CF;&#x7EBF;&#x7B97;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;" target="_blank" rel="external" class="link">Z&#x626B;&#x63CF;&#x7EBF;&#x7B97;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;</a></p>
-<h4 id="&#x4E00;&#x5343;&#x9762;&#x7247;&#x4EE5;&#x4E0A;&#x7684;&#x5904;&#x7406;&#x6548;&#x679C;&#x56FE;"><a href="#&#x4E00;&#x5343;&#x9762;&#x7247;&#x4EE5;&#x4E0A;&#x7684;&#x5904;&#x7406;&#x6548;&#x679C;&#x56FE;" class="headerlink" title="&#x4E00;&#x5343;&#x9762;&#x7247;&#x4EE5;&#x4E0A;&#x7684;&#x5904;&#x7406;&#x6548;&#x679C;&#x56FE;"></a>&#x4E00;&#x5343;&#x9762;&#x7247;&#x4EE5;&#x4E0A;&#x7684;&#x5904;&#x7406;&#x6548;&#x679C;&#x56FE;</h4><p>3dsMax&#x81EA;&#x5E26;&#x7684;ford: &#xFF08;&#x5B83;&#x7684;&#x5448;&#x73B0;&#x6709;bug&#xFF0C;&#x4F46;&#x6CA1;&#x627E;&#x5230;&#x2026;&#x9762;&#x7247;&#x5370;&#x8C61;&#x4E2D;&#x4E0A;&#x4E07;&#x4E86;&#xFF09;</p>
-<center><img src="/blog/2016/04/02/OpenGL-beginner/ford-02.jpg" width="300px" alt="ford-02"></center>
-
-<p>&#x9762;&#x7247;&#x6A2A;&#x5411;&#x95F4;&#x4E5F;&#x6709;&#x95F4;&#x9699;&#x7248;&#xFF1A;</p>
-<center><img src="/blog/2016/04/02/OpenGL-beginner/ford-01.jpg" width="300px" alt="ford-01"></center>
-
-<p>3dsMax&#x81EA;&#x5E26;&#x7684;teapot: </p>
-<center><img src="/blog/2016/04/02/OpenGL-beginner/teapot-01.png" width="300px" alt="teapot"></center>
-
-<p>3dsMax&#x81EA;&#x5E26;&#x7684;camper: </p>
-<center><img src="/blog/2016/04/02/OpenGL-beginner/camper-02.png" width="300px" alt="camper"></center>
-
+<h4 id="&#x601D;&#x8DEF;"><a href="#&#x601D;&#x8DEF;" class="headerlink" title="&#x601D;&#x8DEF;:"></a>&#x601D;&#x8DEF;:</h4><p><strong>&#x4E00;&#x822C;&#x7684;&#x60C5;&#x51B5;</strong>&#xFF1A;&#x4E00;&#x4E2A;String&#x578B;&#x5148;&#x8F6C;&#x6362;&#x6210;Char&#x578B;&#x6570;&#x7EC4;&#xFF0C;&#x518D;&#x4ECE;&#x7B2C;&#x4E00;&#x4E2A;&#x6570;&#x5B57;&#x5F00;&#x59CB;&#x8BFB;&#x53D6;&#xFF0C;&#x6BCF;&#x6B21;&#x5C06;&#x539F;&#x6765;&#x7684;&#x6570;&#x4E58;&#x4EE5;10&#xFF0C;&#x52A0;&#x4E0A;&#x5F53;&#x524D;&#x7684;&#x8BFB;&#x53D6;&#x503C;&#x3002;<br><strong>&#x7279;&#x6B8A;&#x60C5;&#x51B5;</strong>&#xFF1A;<br>&#x9898;&#x76EE;&#x7ED9;&#x7684; Requirements for atoi:<br>The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character, takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value.<br>The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function.<br>If the first sequence of non-whitespace characters in str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed.<br>If no valid conversion could be performed, a zero value is returned. If the correct value is out of the range of representable values, INT_MAX (2147483647) or INT_MIN (-2147483648) is returned.</p>
+<ul>
+<li>&#x5728;&#x771F;&#x6B63;&#x7684;int&#x578B;&#x6570;&#x5B57;&#x524D;&#x53EF;&#x80FD;&#x6709;&#x7A7A;&#x767D;&#x5B57;&#x7B26;</li>
+<li>&#x6570;&#x5B57;&#x524D;&#x5141;&#x8BB8;&#x6709;&#x2018;+&#x2019;(&#x6B63;&#x53F7;)&#x548C;&#x2018;-&#x2019;(&#x8D1F;&#x53F7;)</li>
+<li>&#x5728;&#x89E3;&#x6790;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x5C3D;&#x53EF;&#x80FD;&#x7684;&#x8F6C;&#x5316;&#x5C3D;&#x53EF;&#x80FD;&#x591A;&#x7684;&#x6570;&#x5B57;&#xFF0C;&#x76F4;&#x5230;&#x9047;&#x5230;&#x4E0D;&#x662F;&#x6570;&#x5B57;&#x7684;&#x5B57;&#x7B26;&#x3002;</li>
+<li>&#x53EF;&#x80FD;&#x9047;&#x5230;String&#x4E3A;&#x7A7A;/&#x53EA;&#x6709;&#x7A7A;&#x767D;&#x5B57;&#x7B26;/&#x7B2C;&#x4E00;&#x4E2A;&#x975E;&#x7A7A;&#x767D;&#x5B57;&#x7B26;&#x7684;&#x4E0D;&#x662F;&#x6570;&#x5B57;&#xFF0C;&#x6B64;&#x65F6;&#x8F93;&#x51FA;&#x96F6;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x6570;&#x503C;&#x5927;&#x4E8E;int&#x578B;&#x7684;&#x6700;&#x5927;&#x503C;&#xFF0C;&#x5219;&#x8F93;&#x51FA;&#x6700;&#x5927;&#x503C;&#xFF1B;&#x5982;&#x679C;&#x6570;&#x503C;&#x5C0F;&#x4E8E;int&#x578B;&#x6700;&#x5C0F;&#x503C;&#xFF0C;&#x5219;&#x8F93;&#x51FA;&#x6700;&#x5C0F;&#x503C;&#x3002;(&#x8FD9;&#x91CC;&#x5224;&#x65AD;&#x7565;&#x590D;&#x6742;&#xFF0C;&#x6240;&#x4EE5;&#x4F1A;&#x8017;&#x65F6;&#xFF0C;&#x8981;&#x662F;&#x63D0;&#x524D;&#x505A;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x5224;&#x65AD;&#xFF0C;&#x8B6C;&#x5982;&#x8BFB;&#x53D6;&#x7684;&#x4F4D;&#x6570;&#x8FD8;&#x6CA1;&#x6709;&#x5927;&#x4E8E;&#x4EC0;&#x4E48;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x4E0D;&#x5224;&#x65AD;&#x662F;&#x5426;overflow)</li>
+</ul>
+<h4 id="&#x4EE3;&#x7801;"><a href="#&#x4EE3;&#x7801;" class="headerlink" title="&#x4EE3;&#x7801;:"></a>&#x4EE3;&#x7801;:</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">myAtoi</span><span class="params">(String str)</span> </span>{</span><br><span class="line">        <span class="keyword">if</span>(str == <span class="keyword">null</span> || str.length() == <span class="number">0</span> ){</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> sign = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">char</span>[] result = str.toCharArray();</span><br><span class="line">        <span class="keyword">while</span>( result[i] == <span class="string">&apos; &apos;</span>){</span><br><span class="line">            ++i;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span>(result[i] == <span class="string">&apos;-&apos;</span>){</span><br><span class="line">            sign = -<span class="number">1</span>;</span><br><span class="line">            ++i;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>( result[i] == <span class="string">&apos;+&apos;</span>){</span><br><span class="line">            ++i;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">int</span> start = i;</span><br><span class="line">        <span class="keyword">for</span>( ; i &lt;str.length(); ++i){</span><br><span class="line">            <span class="keyword">if</span>( result[i] &gt; <span class="string">&apos;9&apos;</span> || result[i] &lt; <span class="string">&apos;0&apos;</span>){</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            }</span><br><span class="line">            <span class="comment">// if( i - start &lt; 9 ){</span></span><br><span class="line">            <span class="comment">//    ret = ret*10 + result[i] - &apos;0&apos;;</span></span><br><span class="line">            <span class="comment">//    continue;</span></span><br><span class="line">            <span class="comment">// }</span></span><br><span class="line">            <span class="keyword">if</span>( (ret &gt; (Integer.MAX_VALUE / <span class="number">10</span>) </span><br><span class="line">               || ret == (Integer.MAX_VALUE / <span class="number">10</span>) &amp;&amp; (result[i] - <span class="string">&apos;0&apos;</span>) &gt; (Integer.MAX_VALUE % <span class="number">10</span>)  )</span><br><span class="line">               &amp;&amp; sign == <span class="number">1</span>){</span><br><span class="line">                <span class="keyword">return</span> Integer.MAX_VALUE;</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>((ret &gt; (Integer.MAX_VALUE / <span class="number">10</span>) </span><br><span class="line">               || ret == (Integer.MAX_VALUE / <span class="number">10</span>) &amp;&amp; (result[i] - <span class="string">&apos;0&apos;</span>) &gt; (Integer.MAX_VALUE % <span class="number">10</span> + <span class="number">1</span>)  )</span><br><span class="line">                &amp;&amp; sign == -<span class="number">1</span>){</span><br><span class="line">                <span class="keyword">return</span> Integer.MIN_VALUE;</span><br><span class="line">            }</span><br><span class="line">            ret = ret*<span class="number">10</span> + result[i] - <span class="string">&apos;0&apos;</span>;</span><br><span class="line">        }</span><br><span class="line">        ret = ret*sign;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="comment">// &#x53BB;&#x6389;&#x6CE8;&#x91CA;&#x5C31;&#x662F; 3 ms, &#x4E0D;&#x53BB;&#x6389;&#x5C31;&#x662F; 4 ms ...</span></span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -317,9 +332,7 @@
       
         <div class="post-tags">
           
-            <a href="/blog/tags/OpenGL/" rel="tag">#OpenGL</a>
-          
-            <a href="/blog/tags/class/" rel="tag">#class</a>
+            <a href="/blog/tags/LeetCode/" rel="tag">#LeetCode</a>
           
         </div>
       
@@ -328,17 +341,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/2016/03/24/OpenGL-beginner-3/" rel="next" title="OpenGL入门学习系列集(三)">
-                <i class="fa fa-chevron-left"></i> OpenGL入门学习系列集(三)
+              <a href="/blog/2016/04/07/android-problems/" rel="next" title="Android遇到的各个小问题">
+                <i class="fa fa-chevron-left"></i> Android遇到的各个小问题
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/blog/2016/04/06/leetcode11/" rel="prev" title="LeetCode 11 Container With Most Water">
-                LeetCode 11 Container With Most Water <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -364,8 +373,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/02/OpenGL-beginner/"
-           data-title="z-buffer相关汇总" data-url="http://ycymio.com/blog/2016/04/02/OpenGL-beginner/">
+      <div class="ds-thread" data-thread-key="2016/04/12/leetcode8/"
+           data-title="LeetCode 8 String to Integer (atoi)" data-url="http://ycymio.com/blog/2016/04/12/leetcode8/">
       </div>
     
   </div>
@@ -494,7 +503,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#文章和源代码的链接"><span class="nav-number">1.</span> <span class="nav-text">文章和源代码的链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一千面片以上的处理效果图"><span class="nav-number">2.</span> <span class="nav-text">一千面片以上的处理效果图</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">1.</span> <span class="nav-text">思路:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码"><span class="nav-number">2.</span> <span class="nav-text">代码:</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
