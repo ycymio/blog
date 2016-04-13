@@ -1,0 +1,899 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="Java.lang&amp;#x4E2D;&amp;#x63D0;&amp;#x4F9B;&amp;#x7684;&amp;#x4EE5;&amp;#x4E0B;&amp;#x51E0;&amp;#x79CD;&amp;#x7C7B;&amp;#x578B;&amp;#x7684;&amp;#x8303;&amp;#x56F4;&amp;#xFF1A;Byte, Integer, Long, Short, Character, Double, Float.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java基本类型的取值范围">
+<meta property="og:url" content="http://ycymio.com/blog/2016/04/13/java-boundary/index.html">
+<meta property="og:site_name" content="ycy’s tech-blog">
+<meta property="og:description" content="Java.lang&amp;#x4E2D;&amp;#x63D0;&amp;#x4F9B;&amp;#x7684;&amp;#x4EE5;&amp;#x4E0B;&amp;#x51E0;&amp;#x79CD;&amp;#x7C7B;&amp;#x578B;&amp;#x7684;&amp;#x8303;&amp;#x56F4;&amp;#xFF1A;Byte, Integer, Long, Short, Character, Double, Float.">
+<meta property="og:image" content="http://ycymio.com/blog/blog/2016/04/13/java-boundary/boundary.png">
+<meta property="og:image" content="http://ycymio.com/blog/blog/2016/04/13/java-boundary/Float.png">
+<meta property="og:image" content="http://ycymio.com/blog/blog/2016/04/13/java-boundary/Double.png">
+<meta property="og:updated_time" content="2016-04-13T15:35:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java基本类型的取值范围">
+<meta name="twitter:description" content="Java.lang&amp;#x4E2D;&amp;#x63D0;&amp;#x4F9B;&amp;#x7684;&amp;#x4EE5;&amp;#x4E0B;&amp;#x51E0;&amp;#x79CD;&amp;#x7C7B;&amp;#x578B;&amp;#x7684;&amp;#x8303;&amp;#x56F4;&amp;#xFF1A;Byte, Integer, Long, Short, Character, Double, Float.">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> java基本类型的取值范围 | ycy’s tech-blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">ycy’s tech-blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">天气好得就好像走着走着就能遇见你</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            博客
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                java基本类型的取值范围
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-13T11:36:39+08:00" content="2016-04-13">
+              2016-04-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2016/04/13/java-boundary/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/13/java-boundary/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/blog/2016/04/13/java-boundary/" class="leancloud_visitors" data-flag-title="java基本类型的取值范围">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Java.lang&#x4E2D;&#x63D0;&#x4F9B;&#x7684;&#x4EE5;&#x4E0B;&#x51E0;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x8303;&#x56F4;&#xFF1A;<strong>Byte, Integer, Long, Short, Character, Double, Float</strong>.</p>
+<a id="more"></a>
+<p>&#x5148;&#x653E;&#x4E00;&#x6BB5;&#x6D4B;&#x8BD5;&#x5B83;&#x4EEC;&#x8303;&#x56F4;&#x7684;&#x4EE3;&#x7801;&#x53CA;&#x5176;&#x7ED3;&#x679C;&#xFF0C;JDK1.6&#x4E0B;:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Boundary</span> </span>{</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line">	    System.out.println(<span class="string">&quot;Byte.MAX_VALUE: &quot;</span> + Byte.MAX_VALUE);</span><br><span class="line">	    System.out.println(<span class="string">&quot;Byte.MIN_VALUE: &quot;</span> + Byte.MIN_VALUE);</span><br><span class="line">	    System.out.println(<span class="string">&quot;Short.MAX_VALUE: &quot;</span> + Short.MAX_VALUE);</span><br><span class="line">	    System.out.println(<span class="string">&quot;Short.MIN_VALUE: &quot;</span> + Short.MIN_VALUE);</span><br><span class="line">	    System.out.println(<span class="string">&quot;Integer.MAX_VALUE: &quot;</span> + Integer.MAX_VALUE);</span><br><span class="line">	    System.out.println(<span class="string">&quot;Integer.MIN_VALUE: &quot;</span> + Integer.MIN_VALUE);</span><br><span class="line">	    System.out.println(<span class="string">&quot;Long.MAX_VALUE: &quot;</span>+ Long.MAX_VALUE);</span><br><span class="line">	    System.out.println(<span class="string">&quot;Long.MIN_VALUE: &quot;</span>+ Long.MIN_VALUE);</span><br><span class="line">	    System.out.println(<span class="string">&quot;Character.MAX_VALUE: &quot;</span> + Character.MAX_VALUE);</span><br><span class="line">	    System.out.println(<span class="string">&quot;Character.MIN_VALUE: &quot;</span> + Character.MIN_VALUE);</span><br><span class="line">	    System.out.println(<span class="string">&quot;Float.MAX_VALUE: &quot;</span> + Float.MAX_VALUE);</span><br><span class="line">	    System.out.println(<span class="string">&quot;Float.MIN_VALUE: &quot;</span> + Float.MIN_VALUE);</span><br><span class="line">	    System.out.println(<span class="string">&quot;Double.MAX_VALUE: &quot;</span> + Double.MAX_VALUE);</span><br><span class="line">	    System.out.println(<span class="string">&quot;Double.MIN_VALUE: &quot;</span> + Double.MIN_VALUE);</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p><img src="/blog/2016/04/13/java-boundary/boundary.png" width="666px"></p>
+<p>&#x63D0;&#x524D;&#x63D0;&#x4E00;&#x53E5;&#xFF1A;&#x7531;&#x6B64;&#x53EF;&#x89C1;&#xFF0C;Float&#x548C;Double&#x578B;&#x7684;MIN_VALUE&#x5E76;&#x4E0D;&#x662F;&#x6211;&#x4EEC;&#x6240;&#x8C13;&#x7684;&#x6700;&#x5C0F;&#x503C;(&#x80FD;&#x8868;&#x793A;&#x7684;&#x6700;&#x5C0F;&#x7684;&#x8D1F;&#x6570;)&#xFF0C;&#x800C;&#x662F;&#x6B63;&#x6570;&#x4E2D;&#x80FD;&#x8868;&#x793A;&#x7684;&#x6700;&#x5C0F;&#x7684;&#x503C;&#x3002;</p>
+<h4 id="Byte-27-27-1-8&#x4F4D;"><a href="#Byte-27-27-1-8&#x4F4D;" class="headerlink" title="Byte: -27~27-1 (8&#x4F4D;)"></a>Byte: -2<sup>7</sup>~2<sup>7</sup>-1 (8&#x4F4D;)</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * A constant holding the minimum value a {<span class="doctag">@code</span> byte} can</span><br><span class="line"> * have, -2&lt;sup&gt;7&lt;/sup&gt;.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">byte</span>   MIN_VALUE = -<span class="number">128</span>;</span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * A constant holding the maximum value a {<span class="doctag">@code</span> byte} can</span><br><span class="line"> * have, 2&lt;sup&gt;7&lt;/sup&gt;-1.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">byte</span>   MAX_VALUE = <span class="number">127</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="Short-215-215-1-16&#x4F4D;"><a href="#Short-215-215-1-16&#x4F4D;" class="headerlink" title="Short: -215~215-1 (16&#x4F4D;)"></a>Short: -2<sup>15</sup>~2<sup>15</sup>-1 (16&#x4F4D;)</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * A constant holding the minimum value a {<span class="doctag">@code</span> short} can</span><br><span class="line"> * have, -2&lt;sup&gt;15&lt;/sup&gt;.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">short</span>   MIN_VALUE = -<span class="number">32768</span>;</span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * A constant holding the maximum value a {<span class="doctag">@code</span> short} can</span><br><span class="line"> * have, 2&lt;sup&gt;15&lt;/sup&gt;-1.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">short</span>   MAX_VALUE = <span class="number">32767</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="Integer-231-231-1-32&#x4F4D;"><a href="#Integer-231-231-1-32&#x4F4D;" class="headerlink" title="Integer: -231~231-1 (32&#x4F4D;)"></a>Integer: -2<sup>31</sup>~2<sup>31</sup>-1 (32&#x4F4D;)</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * A constant holding the minimum value an {<span class="doctag">@code</span> int} can</span><br><span class="line"> * have, -2&lt;sup&gt;31&lt;/sup&gt;.</span><br><span class="line"> */</span></span><br><span class="line"><span class="annotation">@Native</span> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span>   MIN_VALUE = <span class="number">0x80000000</span>;</span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * A constant holding the maximum value an {<span class="doctag">@code</span> int} can</span><br><span class="line"> * have, 2&lt;sup&gt;31&lt;/sup&gt;-1.</span><br><span class="line"> */</span></span><br><span class="line"><span class="annotation">@Native</span> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span>   MAX_VALUE = <span class="number">0x7fffffff</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="Long-263-263-1-64&#x4F4D;"><a href="#Long-263-263-1-64&#x4F4D;" class="headerlink" title="Long: -263~263-1 (64&#x4F4D;)"></a>Long: -2<sup>63</sup>~2<sup>63</sup>-1 (64&#x4F4D;)</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * A constant holding the minimum value a {<span class="doctag">@code</span> long} can</span><br><span class="line"> * have, -2&lt;sup&gt;63&lt;/sup&gt;.</span><br><span class="line"> */</span></span><br><span class="line"><span class="annotation">@Native</span> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> MIN_VALUE = <span class="number">0x8000000000000000L</span>;</span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * A constant holding the maximum value a {<span class="doctag">@code</span> long} can</span><br><span class="line"> * have, 2&lt;sup&gt;63&lt;/sup&gt;-1.</span><br><span class="line"> */</span></span><br><span class="line"><span class="annotation">@Native</span> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> MAX_VALUE = <span class="number">0x7fffffffffffffffL</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="Character-&#x2018;-u0000&#x2019;-&#x2019;-uFFFF&#x2019;-16&#x4F4D;"><a href="#Character-&#x2018;-u0000&#x2019;-&#x2019;-uFFFF&#x2019;-16&#x4F4D;" class="headerlink" title="Character: &#x2018;\u0000&#x2019;~&#x2019;\uFFFF&#x2019;  (16&#x4F4D;)"></a>Character: &#x2018;\u0000&#x2019;~&#x2019;\uFFFF&#x2019;  (16&#x4F4D;)</h4><p>Unicode: \u&#x5F00;&#x5934;&#x7684;&#x662F;&#x4E00;&#x4E2A;Unicode&#x7801;&#x7684;&#x5B57;&#x7B26;&#x3002;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * The constant value of this field is the smallest value of type</span><br><span class="line"> * {<span class="doctag">@code</span> char}, {<span class="doctag">@code</span> &apos;\u005Cu0000&apos;}.</span><br><span class="line"> *</span><br><span class="line"> * <span class="doctag">@since</span>   1.0.2</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">char</span> MIN_VALUE = <span class="string">&apos;\u0000&apos;</span>;</span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * The constant value of this field is the largest value of type</span><br><span class="line"> * {<span class="doctag">@code</span> char}, {<span class="doctag">@code</span> &apos;\u005CuFFFF&apos;}.</span><br><span class="line"> *</span><br><span class="line"> * <span class="doctag">@since</span>   1.0.2</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">char</span> MAX_VALUE = <span class="string">&apos;\uFFFF&apos;</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="Float-&#x6570;&#x7B26;1&#x4F4D;&#xFF0C;&#x5C3E;&#x6570;23&#x4F4D;&#xFF0C;&#x9636;&#x7801;8&#x4F4D;&#xFF0C;&#x7528;&#x79FB;&#x7801;&#x8868;&#x793A;&#x3002;p&#x4EE3;&#x8868;&#x4EE5;2&#x4E3A;&#x5E95;&#x3002;"><a href="#Float-&#x6570;&#x7B26;1&#x4F4D;&#xFF0C;&#x5C3E;&#x6570;23&#x4F4D;&#xFF0C;&#x9636;&#x7801;8&#x4F4D;&#xFF0C;&#x7528;&#x79FB;&#x7801;&#x8868;&#x793A;&#x3002;p&#x4EE3;&#x8868;&#x4EE5;2&#x4E3A;&#x5E95;&#x3002;" class="headerlink" title="Float:  &#x6570;&#x7B26;1&#x4F4D;&#xFF0C;&#x5C3E;&#x6570;23&#x4F4D;&#xFF0C;&#x9636;&#x7801;8&#x4F4D;&#xFF0C;&#x7528;&#x79FB;&#x7801;&#x8868;&#x793A;&#x3002;p&#x4EE3;&#x8868;&#x4EE5;2&#x4E3A;&#x5E95;&#x3002;"></a>Float:  &#x6570;&#x7B26;1&#x4F4D;&#xFF0C;&#x5C3E;&#x6570;23&#x4F4D;&#xFF0C;&#x9636;&#x7801;8&#x4F4D;&#xFF0C;&#x7528;&#x79FB;&#x7801;&#x8868;&#x793A;&#x3002;p&#x4EE3;&#x8868;&#x4EE5;2&#x4E3A;&#x5E95;&#x3002;</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line">  * A constant holding the positive infinity of type</span><br><span class="line">  * {<span class="doctag">@code</span> float}. It is equal to the value returned by</span><br><span class="line">  * {<span class="doctag">@code</span> Float.intBitsToFloat(0x7f800000)}.</span><br><span class="line">  */</span>     </span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> POSITIVE_INFINITY = <span class="number">1.0f</span> / <span class="number">0.0f</span>;</span><br><span class="line"> <span class="comment">/**</span><br><span class="line">  * A constant holding the negative infinity of type</span><br><span class="line">  * {<span class="doctag">@code</span> float}. It is equal to the value returned by</span><br><span class="line">  * {<span class="doctag">@code</span> Float.intBitsToFloat(0xff800000)}.</span><br><span class="line">  */</span></span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> NEGATIVE_INFINITY = -<span class="number">1.0f</span> / <span class="number">0.0f</span>;</span><br><span class="line"> <span class="comment">/**</span><br><span class="line">  * A constant holding a Not-a-Number (NaN) value of type</span><br><span class="line">  * {<span class="doctag">@code</span> float}.  It is equivalent to the value returned by</span><br><span class="line">  * {<span class="doctag">@code</span> Float.intBitsToFloat(0x7fc00000)}.</span><br><span class="line">  */</span></span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> NaN = <span class="number">0.0f</span> / <span class="number">0.0f</span>;</span><br><span class="line"> <span class="comment">/**</span><br><span class="line">  * A constant holding the largest positive finite value of type</span><br><span class="line">  * {<span class="doctag">@code</span> float}, (2-2&lt;sup&gt;-23&lt;/sup&gt;)&amp;middot;2&lt;sup&gt;127&lt;/sup&gt;.</span><br><span class="line">  * It is equal to the hexadecimal floating-point literal</span><br><span class="line">  * {<span class="doctag">@code</span> 0x1.fffffeP+127f} and also equal to</span><br><span class="line">  * {<span class="doctag">@code</span> Float.intBitsToFloat(0x7f7fffff)}.</span><br><span class="line">  */</span></span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> MAX_VALUE = <span class="number">0x1</span>.fffffeP+<span class="number">127f</span>; <span class="comment">// 3.4028235e+38f</span></span><br><span class="line"> <span class="comment">/**</span><br><span class="line">  * A constant holding the smallest positive normal value of type</span><br><span class="line">  * {<span class="doctag">@code</span> float}, 2&lt;sup&gt;-126&lt;/sup&gt;.  It is equal to the</span><br><span class="line">  * hexadecimal floating-point literal {<span class="doctag">@code</span> 0x1.0p-126f} and also</span><br><span class="line">  * equal to {<span class="doctag">@code</span> Float.intBitsToFloat(0x00800000)}.</span><br><span class="line">  *</span><br><span class="line">  * <span class="doctag">@since</span> 1.6</span><br><span class="line">  */</span></span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> MIN_NORMAL = <span class="number">0x1</span>.0p-<span class="number">126f</span>; <span class="comment">// 1.17549435E-38f</span></span><br><span class="line"> <span class="comment">/**</span><br><span class="line">  * A constant holding the smallest positive nonzero value of type</span><br><span class="line">  * {<span class="doctag">@code</span> float}, 2&lt;sup&gt;-149&lt;/sup&gt;. It is equal to the</span><br><span class="line">  * hexadecimal floating-point literal {<span class="doctag">@code</span> 0x0.000002P-126f}</span><br><span class="line">  * and also equal to {<span class="doctag">@code</span> Float.intBitsToFloat(0x1)}.</span><br><span class="line">  */</span></span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> MIN_VALUE = <span class="number">0x0</span>.000002P-<span class="number">126f</span>; <span class="comment">// 1.4e-45f</span></span><br><span class="line"> <span class="comment">/**</span><br><span class="line">  * Maximum exponent a finite {<span class="doctag">@code</span> float} variable may have.  It</span><br><span class="line">  * is equal to the value returned by {<span class="doctag">@code</span></span><br><span class="line">  * Math.getExponent(Float.MAX_VALUE)}.</span><br><span class="line">  *</span><br><span class="line">  * <span class="doctag">@since</span> 1.6</span><br><span class="line">  */</span></span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAX_EXPONENT = <span class="number">127</span>;</span><br><span class="line"> <span class="comment">/**</span><br><span class="line">  * Minimum exponent a normalized {<span class="doctag">@code</span> float} variable may have.</span><br><span class="line">  * It is equal to the value returned by {<span class="doctag">@code</span></span><br><span class="line">  * Math.getExponent(Float.MIN_NORMAL)}.</span><br><span class="line">  *</span><br><span class="line">  * <span class="doctag">@since</span> 1.6</span><br><span class="line">  */</span></span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MIN_EXPONENT = -<span class="number">126</span>;</span><br><span class="line"> <span class="comment">/**</span><br><span class="line">  * The number of bits used to represent a {<span class="doctag">@code</span> float} value.</span><br><span class="line">  *</span><br><span class="line">  * <span class="doctag">@since</span> 1.5</span><br><span class="line">  */</span></span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> SIZE = <span class="number">32</span>;</span><br><span class="line"> <span class="comment">/**</span><br><span class="line">  * The number of bytes used to represent a {<span class="doctag">@code</span> float} value.</span><br><span class="line">  *</span><br><span class="line">  * <span class="doctag">@since</span> 1.8</span><br><span class="line">  */</span></span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> BYTES = SIZE / Byte.SIZE;</span><br></pre></td></tr></table></figure>
+<p>&#x5728;JDK1.6&#x4E0B;&#x6D4B;&#x8BD5;&#x4E86;&#x4E0A;&#x9762;&#x7684;&#x7ED3;&#x679C;&#xFF1A;<br><img src="/blog/2016/04/13/java-boundary/Float.png" width="500px"></p>
+<p>&#x8868;&#x793A;&#x7684;&#x542B;&#x4E49;&#x5206;&#x522B;&#x662F;&#xFF1A;<br>POSITIVE_INFINITY - &#x6B63;&#x65E0;&#x7A77;&#x5927;<br>NEGATIVE_INFINITY - &#x8D1F;&#x65E0;&#x7A77;&#x5927;<br>NaN - Not a number &#x7528;&#x4E8E;&#x5904;&#x7406;&#x8BA1;&#x7B97;&#x4E2D;&#x51FA;&#x73B0;&#x7684;&#x9519;&#x8BEF;&#x60C5;&#x51B5;&#xFF0C;&#x6BD4;&#x5982; 0.0 &#x9664;&#x4EE5; 0.0 &#x6216;&#x8005;&#x6C42;&#x8D1F;&#x6570;&#x7684;&#x5E73;&#x65B9;&#x6839;&#x3002;<br>MAX_VALUE - &#x6700;&#x5927;&#x503C;<br>MIN_NORMAL - &#x89C4;&#x8303;&#x7684;&#x6D6E;&#x70B9;&#x6570;&#x53EF;&#x4EE5;&#x8868;&#x793A;&#x7684;&#x6700;&#x5C0F;&#x6B63;&#x6570;( 0x1.0p-126f &#x89C4;&#x8303;&#x7684;&#x542B;&#x4E49;: &#x5C3E;&#x6570;&#x7684;&#x6700;&#x9AD8;&#x6570;&#x4F4D;&#x5FC5;&#x987B;&#x662F;&#x4E00;&#x4E2A;&#x6709;&#x6548;&#x503C; )<br>MIN_VALUE - &#x5B9E;&#x9645;&#x53EF;&#x4EE5;&#x8868;&#x793A;&#x7684;&#x6700;&#x5C0F;&#x6B63;&#x6570;&#xFF08; 0x0.000002P-126f &#x5C3E;&#x6570;&#x7684;&#x6700;&#x9AD8;&#x6570;&#x4F4D;&#x4E0D;&#x9700;&#x8981;&#x662F;&#x4E00;&#x4E2A;&#x6709;&#x6548;&#x503C;)<br>MAX_EXPONENT - &#x6700;&#x5927;&#x7684;&#x6307;&#x6570;<br>MIN_EXPONENT - &#x6700;&#x5C0F;&#x7684;&#x6307;&#x6570;<br>SIZE - Float&#x4F4D;&#x6570;<br>BYTES - &#x63D0;&#x4F9B;&#x7ED9;1.8&#x7248;&#x672C;&#x4EE5;&#x4E0A;&#xFF0C;&#x5360;&#x7684;byte&#x4F4D;&#x6570;</p>
+<ul>
+<li>&#x5982;&#x679C;&#x60F3;&#x8981;&#x83B7;&#x5F97;&#x201C;&#x53EF;&#x4EE5;&#x8868;&#x793A;&#x7684;&#x6700;&#x5C0F;&#x6570;&#x201D;&#x7684;&#x5B8F;&#x5B9A;&#x4E49;&#xFF0C;&#x76F4;&#x63A5; -Float.MAX_VALUE&#xFF0C;&#x800C;&#x4E0D;&#x662F; Float.MIN_VALUE&#x3002;</li>
+<li><p>Java&#x4F7F;&#x7528;&#x4E8C;&#x8FDB;&#x5236;&#x6570;&#x636E;&#x7684;&#x79D1;&#x5B66;&#x8BA1;&#x6570;&#x6CD5;&#x6765;&#x5B58;&#x50A8;&#x6D6E;&#x70B9;&#x6570;&#xFF0C;&#x91C7;&#x7528;IEEE754&#x6807;&#x51C6;&#xFF0C;&#x5728;&#x5B58;&#x50A8;&#x67D0;&#x4E9B;&#x503C;&#x65F6;&#x4F1A;&#x4E27;&#x5931;&#x7CBE;&#x5EA6;&#xFF0C;&#x4EA7;&#x751F;&#x8BEF;&#x5DEE;&#x3002;&#x5982;&#x5355;&#x7CBE;&#x5EA6;&#x7C7B;&#x578B;&#x53EA;&#x6709;32&#x4F4D;&#xFF0C;&#x65E0;&#x6CD5;&#x7CBE;&#x786E;&#x63CF;&#x8FF0;0.1&#x3002;&#x56E0;&#x6B64;&#x6D6E;&#x70B9;&#x6570;&#x4E0D;&#x9002;&#x7528;&#x8981;&#x6C42;&#x7CBE;&#x5EA6;&#x7684;&#x573A;&#x5408;&#x3002;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> a = <span class="number">0.1f</span>;</span><br><span class="line">System.out.println(<span class="number">40</span>*a);<span class="comment">//&#x6253;&#x5370;4.000000059604645</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Java&#x4E2D;&#x6D6E;&#x70B9;&#x6570;&#x4E0D;&#x80FD;&#x7528;&#x516B;&#x8FDB;&#x5236;&#x8868;&#x793A;&#xFF0C;&#x4F46;&#x53EF;&#x4EE5;&#x7528;&#x5341;&#x516D;&#x8FDB;&#x5236;&#x8868;&#x793A;&#xFF0C;&#x53EA;&#x80FD;&#x7528;&#x6307;&#x6570;&#x5F62;&#x5F0F;&#x8868;&#x793A;&#xFF0C;double d = 0x4.0;&#x9519;&#x8BEF;&#x7684;&#x3002;double d = 0x7.3p8f &#x221A; &#xFF0C;&#x6307;&#x6570;&#x4E0D;&#x662F;&#x7528;e&#x6216;E&#xFF0C;&#x800C;&#x662F;&#x7528;p&#x6216;P&#x3002;<br>float f = 03.2f;&#x7B49;&#x4EF7;&#x4E8E;float f = 3.2f; &#x56E0;&#x4E3A;&#x6CA1;&#x6709;&#x516B;&#x8FDB;&#x5236;&#x7684;&#x6D6E;&#x70B9;&#x6570;&#x3002; </p>
+</li>
+<li>&#x6D6E;&#x70B9;&#x6570;&#x4E0D;&#x80FD;&#x7528;==&#x6BD4;&#x8F83;&#xFF0C;&#x6D6E;&#x70B9;&#x6570;&#x7CBE;&#x5EA6;&#x4E0D;&#x51C6;&#x786E; </li>
+<li>&#x53EF;&#x80FD;&#x5927;&#x7684;&#x6D6E;&#x70B9;&#x6570;&#x52A0;&#x4E00;&#x4E2A;&#x5F88;&#x5C0F;&#x7684;&#x6570;&#x6570;&#x503C;&#x4E0D;&#x53D8;<br>&#x5173;&#x4E8E;MIN_NORMAL&#x548C;MIN_VALUE&#x7684;&#x533A;&#x522B;&#x8BE6;&#x89C1;:<a href="http://stackoverflow.com/questions/3728309/difference-between-double-min-normal-and-double-min-value" target="_blank" rel="external"> Difference between Double.MIN_NORMAL and Double.MIN_VALUE </a></li>
+</ul>
+<h4 id="Double-&#x6570;&#x7B26;1&#x4F4D;&#xFF0C;&#x9636;&#x7801;11&#x4F4D;&#xFF0C;&#x5C3E;&#x6570;&#x6570;&#x503C;52&#x4F4D;&#xFF0C;&#x603B;&#x4F4D;&#x6570;64&#x4F4D;&#x3002;"><a href="#Double-&#x6570;&#x7B26;1&#x4F4D;&#xFF0C;&#x9636;&#x7801;11&#x4F4D;&#xFF0C;&#x5C3E;&#x6570;&#x6570;&#x503C;52&#x4F4D;&#xFF0C;&#x603B;&#x4F4D;&#x6570;64&#x4F4D;&#x3002;" class="headerlink" title="Double: &#x6570;&#x7B26;1&#x4F4D;&#xFF0C;&#x9636;&#x7801;11&#x4F4D;&#xFF0C;&#x5C3E;&#x6570;&#x6570;&#x503C;52&#x4F4D;&#xFF0C;&#x603B;&#x4F4D;&#x6570;64&#x4F4D;&#x3002;"></a>Double: &#x6570;&#x7B26;1&#x4F4D;&#xFF0C;&#x9636;&#x7801;11&#x4F4D;&#xFF0C;&#x5C3E;&#x6570;&#x6570;&#x503C;52&#x4F4D;&#xFF0C;&#x603B;&#x4F4D;&#x6570;64&#x4F4D;&#x3002;</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * A constant holding the positive infinity of type</span><br><span class="line"> * {<span class="doctag">@code</span> double}. It is equal to the value returned by</span><br><span class="line"> * {<span class="doctag">@code</span> Double.longBitsToDouble(0x7ff0000000000000L)}.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">double</span> POSITIVE_INFINITY = <span class="number">1.0</span> / <span class="number">0.0</span>;</span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * A constant holding the negative infinity of type</span><br><span class="line"> * {<span class="doctag">@code</span> double}. It is equal to the value returned by</span><br><span class="line"> * {<span class="doctag">@code</span> Double.longBitsToDouble(0xfff0000000000000L)}.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">double</span> NEGATIVE_INFINITY = -<span class="number">1.0</span> / <span class="number">0.0</span>;</span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * A constant holding a Not-a-Number (NaN) value of type</span><br><span class="line"> * {<span class="doctag">@code</span> double}. It is equivalent to the value returned by</span><br><span class="line"> * {<span class="doctag">@code</span> Double.longBitsToDouble(0x7ff8000000000000L)}.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">double</span> NaN = <span class="number">0.0</span>d / <span class="number">0.0</span>;</span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * A constant holding the largest positive finite value of type</span><br><span class="line"> * {<span class="doctag">@code</span> double},</span><br><span class="line"> * (2-2&lt;sup&gt;-52&lt;/sup&gt;)&amp;middot;2&lt;sup&gt;1023&lt;/sup&gt;.  It is equal to</span><br><span class="line"> * the hexadecimal floating-point literal</span><br><span class="line"> * {<span class="doctag">@code</span> 0x1.fffffffffffffP+1023} and also equal to</span><br><span class="line"> * {<span class="doctag">@code</span> Double.longBitsToDouble(0x7fefffffffffffffL)}.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">double</span> MAX_VALUE = <span class="number">0x1</span>.fffffffffffffP+<span class="number">1023</span>; <span class="comment">// 1.7976931348623157e+308</span></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * A constant holding the smallest positive normal value of type</span><br><span class="line"> * {<span class="doctag">@code</span> double}, 2&lt;sup&gt;-1022&lt;/sup&gt;.  It is equal to the</span><br><span class="line"> * hexadecimal floating-point literal {<span class="doctag">@code</span> 0x1.0p-1022} and also</span><br><span class="line"> * equal to {<span class="doctag">@code</span> Double.longBitsToDouble(0x0010000000000000L)}.</span><br><span class="line"> *</span><br><span class="line"> * <span class="doctag">@since</span> 1.6</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">double</span> MIN_NORMAL = <span class="number">0x1</span>.0p-<span class="number">1022</span>; <span class="comment">// 2.2250738585072014E-308</span></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * A constant holding the smallest positive nonzero value of type</span><br><span class="line"> * {<span class="doctag">@code</span> double}, 2&lt;sup&gt;-1074&lt;/sup&gt;. It is equal to the</span><br><span class="line"> * hexadecimal floating-point literal</span><br><span class="line"> * {<span class="doctag">@code</span> 0x0.0000000000001P-1022} and also equal to</span><br><span class="line"> * {<span class="doctag">@code</span> Double.longBitsToDouble(0x1L)}.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">double</span> MIN_VALUE = <span class="number">0x0</span>.0000000000001P-<span class="number">1022</span>; <span class="comment">// 4.9e-324</span></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Maximum exponent a finite {<span class="doctag">@code</span> double} variable may have.</span><br><span class="line"> * It is equal to the value returned by</span><br><span class="line"> * {<span class="doctag">@code</span> Math.getExponent(Double.MAX_VALUE)}.</span><br><span class="line"> *</span><br><span class="line"> * <span class="doctag">@since</span> 1.6</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAX_EXPONENT = <span class="number">1023</span>;</span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Minimum exponent a normalized {<span class="doctag">@code</span> double} variable may</span><br><span class="line"> * have.  It is equal to the value returned by</span><br><span class="line"> * {<span class="doctag">@code</span> Math.getExponent(Double.MIN_NORMAL)}.</span><br><span class="line"> *</span><br><span class="line"> * <span class="doctag">@since</span> 1.6</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MIN_EXPONENT = -<span class="number">1022</span>;</span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * The number of bits used to represent a {<span class="doctag">@code</span> double} value.</span><br><span class="line"> *</span><br><span class="line"> * <span class="doctag">@since</span> 1.5</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> SIZE = <span class="number">64</span>;</span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * The number of bytes used to represent a {<span class="doctag">@code</span> double} value.</span><br><span class="line"> *</span><br><span class="line"> * <span class="doctag">@since</span> 1.8</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> BYTES = SIZE / Byte.SIZE;</span><br></pre></td></tr></table></figure>
+<p>&#x542B;&#x4E49;&#x8FD1;&#x4F3C;&#x4E8E;Float&#x91CC;&#x7684;&#x542B;&#x4E49;&#x3002;<br>&#x5728;JDK1.6&#x4E0B;&#x6D4B;&#x8BD5;&#x4E86;&#x4E0A;&#x9762;&#x7684;&#x7ED3;&#x679C;&#xFF1A;<br><img src="/blog/2016/04/13/java-boundary/Double.png" width="500px"></p>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/Java/" rel="tag">#Java</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2016/04/12/leetcode8/" rel="next" title="LeetCode 8 String to Integer (atoi)">
+                <i class="fa fa-chevron-left"></i> LeetCode 8 String to Integer (atoi)
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/13/java-boundary/"
+           data-title="java基本类型的取值范围" data-url="http://ycymio.com/blog/2016/04/13/java-boundary/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/uploads/avatar.jpg"
+               alt="玉宇澄清" />
+          <p class="site-author-name" itemprop="name">玉宇澄清</p>
+          <p class="site-description motion-element" itemprop="description">天气好得就好像走着走着就能遇见你</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/blog/categories">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://ycymio.com/index.html" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Website
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://ycymio.com/life/" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Life Blog
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ycymio" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/ycymio" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Byte-27-27-1-8位"><span class="nav-number">1.</span> <span class="nav-text">Byte: -27~27-1 (8位)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Short-215-215-1-16位"><span class="nav-number">2.</span> <span class="nav-text">Short: -215~215-1 (16位)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Integer-231-231-1-32位"><span class="nav-number">3.</span> <span class="nav-text">Integer: -231~231-1 (32位)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Long-263-263-1-64位"><span class="nav-number">4.</span> <span class="nav-text">Long: -263~263-1 (64位)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Character-‘-u0000’-’-uFFFF’-16位"><span class="nav-number">5.</span> <span class="nav-text">Character: ‘\u0000’~’\uFFFF’  (16位)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Float-数符1位，尾数23位，阶码8位，用移码表示。p代表以2为底。"><span class="nav-number">6.</span> <span class="nav-text">Float:  数符1位，尾数23位，阶码8位，用移码表示。p代表以2为底。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Double-数符1位，阶码11位，尾数数值52位，总位数64位。"><span class="nav-number">7.</span> <span class="nav-text">Double: 数符1位，阶码11位，尾数数值52位，总位数64位。</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">玉宇澄清</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/blog/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"ycymio"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("CYw4eqfTnGGJ358ScduxIjMN-gzGzoHsz", "DVtxWNQe67hDTYKnPMtwUKoU");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+
+</body>
+</html>

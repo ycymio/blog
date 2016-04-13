@@ -4,8 +4,28 @@
 
     
   <url>
+    <loc>http://ycymio.com/blog/blog/2016/04/13/java-boundary/</loc>
+    <lastmod>2016-04-13T15:35:48.000Z</lastmod>
+    <data>
+        <display>
+        <title>java基本类型的取值范围</title>
+        <pubTime>2016-04-13T03:36:39.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://ycymio.com/blog/blog/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://ycymio.com/blog/blog/2016/04/12/leetcode8/</loc>
-    <lastmod>2016-04-12T14:31:56.000Z</lastmod>
+    <lastmod>2016-04-13T03:35:52.000Z</lastmod>
     <data>
         <display>
         <title>LeetCode 8 String to Integer (atoi)</title>
