@@ -1,0 +1,905 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="toString(): &amp;#x8C03;&amp;#x7528;&amp;#x65F6;&amp;#x9ED8;&amp;#x8BA4;&amp;#x4E3A;&amp;#x7C7B;&amp;#x540D;+@+hashCode&amp;#x503C;&amp;#xFF0C;&amp;#x662F;&amp;#x7531;Object&amp;#x7C7B;(package java.lang)&amp;#x63D0;&amp;#x4F9B;&amp;#x7684;&amp;#x3002;&amp;#x5982;&amp;#x679C;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java中的toString函数">
+<meta property="og:url" content="http://ycymio.com/blog/2016/04/21/toString/index.html">
+<meta property="og:site_name" content="ycy’s tech-blog">
+<meta property="og:description" content="toString(): &amp;#x8C03;&amp;#x7528;&amp;#x65F6;&amp;#x9ED8;&amp;#x8BA4;&amp;#x4E3A;&amp;#x7C7B;&amp;#x540D;+@+hashCode&amp;#x503C;&amp;#xFF0C;&amp;#x662F;&amp;#x7531;Object&amp;#x7C7B;(package java.lang)&amp;#x63D0;&amp;#x4F9B;&amp;#x7684;&amp;#x3002;&amp;#x5982;&amp;#x679C;">
+<meta property="og:image" content="http://ycymio.com/blog/blog/2016/04/21/toString/toString02.png">
+<meta property="og:image" content="http://ycymio.com/blog/blog/2016/04/21/toString/toString01.png">
+<meta property="og:updated_time" content="2016-04-21T03:40:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java中的toString函数">
+<meta name="twitter:description" content="toString(): &amp;#x8C03;&amp;#x7528;&amp;#x65F6;&amp;#x9ED8;&amp;#x8BA4;&amp;#x4E3A;&amp;#x7C7B;&amp;#x540D;+@+hashCode&amp;#x503C;&amp;#xFF0C;&amp;#x662F;&amp;#x7531;Object&amp;#x7C7B;(package java.lang)&amp;#x63D0;&amp;#x4F9B;&amp;#x7684;&amp;#x3002;&amp;#x5982;&amp;#x679C;">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> java中的toString函数 | ycy’s tech-blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">ycy’s tech-blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">天气好得就好像走着走着就能遇见你</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            博客
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                java中的toString函数
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-21T10:37:08+08:00" content="2016-04-21">
+              2016-04-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2016/04/21/toString/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/21/toString/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/blog/2016/04/21/toString/" class="leancloud_visitors" data-flag-title="java中的toString函数">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>toString(): &#x8C03;&#x7528;&#x65F6;&#x9ED8;&#x8BA4;&#x4E3A;<strong>&#x7C7B;&#x540D;+@+hashCode&#x503C;</strong>&#xFF0C;&#x662F;&#x7531;Object&#x7C7B;(package java.lang)&#x63D0;&#x4F9B;&#x7684;&#x3002;&#x5982;&#x679C;&#x9700;&#x8981;&#x81EA;&#x5B9A;&#x4E49;toString&#x7684;&#x5185;&#x5BB9;,&#x5C31;&#x5FC5;&#x987B;&#x91CD;&#x5199;&#x8BE5;&#x65B9;&#x6CD5;&#x3002;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Object&#x7C7B;&#x91CC;&#x7684;toString()&#x51FD;&#x6570;</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="keyword">return</span> getClass().getName() + <span class="string">&quot;@&quot;</span> + Integer.toHexString(hashCode());</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x5173;&#x4E8E; System.out.println() &#x4E0E; toString():<br>&#x8FD9;&#x91CC;debug&#x4E86;&#x4E24;&#x79CD;&#x60C5;&#x51B5;:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> test;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Obj</span></span>{</span><br><span class="line">	<span class="keyword">private</span> String str = <span class="string">&quot;default value&quot;</span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span> <span class="params">()</span></span>{</span><br><span class="line">		<span class="keyword">return</span> str;</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestRef</span> </span>{</span><br><span class="line">	<span class="keyword">private</span> Obj aObj = <span class="keyword">new</span> Obj();</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Obj <span class="title">getAObj</span><span class="params">()</span></span>{</span><br><span class="line">		<span class="keyword">return</span> aObj;</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> test;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">main</span> </span>{</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>{</span><br><span class="line">		TestRef oRef = <span class="keyword">new</span> TestRef();</span><br><span class="line">		System.out.println(oRef.getAObj());			System.out.println(<span class="string">&quot;&quot;</span> + oRef.getAObj());</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x4E24;&#x6B21;&#x8F93;&#x51FA;&#x7684;&#x7ED3;&#x679C;&#x90FD;&#x662F; &#x201C;default value&#x201D;&#xFF0C;&#x4F46;&#x662F;&#x6267;&#x884C;&#x7684;&#x6B65;&#x9AA4;&#x4E0D;&#x5C3D;&#x76F8;&#x540C;&#x3002;<br>&#x5BF9;&#x4E8E; System.out.println(oRef.getAObj()), debug&#x7684;&#x7ED3;&#x679C;:<br><img src="/blog/2016/04/21/toString/toString02.png" width="500px"><br>&#x5BF9;&#x4E8E; System.out.println(&#x201C;&#x201D; + oRef.getAObj()), debug&#x7684;&#x7ED3;&#x679C;:<br><img src="/blog/2016/04/21/toString/toString01.png" width="400px"><br>&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x5BF9;&#x4E8E;&#x7B2C;&#x4E00;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;System.out.println()&#x5185;&#x90E8;&#x8C03;&#x7528;&#x4E86;toString()&#xFF1B;&#x5BF9;&#x4E8E;&#x7B2C;&#x4E8C;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x52A0;&#x6CD5;&#x9ED8;&#x8BA4;&#x8C03;&#x7528;&#x4E86;toString()&#x3002;<br>&#x5BF9;&#x4E8E;&#x7B2C;&#x4E00;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x7A0B;&#x5E8F;&#x6267;&#x884C;System.out.println(Object x)&#xFF0C;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x4E86;String.valueOf(Object x)&#x51FD;&#x6570;&#xFF0C;valueOf()&#x51FD;&#x6570;&#x518D;&#x8C03;&#x7528;&#x4E86;toString()&#x51FD;&#x6570;&#x3002;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">println</span><span class="params">(Object x)</span> </span>{</span><br><span class="line">    String s = String.valueOf(x);</span><br><span class="line">    <span class="keyword">synchronized</span> (<span class="keyword">this</span>) {</span><br><span class="line">        print(s);</span><br><span class="line">        newLine();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x4E0B;&#x9762;&#x5217;&#x4E86;System.out.println()&#x7684;&#x4E00;&#x4E9B;&#x76F8;&#x5173;Java&#x6E90;&#x7801;:<br>System&#x7C7B;&#x4E2D;&#x5BF9;out&#x53D8;&#x91CF;&#x7684;&#x5B9A;&#x4E49;:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// &#x6807;&#x51C6;&#x8F93;&#x51FA;&#x6D41;&#xFF0C;&#x8BE5;&#x6D41;&#x5DF2;&#x7ECF;&#x6253;&#x5F00;&#x5E76;&#x51C6;&#x5907;&#x63A5;&#x53D7;&#x8F93;&#x51FA;&#x6570;&#x636E;&#x3002;</span></span><br><span class="line"><span class="comment">// System.out.println()&#x7531;&#x91CD;&#x6784;&#x5B9E;&#x73B0;&#x3002;</span></span><br><span class="line">   <span class="comment">/**</span><br><span class="line">    * The &quot;standard&quot; output stream. This stream is already</span><br><span class="line">    * open and ready to accept output data. Typically this stream</span><br><span class="line">    * corresponds to display output or another output destination</span><br><span class="line">    * specified by the host environment or user.</span><br><span class="line">    * &lt;p&gt;</span><br><span class="line">    * For simple stand-alone Java applications, a typical way to write</span><br><span class="line">    * a line of output data is:</span><br><span class="line">    * &lt;blockquote&gt;&lt;pre&gt;</span><br><span class="line">    *     System.out.println(data)</span><br><span class="line">    * &lt;/pre&gt;&lt;/blockquote&gt;</span><br><span class="line">    * &lt;p&gt;</span><br><span class="line">    * See the &lt;code&gt;println&lt;/code&gt; methods in class &lt;code&gt;PrintStream&lt;/code&gt;.</span><br><span class="line">    *</span><br><span class="line">    * <span class="doctag">@see</span>     java.io.PrintStream#println()</span><br><span class="line">    * <span class="doctag">@see</span>     java.io.PrintStream#println(boolean)</span><br><span class="line">    * <span class="doctag">@see</span>     java.io.PrintStream#println(char)</span><br><span class="line">    * <span class="doctag">@see</span>     java.io.PrintStream#println(char[])</span><br><span class="line">    * <span class="doctag">@see</span>     java.io.PrintStream#println(double)</span><br><span class="line">    * <span class="doctag">@see</span>     java.io.PrintStream#println(float)</span><br><span class="line">    * <span class="doctag">@see</span>     java.io.PrintStream#println(int)</span><br><span class="line">    * <span class="doctag">@see</span>     java.io.PrintStream#println(long)</span><br><span class="line">    * <span class="doctag">@see</span>     java.io.PrintStream#println(java.lang.Object)</span><br><span class="line">    * <span class="doctag">@see</span>     java.io.PrintStream#println(java.lang.String)</span><br><span class="line">    */</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> PrintStream out = <span class="keyword">null</span>;</span><br></pre></td></tr></table></figure></p>
+<p>&#x518D;&#x6765;&#x770B;PrintStream&#x7684;println()&#x51FD;&#x6570;:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">println</span><span class="params">(String x)</span> </span>{</span><br><span class="line">     <span class="keyword">synchronized</span> (<span class="keyword">this</span>) {</span><br><span class="line">         print(x);</span><br><span class="line">         newLine();</span><br><span class="line">     }</span><br><span class="line"> }</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">println</span><span class="params">(Object x)</span> </span>{</span><br><span class="line">     String s = String.valueOf(x);</span><br><span class="line">     <span class="keyword">synchronized</span> (<span class="keyword">this</span>) {</span><br><span class="line">         print(s);</span><br><span class="line">         newLine();</span><br><span class="line">     }</span><br><span class="line"> }</span><br></pre></td></tr></table></figure></p>
+<p>&#x8FD9;&#x91CC;&#x5C31;&#x5217;&#x51FA;&#x4E86;&#x76F8;&#x5173;&#x7684;&#x4E24;&#x4E2A;println()&#x51FD;&#x6570;&#xFF0C;&#x5176;&#x4ED6;&#x7C7B;&#x4F3C;&#x3002;&#x8FD9;&#x91CC;&#x53C2;&#x6570;&#x4E3A;&#x5BF9;&#x8C61;&#x65F6;&#xFF0C;&#x6709;&#x4E00;&#x4E2A;<strong>&#x5BF9;&#x8C61;&#x5411;toString()&#x8F6C;&#x6362;</strong>&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x53EF;&#x89C1;&#x9ED8;&#x8BA4;&#x8C03;&#x7528;&#x4E86;String.valueOf(x)&#x3002;<br>println(Object x)&#x51FD;&#x6570;&#x4E2D;String.valueOf(Object x)&#x51FD;&#x6570;&#x6E90;&#x7801;:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">valueOf</span><span class="params">(Object obj)</span> </span>{</span><br><span class="line">    <span class="keyword">return</span> (obj == <span class="keyword">null</span>) ? <span class="string">&quot;null&quot;</span> : obj.toString();</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>Object&#x7C7B;&#x7684;toString&#x6E90;&#x7801;&#x5373;&#x6587;&#x7AE0;&#x6700;&#x5F00;&#x59CB;&#x63D0;&#x53CA;&#x7684;&#x3002;<br>println()&#x51FD;&#x6570;&#x4E2D;newLine()&#x51FD;&#x6570;&#x5177;&#x4F53;&#x4E3A;:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// &#x6682;&#x672A;&#x770B;&#x5230;io&#x65B9;&#x9762;&#x7684;&#xFF0C;&#x672A;&#x7EE7;&#x7EED;&#x89E3;&#x6790; = =&#xFF0C;&#x5927;&#x6982;&#x5C31;&#x662F;&#x5224;&#x65AD;&#x8F93;&#x51FA;&#x6D41;&#x662F;&#x5426;&#x6253;&#x5F00;&#xFF0C;&#x7F13;&#x5B58;&#x8F93;&#x51FA;&#x6570;&#x636E;(&#x6362;&#x884C;)&#x5E76;&#x8F93;&#x51FA;&#x3002;
+    private void newLine() {
+        try {
+            synchronized (this) {
+                ensureOpen();
+                textOut.newLine();
+                textOut.flushBuffer();
+                charOut.flushBuffer();
+                if (autoFlush)
+                    out.flush();
+            }
+        }
+        catch (InterruptedIOException x) {
+            Thread.currentThread().interrupt();
+        }
+        catch (IOException x) {
+            trouble = true;
+        }
+    }</span><br></pre></td></tr></table></figure></p>
+<p>&#x800C;print()&#x51FD;&#x6570;&#x6E90;&#x7801;&#x662F;:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(String s)</span> </span>{</span><br><span class="line">    <span class="keyword">if</span> (s == <span class="keyword">null</span>) {</span><br><span class="line">        s = <span class="string">&quot;null&quot;</span>;</span><br><span class="line">    }</span><br><span class="line">    write(s);</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x8F93;&#x51FA;&#x5B57;&#x7B26;&#x4E32;s, &#x5982;&#x679C;&#x5B57;&#x7B26;&#x4E32;&#x4E3A;null&#x5173;&#x952E;&#x5B57;&#xFF0C;&#x5219;&#x4F20;&#x7ED9;s&#x7684;&#x662F;null&#x5B57;&#x7B26;&#x4E32;&#x3002;<br>-&gt; write()&#x51FD;&#x6570;:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(String s)</span> </span>{</span><br><span class="line">    <span class="keyword">try</span> {</span><br><span class="line">        <span class="keyword">synchronized</span> (<span class="keyword">this</span>) {</span><br><span class="line">            ensureOpen();</span><br><span class="line">            textOut.write(s);</span><br><span class="line">            textOut.flushBuffer();</span><br><span class="line">            charOut.flushBuffer();</span><br><span class="line">            <span class="keyword">if</span> (autoFlush &amp;&amp; (s.indexOf(<span class="string">&apos;\n&apos;</span>) &gt;= <span class="number">0</span>))</span><br><span class="line">                out.flush();</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">catch</span> (InterruptedIOException x) {</span><br><span class="line">        Thread.currentThread().interrupt();</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">catch</span> (IOException x) {</span><br><span class="line">        trouble = <span class="keyword">true</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/java/" rel="tag">#java</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2016/04/13/java-boundary/" rel="next" title="java基本类型的取值范围">
+                <i class="fa fa-chevron-left"></i> java基本类型的取值范围
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2016/04/22/leetcode268/" rel="prev" title="LeetCode 268 Missing Number">
+                LeetCode 268 Missing Number <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/21/toString/"
+           data-title="java中的toString函数" data-url="http://ycymio.com/blog/2016/04/21/toString/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/uploads/avatar.jpg"
+               alt="玉宇澄清" />
+          <p class="site-author-name" itemprop="name">玉宇澄清</p>
+          <p class="site-description motion-element" itemprop="description">天气好得就好像走着走着就能遇见你</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/blog/categories">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://ycymio.com/index.html" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Website
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://ycymio.com/life/" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Life Blog
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ycymio" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/ycymio" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">玉宇澄清</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/blog/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"ycymio"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("CYw4eqfTnGGJ358ScduxIjMN-gzGzoHsz", "DVtxWNQe67hDTYKnPMtwUKoU");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+
+</body>
+</html>
