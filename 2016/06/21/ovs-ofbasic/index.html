@@ -41,7 +41,7 @@
 <link href="/blog/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Android," />
+  <meta name="keywords" content="OpenvSwitch,laboratory," />
 
 
 
@@ -57,16 +57,16 @@
 
 
 
-<meta name="description" content="&amp;#x5B66;&amp;#x4E60;Android&amp;#x8FC7;&amp;#x7A0B;&amp;#x4E2D;&amp;#x9047;&amp;#x5230;&amp;#x7684; &amp;#x5355;&amp;#x72EC;&amp;#x5199;&amp;#x535A;&amp;#x6587;&amp;#x53C8;&amp;#x89C9;&amp;#x5F97;&amp;#x6709;&amp;#x4E9B;&amp;#x5947;&amp;#x602A; &amp;#x7684;&amp;#x5C0F;&amp;#x95EE;&amp;#x9898">
+<meta name="description" content="OpenFlow &amp;#x4FE1;&amp;#x9053;OpenFlow&amp;#x652F;&amp;#x6301;&amp;#x4E09;&amp;#x7C7B;&amp;#x6D88;&amp;#x606F;: &amp;#x63A7;&amp;#x5236;&amp;#x5668;-&amp;#x4EA4;&amp;#x6362;&amp;#x673A;&amp;#x6D88;&amp;#x606F;&amp;#x3001;&amp;#x5F02;&amp;#x6B65;&amp;#x6D88;&amp;#x606F;&amp;#x3001;&amp;#x5">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android遇到的各个小问题">
-<meta property="og:url" content="http://ycymio.com/blog/2016/04/07/android-problems/index.html">
+<meta property="og:title" content="OpenFlow 1.3 的一些基础知识">
+<meta property="og:url" content="http://ycymio.com/blog/2016/06/21/ovs-ofbasic/index.html">
 <meta property="og:site_name" content="ycy’s tech-blog">
-<meta property="og:description" content="&amp;#x5B66;&amp;#x4E60;Android&amp;#x8FC7;&amp;#x7A0B;&amp;#x4E2D;&amp;#x9047;&amp;#x5230;&amp;#x7684; &amp;#x5355;&amp;#x72EC;&amp;#x5199;&amp;#x535A;&amp;#x6587;&amp;#x53C8;&amp;#x89C9;&amp;#x5F97;&amp;#x6709;&amp;#x4E9B;&amp;#x5947;&amp;#x602A; &amp;#x7684;&amp;#x5C0F;&amp;#x95EE;&amp;#x9898">
-<meta property="og:updated_time" content="2016-04-07T07:42:50.000Z">
+<meta property="og:description" content="OpenFlow &amp;#x4FE1;&amp;#x9053;OpenFlow&amp;#x652F;&amp;#x6301;&amp;#x4E09;&amp;#x7C7B;&amp;#x6D88;&amp;#x606F;: &amp;#x63A7;&amp;#x5236;&amp;#x5668;-&amp;#x4EA4;&amp;#x6362;&amp;#x673A;&amp;#x6D88;&amp;#x606F;&amp;#x3001;&amp;#x5F02;&amp;#x6B65;&amp;#x6D88;&amp;#x606F;&amp;#x3001;&amp;#x5">
+<meta property="og:updated_time" content="2016-06-21T06:27:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android遇到的各个小问题">
-<meta name="twitter:description" content="&amp;#x5B66;&amp;#x4E60;Android&amp;#x8FC7;&amp;#x7A0B;&amp;#x4E2D;&amp;#x9047;&amp;#x5230;&amp;#x7684; &amp;#x5355;&amp;#x72EC;&amp;#x5199;&amp;#x535A;&amp;#x6587;&amp;#x53C8;&amp;#x89C9;&amp;#x5F97;&amp;#x6709;&amp;#x4E9B;&amp;#x5947;&amp;#x602A; &amp;#x7684;&amp;#x5C0F;&amp;#x95EE;&amp;#x9898">
+<meta name="twitter:title" content="OpenFlow 1.3 的一些基础知识">
+<meta name="twitter:description" content="OpenFlow &amp;#x4FE1;&amp;#x9053;OpenFlow&amp;#x652F;&amp;#x6301;&amp;#x4E09;&amp;#x7C7B;&amp;#x6D88;&amp;#x606F;: &amp;#x63A7;&amp;#x5236;&amp;#x5668;-&amp;#x4EA4;&amp;#x6362;&amp;#x673A;&amp;#x6D88;&amp;#x606F;&amp;#x3001;&amp;#x5F02;&amp;#x6B65;&amp;#x6D88;&amp;#x606F;&amp;#x3001;&amp;#x5">
 
 
 
@@ -84,7 +84,7 @@
   };
 </script>
 
-  <title> Android遇到的各个小问题 | ycy’s tech-blog </title>
+  <title> OpenFlow 1.3 的一些基础知识 | ycy’s tech-blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -214,7 +214,7 @@
             
             
               
-                Android遇到的各个小问题
+                OpenFlow 1.3 的一些基础知识
               
             
           </h1>
@@ -226,8 +226,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-07T15:34:07+08:00" content="2016-04-07">
-              2016-04-07
+            <time itemprop="dateCreated" datetime="2016-06-21T14:26:07+08:00" content="2016-06-21">
+              2016-06-21
             </time>
           </span>
 
@@ -240,8 +240,20 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/blog/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
+                  <a href="/blog/categories/laboratory/" itemprop="url" rel="index">
+                    <span itemprop="name">laboratory</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/laboratory/OpenvSwitch/" itemprop="url" rel="index">
+                    <span itemprop="name">OpenvSwitch</span>
                   </a>
                 </span>
 
@@ -256,8 +268,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/blog/2016/04/07/android-problems/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/07/android-problems/" itemprop="commentsCount"></span>
+                <a href="/blog/2016/06/21/ovs-ofbasic/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/21/ovs-ofbasic/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -267,7 +279,7 @@
 
           
           
-             <span id="/blog/2016/04/07/android-problems/" class="leancloud_visitors" data-flag-title="Android遇到的各个小问题">
+             <span id="/blog/2016/06/21/ovs-ofbasic/" class="leancloud_visitors" data-flag-title="OpenFlow 1.3 的一些基础知识">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -287,16 +299,20 @@
       
 
       
-        <p>&#x5B66;&#x4E60;Android&#x8FC7;&#x7A0B;&#x4E2D;&#x9047;&#x5230;&#x7684; &#x5355;&#x72EC;&#x5199;&#x535A;&#x6587;&#x53C8;&#x89C9;&#x5F97;&#x6709;&#x4E9B;&#x5947;&#x602A; &#x7684;&#x5C0F;&#x95EE;&#x9898;&#x3002;</p>
-<a id="more"></a>
-<blockquote>
-<p>Android&#x5DE5;&#x7A0B;&#x4E0B;&#x6CA1;&#x6709;R&#x6587;&#x4EF6;&#x600E;&#x4E48;&#x529E;?<br>&#x5F53;&#x4F60;&#x5BFC;&#x5165;&#x4E00;&#x4E2A;&#x65B0;&#x5DE5;&#x7A0B;&#x7684;&#x65F6;&#x5019;&#x6216;&#x8005;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x5DE5;&#x7A0B;&#xFF0C;&#x53D1;&#x73B0;&#x6CA1;&#x6709;R&#x6587;&#x4EF6;:</p>
+        <h4 id="OpenFlow-&#x4FE1;&#x9053;"><a href="#OpenFlow-&#x4FE1;&#x9053;" class="headerlink" title="OpenFlow &#x4FE1;&#x9053;"></a>OpenFlow &#x4FE1;&#x9053;</h4><p>OpenFlow&#x652F;&#x6301;&#x4E09;&#x7C7B;&#x6D88;&#x606F;: &#x63A7;&#x5236;&#x5668;-&#x4EA4;&#x6362;&#x673A;&#x6D88;&#x606F;&#x3001;&#x5F02;&#x6B65;&#x6D88;&#x606F;&#x3001;&#x5BF9;&#x79F0;&#x6D88;&#x606F;&#x3002;</p>
 <ul>
-<li>&#x53F3;&#x952E;&#x9009;&#x62E9;&#x4F60;&#x7684;&#x5DE5;&#x7A0B;&#xFF0C;refresh</li>
-<li>&#x5728;&#x7F16;&#x8F91;&#x5668;&#x4E0A;&#x9762;&#x9009;&#x62E9;Project,&#x518D;&#x9009;&#x62E9;Clean, &#x53F3;&#x952E;&#x9009;&#x62E9;&#x4F60;&#x7684;&#x5DE5;&#x7A0B;&#xFF0C;&#x9009;&#x62E9;Android Tools,&#x518D;&#x9009;&#x62E9;Fix Project Properties&#x3002;</li>
-<li>&#x6700;&#x540E;&#x5982;&#x679C;R&#x6587;&#x4EF6;&#x8FD8;&#x6CA1;&#x6709;&#x51FA;&#x6765;&#xFF0C;&#x770B;&#x63A7;&#x5236;&#x53F0;&#x62A5;&#x51FA;&#x7684;&#x9519;&#x8BEF;&#xFF0C;&#x4E00;&#x822C;&#x662F;&#x8D44;&#x6E90;&#x6587;&#x4EF6;&#x62A5;&#x9519;&#x6240;&#x81F4;&#x3002;</li>
+<li>&#x63A7;&#x5236;&#x5668;-&#x4EA4;&#x6362;&#x673A;&#x6D88;&#x606F;&#x7531;&#x63A7;&#x5236;&#x5668;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x7528;&#x4E8E;&#x76F4;&#x63A5;&#x7BA1;&#x7406;&#x6216;&#x76D1;&#x6D4B;&#x4EA4;&#x6362;&#x673A;&#x7684;&#x72B6;&#x6001;&#x3002;</li>
+<li>&#x5F02;&#x6B65;&#x6D88;&#x606F;&#x7531;&#x4EA4;&#x6362;&#x673A;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x7528;&#x4E8E;&#x66F4;&#x65B0;&#x63A7;&#x5236;&#x5668;&#x4E2D;&#x7684;&#x7F51;&#x7EDC;&#x4E8B;&#x4EF6;&#x548C;&#x4EA4;&#x6362;&#x673A;&#x72B6;&#x6001;&#x7684;&#x6539;&#x53D8;&#x3002;</li>
+<li>&#x5BF9;&#x79F0;&#x6D88;&#x606F;&#x65E2;&#x53EF;&#x4EE5;&#x88AB;&#x4EA4;&#x6362;&#x673A;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x88AB;&#x63A7;&#x5236;&#x5668;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x8BE2;&#x95EE;&#x4FE1;&#x606F;&#x3002;</li>
 </ul>
-</blockquote>
+<h5 id="&#x63A7;&#x5236;&#x5668;-&#x4EA4;&#x6362;&#x673A;&#x4FE1;&#x606F;"><a href="#&#x63A7;&#x5236;&#x5668;-&#x4EA4;&#x6362;&#x673A;&#x4FE1;&#x606F;" class="headerlink" title="&#x63A7;&#x5236;&#x5668;-&#x4EA4;&#x6362;&#x673A;&#x4FE1;&#x606F;"></a>&#x63A7;&#x5236;&#x5668;-&#x4EA4;&#x6362;&#x673A;&#x4FE1;&#x606F;</h5><p>&#x63A7;&#x5236;&#x5668;-&#x4EA4;&#x6362;&#x673A;&#x4FE1;&#x606F;&#x7531;&#x63A7;&#x5236;&#x5668;&#x53D1;&#x9001;&#xFF0C;&#x53EF;&#x4EE5;&#x9700;&#x8981;&#x4EA4;&#x6362;&#x673A;&#x7684;&#x56DE;&#x590D;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4E0D;&#x9700;&#x8981;&#x3002;&#x5305;&#x62EC;Features, Configuration, Modify-State, Read-State, Packet-out, Barrier, Role-Request, Asynchronous-Configuration&#x3002;</p>
+<h5 id="&#x5F02;&#x6B65;&#x6D88;&#x606F;"><a href="#&#x5F02;&#x6B65;&#x6D88;&#x606F;" class="headerlink" title="&#x5F02;&#x6B65;&#x6D88;&#x606F;"></a>&#x5F02;&#x6B65;&#x6D88;&#x606F;</h5><p>&#x5F02;&#x6B65;&#x6D88;&#x606F;&#x7684;&#x53D1;&#x9001;&#x4E0D;&#x9700;&#x8981;&#x63A7;&#x5236;&#x5668;&#x7684;&#x8BF7;&#x6C42;&#xFF0C;&#x4EA4;&#x6362;&#x673A;&#x5411;&#x63A7;&#x5236;&#x5668;&#x53D1;&#x9001;&#x8BE5;&#x6D88;&#x606F;&#x4EE5;&#x8BF4;&#x660E;&#x6570;&#x636E;&#x5305;&#x7684;&#x5230;&#x8FBE;&#x3001;&#x4EA4;&#x6362;&#x673A;&#x72B6;&#x6001;&#x7684;&#x6539;&#x53D8;&#x6216;&#x662F;&#x51FA;&#x9519;&#x3002;&#x5305;&#x62EC;Packet-in, Flow-Removed, Port-status, Error&#x3002;</p>
+<h5 id="&#x5BF9;&#x79F0;&#x6D88;&#x606F;"><a href="#&#x5BF9;&#x79F0;&#x6D88;&#x606F;" class="headerlink" title="&#x5BF9;&#x79F0;&#x6D88;&#x606F;"></a>&#x5BF9;&#x79F0;&#x6D88;&#x606F;</h5><p>&#x5BF9;&#x79F0;&#x6D88;&#x606F;&#x53EF;&#x7531;&#x8FDE;&#x63A5;&#x7684;&#x4EFB;&#x4E00;&#x65B9;&#x53D1;&#x51FA;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x8BF7;&#x6C42;&#x3002;&#x5305;&#x62EC;Hello, Echo, Experimenter&#x3002;</p>
+<h4 id="OpenFlow-&#x8FDE;&#x63A5;&#x5EFA;&#x7ACB;&#x6D41;&#x7A0B;"><a href="#OpenFlow-&#x8FDE;&#x63A5;&#x5EFA;&#x7ACB;&#x6D41;&#x7A0B;" class="headerlink" title="OpenFlow &#x8FDE;&#x63A5;&#x5EFA;&#x7ACB;&#x6D41;&#x7A0B;"></a>OpenFlow &#x8FDE;&#x63A5;&#x5EFA;&#x7ACB;&#x6D41;&#x7A0B;</h4><p>OpenFlow&#x534F;&#x8BAE;&#x63D0;&#x4F9B;&#x53EF;&#x9760;&#x7684;&#x6D88;&#x606F;&#x4F20;&#x9012;&#x548C;&#x5904;&#x7406;&#xFF0C;&#x4F46;&#x5E76;&#x4E0D;&#x63D0;&#x4F9B;&#x6D88;&#x606F;&#x786E;&#x8BA4;&#x786E;&#x8BA4;&#x6216;&#x4FDD;&#x8BC1;&#x6D88;&#x606F;&#x7684;&#x6709;&#x5E8F;&#x5904;&#x7406;&#x3002;OpenFlow&#x5728;&#x4E3B;&#x8981;&#x8FDE;&#x63A5;&#x548C;&#x8F85;&#x52A9;&#x8FDE;&#x63A5;&#x4E0A;&#x7684;&#x6D88;&#x606F;&#x5904;&#x7406;&#x662F;&#x91C7;&#x7528;&#x4E86;&#x53EF;&#x9760;&#x4F20;&#x8F93;&#xFF0C;&#x8F85;&#x52A9;&#x8FDE;&#x63A5;&#x4E0D;&#x652F;&#x6301;&#x4E0D;&#x53EF;&#x9760;&#x7684;&#x4F20;&#x8F93;&#x3002;&#x6709;&#x5E8F;&#x5904;&#x7406;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;Barrier&#x6D88;&#x606F;&#x4FDD;&#x8BC1;&#x3002;<br>OpenFlow&#x5EFA;&#x7ACB;&#x5728;TCP/IP&#x8FDE;&#x63A5;&#x4E4B;&#x4E0A;&#x3002;OpenFlow&#x7684;&#x8FDE;&#x63A5;&#x4E3B;&#x8981;&#x6CE8;&#x610F;&#x4EE5;&#x4E0B;&#x51E0;&#x4E2A;&#x65B9;&#x9762;: </p>
+<h5 id="&#x8FDE;&#x63A5;&#x8BBE;&#x7F6E;"><a href="#&#x8FDE;&#x63A5;&#x8BBE;&#x7F6E;" class="headerlink" title="&#x8FDE;&#x63A5;&#x8BBE;&#x7F6E;"></a>&#x8FDE;&#x63A5;&#x8BBE;&#x7F6E;</h5><p>&#x4EA4;&#x6362;&#x673A;&#x5FC5;&#x987B;&#x80FD;&#x591F;&#x4E0E;&#x4E00;&#x4E2A;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x914D;&#x7F6E;IP&#x5730;&#x5740;(&#x5176;&#x4ED6;&#x5C5E;&#x6027;&#x56FA;&#x5B9A;)&#x7684;&#x63A7;&#x5236;&#x5668;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#xFF0C;&#x7AEF;&#x53E3;&#x53F7;&#x4E5F;&#x7531;&#x7528;&#x6237;&#x6307;&#x5B9A;&#x3002;&#x4EA4;&#x6362;&#x673A;&#x77E5;&#x9053;&#x63A7;&#x5236;&#x5668;&#x7684;IP&#x5730;&#x5740;&#x4EE5;&#x540E;&#x5373;&#x53EF;&#x53D1;&#x8D77;&#x4E0E;&#x63A7;&#x5236;&#x5668;&#x7684;TLS&#x6216;TCP&#x8FDE;&#x63A5;&#x3002;<br>OpenFlow&#x8FDE;&#x63A5;&#x4E00;&#x65E6;&#x5EFA;&#x7ACB;&#xFF0C;&#x8FDE;&#x63A5;&#x53CC;&#x65B9;&#x90FD;&#x8981;&#x7ACB;&#x523B;&#x53D1;&#x9001;OFPT_HELLO&#x6D88;&#x606F;&#xFF0C;&#x5176;&#x4E2D;&#x5305;&#x542B;&#x53D1;&#x9001;&#x8005;&#x652F;&#x6301;&#x7684;OpenFlow&#x534F;&#x8BAE;&#x6700;&#x9AD8;&#x7248;&#x672C;&#x53F7;&#xFF0C;&#x63A5;&#x6536;&#x8005;&#x6BD4;&#x8F83;&#x8BE5;&#x7248;&#x672C;&#x53F7;&#x662F;&#x5426;&#x9AD8;&#x4E8E;&#x81EA;&#x5DF1;&#x652F;&#x6301;&#x7684;&#x7248;&#x672C;&#x53F7;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x9AD8;&#x4E8E;&#xFF0C;&#x5219;&#x8FDE;&#x63A5;&#x7EE7;&#x7EED;&#xFF0C;&#x5426;&#x5219;&#x63A5;&#x6536;&#x8005;&#x9700;&#x8981;&#x56DE;&#x590D;OFPT_ERROR&#x6D88;&#x606F;&#xFF0C;type&#x5B57;&#x6BB5;&#x4E3A;OFPET_HELLO_FAILED&#xFF0C;code&#x5B57;&#x6BB5;&#x4E3A;OFPHFC_COMPATIBLE&#xFF0C;&#x9009;&#x62E9;&#x6027;&#x5730;&#x7528;ASCII&#x5B57;&#x7B26;&#x4E32;&#x586B;&#x5199;data&#x5B57;&#x6BB5;&#xFF0C;&#x7528;&#x4EE5;&#x89E3;&#x91CA;&#x5F53;&#x524D;&#x72B6;&#x6001;&#xFF0C;&#x7136;&#x540E;&#x7EC8;&#x6B62;&#x8FDE;&#x63A5;&#x3002;</p>
+<h5 id="&#x8FDE;&#x63A5;&#x4E2D;&#x65AD;"><a href="#&#x8FDE;&#x63A5;&#x4E2D;&#x65AD;" class="headerlink" title="&#x8FDE;&#x63A5;&#x4E2D;&#x65AD;"></a>&#x8FDE;&#x63A5;&#x4E2D;&#x65AD;</h5><p>&#x5728;&#x4EA4;&#x6362;&#x673A;&#x5931;&#x53BB;&#x4E0E;&#x6240;&#x6709;&#x63A7;&#x5236;&#x5668;&#x7684;&#x8FDE;&#x63A5;(echo&#x8BF7;&#x6C42;&#x8D85;&#x65F6;&#x3001;TLS&#x4F1A;&#x8BDD;&#x8D85;&#x65F6;&#x6216;&#x8005;&#x5176;&#x4ED6;&#x7AEF;&#x53E3;&#x8FDE;&#x63A5;)&#x540E;&#xFF0C;&#x4EA4;&#x6362;&#x673A;&#x5E94;&#x7ACB;&#x523B;&#x8FDB;&#x5165;&#x201D;fail secure mode&#x201D;&#x6216;&#x8005;&#x201D;standalone mode&#x201D; (&#x8FDB;&#x5165;&#x4E24;&#x79CD;&#x6A21;&#x5F0F;&#x7684;&#x54EA;&#x4E00;&#x79CD;&#x4F9D;&#x8D56;&#x4EA4;&#x6362;&#x673A;&#x7684;&#x5B9E;&#x73B0;&#x548C;&#x914D;&#x7F6E;)&#x3002;<br>&#x5728;&#x201D;fail secure mode&#x201D;&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;&#x4EA4;&#x6362;&#x673A;&#x884C;&#x4E3A;&#x7684;&#x552F;&#x4E00;&#x53D8;&#x5316;&#x5C31;&#x662F;&#x6240;&#x6709;&#x5230;&#x63A7;&#x5236;&#x5668;&#x7684;&#x6570;&#x636E;&#x5305;&#x6216;&#x6D88;&#x606F;&#x5168;&#x90E8;&#x4E22;&#x5F03;&#x3002;&#x6D41;&#x8868;&#x9879;(Flow entries)&#x6839;&#x636E;&#x4ED6;&#x4EEC;&#x7684;&#x5B9E;&#x6548;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x77E5;&#x9053;&#x671F;&#x6EE1;&#x3002;<br>&#x5728;&#x201D;fail standalone&#x201D;&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;&#x4EA4;&#x6362;&#x673A;&#x4F7F;&#x7528;OFPP_NORMAL&#x4FDD;&#x7559;&#x7AEF;&#x53E3;&#x5904;&#x7406;&#x6240;&#x6709;&#x7684;&#x5305;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x4EA4;&#x6362;&#x673A;&#x6B64;&#x65F6;&#x5145;&#x5F53;&#x4E86;&#x4F20;&#x7EDF;&#x4EE5;&#x592A;&#x7F51;&#x4E2D;&#x7684;&#x4EA4;&#x6362;&#x673A;&#x6216;&#x8DEF;&#x7531;&#x5668;&#xFF0C;&#x8FD9;&#x79CD;&#x6A21;&#x5F0F;&#x901A;&#x5E38;&#x53EA;&#x9002;&#x7528;&#x4E8E;Hybrid&#x4EA4;&#x6362;&#x673A;&#x3002;<br>&#x5728;&#x91CD;&#x65B0;&#x8FDE;&#x63A5;&#x63A7;&#x5236;&#x5668;&#x540E;&#xFF0C;&#x6D41;&#x8868;&#x9879;&#x5168;&#x90E8;&#x4FDD;&#x7559;&#xFF0C;&#x63A7;&#x5236;&#x5668;&#x6839;&#x636E;&#x9700;&#x6C42;&#x6765;&#x9009;&#x62E9;&#x662F;&#x5426;&#x4E22;&#x5F03;&#x6240;&#x6709;&#x7684;&#x6D41;&#x8868;&#x9879;&#x3002;<br>&#x4EA4;&#x6362;&#x673A;&#x7B2C;&#x4E00;&#x6B21;&#x542F;&#x52A8;&#x540E;&#x4F1A;&#x8FDB;&#x5165;&#x201D;fail secure mode&#x201D;&#x6216;&#x8005;&#x201D;fail standalone&#x201D;&#x6A21;&#x5F0F;&#xFF0C;&#x76F4;&#x5230;&#x4E0E;&#x63A7;&#x5236;&#x5668;&#x6210;&#x529F;&#x5730;&#x5EFA;&#x7ACB;&#x4E86;&#x8FDE;&#x63A5;&#x3002;</p>
+<h5 id="&#x52A0;&#x5BC6;"><a href="#&#x52A0;&#x5BC6;" class="headerlink" title="&#x52A0;&#x5BC6;"></a>&#x52A0;&#x5BC6;</h5><p>&#x4EA4;&#x6362;&#x673A;&#x4E0E;&#x63A7;&#x5236;&#x5668;&#x53EF;&#x80FD;&#x901A;&#x8FC7;TLS&#x8FDE;&#x63A5;&#x8FDB;&#x884C;&#x5BF9;&#x8BDD;&#x3002;TLS&#x7531;&#x4EA4;&#x6362;&#x673A;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x5728;&#x63A7;&#x5236;&#x5668;&#x4E0A;&#x542F;&#x52A8;&#xFF0C;&#x9ED8;&#x8BA4;&#x5728;TCP 6633&#x7AEF;&#x53E3;&#x3002;&#x4EA4;&#x6362;&#x673A;&#x548C;&#x63A7;&#x5236;&#x5668;&#x901A;&#x8FC7;&#x4EA4;&#x6362;&#x7531;&#x79C1;&#x94A5;&#x7B7E;&#x7F72;&#x7684;&#x8BC1;&#x4E66;&#x8FDB;&#x884C;&#x9A8C;&#x8BC1;&#xFF0C;&#x6BCF;&#x4E2A;&#x4EA4;&#x6362;&#x673A;&#x90FD;&#x8981;&#x7528;&#x6237;&#x914D;&#x7F6E;&#x4E00;&#x4E2A;&#x8BC1;&#x4E66;&#x7528;&#x6765;&#x9A8C;&#x8BC1;&#x63A7;&#x5236;&#x5668;(&#x63A7;&#x5236;&#x5668;&#x8BC1;&#x4E66;)&#xFF0C;&#x53E6;&#x4E00;&#x4E2A;&#x7528;&#x4E8E;&#x63A7;&#x5236;&#x5668;&#x7684;&#x8BA4;&#x8BC1;(&#x4EA4;&#x6362;&#x673A;&#x8BC1;&#x4E66;)&#x3002;<br>&#x4EA4;&#x6362;&#x673A;&#x4E0E;&#x63A7;&#x5236;&#x5668;&#x7684;&#x8FDE;&#x63A5;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;TCP&#x8FDE;&#x63A5;&#xFF0C;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;&#x5176;&#x4ED6;&#x7684;&#x5B89;&#x5168;&#x63AA;&#x65BD;&#xFF0C;&#x4EE5;&#x9632;&#x6B62;&#x76D1;&#x542C;&#x3001;&#x63A7;&#x5236;&#x5668;&#x5047;&#x5192;&#x6216;&#x8005;&#x5176;&#x4ED6;&#x7684;OpenFlow&#x4FE1;&#x9053;&#x653B;&#x51FB;&#x3002;</p>
+<h5 id="&#x591A;&#x4E2A;&#x63A7;&#x5236;&#x5668;"><a href="#&#x591A;&#x4E2A;&#x63A7;&#x5236;&#x5668;" class="headerlink" title="&#x591A;&#x4E2A;&#x63A7;&#x5236;&#x5668;"></a>&#x591A;&#x4E2A;&#x63A7;&#x5236;&#x5668;</h5><p>&#x4EA4;&#x6362;&#x673A;&#x8FDE;&#x63A5;&#x591A;&#x4E2A;&#x63A7;&#x5236;&#x5668;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x89E3;&#x51B3;&#x63A7;&#x5236;&#x5668;&#x5931;&#x6548;&#x6216;&#x8005;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x3002;<br>&#x4EA4;&#x6362;&#x673A;&#x540C;&#x65F6;&#x8FDE;&#x63A5;&#x6240;&#x6709;&#x8BBE;&#x7F6E;&#x7684;&#x63A7;&#x5236;&#x5668;&#x3002;</p>
 
       
     </div>
@@ -305,7 +321,9 @@
       
         <div class="post-tags">
           
-            <a href="/blog/tags/Android/" rel="tag">#Android</a>
+            <a href="/blog/tags/OpenvSwitch/" rel="tag">#OpenvSwitch</a>
+          
+            <a href="/blog/tags/laboratory/" rel="tag">#laboratory</a>
           
         </div>
       
@@ -314,16 +332,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/2016/04/06/leetcode11/" rel="next" title="LeetCode 11 Container With Most Water">
-                <i class="fa fa-chevron-left"></i> LeetCode 11 Container With Most Water
+              <a href="/blog/2016/06/15/ovs-vswitchd-01/" rel="next" title="Open vSwitch中关于handle_upcalls()函数的分析">
+                <i class="fa fa-chevron-left"></i> Open vSwitch中关于handle_upcalls()函数的分析
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/blog/2016/04/12/leetcode8/" rel="prev" title="LeetCode 8 String to Integer (atoi)">
-                LeetCode 8 String to Integer (atoi) <i class="fa fa-chevron-right"></i>
+              <a href="/blog/2016/06/23/ovs-ofbarrier/" rel="prev" title="Open vSwitch 处理OpenFlow的Barrier消息">
+                Open vSwitch 处理OpenFlow的Barrier消息 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -350,8 +368,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/07/android-problems/"
-           data-title="Android遇到的各个小问题" data-url="http://ycymio.com/blog/2016/04/07/android-problems/">
+      <div class="ds-thread" data-thread-key="2016/06/21/ovs-ofbasic/"
+           data-title="OpenFlow 1.3 的一些基础知识" data-url="http://ycymio.com/blog/2016/06/21/ovs-ofbasic/">
       </div>
     
   </div>
@@ -480,7 +498,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#OpenFlow-信道"><span class="nav-number">1.</span> <span class="nav-text">OpenFlow 信道</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#控制器-交换机信息"><span class="nav-number">1.1.</span> <span class="nav-text">控制器-交换机信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#异步消息"><span class="nav-number">1.2.</span> <span class="nav-text">异步消息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对称消息"><span class="nav-number">1.3.</span> <span class="nav-text">对称消息</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OpenFlow-连接建立流程"><span class="nav-number">2.</span> <span class="nav-text">OpenFlow 连接建立流程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#连接设置"><span class="nav-number">2.1.</span> <span class="nav-text">连接设置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#连接中断"><span class="nav-number">2.2.</span> <span class="nav-text">连接中断</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#加密"><span class="nav-number">2.3.</span> <span class="nav-text">加密</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#多个控制器"><span class="nav-number">2.4.</span> <span class="nav-text">多个控制器</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
