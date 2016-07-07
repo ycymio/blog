@@ -1,0 +1,952 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="OpenDaylight,laboratory," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#x5728;&amp;#x7814;&amp;#x7A76;OpenDaylight&amp;#x7684;AD-SAL&amp;#x4E2D;ConnectionManager&amp;#x7684;&amp;#x5B9E;&amp;#x73B0;&amp;#x90E8;&amp;#x5206;&amp;#xFF0C;&amp;#x770B;&amp;#x5230;&amp;#x4E86;&amp;#x4F7F;&amp;#x7528;isLocal()&amp;#x5BF9;&amp;#x5F53;&amp;#x524D;&amp;#x6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenDaylight的AD-SAL何时进行master/slave判断">
+<meta property="og:url" content="http://ycymio.com/blog/2016/07/07/odl-isLocal/index.html">
+<meta property="og:site_name" content="ycy’s tech-blog">
+<meta property="og:description" content="&amp;#x5728;&amp;#x7814;&amp;#x7A76;OpenDaylight&amp;#x7684;AD-SAL&amp;#x4E2D;ConnectionManager&amp;#x7684;&amp;#x5B9E;&amp;#x73B0;&amp;#x90E8;&amp;#x5206;&amp;#xFF0C;&amp;#x770B;&amp;#x5230;&amp;#x4E86;&amp;#x4F7F;&amp;#x7528;isLocal()&amp;#x5BF9;&amp;#x5F53;&amp;#x524D;&amp;#x6">
+<meta property="og:updated_time" content="2016-07-07T09:12:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenDaylight的AD-SAL何时进行master/slave判断">
+<meta name="twitter:description" content="&amp;#x5728;&amp;#x7814;&amp;#x7A76;OpenDaylight&amp;#x7684;AD-SAL&amp;#x4E2D;ConnectionManager&amp;#x7684;&amp;#x5B9E;&amp;#x73B0;&amp;#x90E8;&amp;#x5206;&amp;#xFF0C;&amp;#x770B;&amp;#x5230;&amp;#x4E86;&amp;#x4F7F;&amp;#x7528;isLocal()&amp;#x5BF9;&amp;#x5F53;&amp;#x524D;&amp;#x6">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> OpenDaylight的AD-SAL何时进行master/slave判断 | ycy’s tech-blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">ycy’s tech-blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">天气好得就好像走着走着就能遇见你</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            博客
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                OpenDaylight的AD-SAL何时进行master/slave判断
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-07T17:12:30+08:00" content="2016-07-07">
+              2016-07-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/laboratory/" itemprop="url" rel="index">
+                    <span itemprop="name">laboratory</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/laboratory/OpenDaylight/" itemprop="url" rel="index">
+                    <span itemprop="name">OpenDaylight</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2016/07/07/odl-isLocal/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/07/odl-isLocal/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/blog/2016/07/07/odl-isLocal/" class="leancloud_visitors" data-flag-title="OpenDaylight的AD-SAL何时进行master/slave判断">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&#x5728;&#x7814;&#x7A76;OpenDaylight&#x7684;AD-SAL&#x4E2D;ConnectionManager&#x7684;&#x5B9E;&#x73B0;&#x90E8;&#x5206;&#xFF0C;&#x770B;&#x5230;&#x4E86;&#x4F7F;&#x7528;isLocal()&#x5BF9;&#x5F53;&#x524D;&#x63A7;&#x5236;&#x5668;&#x6743;&#x9650;&#x5224;&#x65AD;&#x3002;OpenFlow&#x5F88;&#x591A;&#x673A;&#x5236;&#x7684;&#x7EC6;&#x8282;&#x90FD;&#x4E0D;&#x662F;&#x5F88;&#x6E05;&#x695A;&#xFF0C;&#x5B9E;&#x9A8C;&#x4E2D;&#x8FFD;&#x8E2A;&#x540E;&#x53D1;&#x73B0;OpenDaylight&#x7684;AD-SAL&#x662F;&#x5728;&#x4E0B;&#x53D1;&#x6D41;&#x8868;&#x524D;&#x8FDB;&#x884C;&#x6743;&#x9650;&#x68C0;&#x67E5;&#x7684;&#xFF0C;&#x5C31;&#x597D;&#x5947;&#x4F55;&#x79CD;&#x60C5;&#x51B5;&#x4F1A;&#x53BB;&#x533A;&#x5206;master/slave&#x7684;&#x6743;&#x9650;&#x3002;</p>
+<a id="more"></a>
+<p>&#x4EE5;&#x4E0B;&#x5217;&#x51FA;&#x4E86;&#x8C03;&#x7528;ConnectionManager.java&#x4E2D;isLocal()&#x51FD;&#x6570;&#x7684;&#x7C7B;&#x53CA;&#x76F8;&#x5E94;&#x51FD;&#x6570;:</p>
+<h4 id="package&#x4E3A;org-opendaylight-controller-sal-connection-implementation-internal"><a href="#package&#x4E3A;org-opendaylight-controller-sal-connection-implementation-internal" class="headerlink" title="package&#x4E3A;org.opendaylight.controller.sal.connection.implementation.internal"></a>package&#x4E3A;org.opendaylight.controller.sal.connection.implementation.internal</h4><p>ConnectionService&#x7C7B;&#x4E2D;&#x51FD;&#x6570;isLocal(Node):<br>ConnectionService&#x7C7B;&#x4E5F;&#x65B0;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;&#x51FD;&#x6570;isLocal()&#xFF0C;&#x5B9E;&#x73B0;&#x7684;&#x529F;&#x80FD;&#x4E0E;ConnecionManager&#x7684;isLocal()&#x7C7B;&#x4F3C;&#xFF0C;&#x662F;SAL&#x5C42;&#x7684;&#x4E00;&#x4E2A;&#x5C01;&#x88C5;&#x3002;</p>
+<h4 id="package&#x4E3A;org-opendaylight-controller-protocol-plugin-openflow-internal"><a href="#package&#x4E3A;org-opendaylight-controller-protocol-plugin-openflow-internal" class="headerlink" title="package&#x4E3A;org.opendaylight.controller.protocol_plugin.openflow.internal"></a>package&#x4E3A;org.opendaylight.controller.protocol_plugin.openflow.internal</h4><h5 id="FlowProgrammerService&#x4E2D;&#x7684;&#x8C03;&#x7528;"><a href="#FlowProgrammerService&#x4E2D;&#x7684;&#x8C03;&#x7528;" class="headerlink" title="FlowProgrammerService&#x4E2D;&#x7684;&#x8C03;&#x7528;"></a>FlowProgrammerService&#x4E2D;&#x7684;&#x8C03;&#x7528;</h5><p>&#x4E3B;&#x8981;&#x64CD;&#x4F5C;&#xFF1A;&#x540C;&#x6B65;/&#x5F02;&#x6B65;&#x589E;&#x5220;&#x6539;&#x6D41;&#x8868;&#xFF0C;&#x540C;&#x6B65;/&#x5F02;&#x6B65;&#x4E0B;&#x53D1;Barrier&#x6D88;&#x606F;&#x524D;&#xFF0C;&#x5224;&#x65AD;&#x6743;&#x9650;&#x3002;&#x5728;&#x8C03;&#x7528;isLocal()&#x65F6;&#x4E0B;&#x53D1;&#x6D41;&#x8868;&#x7684;Node&#x4E0E;Flow&#x90FD;&#x5DF2;&#x7ECF;&#x786E;&#x5B9A;&#xFF0C;&#x53EA;&#x5DEE;&#x4E0B;&#x53D1;&#x6D41;&#x8868;&#x7684;&#x68C0;&#x67E5;&#x548C;&#x52A8;&#x4F5C;&#x4E86;&#x3002;<br>&#x6D89;&#x53CA;&#x51FD;&#x6570;&#xFF1A;</p>
+<ul>
+<li>addFlow(Node, Flow): &#x4E0B;&#x53D1;&#x6D41;&#x8868;&#x524D;</li>
+<li>addFlowAsync(Node, Flow, long): &#x5F02;&#x6B65;&#x4E0B;&#x53D1;&#x6D41;&#x8868;&#x524D;</li>
+<li>modifyFlow(Node, Flow, Flow): &#x4FEE;&#x6539;&#x6D41;&#x8868;&#x524D;</li>
+<li>modifyFlowAsync(Node, Flow, Flow, long): &#x5F02;&#x6B65;&#x4FEE;&#x6539;&#x6D41;&#x8868;&#x524D;</li>
+<li>removeAllFlows(Node): &#x5220;&#x9664;&#x6240;&#x6709;&#x6D41;&#x8868;&#x524D;</li>
+<li>removeFlow(Node, Flow): &#x5220;&#x9664;&#x6D41;&#x8868;&#x524D;</li>
+<li>removeFlowAsync(Node, Flow, long): &#x5F02;&#x6B65;&#x5220;&#x9664;&#x6D41;&#x8868;&#x524D;</li>
+<li>asyncSendBarrierMessage(Node): &#x5F02;&#x6B65;&#x53D1;&#x9001;Barrier&#x6D88;&#x606F;&#x524D;</li>
+<li>syncSendBarrierMessage(Node): &#x540C;&#x6B65;&#x53D1;&#x9001;Barrier&#x6D88;&#x606F;&#x524D;</li>
+</ul>
+<h5 id="FlowProgrammerNotifier&#x4E2D;&#x7684;&#x8C03;&#x7528;"><a href="#FlowProgrammerNotifier&#x4E2D;&#x7684;&#x8C03;&#x7528;" class="headerlink" title="FlowProgrammerNotifier&#x4E2D;&#x7684;&#x8C03;&#x7528;"></a>FlowProgrammerNotifier&#x4E2D;&#x7684;&#x8C03;&#x7528;</h5><p>&#x4E3B;&#x8981;&#x64CD;&#x4F5C;&#xFF1A;&#x6D41;&#x8868;&#x5931;&#x6548;&#x6216;&#x6D41;&#x8868;&#x4E0B;&#x53D1;&#x9519;&#x8BEF;&#x65F6;&#x901A;&#x77E5;SAL&#x5C42;&#x524D;&#xFF0C;&#x5224;&#x65AD;&#x6743;&#x9650;&#x3002;<br>&#x6D89;&#x53CA;&#x51FD;&#x6570;&#xFF1A;</p>
+<ul>
+<li>flowErrorReported(Node, long, Object): &#x901A;&#x77E5;SAL&#x524D;&#x6267;&#x884C;isLocal()&#x3002;flowErrorReported()&#x51FD;&#x6570;&#x7684;&#x4F5C;&#x7528;&#x662F;&#x5F53;&#x6536;&#x5230;&#x4EA4;&#x6362;&#x673A;&#x53D1;&#x9001;&#x7684;&#x4E4B;&#x524D;&#x4E0B;&#x53D1;&#x7684;&#x6D41;&#x8868;&#x7684;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#x65F6;&#x901A;&#x77E5;SAL&#x3002;</li>
+<li>flowRemoved(Node, Flow): &#x901A;&#x77E5;SAL&#x524D;&#x6267;&#x884C;isLocal()&#x3002;flowRemoved()&#x51FD;&#x6570;&#x7684;&#x4F5C;&#x7528;&#x662F;&#x5F53;&#x67D0;&#x8282;&#x70B9;&#x7684;&#x6D41;&#x8868;&#x79FB;&#x9664;&#x65F6;&#x901A;&#x77E5;SAL&#xFF0C;&#x8FD9;&#x79CD;&#x901A;&#x77E5;&#x53EA;&#x6709;&#x5728;&#x6D41;&#x8868;&#x88AB;&#x8BBE;&#x7F6E;&#x4E3A;idle timeout(&#x88AB;&#x5220;&#x9664;&#x540E;&#x9884;&#x7559;&#x7684;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x5185;&#x6CA1;&#x6709;&#x5305;&#x5339;&#x914D;&#x8BE5;&#x6D41;)&#x6216;hard timeout(&#x76F4;&#x63A5;&#x5220;&#x9664;&#xFF0C;&#x6CA1;&#x6709;&#x9884;&#x7559;&#x65F6;&#x95F4;)&#x65F6;&#x6709;&#x6548;&#x3002;</li>
+</ul>
+<h5 id="InventoryServiceShim&#x4E2D;&#x7684;&#x8C03;&#x7528;"><a href="#InventoryServiceShim&#x4E2D;&#x7684;&#x8C03;&#x7528;" class="headerlink" title="InventoryServiceShim&#x4E2D;&#x7684;&#x8C03;&#x7528;"></a>InventoryServiceShim&#x4E2D;&#x7684;&#x8C03;&#x7528;</h5><p>&#x8BE5;&#x7C7B;&#x4E0D;&#x592A;&#x719F;&#x6089;&#xFF0C;&#x4E0D;&#x660E;&#x767D;Inventory&#x4EE5;&#x53CA;Shim&#x662F;&#x4F55;&#x7528;&#xFF0C;&#x539F;&#x6CE8;&#x89E3;&#x4E3A;:  The class describes a shim layer that bridges inventory events from Openflow core to various listeners. The notifications are filtered based on container configurations. &#x4EE5;&#x540E;&#x7EE7;&#x7EED;&#x2026;&#x4F46;&#x662F;&#x8FD9;&#x91CC;&#x662F;&#x6DFB;&#x52A0;/&#x5220;&#x9664;&#x4EA4;&#x6362;&#x673A;&#x65F6;&#x8C03;&#x7528;&#x5230;&#x7684;&#x5730;&#x65B9;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x5728;&#x6DFB;&#x52A0;&#x5220;&#x9664;&#x4EA4;&#x6362;&#x673A;&#x65F6;&#xFF0C;&#x8FD8;&#x662F;&#x8FDB;&#x884C;&#x4E86;&#x6743;&#x9650;&#x5224;&#x65AD;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x6240;&#x6709;&#x63A7;&#x5236;&#x5668;&#x90FD;&#x4F1A;&#x5904;&#x7406;&#x8BE5;&#x90E8;&#x5206;&#x4FE1;&#x606F;&#xFF0C;&#x8FD9;&#x4E5F;&#x4FDD;&#x8BC1;&#x4E86;&#x5728;&#x53EA;&#x6709;&#x4E00;&#x53F0;&#x4E3B;&#x63A7;&#x5236;&#x5668;&#x65F6;&#x63A7;&#x5236;&#x5668;&#x7684;&#x540C;&#x6B65;&#x4E0D;&#x4F1A;&#x5F15;&#x8D77;&#x51B2;&#x7A81;&#x3002;<br>&#x6D89;&#x53CA;&#x51FD;&#x6570;&#xFF1A;</p>
+<ul>
+<li>addNode(ISwitch): &#x5224;&#x65AD;&#x662F;&#x5426;&#x662F;&#x7B2C;&#x4E00;&#x6B21;&#x8FDE;&#x63A5;&#x8BE5;&#x4EA4;&#x6362;&#x673A;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x5E76;&#x4E14;&#x6709;&#x6743;&#x9650;&#x7BA1;&#x7406;(&#x662F;master)&#xFF0C;&#x5219;&#x5220;&#x9664;&#x4EA4;&#x6362;&#x673A;&#x5B58;&#x5728;&#x7684;&#x6240;&#x6709;&#x6D41;&#x8868;&#x3002;&#x4E4B;&#x540E;&#x8C03;&#x7528;&#x4E86;notifyInventoryShimListener()&#x3002;</li>
+<li>notifyInventoryShimListener(Node, UpdateType, Set<property>): &#x901A;&#x77E5;&#x6240;&#x6709;&#x7684;&#x5185;&#x90E8;&#x548C;&#x5916;&#x90E8;listener&#x3002;&#x8FD9;&#x91CC;&#x5728;&#x901A;&#x77E5;&#x5176;&#x4ED6;containers&#x6709;&#x5173;&#x4EA4;&#x6362;&#x673A;&#x8FDE;&#x63A5;&#x60C5;&#x51B5;&#x524D;&#xFF0C;&#x5224;&#x65AD;&#x662F;&#x5426;&#x6709;&#x6743;&#x9650;&#x7BA1;&#x7406;&#x3002;&#x4E0B;&#x540C;&#x3002;</property></li>
+<li>notifyInventoryShimListener(NodeConnector, UpdateType, Set<property>):  &#x901A;&#x77E5;&#x6240;&#x6709;&#x7684;&#x5185;&#x90E8;&#x548C;&#x5916;&#x90E8;listener&#x3002;</property></li>
+<li>switchAdded(ISwitch): &#x5F53;&#x4E00;&#x4E2A;&#x4EA4;&#x6362;&#x673A;&#x8FDE;&#x5230;&#x63A7;&#x5236;&#x5668;&#x65F6;&#x8C03;&#x7528;&#x8BE5;&#x51FD;&#x6570;&#xFF0C;&#x4F46;&#x6B64;&#x65F6;&#x68C0;&#x67E5;&#x662F;&#x5426;&#x662F;master&#xFF0C;&#x5E76;&#x6CA1;&#x6709;&#x8D77;&#x5B9E;&#x8D28;&#x4F5C;&#x7528;&#xFF0C;&#x8C03;&#x7528;&#x4E86;notifyInventoryShimListener()&#x548C;addNode()&#x3002;</li>
+</ul>
+<p>&#x8FD9;&#x91CC;&#x7279;&#x5730;&#x8FFD;&#x6EAF;&#x4E86;&#x4E00;&#x4E0B;&#x5173;&#x4E8E;addNode&#x4F55;&#x65F6;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x8C03;&#x7528;&#x5173;&#x7CFB;&#x5982;&#x4E0B;&#xFF1A;<br>InventoryServiceShim: addNode(ISwitch)<br>-&gt; InventoryServiceShim: switchAdded(ISwitch)<br>-&gt; Controller: notifySwitchAdded(ISwitch)<br>-&gt; Controller: run() &#x4E2D;&#x53D6;switchEvents&#x4F18;&#x5148;&#x961F;&#x5217;&#x4E2D;&#x7684;&#x503C;&#x540E;&#x5904;&#x7406;&#xFF0C;&#x4E4B;&#x540E;&#x4E00;&#x4E2A;&#x662F;&#x653E;&#x5165;&#x4F18;&#x5148;&#x961F;&#x5217;&#x7684;&#x51FD;&#x6570;&#x3002;<br>-&gt; Controller: addSwitchEvent(SwitchEvent)<br>-&gt; Controller: takeSwitchEventAdd(ISwitch)<br>-&gt; SwitchHandler: reportSwitchStateChange(boolean)<br>-&gt; SwitchHandler: processFeaturesReply(OFFeaturesReply)<br>-&gt; SwitchHandler: handleMessages() &#x8FD9;&#x4E2A;&#x662F;&#x5F00;&#x59CB;&#x5206;&#x6790;OF&#x7C7B;&#x578B;&#x7684;&#x5730;&#x65B9;</p>
+<h5 id="DiscoveryService&#x4E2D;&#x7684;&#x8C03;&#x7528;"><a href="#DiscoveryService&#x4E2D;&#x7684;&#x8C03;&#x7528;" class="headerlink" title="DiscoveryService&#x4E2D;&#x7684;&#x8C03;&#x7528;"></a>DiscoveryService&#x4E2D;&#x7684;&#x8C03;&#x7528;</h5><p>&#x8BE5;&#x7C7B;&#x4E3B;&#x8981;&#x670D;&#x52A1;&#x4E8E;neighbor discovery&#x670D;&#x52A1;&#x3002;&#x8FD9;&#x4E2A;&#x7C7B;&#x4E5F;&#x4E0D;&#x592A;&#x719F;&#x6089;&#x3002;&#x5E94;&#x8BE5;&#x662F;&#x8D1F;&#x8D23;&#x94FE;&#x8DEF;&#x53D1;&#x73B0;&#xFF0C;&#x56E0;&#x4E3A;&#x6536;&#x5230;LLDP&#x540E;&#x548C;&#x53D1;&#x9001;LLDP&#x90FD;&#x6D89;&#x53CA;&#x5230;&#x4E86;&#x8BE5;&#x7C7B;&#x3002;<br>&#x6D89;&#x53CA;&#x51FD;&#x6570;&#xFF1A;</p>
+<ul>
+<li>checkTimeout(): &#x8D85;&#x65F6;&#x68C0;&#x67E5;&#xFF0C;&#x5728;&#x52A0;&#x5165;transmitQ&#x524D;&#x5224;&#x65AD;&#x3002;</li>
+<li>doDiscovery(): &#x5728;&#x52A0;&#x5165;transmitQ&#x524D;&#x5224;&#x65AD;&#x3002;</li>
+<li>receiveDataPacket(RawPacket): &#x5904;&#x7406;LLDP&#x5305;&#x524D;&#x5224;&#x65AD;&#x3002;</li>
+<li>sendDiscoveryPacket(NodeConnector, RawPacket): &#x53D1;&#x9001;discovery packet&#xFF08;LLDP&#xFF09;&#x524D;&#x68C0;&#x67E5;&#xFF0C;&#x53D1;&#x9001;&#x7684;RawPacket&#x5DF2;&#x6784;&#x9020;&#x5B8C;&#x6210;&#x3002;</li>
+</ul>
+<h5 id="ReadService&#x4E2D;&#x7684;&#x8C03;&#x7528;"><a href="#ReadService&#x4E2D;&#x7684;&#x8C03;&#x7528;" class="headerlink" title="ReadService&#x4E2D;&#x7684;&#x8C03;&#x7528;"></a>ReadService&#x4E2D;&#x7684;&#x8C03;&#x7528;</h5><p>&#x4E3B;&#x8981;&#x64CD;&#x4F5C;: &#x5BF9;&#x4EA4;&#x6362;&#x673A;&#x786C;&#x4EF6;&#x4FE1;&#x606F;&#x7684;&#x7EDF;&#x8BA1;&#xFF0C;&#x5305;&#x62EC;&#x4EA4;&#x6362;&#x673A;&#x3001;&#x4EA4;&#x6362;&#x673A;&#x7F13;&#x5B58;&#x7684;&#x6D41;&#x8868;&#x4E0E;statistics&#x4FE1;&#x606F;&#x3002;&#xFF08;debug&#x53EF;&#x77E5;: &#x67D0;&#x7ED3;&#x70B9;&#x65AD;&#x5F00;&#x4E3B;&#x8981;&#x7531;InventoryServiceShim&#x7C7B;&#x7BA1;&#x7406;&#xFF0C;&#x4F46;&#x8BE5;&#x6A21;&#x5757;&#x4F1A;&#x5B9A;&#x671F;&#x88AB;&#x8C03;&#x7528;Update&#x7CFB;&#x5217;&#x51FD;&#x6570;&#xFF09;<br>&#x6D89;&#x53CA;&#x51FD;&#x6570;:<br>(&#x4EE5;&#x4E0B;&#x90FD;&#x662F;&#x4ECE;&#x4EA4;&#x6362;&#x673A;&#x786C;&#x4EF6;&#x8BFB;&#x53D6;&#x4FE1;&#x606F;&#xFF0C;&#x53EF;&#x80FD;&#x6709;&#x4E9B;&#x8868;&#x8FF0;&#x7684;&#x4E0D;&#x660E;&#x663E;&#xFF0C;&#x4F46;&#x90FD;&#x662F;&#x4E00;&#x4E2A;&#x610F;&#x601D;)</p>
+<ul>
+<li>getTransmitRate(NodeConnector): &#x8BFB;&#x53D6;&#x67D0;&#x8282;&#x70B9;&#x7684;&#x5E73;&#x5747;&#x4F20;&#x8F93;&#x901F;&#x7387;&#x524D;</li>
+<li>readDescription(Node, boolean): &#x8BFB;&#x53D6;&#x67D0;&#x7F51;&#x7EDC;&#x8282;&#x70B9;&#x7684;&#x63CF;&#x8FF0;&#x524D;</li>
+<li>readFlow(Node, Flow, boolean): &#x8BFB;&#x53D6;&#x67D0;&#x4EA4;&#x6362;&#x673A;&#x786C;&#x4EF6;&#x4E0A;&#x7684;&#x67D0;&#x4E2A;&#x6D41;&#x8868;&#x524D;</li>
+<li>readAllFlow(Node, boolean): &#x8BFB;&#x53D6;&#x67D0;&#x4EA4;&#x6362;&#x673A;&#x786C;&#x4EF6;&#x4E0A;&#x7684;&#x6240;&#x6709;&#x6D41;&#x8868;&#x524D;</li>
+<li>readNodeConnector(NodeConnector, boolean): &#x8BFB;&#x53D6;&#x67D0;&#x7F51;&#x7EDC;&#x8282;&#x70B9;&#x7684;&#x67D0;NodeConnector&#x7684;&#x6570;&#x636E;&#x524D;</li>
+<li>readAllNodeConnector(Node, boolean): &#x8BFB;&#x53D6;&#x67D0;&#x7F51;&#x7EDC;&#x8282;&#x70B9;&#x7684;&#x6240;&#x6709;&#x7684;NodeConnector&#x7684;&#x6570;&#x636E;&#x524D;</li>
+<li>readNodeTable(NodeTable, boolean): &#x8BFB;&#x53D6;&#x67D0;&#x8282;&#x70B9;&#x7684;&#x67D0;&#x9879;table statistics&#x524D;</li>
+<li>readAllNodeTable(Node, boolean): &#x8BFB;&#x53D6;&#x67D0;&#x8282;&#x70B9;&#x7684;&#x6240;&#x6709;table statistics&#x524D;</li>
+<li>nodeConnectorStatisticsUpdated(Node, List<nodeconnectorstatistics>): &#x901A;&#x77E5;(&#x731C;&#x6D4B;&#x662F;&#x5411;SAL&#x5C42;&#x901A;&#x77E5;)&#x67D0;&#x4EA4;&#x6362;&#x673A;&#x786C;&#x4EF6;&#x5C42;&#x9762;&#x7ED3;&#x70B9;&#x6709;&#x66F4;&#x65B0;&#x524D;</nodeconnectorstatistics></li>
+<li>nodeDescriptionStatisticsUpdated(Node, NodeDescription): &#x901A;&#x77E5;(&#x731C;&#x6D4B;&#x662F;&#x5411;SAL&#x5C42;&#x901A;&#x77E5;)&#x67D0;&#x4EA4;&#x6362;&#x673A;&#x786C;&#x4EF6;&#x5C42;&#x9762;&#x7684;&#x6D41;&#x8868;&#x89C6;&#x56FE;&#x6709;&#x66F4;&#x65B0;&#x524D;</li>
+<li>nodeFlowStatisticsUpdated(Node, List<flowonnode>): &#x901A;&#x77E5;(&#x731C;&#x6D4B;&#x662F;&#x5411;SAL&#x5C42;&#x901A;&#x77E5;)&#x67D0;&#x4EA4;&#x6362;&#x673A;&#x786C;&#x4EF6;&#x7684;&#x6D41;&#x8868;&#x89C6;&#x56FE;&#x6709;&#x66F4;&#x65B0;&#x524D;&#xFF08;&#x4E0E;nodeDescriptionStatisticsUpdated()&#x51FD;&#x6570;&#x7684;&#x533A;&#x522B;&#x5E76;&#x4E0D;&#x4E86;&#x89E3;&#xFF09;</flowonnode></li>
+<li>nodeTableStatisticsUpdated(Node, List<nodetablestatistics>): &#x901A;&#x77E5;(&#x731C;&#x6D4B;&#x662F;&#x5411;SAL&#x5C42;&#x901A;&#x77E5;)&#x67D0;&#x4EA4;&#x6362;&#x673A;&#x786C;&#x4EF6;&#x5C42;&#x9762;&#x7ED3;&#x70B9;&#x8868;&#x683C;&#x6709;&#x66F4;&#x65B0;&#x524D;</nodetablestatistics></li>
+</ul>
+<p>debug&#x65F6;&#x8BB0;&#x5F55;&#x4E86;&#x4E00;&#x4E0B;updated&#x7684;&#x51E0;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x5185;&#x5BB9;:</p>
+<ul>
+<li>TableStatistics&#x7684;&#x5176;&#x4E2D;&#x4E00;&#x9879;:[NodeTableStats[tableId = OF|0@OF|00:00:00:00:00:00:00:02, activeCount = 15, lookupCount = 792, matchedCount = 769, maximumEntries = 1000000]</li>
+<li>NodeConnectorState: [NodeConnectorStats[portNumber = OF|2@OF|00:00:00:00:00:00:00:01, receivePackets = 407, transmitPackets = 392, receiveBytes = 55688, transmitBytes = 53922, receiveDrops = 0, transmitDrops = 0, receiveErrors = 0, transmitErrors = 0, receiveFrameError = 0, receiveOverRunError = 0, receiveCrcError = 0, collisionCount = 0], NodeConnectorStats[portNumber = SW@OF|00:00:00:00:00:00:00:01, receivePackets = 0, transmitPackets = 761, receiveBytes = 0, transmitBytes = 105970, receiveDrops = 0, transmitDrops = 0, receiveErrors = 0, transmitErrors = 0, receiveFrameError = 0, receiveOverRunError = 0, receiveCrcError = 0, collisionCount = 0], NodeConnectorStats[portNumber = OF|1@OF|00:00:00:00:00:00:00:01, receivePackets = 396, transmitPackets = 386, receiveBytes = 54512, transmitBytes = 53546, receiveDrops = 0, transmitDrops = 0, receiveErrors = 0, transmitErrors = 0, receiveFrameError = 0, receiveOverRunError = 0, receiveCrcError = 0, collisionCount = 0]]</li>
+<li>Description: HwDescription[manufacturer=Nicira Networks, Inc., hardware=Open vSwitch, software=1.4.6, serialNumber=, description=None]</li>
+</ul>
+<h5 id="DataPacketMuxDemux&#x4E2D;&#x7684;&#x8C03;&#x7528;"><a href="#DataPacketMuxDemux&#x4E2D;&#x7684;&#x8C03;&#x7528;" class="headerlink" title="DataPacketMuxDemux&#x4E2D;&#x7684;&#x8C03;&#x7528;"></a>DataPacketMuxDemux&#x4E2D;&#x7684;&#x8C03;&#x7528;</h5><p>&#x4E3B;&#x8981;&#x64CD;&#x4F5C;: &#x6536;&#x5230;/&#x53D1;&#x9001;OF Message&#x65F6;&#x90FD;&#x4F1A;&#x68C0;&#x67E5;&#x6743;&#x9650;&#x3002;(&#x5E94;&#x8BE5;&#x4EC5;&#x9650;&#x4E8E;PACKET_IN&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x8BE5;&#x51FD;&#x6570;&#xFF0C;switch&#x7684;&#x589E;&#x5220;&#x6539;&#x7B49;&#x64CD;&#x4F5C;&#x4E0D;&#x4F1A;&#x89E6;&#x53D1;&#x8C03;&#x7528;)<br>&#x6D89;&#x53CA;&#x51FD;&#x6570;: </p>
+<ul>
+<li>receive(ISwitch, OFMessage): &#x6536;&#x5230;&#x4E00;&#x4E2A;OF Message&#x540E;&#x8C03;&#x7528;&#xFF0C;&#x4E4B;&#x540E;&#x518D;&#x53D1;&#x9001;&#x7ED9;&#x76D1;&#x542C;data packet&#x7684;&#x63A5;&#x53E3;&#x3002;</li>
+<li>transmitDataPacket(RawPacket): &#x4F20;&#x8F93;&#x4E00;&#x4E2A;OF Message&#x524D;&#x8C03;&#x7528;</li>
+</ul>
+<h5 id="DataPacketServices&#x4E2D;&#x7684;&#x8C03;&#x7528;"><a href="#DataPacketServices&#x4E2D;&#x7684;&#x8C03;&#x7528;" class="headerlink" title="DataPacketServices&#x4E2D;&#x7684;&#x8C03;&#x7528;"></a>DataPacketServices&#x4E2D;&#x7684;&#x8C03;&#x7528;</h5><p>&#xFF08;&#x4E0E;DataPacketMuxDemux&#x7684;&#x533A;&#x522B;&#x5E76;&#x6CA1;&#x6709;&#x7814;&#x7A76;&#xFF09;<br>&#x6D89;&#x53CA;&#x51FD;&#x6570;: </p>
+<ul>
+<li>transmitDataPacket(RawPacket): &#x4F20;&#x8F93;&#x4E00;&#x4E2A;OF Message&#x524D;&#x8C03;&#x7528;</li>
+</ul>
+<hr>
+<p>&#x8C03;&#x7528;getLocalityStatus(Node)&#x51FD;&#x6570;:<br>org.opendaylight.controller.sal.connection.IPluginOutConnectionService.getLocalityStatus(Node)<br>org.opendaylight.controller.sal.connection.implementation.internal.ConnectionService.getLocalityStatus(Node)<br>org.opendaylight.controller.protocol_plugin.openflow.internal.InventoryServiceShim.switchAdded(ISwitch): &#x53EA;&#x7528;&#x8BE5;&#x51FD;&#x6570;&#x5224;&#x65AD;&#x4E86;&#x72B6;&#x6001;&#x4E0D;&#x662F;NOT_CONNECTED&#x3002;<br>org.opendaylight.controller.protocol_plugin.openflow.core.internal.Controller.notifySwitchAdded(ISwitch)<br>org.opendaylight.controller.protocol_plugin.openflow.internal.InventoryServiceShim.startService()</p>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/OpenDaylight/" rel="tag">#OpenDaylight</a>
+          
+            <a href="/blog/tags/laboratory/" rel="tag">#laboratory</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2016/06/23/ovs-ofbarrier/" rel="next" title="Open vSwitch 处理OpenFlow的Barrier消息">
+                <i class="fa fa-chevron-left"></i> Open vSwitch 处理OpenFlow的Barrier消息
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/07/odl-isLocal/"
+           data-title="OpenDaylight的AD-SAL何时进行master/slave判断" data-url="http://ycymio.com/blog/2016/07/07/odl-isLocal/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/uploads/avatar.jpg"
+               alt="玉宇澄清" />
+          <p class="site-author-name" itemprop="name">玉宇澄清</p>
+          <p class="site-description motion-element" itemprop="description">天气好得就好像走着走着就能遇见你</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/blog/categories">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://ycymio.com/index.html" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Website
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://ycymio.com/life/" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Life Blog
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ycymio" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/ycymio" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#package为org-opendaylight-controller-sal-connection-implementation-internal"><span class="nav-number">1.</span> <span class="nav-text">package为org.opendaylight.controller.sal.connection.implementation.internal</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#package为org-opendaylight-controller-protocol-plugin-openflow-internal"><span class="nav-number">2.</span> <span class="nav-text">package为org.opendaylight.controller.protocol_plugin.openflow.internal</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#FlowProgrammerService中的调用"><span class="nav-number">2.1.</span> <span class="nav-text">FlowProgrammerService中的调用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#FlowProgrammerNotifier中的调用"><span class="nav-number">2.2.</span> <span class="nav-text">FlowProgrammerNotifier中的调用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#InventoryServiceShim中的调用"><span class="nav-number">2.3.</span> <span class="nav-text">InventoryServiceShim中的调用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DiscoveryService中的调用"><span class="nav-number">2.4.</span> <span class="nav-text">DiscoveryService中的调用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ReadService中的调用"><span class="nav-number">2.5.</span> <span class="nav-text">ReadService中的调用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DataPacketMuxDemux中的调用"><span class="nav-number">2.6.</span> <span class="nav-text">DataPacketMuxDemux中的调用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DataPacketServices中的调用"><span class="nav-number">2.7.</span> <span class="nav-text">DataPacketServices中的调用</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">玉宇澄清</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/blog/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"ycymio"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("CYw4eqfTnGGJ358ScduxIjMN-gzGzoHsz", "DVtxWNQe67hDTYKnPMtwUKoU");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+
+</body>
+</html>
