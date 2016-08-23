@@ -4,8 +4,50 @@
 
     
   <url>
+    <loc>http://ycymio.com/blog/blog/2016/08/23/precision-recall/</loc>
+    <lastmod>2016-08-23T11:32:59.000Z</lastmod>
+    <data>
+        <display>
+        <title>准确率(Precision)与召回率(Recall)</title>
+        <pubTime>2016-08-23T10:34:39.000Z</pubTime>
+        
+        <tag>机器学习, Machine Learning</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ycymio.com/blog/blog/2016/07/19/odl-feeling/</loc>
+    <lastmod>2016-07-19T08:58:01.000Z</lastmod>
+    <data>
+        <display>
+        <title>关于OpenDaylight AD-SAL的使用感想</title>
+        <pubTime>2016-07-19T08:52:43.000Z</pubTime>
+        
+        <tag>OpenDaylight</tag>
+         
+        <tag>laboratory</tag>
+         
+         
+           
+             
+              <breadCrumb title="laboratory" url="http://ycymio.com/blog/blog/categories/laboratory/"/>
+          
+             
+              <breadCrumb title="OpenDaylight" url="http://ycymio.com/blog/blog/categories/laboratory/OpenDaylight/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://ycymio.com/blog/blog/2016/07/07/odl-isLocal/</loc>
-    <lastmod>2016-07-07T09:12:30.000Z</lastmod>
+    <lastmod>2016-07-19T08:54:11.000Z</lastmod>
     <data>
         <display>
         <title>OpenDaylight的AD-SAL何时进行master/slave判断</title>
@@ -22,6 +64,26 @@
           
              
               <breadCrumb title="OpenDaylight" url="http://ycymio.com/blog/blog/categories/laboratory/OpenDaylight/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ycymio.com/blog/blog/2016/07/12/java-native/</loc>
+    <lastmod>2016-07-12T06:32:39.000Z</lastmod>
+    <data>
+        <display>
+        <title>Java中Native关键字</title>
+        <pubTime>2016-07-12T06:16:30.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+         
+           
+             
+              <breadCrumb title="java" url="http://ycymio.com/blog/blog/categories/java/"/>
           
         </display>
     </data>
