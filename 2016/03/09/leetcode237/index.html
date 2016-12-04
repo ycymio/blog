@@ -63,7 +63,7 @@
 <meta property="og:url" content="http://ycymio.com/blog/2016/03/09/leetcode237/index.html">
 <meta property="og:site_name" content="ycy’s tech-blog">
 <meta property="og:description" content="Write a function to delete a node (except the tail) in a singly linked list, given only access to that node.   Supposed the linked list is 1 -&amp;gt; 2 -&amp;gt; 3 -&amp;gt; 4 and you are given the third node wi">
-<meta property="og:updated_time" content="2016-03-20T09:13:36.000Z">
+<meta property="og:updated_time" content="2016-10-12T09:09:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode 237 Delete Node in a Linked List">
 <meta name="twitter:description" content="Write a function to delete a node (except the tail) in a singly linked list, given only access to that node.   Supposed the linked list is 1 -&amp;gt; 2 -&amp;gt; 3 -&amp;gt; 4 and you are given the third node wi">
@@ -318,7 +318,7 @@
 <p>&#x7ED9;&#x5B9A;&#x94FE;&#x8868;&#x7684;&#x67D0;&#x4E2A;&#x7ED3;&#x70B9;&#xFF0C;&#x8981;&#x6C42;&#x5220;&#x9664;&#x8BE5;&#x7ED3;&#x70B9;(&#x8BE5;&#x7ED3;&#x70B9;&#x4E0D;&#x662F;&#x5C3E;&#x7ED3;&#x70B9;)&#x3002;<br><a id="more"></a></p>
 <h4 id="&#x601D;&#x8DEF;"><a href="#&#x601D;&#x8DEF;" class="headerlink" title="&#x601D;&#x8DEF;:"></a>&#x601D;&#x8DEF;:</h4><pre><code>&#x4E4B;&#x524D;&#x6709;&#x60F3;&#x5230;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x77E5;&#x9053;&#x8BE5;&#x7ED3;&#x70B9;&#x7684;&#x524D;&#x9762;&#x7684;&#x90A3;&#x4E2A;&#x7ED3;&#x70B9;&#xFF0C;&#x5C31;&#x65E0;&#x6CD5;&#x4FEE;&#x6539;&#x5B83;&#x7684;&#x94FE;&#x63A5;&#xFF0C;&#x90A3;&#x8BE5;&#x5982;&#x4F55;&#x5904;&#x7406;&#xFF1F;
 &#x8DF3;&#x51FA;&#x8FD9;&#x4E2A;&#x5708;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x662F;&#x4E00;&#x5B9A;&#x8981;&#x4FEE;&#x6539;&#x8BE5;&#x94FE;&#x63A5;&#xFF0C;&#x53EA;&#x662F;&#x5220;&#x9664;&#x4E00;&#x4E2A;&#x7ED3;&#x70B9;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x91CA;&#x653E;&#x7ED9;&#x5B9A;&#x7ED3;&#x70B9;&#x7684;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x5220;&#x9664;&#x6240;&#x7ED9;&#x7ED3;&#x70B9;&#x7684;&#x540E;&#x4E00;&#x4E2A;&#x7ED3;&#x70B9;&#xFF0C;&#x800C;&#x8FD9;&#x540E;&#x4E00;&#x4E2A;&#x7ED3;&#x70B9;&#x7684;&#x503C;&#x5B8C;&#x5168;&#x590D;&#x5236;&#x7ED9;&#x6240;&#x7ED9;&#x7684;&#x7ED3;&#x70B9;&#x3002;
-</code></pre><h4 id="&#x4EE3;&#x7801;&#xFF1A;"><a href="#&#x4EE3;&#x7801;&#xFF1A;" class="headerlink" title="&#x4EE3;&#x7801;&#xFF1A;"></a>&#x4EE3;&#x7801;&#xFF1A;</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * public class ListNode {</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode next;</span><br><span class="line"> *     ListNode(int x) { val = x; }</span><br><span class="line"> * }</span><br><span class="line"> */</span></span><br><span class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>{</span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteNode</span><span class="params">(ListNode node)</span> </span>{</span><br><span class="line">         <span class="comment">// copy the node.</span></span><br><span class="line">         node.val = node.next.val;</span><br><span class="line">         node.next = node.next.next;</span><br><span class="line">     }</span><br><span class="line"> }</span><br></pre></td></tr></table></figure>
+</code></pre><h4 id="&#x4EE3;&#x7801;&#xFF1A;"><a href="#&#x4EE3;&#x7801;&#xFF1A;" class="headerlink" title="&#x4EE3;&#x7801;&#xFF1A;"></a>&#x4EE3;&#x7801;&#xFF1A;</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * public class ListNode {</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode next;</span><br><span class="line"> *     ListNode(int x) { val = x; }</span><br><span class="line"> * }</span><br><span class="line"> */</span></span><br><span class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>{</span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteNode</span><span class="params">(ListNode node)</span> </span>{</span><br><span class="line">         <span class="keyword">if</span>( node == <span class="keyword">null</span> || node.next == <span class="keyword">null</span>)</span><br><span class="line">             <span class="keyword">return</span>;</span><br><span class="line">         <span class="comment">// copy the node.</span></span><br><span class="line">         node.val = node.next.val;</span><br><span class="line">         node.next = node.next.next;</span><br><span class="line">     }</span><br><span class="line"> }</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -417,7 +417,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -425,7 +425,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/blog/categories">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -434,7 +434,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/blog/tags">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

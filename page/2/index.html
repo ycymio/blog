@@ -227,8 +227,8 @@
             
               
                 
-                <a class="post-title-link" href="/blog/2016/06/23/ovs-ofbarrier/" itemprop="url">
-                  Open vSwitch 处理OpenFlow的Barrier消息
+                <a class="post-title-link" href="/blog/2016/07/07/odl-isLocal/" itemprop="url">
+                  OpenDaylight的AD-SAL何时进行master/slave判断
                 </a>
               
             
@@ -241,8 +241,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-23T19:53:17+08:00" content="2016-06-23">
-              2016-06-23
+            <time itemprop="dateCreated" datetime="2016-07-07T17:12:30+08:00" content="2016-07-07">
+              2016-07-07
             </time>
           </span>
 
@@ -255,8 +255,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/blog/categories/laboratory/" itemprop="url" rel="index">
-                    <span itemprop="name">laboratory</span>
+                  <a href="/blog/categories/Laboratory/" itemprop="url" rel="index">
+                    <span itemprop="name">Laboratory</span>
                   </a>
                 </span>
 
@@ -267,8 +267,8 @@
 
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/blog/categories/laboratory/OpenvSwitch/" itemprop="url" rel="index">
-                    <span itemprop="name">OpenvSwitch</span>
+                  <a href="/blog/categories/Laboratory/OpenDaylight/" itemprop="url" rel="index">
+                    <span itemprop="name">OpenDaylight</span>
                   </a>
                 </span>
 
@@ -283,8 +283,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/blog/2016/06/23/ovs-ofbarrier/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/23/ovs-ofbarrier/" itemprop="commentsCount"></span>
+                <a href="/blog/2016/07/07/odl-isLocal/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/07/odl-isLocal/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -294,7 +294,7 @@
 
           
           
-             <span id="/blog/2016/06/23/ovs-ofbarrier/" class="leancloud_visitors" data-flag-title="Open vSwitch 处理OpenFlow的Barrier消息">
+             <span id="/blog/2016/07/07/odl-isLocal/" class="leancloud_visitors" data-flag-title="OpenDaylight的AD-SAL何时进行master/slave判断">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -315,279 +315,9 @@
 
       
         
-          <p>Barrier&#x6D88;&#x606F;&#x4ECE;OpenFlow0.9&#x7248;&#x672C;&#x5F00;&#x59CB;&#x542F;&#x7528;&#xFF0C;&#x7528;&#x4EE5;&#x4FDD;&#x8BC1;&#x6D88;&#x606F;&#x7684;&#x6709;&#x5E8F;&#x6267;&#x884C;&#x3002;&#x63A7;&#x5236;&#x5668;&#x4F7F;&#x7528; Barrier request/reply&#x6D88;&#x606F;&#xFF0C;&#x6765;&#x786E;&#x4FDD;&#x4E4B;&#x540E;&#x6267;&#x884C;&#x7684;&#x6D88;&#x606F;&#x6240;&#x4F9D;&#x8D56;&#x7684;&#x5DF2;&#x7ECF;&#x5168;&#x90E8;&#x6267;&#x884C;&#xFF0C;&#x6216;&#x662F;&#x4E3A;&#x4E86;&#x6536;&#x5230;&#x64CD;&#x4F5C;&#x5B8C;&#x6210;&#x7684;&#x901A;&#x77E5;&#x3002;&#x524D;&#x8005;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x5047;&#x8BBE;&#x6709;&#x4E24;&#x6761;&#x6765;&#x81EA;&#x63A7;&#x5236;&#x5668;&#x7684;&#x6D88;&#x606F;: &#x6DFB;&#x52A0;&#x6D41;&#x8868;&#x6D88;&#x606F;&#xFF0C;&#x548C;&#x4F9D;&#x9760;&#x8BE5;&#x6D41;&#x8868;&#x4E0B;&#x53D1;&#x7684;&#x6570;&#x636E;&#x5305;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5728;&#x5176;&#x4E2D;&#x63D2;&#x5165;Barrier&#x6D88;&#x606F;&#xFF0C;&#x7528;&#x4EE5;&#x786E;&#x8BA4;&#x6570;&#x636E;&#x5305;&#x4E0B;&#x53D1;&#x5728;&#x6D41;&#x8868;&#x4E0B;&#x53D1;&#x4E4B;&#x540E;&#x6267;&#x884C;&#x3002;</p>
-<p>&#x5F53;&#x4EA4;&#x6362;&#x673A;&#x6536;&#x5230;&#x4E00;&#x6761;Barrier&#x6D88;&#x606F;&#x540E;&#xFF0C;&#x9996;&#x5148;&#x5B83;&#x5FC5;&#x987B;&#x5B8C;&#x6210;&#x6536;&#x5230;&#x7684;&#x6240;&#x6709;&#x7684;&#x547D;&#x4EE4;&#xFF0C;&#x624D;&#x80FD;&#x6267;&#x884C;Barrier&#x6D88;&#x606F;&#x4EE5;&#x540E;&#x7684;&#x547D;&#x4EE4;&#xFF0C;&#x5F53;Barrier&#x6D88;&#x606F;&#x4E4B;&#x524D;&#x7684;&#x6240;&#x6709;&#x547D;&#x4EE4;&#x5168;&#x90E8;&#x6267;&#x884C;&#x4E86;&#x4EE5;&#x540E;&#xFF0C;&#x4EA4;&#x6362;&#x673A;&#x5FC5;&#x987B;&#x5411;&#x63A7;&#x5236;&#x5668;&#x56DE;&#x590D;&#x76F8;&#x5E94;&#x7684;Barrier Reply&#x6D88;&#x606F;(xid&#x76F8;&#x540C;)&#x3002;Barrier&#x6D88;&#x606F;&#x6CA1;&#x6709;&#x5176;&#x4ED6;&#x5185;&#x5BB9;&#x3002;</p>
+          <p>&#x5728;&#x7814;&#x7A76;OpenDaylight&#x7684;AD-SAL&#x4E2D;ConnectionManager&#x7684;&#x5B9E;&#x73B0;&#x90E8;&#x5206;&#xFF0C;&#x770B;&#x5230;&#x4E86;&#x4F7F;&#x7528;isLocal()&#x5BF9;&#x5F53;&#x524D;&#x63A7;&#x5236;&#x5668;&#x6743;&#x9650;&#x5224;&#x65AD;&#x3002;OpenFlow&#x5F88;&#x591A;&#x673A;&#x5236;&#x7684;&#x7EC6;&#x8282;&#x90FD;&#x4E0D;&#x662F;&#x5F88;&#x6E05;&#x695A;&#xFF0C;&#x5B9E;&#x9A8C;&#x4E2D;&#x8FFD;&#x8E2A;&#x540E;&#x53D1;&#x73B0;OpenDaylight&#x7684;AD-SAL&#x662F;&#x5728;&#x4E0B;&#x53D1;&#x6D41;&#x8868;&#x524D;&#x8FDB;&#x884C;&#x6743;&#x9650;&#x68C0;&#x67E5;&#x7684;&#xFF0C;&#x5C31;&#x597D;&#x5947;&#x4F55;&#x79CD;&#x60C5;&#x51B5;&#x4F1A;&#x53BB;&#x533A;&#x5206;master/slave&#x7684;&#x6743;&#x9650;&#x3002;</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/blog/2016/06/23/ovs-ofbarrier/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2016/06/21/ovs-ofbasic/" itemprop="url">
-                  OpenFlow 1.3 的一些基础知识
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-21T14:26:07+08:00" content="2016-06-21">
-              2016-06-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/blog/categories/laboratory/" itemprop="url" rel="index">
-                    <span itemprop="name">laboratory</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/blog/categories/laboratory/OpenvSwitch/" itemprop="url" rel="index">
-                    <span itemprop="name">OpenvSwitch</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2016/06/21/ovs-ofbasic/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/21/ovs-ofbasic/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/blog/2016/06/21/ovs-ofbasic/" class="leancloud_visitors" data-flag-title="OpenFlow 1.3 的一些基础知识">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          OpenFlow &#x4FE1;&#x9053;OpenFlow&#x652F;&#x6301;&#x4E09;&#x7C7B;&#x6D88;&#x606F;: &#x63A7;&#x5236;&#x5668;-&#x4EA4;&#x6362;&#x673A;&#x6D88;&#x606F;&#
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/blog/2016/06/21/ovs-ofbasic/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2016/06/15/ovs-vswitchd-01/" itemprop="url">
-                  Open vSwitch中关于handle_upcalls()函数的分析
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-15T20:00:44+08:00" content="2016-06-15">
-              2016-06-15
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/blog/categories/laboratory/" itemprop="url" rel="index">
-                    <span itemprop="name">laboratory</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/blog/categories/laboratory/OpenvSwitch/" itemprop="url" rel="index">
-                    <span itemprop="name">OpenvSwitch</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2016/06/15/ovs-vswitchd-01/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/15/ovs-vswitchd-01/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/blog/2016/06/15/ovs-vswitchd-01/" class="leancloud_visitors" data-flag-title="Open vSwitch中关于handle_upcalls()函数的分析">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>&#x57FA;&#x4E8E; Open vSwitch 2.5.0&#x7684;&#x6E90;&#x7801;&#x548C;&#x4E0B;&#x56FE;&#x62A5;&#x6587;&#x5339;&#x914D;&#x6D41;&#x7A0B;&#x7684;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x56FE;&#xFF0C;&#x5BF9;ovs-vswitchd&#x6A21;&#x5757;&#x7684;&#x64CD;&#x4F5C;&#x8FDB;&#x884C;&#x4E86;&#x7C97;&#x7565;&#x7684;&#x5206;&#x6790;&#x3002;(&#x7531;&#x4E8E;&#x521A;&#x5F00;&#x59CB;&#x5B66;&#x4E60;ovs&#x7684;&#x6E90;&#x7801;&#xFF0C;&#x57FA;&#x7840;&#x8584;&#x5F31;&#xFF0C;&#x56E0;&#x800C;&#x672C;&#x535A;&#x5BA2;&#x53EA;&#x5BF9;handle_upcalls()&#x51FD;&#x6570;&#x8FDB;&#x884C;&#x5206;&#x6790;&#x3002;<br></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/blog/2016/06/15/ovs-vswitchd-01/#more" rel="contents">
+            <a class="btn" href="/blog/2016/07/07/odl-isLocal/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -779,7 +509,7 @@
               
                 
                 <a class="post-title-link" href="/blog/2016/04/21/toString/" itemprop="url">
-                  java中的toString函数
+                  Java中的toString函数
                 </a>
               
             
@@ -806,8 +536,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/blog/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
+                  <a href="/blog/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -833,7 +563,7 @@
 
           
           
-             <span id="/blog/2016/04/21/toString/" class="leancloud_visitors" data-flag-title="java中的toString函数">
+             <span id="/blog/2016/04/21/toString/" class="leancloud_visitors" data-flag-title="Java中的toString函数">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -903,7 +633,7 @@
               
                 
                 <a class="post-title-link" href="/blog/2016/04/13/java-boundary/" itemprop="url">
-                  java基本类型的取值范围
+                  Java基本类型的取值范围
                 </a>
               
             
@@ -957,7 +687,7 @@
 
           
           
-             <span id="/blog/2016/04/13/java-boundary/" class="leancloud_visitors" data-flag-title="java基本类型的取值范围">
+             <span id="/blog/2016/04/13/java-boundary/" class="leancloud_visitors" data-flag-title="Java基本类型的取值范围">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -981,6 +711,275 @@
           <p>Java.lang&#x4E2D;&#x63D0;&#x4F9B;&#x7684;&#x4EE5;&#x4E0B;&#x51E0;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x8303;&#x56F4;&#xFF1A;<strong>Byte, Integer, Long, Short, Character, Double, Float</strong>.</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/blog/2016/04/13/java-boundary/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/2016/04/12/leetcode8/" itemprop="url">
+                  LeetCode 8 String to Integer (atoi)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-12T19:44:19+08:00" content="2016-04-12">
+              2016-04-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/OJ/" itemprop="url" rel="index">
+                    <span itemprop="name">OJ</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/OJ/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/OJ/LeetCode/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2016/04/12/leetcode8/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/12/leetcode8/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/blog/2016/04/12/leetcode8/" class="leancloud_visitors" data-flag-title="LeetCode 8 String to Integer (atoi)">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote class="blockquote-center"><br><div style="padding-left: 50px; text-align: left"><br><strong><br>Implement atoi to convert a string to an integer.<br><br>Hint: Carefully consider all possible input cases. If you want a challenge, please do not see below and ask yourself what are the possible input cases.<br><br>Notes: It is intended for this problem to be specified vaguely (ie, no given input specs). You are responsible to gather all the input requirements up front.
+</strong><br></div><br><br></blockquote>
+
+<p>&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;String&#x578B;&#x8F6C;Integer&#x578B;&#x7684;&#x529F;&#x80FD;(C&#x8BED;&#x8A00;&#x7684;atoi&#x51FD;&#x6570;)</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/blog/2016/04/12/leetcode8/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/2016/04/07/android-problems/" itemprop="url">
+                  Android遇到的各个小问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-07T15:34:07+08:00" content="2016-04-07">
+              2016-04-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2016/04/07/android-problems/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/07/android-problems/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/blog/2016/04/07/android-problems/" class="leancloud_visitors" data-flag-title="Android遇到的各个小问题">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>&#x5B66;&#x4E60;Android&#x8FC7;&#x7A0B;&#x4E2D;&#x9047;&#x5230;&#x7684; &#x5355;&#x72EC;&#x5199;&#x535A;&#x6587;&#x53C8;&#x89C9;&#x5F97;&#x6709;&#x4E9B;&#x5947;&#x602A; &#x7684;&#x5C0F;&#x95EE;&#x9898;&#x3002;</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/blog/2016/04/07/android-problems/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1048,7 +1047,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1056,7 +1055,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/blog/categories">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1065,7 +1064,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/blog/tags">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

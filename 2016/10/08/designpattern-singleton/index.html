@@ -64,7 +64,7 @@
 <meta property="og:site_name" content="ycy’s tech-blog">
 <meta property="og:description" content="&amp;#x4E00;&amp;#x4E2A;&amp;#x6570;&amp;#x5B57;&amp;#x6EE4;&amp;#x6CE2;&amp;#x5668;&amp;#x53EA;&amp;#x80FD;&amp;#x6709;&amp;#x4E00;&amp;#x4E2A;A/D&amp;#x8F6C;&amp;#x6362;&amp;#x5668;&amp;#x3002;&amp;#x4E00;&amp;#x4E2A;&amp;#x4F1A;&amp;#x8BA1;&amp;#x7CFB;&amp;#x7EDF;&amp;#x53EA;&amp;#x80FD;&amp;#x4E">
 <meta property="og:image" content="http://ycymio.com/blog/blog/2016/10/08/designpattern-singleton/uml.png">
-<meta property="og:updated_time" content="2016-10-10T13:03:32.000Z">
+<meta property="og:updated_time" content="2016-10-15T09:10:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SINGLETON（单件）——对象创建模式">
 <meta name="twitter:description" content="&amp;#x4E00;&amp;#x4E2A;&amp;#x6570;&amp;#x5B57;&amp;#x6EE4;&amp;#x6CE2;&amp;#x5668;&amp;#x53EA;&amp;#x80FD;&amp;#x6709;&amp;#x4E00;&amp;#x4E2A;A/D&amp;#x8F6C;&amp;#x6362;&amp;#x5668;&amp;#x3002;&amp;#x4E00;&amp;#x4E2A;&amp;#x4F1A;&amp;#x8BA1;&amp;#x7CFB;&amp;#x7EDF;&amp;#x53EA;&amp;#x80FD;&amp;#x4E">
@@ -324,6 +324,7 @@ h4{font-size: 16px}
 <p>// TODO: &#x672A;&#x5B9E;&#x73B0;&#x5B50;&#x7C7B;&#x7EE7;&#x627F;&#x90E8;&#x5206;&#x3002;</p>
 <h2 id="&#x5DF2;&#x77E5;&#x5E94;&#x7528;"><a href="#&#x5DF2;&#x77E5;&#x5E94;&#x7528;" class="headerlink" title="&#x5DF2;&#x77E5;&#x5E94;&#x7528;"></a>&#x5DF2;&#x77E5;&#x5E94;&#x7528;</h2><p>java.lang.Runtime &#x7C7B;: <a href="http://docs.oracle.com/javase/8/docs/api/" target="_blank" rel="external">http://docs.oracle.com/javase/8/docs/api/</a></p>
 <p>&#x91C7;&#x7528;&#x4E86;&#x997F;&#x6C49;&#x5F0F;&#x3002;</p>
+<p>Hibernate&#x7684;SessionFactory&#x4E5F;&#x5E94;&#x8BE5;&#x7528;&#x4E00;&#x4E2A;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x6765;&#x5B9E;&#x73B0;&#x3002;</p>
 <h2 id="&#x76F8;&#x5173;&#x6A21;&#x5F0F;"><a href="#&#x76F8;&#x5173;&#x6A21;&#x5F0F;" class="headerlink" title="&#x76F8;&#x5173;&#x6A21;&#x5F0F;"></a>&#x76F8;&#x5173;&#x6A21;&#x5F0F;</h2><p>&#x5F88;&#x591A;&#x6A21;&#x5F0F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;Singleton&#x6A21;&#x5F0F;&#x5B9E;&#x73B0;&#xFF0C;&#x53C2;&#x89C1;Abstract Factory&#x3001;Builder&#x548C;Prototype&#x3002;</p>
 <h2 id="&#x5176;&#x4ED6;"><a href="#&#x5176;&#x4ED6;" class="headerlink" title="&#x5176;&#x4ED6;"></a>&#x5176;&#x4ED6;</h2><h3 id="&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x516B;&#x79CD;&#x5199;&#x6CD5;&#x7684;&#x4F18;&#x52A3;&#x5206;&#x6790;"><a href="#&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x516B;&#x79CD;&#x5199;&#x6CD5;&#x7684;&#x4F18;&#x52A3;&#x5206;&#x6790;" class="headerlink" title="&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x516B;&#x79CD;&#x5199;&#x6CD5;&#x7684;&#x4F18;&#x52A3;&#x5206;&#x6790;"></a>&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x516B;&#x79CD;&#x5199;&#x6CD5;&#x7684;&#x4F18;&#x52A3;&#x5206;&#x6790;</h3><p>&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x7684;&#x4E24;&#x79CD;&#x5199;&#x6CD5;&#x5728;&#x5B9E;&#x73B0;&#x90E8;&#x5206;&#x5DF2;&#x63D0;&#x53CA;&#xFF0C;&#x4E5F;&#x63D0;&#x51FA;&#x4E86;&#x5B83;&#x4EEC;&#x7684;&#x4E0D;&#x8DB3;&#x3002;&#x8FD9;&#x91CC;&#x505A;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#xFF0C;&#x672A;&#x6BD4;&#x8F83;&#x5173;&#x4E8E;&#x5B83;&#x521B;&#x5EFA;&#x5B50;&#x7C7B;&#x7684;&#x65B9;&#x9762;&#x3002;&#x4E00;&#x822C;&#x5355;&#x4F8B;&#x6709;&#x4E94;&#x79CD;&#x5199;&#x6CD5;&#xFF1A;&#x61D2;&#x6C49;&#xFF0C;&#x997F;&#x6C49;&#xFF0C;&#x53CC;&#x91CD;&#x6821;&#x9A8C;&#x9501;&#xFF0C;&#x679A;&#x4E3E;&#x548C;&#x9759;&#x6001;&#x5185;&#x90E8;&#x7C7B;&#x3002;&#x95EE;&#x9898;&#x5173;&#x952E;&#xFF1A;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x3001;&#x5EF6;&#x8FDF;&#x52A0;&#x8F7D;&#x3001;&#x5E8F;&#x5217;&#x5316;&#x4E0E;&#x53CD;&#x5E8F;&#x5217;&#x5316;&#x5B89;&#x5168;&#x3002;</p>
 <h4 id="&#x997F;&#x6C49;&#x5F0F;&#xFF08;&#x9759;&#x6001;&#x5E38;&#x91CF;&#xFF09;"><a href="#&#x997F;&#x6C49;&#x5F0F;&#xFF08;&#x9759;&#x6001;&#x5E38;&#x91CF;&#xFF09;" class="headerlink" title="&#x997F;&#x6C49;&#x5F0F;&#xFF08;&#x9759;&#x6001;&#x5E38;&#x91CF;&#xFF09;"></a>&#x997F;&#x6C49;&#x5F0F;&#xFF08;&#x9759;&#x6001;&#x5E38;&#x91CF;&#xFF09;</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>{</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Single</span><span class="params">()</span> </span>{}</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>{</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
@@ -447,6 +448,10 @@ h4{font-size: 16px}
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/blog/2016/12/04/leetcode-overview/" rel="prev" title="leetcode-overview">
+                leetcode-overview <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -517,7 +522,7 @@ h4{font-size: 16px}
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -525,7 +530,7 @@ h4{font-size: 16px}
           
             <div class="site-state-item site-state-categories">
               <a href="/blog/categories">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -534,7 +539,7 @@ h4{font-size: 16px}
           
             <div class="site-state-item site-state-tags">
               <a href="/blog/tags">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
