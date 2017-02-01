@@ -57,16 +57,16 @@
 
 
 
-<meta name="description" content="&amp;#x8FD9;&amp;#x91CC;&amp;#x4E3B;&amp;#x8981;&amp;#x6982;&amp;#x8FF0;&amp;#x4E0B;Iterable&amp;#x63A5;&amp;#x53E3;&amp;#x4EE5;&amp;#x53CA;Collection&amp;#x63A5;&amp;#x53E3;&amp;#x53CA;&amp;#x5176;&amp;#x76F8;&amp;#x5E94;&amp;#x63A5;&amp;#x53E3;&amp;#x51FD;&amp;#x6570;&amp;#x3002;">
+<meta name="description" content="&amp;#x8FD9;&amp;#x91CC;&amp;#x4E3B;&amp;#x8981;&amp;#x6982;&amp;#x8FF0;&amp;#x4E0B;Iterable&amp;#x63A5;&amp;#x53E3;&amp;#x4EE5;&amp;#x53CA;Collection&amp;#x63A5;&amp;#x53E3;&amp;#x53CA;&amp;#x5176;&amp;#x76F8;&amp;#x5E94;&amp;#x63A5;&amp;#x53E3;&amp;#x51FD;&amp;#x6570;&amp;#x3002;Collec">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Iterable接口与Collection接口">
 <meta property="og:url" content="http://ycymio.com/blog/2017/01/31/Java-Collection/index.html">
 <meta property="og:site_name" content="ycy’s tech-blog">
-<meta property="og:description" content="&amp;#x8FD9;&amp;#x91CC;&amp;#x4E3B;&amp;#x8981;&amp;#x6982;&amp;#x8FF0;&amp;#x4E0B;Iterable&amp;#x63A5;&amp;#x53E3;&amp;#x4EE5;&amp;#x53CA;Collection&amp;#x63A5;&amp;#x53E3;&amp;#x53CA;&amp;#x5176;&amp;#x76F8;&amp;#x5E94;&amp;#x63A5;&amp;#x53E3;&amp;#x51FD;&amp;#x6570;&amp;#x3002;">
-<meta property="og:updated_time" content="2017-01-31T04:51:07.000Z">
+<meta property="og:description" content="&amp;#x8FD9;&amp;#x91CC;&amp;#x4E3B;&amp;#x8981;&amp;#x6982;&amp;#x8FF0;&amp;#x4E0B;Iterable&amp;#x63A5;&amp;#x53E3;&amp;#x4EE5;&amp;#x53CA;Collection&amp;#x63A5;&amp;#x53E3;&amp;#x53CA;&amp;#x5176;&amp;#x76F8;&amp;#x5E94;&amp;#x63A5;&amp;#x53E3;&amp;#x51FD;&amp;#x6570;&amp;#x3002;Collec">
+<meta property="og:updated_time" content="2017-01-31T09:17:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Iterable接口与Collection接口">
-<meta name="twitter:description" content="&amp;#x8FD9;&amp;#x91CC;&amp;#x4E3B;&amp;#x8981;&amp;#x6982;&amp;#x8FF0;&amp;#x4E0B;Iterable&amp;#x63A5;&amp;#x53E3;&amp;#x4EE5;&amp;#x53CA;Collection&amp;#x63A5;&amp;#x53E3;&amp;#x53CA;&amp;#x5176;&amp;#x76F8;&amp;#x5E94;&amp;#x63A5;&amp;#x53E3;&amp;#x51FD;&amp;#x6570;&amp;#x3002;">
+<meta name="twitter:description" content="&amp;#x8FD9;&amp;#x91CC;&amp;#x4E3B;&amp;#x8981;&amp;#x6982;&amp;#x8FF0;&amp;#x4E0B;Iterable&amp;#x63A5;&amp;#x53E3;&amp;#x4EE5;&amp;#x53CA;Collection&amp;#x63A5;&amp;#x53E3;&amp;#x53CA;&amp;#x5176;&amp;#x76F8;&amp;#x5E94;&amp;#x63A5;&amp;#x53E3;&amp;#x51FD;&amp;#x6570;&amp;#x3002;Collec">
 
 
 
@@ -299,7 +299,7 @@
       
 
       
-        <p>&#x8FD9;&#x91CC;&#x4E3B;&#x8981;&#x6982;&#x8FF0;&#x4E0B;Iterable&#x63A5;&#x53E3;&#x4EE5;&#x53CA;Collection&#x63A5;&#x53E3;&#x53CA;&#x5176;&#x76F8;&#x5E94;&#x63A5;&#x53E3;&#x51FD;&#x6570;&#x3002;<br><a id="more"></a></p>
+        <p>&#x8FD9;&#x91CC;&#x4E3B;&#x8981;&#x6982;&#x8FF0;&#x4E0B;Iterable&#x63A5;&#x53E3;&#x4EE5;&#x53CA;Collection&#x63A5;&#x53E3;&#x53CA;&#x5176;&#x76F8;&#x5E94;&#x63A5;&#x53E3;&#x51FD;&#x6570;&#x3002;<br>Collection&#x63A5;&#x53E3;&#x7528;&#x4E8E;&#x4FDD;&#x5B58;&#x4E00;&#x7CFB;&#x5217;&#x5BF9;&#x8C61;&#xFF0C;&#x5BF9;&#x4E8E;&#x5BF9;&#x8C61;&#x7684;&#x5B58;&#x53D6;&#x987A;&#x5E8F;&#x548C;&#x662F;&#x5426;&#x6709;&#x91CD;&#x590D;&#x5E76;&#x672A;&#x505A;&#x4EFB;&#x4F55;&#x5047;&#x8BBE;&#x3002;<br><a id="more"></a></p>
 <h2 id="Iterable-lt-T-gt-&#x63A5;&#x53E3;"><a href="#Iterable-lt-T-gt-&#x63A5;&#x53E3;" class="headerlink" title="Iterable&lt;T&gt;&#x63A5;&#x53E3;"></a>Iterable&lt;T&gt;&#x63A5;&#x53E3;</h2><blockquote>
 <p>&#x6240;&#x5C5E;&#x5305; java.lang&#x3002;<br>&#x5728;1.5&#x7248;&#x672C;&#x4EE5;&#x540E;&#x652F;&#x6301;for-each&#x64CD;&#x4F5C;&#x3002;</p>
 </blockquote>
@@ -362,6 +362,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2017/02/01/Java-List/" rel="prev" title="List接口">
+                List接口 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -433,7 +437,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-count">36</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
