@@ -2,16 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://ycymio.com/blog/2017/02/04/spider-major/</loc>
+    
+    <lastmod>2017-02-04T10:51:05.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://ycymio.com/blog/2017/02/01/Java-List/</loc>
     
-    <lastmod>2017-02-01T11:39:39.000Z</lastmod>
+    <lastmod>2017-02-02T15:30:41.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://ycymio.com/blog/2017/01/07/leetcode-overview/</loc>
+    
+    <lastmod>2017-02-02T11:25:58.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://ycymio.com/blog/2016/03/12/leetcode-words/</loc>
     
-    <lastmod>2017-01-31T09:21:46.000Z</lastmod>
+    <lastmod>2017-02-02T09:22:20.000Z</lastmod>
     
   </url>
   
@@ -19,13 +33,6 @@
     <loc>http://ycymio.com/blog/2017/01/31/Java-Collection/</loc>
     
     <lastmod>2017-01-31T09:17:33.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://ycymio.com/blog/2017/01/07/leetcode-overview/</loc>
-    
-    <lastmod>2017-01-27T10:22:51.000Z</lastmod>
     
   </url>
   

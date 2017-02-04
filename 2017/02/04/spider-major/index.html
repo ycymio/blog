@@ -1,0 +1,881 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Experience,Java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#x5E2E;&amp;#x4EBA;&amp;#x505A;&amp;#x4E86;&amp;#x4E00;&amp;#x4E2A;&amp;#x722C;&amp;#x53D6;2018&amp;#x5E74;&amp;#x62DF;&amp;#x5728;&amp;#x6D59;&amp;#x62DB;&amp;#x751F;&amp;#x666E;&amp;#x901A;&amp;#x9AD8;&amp;#x6821;&amp;#x4E13;&amp;#x4E1A;&amp;#xFF08;&amp;#x7C7B;&amp;#xFF09;&amp;#x9009;&amp;#x8">
+<meta property="og:type" content="article">
+<meta property="og:title" content="爬取选考科目范围小工具">
+<meta property="og:url" content="http://ycymio.com/blog/2017/02/04/spider-major/index.html">
+<meta property="og:site_name" content="ycy’s tech-blog">
+<meta property="og:description" content="&amp;#x5E2E;&amp;#x4EBA;&amp;#x505A;&amp;#x4E86;&amp;#x4E00;&amp;#x4E2A;&amp;#x722C;&amp;#x53D6;2018&amp;#x5E74;&amp;#x62DF;&amp;#x5728;&amp;#x6D59;&amp;#x62DB;&amp;#x751F;&amp;#x666E;&amp;#x901A;&amp;#x9AD8;&amp;#x6821;&amp;#x4E13;&amp;#x4E1A;&amp;#xFF08;&amp;#x7C7B;&amp;#xFF09;&amp;#x9009;&amp;#x8">
+<meta property="og:updated_time" content="2017-02-04T10:51:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="爬取选考科目范围小工具">
+<meta name="twitter:description" content="&amp;#x5E2E;&amp;#x4EBA;&amp;#x505A;&amp;#x4E86;&amp;#x4E00;&amp;#x4E2A;&amp;#x722C;&amp;#x53D6;2018&amp;#x5E74;&amp;#x62DF;&amp;#x5728;&amp;#x6D59;&amp;#x62DB;&amp;#x751F;&amp;#x666E;&amp;#x901A;&amp;#x9AD8;&amp;#x6821;&amp;#x4E13;&amp;#x4E1A;&amp;#xFF08;&amp;#x7C7B;&amp;#xFF09;&amp;#x9009;&amp;#x8">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 爬取选考科目范围小工具 | ycy’s tech-blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">ycy’s tech-blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">天气好得就好像走着走着就能遇见你</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            博客
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                爬取选考科目范围小工具
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-04T18:45:21+08:00" content="2017-02-04">
+              2017-02-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2017/02/04/spider-major/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/04/spider-major/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/blog/2017/02/04/spider-major/" class="leancloud_visitors" data-flag-title="爬取选考科目范围小工具">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&#x5E2E;&#x4EBA;&#x505A;&#x4E86;&#x4E00;&#x4E2A;&#x722C;&#x53D6;<a href="http://zt.zjzs.net/xuanke2018/allcollege.html" target="_blank" rel="external">2018&#x5E74;&#x62DF;&#x5728;&#x6D59;&#x62DB;&#x751F;&#x666E;&#x901A;&#x9AD8;&#x6821;&#x4E13;&#x4E1A;&#xFF08;&#x7C7B;&#xFF09;&#x9009;&#x8003;&#x79D1;&#x76EE;&#x8303;&#x56F4;</a>&#x7684;&#x5C0F;&#x5DE5;&#x5177;&#xFF0C;&#x6BD5;&#x7ADF;&#x662F;&#x666E;&#x901A;&#x7F51;&#x7AD9;&#xFF0C;&#x4E0D;&#x9700;&#x8981;cookie&#xFF0C;&#x4E5F;&#x4E0D;&#x9632;&#x722C;&#x866B;&#x3002;&#x4F46;&#x4E5F;&#x9047;&#x5230;&#x4E00;&#x70B9;&#x95EE;&#x9898;&#xFF0C;&#x5C31;&#x6B64;&#x5199;&#x4E9B;&#x611F;&#x60F3;&#x3002;<br><a id="more"></a></p>
+<ul>
+<li>&#x4E3B;&#x952E;&#x6709;&#x957F;&#x5EA6;&#x9650;&#x5236;&#x7684;&#xFF0C;&#x592A;&#x957F;&#x4E86;&#x76F4;&#x63A5;&#x91C7;&#x7528;&#x81EA;&#x589E;id&#x505A;&#x4E3B;&#x952E;&#x6BD4;&#x8F83;&#x597D;&#x3002;</li>
+<li>&#x6CE8;&#x610F;hibernate&#x7684;&#x914D;&#x7F6E;&#xFF0C;&#x533A;&#x5206;&#x5BF9;&#x5E94;&#x5173;&#x7CFB;&#x548C;&#x5927;&#x5C0F;&#x5199;</li>
+<li>&#x7528;&#x7684;jSoup&#x5DE5;&#x5177;&#x505A;&#x7684;&#x722C;&#x866B;&#xFF0C;&#x53C2;&#x8003;&#x8FD9;&#x65B9;&#x9762;&#x7684;&#x63A5;&#x53E3;&#x6BD4;&#x8F83;&#x8FC5;&#x901F;&#x3002;</li>
+</ul>
+<p>&#x9047;&#x5230;&#x7684;&#x6700;&#x5927;&#x7684;&#x95EE;&#x9898;&#x662F;:<br>&#x6709;&#x4E9B;&#x7F51;&#x9875;&#x8FDF;&#x8FDF;&#x4E0D;&#x52A0;&#x8F7D;&#x7ED3;&#x675F;&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x679C;&#x5355;&#x5355;&#x662F;&#x6253;&#x5F00;&#x722C;&#x53D6;&#x7684;&#x7F51;&#x9875;&#x7684;&#x8BDD;&#xFF0C;&#x662F;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x4FE1;&#x606F;&#x7684;&#xFF08;&#x4F46;&#x6B64;&#x65F6;&#x8FD8;&#x662F;&#x6CA1;&#x6709;&#x5B8C;&#x5168;&#x52A0;&#x8F7D;&#xFF09;&#xFF0C;&#x5E94;&#x8BE5;&#x662F;&#x6D4F;&#x89C8;&#x5668;&#x5206;&#x6B65;&#x52A0;&#x8F7D;&#x7684;&#x4F18;&#x70B9;&#x3002;<br>&#x5982;&#x679C;&#x662F;&#x91C7;&#x7528;&#x8BBE;&#x7F6E;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x7684;&#x8BDD;&#xFF0C;&#x8FD9;&#x4E2A;&#x7F51;&#x9875;&#x7684;&#x4FE1;&#x606F;&#x5C31;&#x65E0;&#x6CD5;&#x722C;&#x53D6;&#x4E86;&#x3002;&#x5C31;&#x60F3;&#x80FD;&#x4E0D;&#x80FD;&#x505A;&#x6210;&#x8D85;&#x65F6;&#x4E5F;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x7ED3;&#x679C;&#x7684;&#xFF08;Callable&#x7C7B;&#x548C;Future&#x7C7B;&#xFF09;&#xFF0C;&#x4F46;&#x662F;&#x9047;&#x5230;Interrupted Exception&#x7684;&#x8BDD;&#x5C31;&#x5F88;&#x96BE;&#x5904;&#x7406;&#xFF0C;&#x6240;&#x4EE5;&#xFF0C;&#x6CA1;&#x6709;&#x7528;jSoup&#xFF0C;&#x76F4;&#x63A5;&#x7528;Java&#x57FA;&#x7840;&#x7C7B;&#x505A;&#x4E86;&#x7B80;&#x5355;&#x7684;&#x7F51;&#x7EDC;&#x8FDE;&#x63A5;&#xFF0C;&#x5224;&#x65AD;&#x8BFB;&#x53D6;&#x5230;&#x4E86;&lt;/html&gt;&#x5C31;&#x505C;&#x6B62;&#x3002;&#x4EE3;&#x7801;&#x5982;&#x4E0B;:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">extractSpecialCollege</span><span class="params">(Rule rule)</span> </span>{</span><br><span class="line">	<span class="keyword">try</span> {</span><br><span class="line">		String urlStr = rule.getUrl();</span><br><span class="line">		URL url = <span class="keyword">new</span> URL(urlStr);</span><br><span class="line">		StringBuffer sb = <span class="keyword">new</span> StringBuffer();  </span><br><span class="line">		HttpURLConnection connection = (HttpURLConnection) url.openConnection();  </span><br><span class="line">		connection.setRequestMethod(<span class="string">&quot;GET&quot;</span>);  </span><br><span class="line">		connection.setConnectTimeout(<span class="number">5000</span>); </span><br><span class="line">		connection.setDoInput(<span class="keyword">true</span>);  </span><br><span class="line">		connection.setDoOutput(<span class="keyword">true</span>);</span><br><span class="line">		<span class="keyword">if</span> (connection.getResponseCode() == <span class="number">200</span>) {</span><br><span class="line">			InputStream input = connection.getInputStream(); </span><br><span class="line">			<span class="keyword">byte</span>[] b = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">4096</span>];  </span><br><span class="line">			<span class="keyword">int</span> len;</span><br><span class="line">			<span class="keyword">while</span> ((len = input.read(b)) != -<span class="number">1</span>) { </span><br><span class="line">				sb.append(<span class="keyword">new</span> String(b, <span class="number">0</span>, len, <span class="string">&quot;UTF-8&quot;</span>));</span><br><span class="line">				<span class="comment">// &#x4E3B;&#x8981;&#x662F;&#x52A0;&#x4E86;&#x8FD9;&#x4E2A;</span></span><br><span class="line">				<span class="keyword">if</span>(sb.lastIndexOf(<span class="string">&quot;&lt;/html&gt;&quot;</span>) != -<span class="number">1</span>){</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				}</span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line">		System.out.println(sb.toString());</span><br><span class="line">		<span class="keyword">return</span> sb.toString();</span><br><span class="line">	} <span class="keyword">catch</span> (Exception e){</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>P.S. &#x4E00;&#x505A;&#x8FD9;&#x4E9B;&#x5C31;&#x61D2;&#x5F97;&#x5237;&#x9898;&#x662F;&#x4EC0;&#x4E48;&#x9B3C;&#x1F47B;</p>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/Experience/" rel="tag">#Experience</a>
+          
+            <a href="/blog/tags/Java/" rel="tag">#Java</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2017/02/01/Java-List/" rel="next" title="List接口">
+                <i class="fa fa-chevron-left"></i> List接口
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/02/04/spider-major/"
+           data-title="爬取选考科目范围小工具" data-url="http://ycymio.com/blog/2017/02/04/spider-major/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/uploads/avatar.jpg"
+               alt="玉宇澄清" />
+          <p class="site-author-name" itemprop="name">玉宇澄清</p>
+          <p class="site-description motion-element" itemprop="description">天气好得就好像走着走着就能遇见你</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">37</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/blog/categories">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://ycymio.com/index.html" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Website
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://ycymio.com/life/" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Life Blog
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ycymio" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/ycymio" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">玉宇澄清</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/blog/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"ycymio"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("CYw4eqfTnGGJ358ScduxIjMN-gzGzoHsz", "DVtxWNQe67hDTYKnPMtwUKoU");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+
+</body>
+</html>
