@@ -1,0 +1,985 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#x53EF;&amp;#x8C03;&amp;#x6574;&amp;#x5927;&amp;#x5C0F;&amp;#x7684;&amp;#x6570;&amp;#x7EC4;&amp;#x7684;List&amp;#x63A5;&amp;#x53E3;&amp;#x7684;&amp;#x4E00;&amp;#x79CD;&amp;#x5B9E;&amp;#x73B0;&amp;#x3002;&amp;#x5141;&amp;#x8BB8;&amp;#x5143;&amp;#x7D20;&amp;#x4E3A;&amp;#x7A7A;&amp;#x3002;&amp;#x6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ArrayList类">
+<meta property="og:url" content="http://ycymio.com/blog/2017/03/05/Java-ArrayList/index.html">
+<meta property="og:site_name" content="ycy’s tech-blog">
+<meta property="og:description" content="&amp;#x53EF;&amp;#x8C03;&amp;#x6574;&amp;#x5927;&amp;#x5C0F;&amp;#x7684;&amp;#x6570;&amp;#x7EC4;&amp;#x7684;List&amp;#x63A5;&amp;#x53E3;&amp;#x7684;&amp;#x4E00;&amp;#x79CD;&amp;#x5B9E;&amp;#x73B0;&amp;#x3002;&amp;#x5141;&amp;#x8BB8;&amp;#x5143;&amp;#x7D20;&amp;#x4E3A;&amp;#x7A7A;&amp;#x3002;&amp;#x6">
+<meta property="og:updated_time" content="2017-03-05T12:50:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ArrayList类">
+<meta name="twitter:description" content="&amp;#x53EF;&amp;#x8C03;&amp;#x6574;&amp;#x5927;&amp;#x5C0F;&amp;#x7684;&amp;#x6570;&amp;#x7EC4;&amp;#x7684;List&amp;#x63A5;&amp;#x53E3;&amp;#x7684;&amp;#x4E00;&amp;#x79CD;&amp;#x5B9E;&amp;#x73B0;&amp;#x3002;&amp;#x5141;&amp;#x8BB8;&amp;#x5143;&amp;#x7D20;&amp;#x4E3A;&amp;#x7A7A;&amp;#x3002;&amp;#x6">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> ArrayList类 | ycy’s tech-blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">ycy’s tech-blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">天气好得就好像走着走着就能遇见你</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            博客
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                ArrayList类
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-05T20:48:26+08:00" content="2017-03-05">
+              2017-03-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/Java/JDK/" itemprop="url" rel="index">
+                    <span itemprop="name">JDK</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2017/03/05/Java-ArrayList/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/05/Java-ArrayList/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/blog/2017/03/05/Java-ArrayList/" class="leancloud_visitors" data-flag-title="ArrayList类">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&#x53EF;&#x8C03;&#x6574;&#x5927;&#x5C0F;&#x7684;&#x6570;&#x7EC4;&#x7684;List&#x63A5;&#x53E3;&#x7684;&#x4E00;&#x79CD;&#x5B9E;&#x73B0;&#x3002;&#x5141;&#x8BB8;&#x5143;&#x7D20;&#x4E3A;&#x7A7A;&#x3002;&#x6709;&#x5185;&#x90E8;&#x8C03;&#x6574;&#x6570;&#x7EC4;&#x5B58;&#x50A8;&#x5927;&#x5C0F;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x5927;&#x4F53;&#x4E0A;&#x4E0E;Vector&#x76F8;&#x4F3C;&#xFF0C;&#x4F46;&#x4E0D;&#x540C;&#x6B65;&#x3002;<br><a id="more"></a></p>
+<style type="text/css">
+p{
+    margin-bottom: 10px;
+    text-indent: 28px;
+}
+</style>
+
+<h2 id="ArrayList-lt-E-gt-&#x63A5;&#x53E3;"><a href="#ArrayList-lt-E-gt-&#x63A5;&#x53E3;" class="headerlink" title="ArrayList&lt;E&gt; &#x63A5;&#x53E3;"></a>ArrayList&lt;E&gt; &#x63A5;&#x53E3;</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayList</span>&lt;<span class="title">E</span>&gt;</span><br><span class="line"><span class="keyword">extends</span> <span class="title">AbstractList</span>&lt;<span class="title">E</span>&gt;</span><br><span class="line"><span class="keyword">implements</span> <span class="title">List</span>&lt;<span class="title">E</span>&gt;, <span class="title">RandomAccess</span>, <span class="title">Cloneable</span>, <span class="title">Serializable</span></span></span><br></pre></td></tr></table></figure>
+<p>RandomAccess&#x63A5;&#x53E3;: &#x7A7A;&#x63A5;&#x53E3;&#xFF0C;&#x6807;&#x8BC6;&#x4F5C;&#x7528;&#x3002;&#x7ED9;&#x53EF;&#x4EE5;&#x63D0;&#x4F9B;&#x968F;&#x673A;&#x8BBF;&#x95EE;&#x7684;List&#x5B9E;&#x73B0;&#x53BB;&#x6807;&#x8BC6;&#x4E00;&#x4E0B;&#xFF0C;&#x8FD9;&#x6837;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;List&#x7684;&#x7A0B;&#x5E8F;&#x5728;&#x904D;&#x5386;&#x8FD9;&#x79CD;&#x7C7B;&#x578B;&#x7684;List&#x7684;&#x65F6;&#x5019;&#x53EF;&#x4EE5;&#x6709;&#x66F4;&#x9AD8;&#x6548;&#x7387;&#x3002;&#x4EC5;&#x6B64;&#x800C;&#x5DF2;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x904D;&#x5386;List&#x4E4B;&#x524D;&#xFF0C;&#x53EF;&#x4EE5;&#x7528; if(list instanceof RamdomAccess) &#x6765;&#x6807;&#x8BC6;&#x4E00;&#x4E0B;&#xFF0C;&#x9009;&#x62E9;&#x7528;&#x54EA;&#x79CD;&#x904D;&#x5386;&#x65B9;&#x5F0F;&#x3002;&#x5C31;&#x8FD9;&#x70B9;&#x5C0F;&#x6280;&#x5DE7;&#xFF0C;&#x5B8C;&#x3002;&#x89C1;&#x4E8E;<a href="https://my.oschina.net/u/1466553/blog/496024" target="_blank" rel="external">java &#x96C6;&#x5408;&#x6846;&#x67B6;&#x7684;&#x63A5;&#x53E3;&#x4E4B;&#x4E00;&#xFF1A;RandomAccess</a></p>
+<p>size, isEmpty, get, set, iterator&#x548C;listIterator&#x65B9;&#x6CD5;&#x5728;&#x5E38;&#x6570;&#x65F6;&#x95F4;&#x5185;&#x5B8C;&#x6210;&#x3002;add&#x53EF;&#x4EE5;&#x5728;&#x5206;&#x671F;&#x644A;&#x8FD8;&#x7684;&#x5E38;&#x6570;&#x65F6;&#x95F4;(amortized constant time)&#x5185;&#x5B8C;&#x6210;&#x3002;&#x5176;&#x4ED6;&#x64CD;&#x4F5C;&#x4E00;&#x822C;&#x5728;&#x9650;&#x884C;&#x65F6;&#x95F4;&#x5B8C;&#x6210;&#x3002;&#x4E14;&#x6BD4;LinkedList&#x7684;&#x5E38;&#x91CF;&#x56E0;&#x5B50;&#x8981;&#x4F4E;&#x3002;<br>&#x5982;&#x679C;&#x6709;&#x5F88;&#x591A;&#x7EBF;&#x7A0B;&#x5E76;&#x53D1;&#x5730;&#x5171;&#x4EAB;&#x4E00;&#x4E2A;ArrayList&#x5B9E;&#x4F8B;&#xFF0C;&#x5E76;&#x4E14;&#x81F3;&#x5C11;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x8FDB;&#x884C;&#x4FEE;&#x6539;&#x8868;&#x7ED3;&#x6784;(&#x4EFB;&#x4F55;&#x6DFB;&#x52A0;&#x5220;&#x9664;&#x6269;&#x5BB9;&#x90FD;&#x662F;)&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x90A3;&#x4E48;&#x9700;&#x8981;&#x5916;&#x90E8;&#x8BBE;&#x7F6E;&#x5E76;&#x53D1;&#x64CD;&#x4F5C;&#x7684;&#x3002;&#x53EF;&#x4EE5;&#x7528;collections.synchronizedlist&#x65B9;&#x6CD5;&#x5305;&#x88C5;&#x4F7F;&#x7528;&#xFF0C;&#x8FD9;&#x4E2A;&#x64CD;&#x4F5C;&#x6700;&#x597D;&#x5728;&#x521B;&#x5EFA;&#x5BF9;&#x8C61;&#x65F6;&#x3002;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List list = Collections.synchronizedList(<span class="keyword">new</span> ArrayList(...));</span><br></pre></td></tr></table></figure></p>
+<p>&#x7531;&#x65B9;&#x6CD5;iterator&#x548C;listIterator&#x8FD4;&#x56DE;&#x7684;&#x8FED;&#x4EE3;&#x5668;&#x662F;&#x652F;&#x6301;&#x5FEB;&#x901F;&#x5931;&#x8D25;&#x7684;&#xFF0C;&#x5728;&#x8FED;&#x4EE3;&#x5668;&#x521B;&#x5EFA;&#x540E;&#xFF0C;&#x5217;&#x8868;&#x7ED3;&#x6784;&#x7684;&#x4FEE;&#x6539;(&#x9664;&#x975E;&#x662F;&#x8FED;&#x4EE3;&#x5668;&#x81EA;&#x5E26;&#x7684;remove&#x6216;add&#x65B9;&#x6CD5;)&#x90FD;&#x4F1A;&#x629B;&#x51FA;ConcurrentModificationException&#x3002;&#x5728;&#x5E76;&#x53D1;&#x64CD;&#x4F5C;&#x65F6;&#x8FED;&#x4EE3;&#x5668;&#x5931;&#x8D25;&#x5F97;&#x8FC5;&#x901F;&#x800C;&#x5E72;&#x51C0;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5728;&#x4E00;&#x4E2A;&#x4E0D;&#x786E;&#x5B9A;&#x7684;&#x65F6;&#x95F4;&#x8FDB;&#x884C;&#x4EFB;&#x610F;&#x7684;&#x3001;&#x4E0D;&#x786E;&#x5B9A;&#x7684;&#x884C;&#x4E3A;&#x3002;&#x4F46;&#x6211;&#x4EEC;&#x4E0D;&#x80FD;&#x4F9D;&#x8D56;&#x8FD9;&#x79CD;&#x884C;&#x4E3A;&#x6765;&#x5199;&#x4EE3;&#x7801;(&#x5B83;&#x4E0D;&#x80FD;&#x5F3A;&#x6709;&#x529B;&#x5730;&#x4FDD;&#x8BC1;&#x6CA1;&#x6709;&#x5E76;&#x53D1;&#x64CD;&#x4F5C;)&#xFF0C;&#x53EA;&#x80FD;&#x7528;&#x4E8E;&#x53D1;&#x73B0;bug&#x3002;</p>
+<h3 id="&#x65B9;&#x6CD5;"><a href="#&#x65B9;&#x6CD5;" class="headerlink" title="&#x65B9;&#x6CD5;"></a>&#x65B9;&#x6CD5;</h3><h4 id="&#x521D;&#x59CB;&#x5316;&#x65B9;&#x6CD5;"><a href="#&#x521D;&#x59CB;&#x5316;&#x65B9;&#x6CD5;" class="headerlink" title="&#x521D;&#x59CB;&#x5316;&#x65B9;&#x6CD5;"></a>&#x521D;&#x59CB;&#x5316;&#x65B9;&#x6CD5;</h4><p>&#x8FD9;&#x91CC;&#x9700;&#x6CE8;&#x610F;&#xFF0C;ArrayList&#x7C7B;&#x7528;&#x6570;&#x7EC4;elementData&#x5B58;&#x50A8;&#x5143;&#x7D20;&#xFF0C;&#x8BE5;elementData.length&#x4E0E;ArrayList&#x7C7B;&#x7684;&#x79C1;&#x6709;&#x6210;&#x5458;&#x53D8;&#x91CF;size&#x5E76;&#x4E0D;&#x4E00;&#x6837;&#x3002;&#x524D;&#x8005;&#x6709;&#x52A9;&#x4E8E;&#x51CF;&#x5C11;&#x591A;&#x6B21;&#x6269;&#x5BB9;&#x5E26;&#x6765;&#x7684;&#x5F71;&#x54CD;&#xFF0C;&#x540E;&#x8005;&#x4E3A;&#x5B9E;&#x9645;list&#x7684;&#x5927;&#x5C0F;&#x3002;</p>
+<ul>
+<li>public ArrayList(int initialCapacity): &#x521B;&#x5EFA;&#x4E00;&#x4E2A;initialCapacity&#x5927;&#x5C0F;&#x7684;&#x7A7A;list&#x3002;&#x82E5;initialCapacity&#x4E3A;0&#xFF0C;&#x5219;list&#x662F;{}&#xFF1B;&#x82E5;initialCapacity&#x5C0F;&#x4E8E;0&#xFF0C;&#x5219;&#x629B;&#x51FA;&#x5F02;&#x5E38;IllegalArgumentException&#x3002;</li>
+<li>public ArrayList(): &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x521D;&#x59CB;&#x5927;&#x5C0F;&#x4E3A;10&#x7684;&#x7A7A;list&#x3002;[&#x5176;&#x5B9E;&#x6267;&#x884C;&#x4E4B;&#x540E;list&#x8FD8;&#x662F;{}&#xFF0C;&#x4F46;&#x7531;&#x4E8E;&#x547D;&#x540D;&#x4E00;&#x7C7B;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x540E;&#x7EED;&#x64CD;&#x4F5C;&#x76F4;&#x63A5;&#x5904;&#x7406;&#x4E86;&#x521D;&#x59CB;&#x5927;&#x5C0F;]</li>
+<li>public ArrayList(Collection&lt;? extends E&gt; c): &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5305;&#x542B;c&#x4E2D;&#x6240;&#x6709;&#x5143;&#x7D20;&#x7684;list&#xFF0C;&#x987A;&#x5E8F;&#x4E0E;c&#x4E2D;&#x8FED;&#x4EE3;&#x5668;&#x904D;&#x5386;&#x987A;&#x5E8F;&#x4E00;&#x81F4;&#x3002;[toArray()&#x8D4B;&#x4E88;elementData]</li>
+</ul>
+<h4 id="List&#x63A5;&#x53E3;&#x7684;&#x5B9E;&#x73B0;"><a href="#List&#x63A5;&#x53E3;&#x7684;&#x5B9E;&#x73B0;" class="headerlink" title="List&#x63A5;&#x53E3;&#x7684;&#x5B9E;&#x73B0;"></a>List&#x63A5;&#x53E3;&#x7684;&#x5B9E;&#x73B0;</h4><ul>
+<li>public int size(): &#x8FD4;&#x56DE;size&#x3002;</li>
+<li>public boolean isEmpty(): &#x8FD4;&#x56DE; size == 0</li>
+<li>public boolean contains(Object o): &#x8C03;&#x7528;&#x4E86;indexOf()&#x8FDB;&#x884C;&#x5224;&#x65AD;</li>
+<li>public int indexOf(Object o): &#x5206;&#x4E86;&#x4E24;&#x79CD;&#x60C5;&#x51B5;&#x8BA8;&#x8BBA;. o&#x662F;&#x5426;&#x4E3A;null&#x3002;[&#x8FD1;&#x4F3C;&#x4E8E;o==null&#xA0;?&#xA0;get(i)==null&#xA0;:&#xA0;o.equals(get(i)))]</li>
+<li>public int lastIndexOf(Object o): &#x65B9;&#x6CD5;&#x4E0E;indexOf()&#x7C7B;&#x4F3C;&#x3002;</li>
+<li>public Object[] toArray(): &#x76F4;&#x63A5;&#x8C03;&#x7528;&#x4E86;Arrays.copyOf(elementData, size)</li>
+<li>public <t> T[] toArray(T[] a): &#x8BBE;&#x7F6E;&#x4E86;&#x6570;&#x7EC4;&#x6709;&#x6548;&#x6570;&#x5B57;&#x540E;&#x4E00;&#x4F4D;&#x4E3A;null, &#x6765;&#x6807;&#x660E;&#x6570;&#x7EC4;&#x957F;&#x5EA6;, &#x4F46;&#x5982;&#x679C;&#x6570;&#x7EC4;&#x672C;&#x6765;&#x5C31;&#x63A5;&#x53D7;null&#x5143;&#x7D20;, &#x5C31;&#x6CA1;&#x529E;&#x6CD5;&#x4E86;&#x3002;</t></li>
+<li>public E get(int index): &#x8BFB;&#x53D6;&#x4E86;&#x6570;&#x7EC4;&#x91CC;&#x7D22;&#x5F15;&#x4E3A;index&#x7684;&#x5143;&#x7D20;&#xFF0C;&#x5E76;&#x5F3A;&#x8F6C;&#x6210;&#x6240;&#x9700;&#x5143;&#x7D20;&#x7C7B;&#x578B;&#x3002;</li>
+<li>public E set(int index, E element): &#x8BBE;&#x7F6E;index&#x7D22;&#x5F15;&#x7684;&#x5143;&#x7D20;&#x4E3A;element&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x65E7;&#x503C;&#x3002;</li>
+<li>public boolean add(E e): &#x5148;&#x68C0;&#x67E5;&#x6570;&#x7EC4;&#x957F;&#x5EA6;&#x662F;&#x5426;&#x8DB3;&#x591F;&#xFF08;<strong>&#x6BCF;&#x6B21;&#x5185;&#x90E8;&#x68C0;&#x67E5;&#x6570;&#x7EC4;&#x957F;&#x5EA6;&#x4E00;&#x5B9A;&#x4F1A;&#x89E6;&#x53D1;modCount++</strong>&#xFF09;&#xFF0C;&#x518D;&#x6DFB;&#x52A0;&#x3002;</li>
+<li>public void add(int index, E element): &#x6DFB;&#x52A0;&#x5143;&#x7D20;&#xFF0C;&#x6B64;&#x65F6;index&#x9700;&#x8981;&#x6EE1;&#x8DB3;&#x5C0F;&#x4E8E;&#x7B49;&#x4E8E;size()&#x5E76;&#x4E14;&#x4E0D;&#x4E3A;&#x8D1F;&#x3002;</li>
+<li>public E remove(int index): &#x5220;&#x9664;&#x5143;&#x7D20;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x5220;&#x9664;&#x7684;&#x5143;&#x7D20;&#x3002;&#x5176;&#x4E2D;&#x91C7;&#x7528;&#x4E86; elementData[&#x2013;size] = null; &#x6765;&#x6E05;&#x7A7A;&#x672B;&#x5C3E;&#x5143;&#x7D20;&#x3002;[&#x4E0D;&#x77E5;&#x9053;&#x4E3A;&#x4EC0;&#x4E48;&#x6CA1;&#x6709;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x4E2A;fastRemove()&#x51FD;&#x6570;&#x6765;&#x64CD;&#x4F5C;&#xFF0C;&#x53CD;&#x800C;&#x91CD;&#x590D;&#x7F16;&#x5199;&#x4E86;&#x3002;]</li>
+<li>public boolean remove(Object o): &#x5220;&#x9664;&#x6307;&#x5B9A;&#x5143;&#x7D20;&#x7B2C;&#x4E00;&#x4E2A;&#x51FA;&#x73B0;&#x7684;&#x5730;&#x65B9;&#xFF0C;&#x8FD4;&#x56DE;&#x662F;&#x5426;&#x5B58;&#x5728;&#x8BE5;&#x5143;&#x7D20;&#x3002;&#x82E5;&#x5B58;&#x5728;&#x5219;&#x6267;&#x884C;&#x7684;&#x76F8;&#x5F53;&#x4E8E;(o==null&#xA0;?&#xA0;get(i)==null&#xA0;:&#xA0;o.equals(get(i)))</li>
+<li>public void clear(): elementData&#x5168;&#x90E8;&#x7F6E;&#x4E3A;&#x7A7A;&#xFF0C;size&#x4E3A;0&#x3002;[&#x8FD9;&#x91CC;&#x603B;&#x4F1A;&#x63D0;&#x5230;elementData&#x4E2D;&#x67D0;&#x9879;&#x7F6E;&#x4E3A;&#x7A7A;&#x65F6;&#xFF0C;&#x4F1A;&#x89E6;&#x53D1;GC&#xFF0C;&#x56E0;&#x4E3A;&#x6CA1;&#x6709;&#x6307;&#x5411;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;&#x4E86;~]&#xFF0C;&#x8FD9;&#x91CC;&#x6570;&#x7EC4;&#x5927;&#x5C0F;&#x5E76;&#x6CA1;&#x6709;&#x6539;&#x53D8;&#x3002;</li>
+<li>public boolean addAll(Collection&lt;? extends E&gt; c): &#x5148;&#x8F6C;&#x6362;&#x4E3A;&#x6570;&#x7EC4;&#xFF0C;&#x68C0;&#x67E5;&#x5927;&#x5C0F;&#xFF0C;&#x518D;System.arraycopy()&#xFF0C;&#x8FD4;&#x56DE;c&#x8F6C;&#x6362;&#x4E3A;&#x6570;&#x7EC4;&#x540E;&#x7684;&#x957F;&#x5EA6;&#x662F;&#x5426;&#x4E3A;0:)</li>
+<li>public boolean addAll(int index, Collection&lt;? extends E&gt; c): &#x4E0E;&#x4E0A;&#x8005;&#x8FD1;&#x4F3C;&#xFF0C;&#x591A;&#x52A0;&#x4E86;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x79FB;&#x52A8;&#x3002;</li>
+<li>public boolean removeAll(Collection&lt;?&gt; c): &#x4FDD;&#x7559;&#x672C;&#x96C6;&#x5408;&#x4E2D;&#x672A;&#x5728;&#x96C6;&#x5408;c&#x4E2D;&#x51FA;&#x73B0;&#x7684;&#x6240;&#x6709;&#x5143;&#x7D20;&#x3002;mountCount&#x53D8;&#x5316;&#x503C;&#x7B49;&#x4E8E;&#x96C6;&#x5408;&#x6570;&#x91CF;&#x51CF;&#x5C11;&#x7684;&#x503C;&#x3002;</li>
+<li>public boolean retainAll(Collection&lt;?&gt; c): &#x4FDD;&#x7559;&#x672C;&#x96C6;&#x5408;&#x4E2D;&#x4E5F;&#x5728;&#x96C6;&#x5408;c&#x4E2D;&#x51FA;&#x73B0;&#x7684;&#x6240;&#x6709;&#x5143;&#x7D20;&#x3002;mountCount&#x53D8;&#x5316;&#x503C;&#x7B49;&#x4E8E;&#x96C6;&#x5408;&#x6570;&#x91CF;&#x51CF;&#x5C11;&#x7684;&#x503C;&#x3002;</li>
+<li>public ListIterator<e> listIterator(int index): &#x8FD4;&#x56DE;&#x4ECE;index&#x5F00;&#x59CB;&#x7684;ListIterator(&#x5176;&#x5B9E;&#x662F;ListItr&#x5B9E;&#x4F8B;)&#x3002;</e></li>
+<li>public ListIterator<e> listIterator(): &#x8FD4;&#x56DE;&#x4ECE;list&#x8D77;&#x59CB;&#x4F4D;&#x7F6E;&#x5F00;&#x59CB;&#x7684;ListIterator&#x3002;</e></li>
+<li>public Iterator<e> iterator(): &#x8FD4;&#x56DE;&#x4ECE;list&#x8D77;&#x59CB;&#x4F4D;&#x7F6E;&#x5F00;&#x59CB;&#x7684;Iterator(&#x5185;&#x90E8;&#x7C7B;Itr&#x5B9E;&#x4F8B;&#xFF0C;&#x8BE5;&#x5185;&#x90E8;&#x7C7B;&#x5B9E;&#x73B0;&#x4E86;Iterator&#x63A5;&#x53E3;)&#x3002;</e></li>
+<li><p>List<e> subList(int fromIndex, int toIndex): &#x8FD4;&#x56DE;&#x4ECE;fromIndex(&#x5305;&#x542B;)&#x5230;toIndex(&#x4E0D;&#x5305;&#x542B;)&#x7684;&#x5B50;List&#xFF0C;&#x5982;&#x679C; <em>fromIndex == toIndex</em> &#x90A3;&#x4E48;&#x8FD4;&#x56DE;&#x7A7A;List&#xFF08;&#x4E0D;&#x662F;null&#xFF09;&#x3002;&#x68C0;&#x67E5;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#xFF0C;&#x518D;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;SubList&#x3002;&#x8FD9;&#x91CC;&#x7684;SubList&#x53C8;&#x662F;&#x4E00;&#x4E2A;&#x5185;&#x90E8;&#x7C7B;&#x3002;</e></p>
+</li>
+<li><p>public void sort(Comparator&lt;? super E&gt; c): &#x5BF9;&#x672C;&#x96C6;&#x5408;&#x7684;&#x6570;&#x7EC4;&#x6392;&#x5E8F;&#xFF0C;&#x6392;&#x5E8F;&#x524D;&#x548C;&#x6392;&#x5E8F;&#x540E;&#x7684;mountCount&#x8FDB;&#x884C;&#x5BF9;&#x6BD4;&#xFF0C;&#x907F;&#x514D;&#x5728;&#x64CD;&#x4F5C;&#x65F6;&#x6570;&#x7EC4;&#x6539;&#x53D8;&#x3002;Java 1.8 &#x7279;&#x6027;</p>
+</li>
+<li>public void forEach(Consumer&lt;? super E&gt; action): Java 1.8 &#x7279;&#x6027;</li>
+<li>public void replaceAll(UnaryOperator<e> operator): Java 1.8 &#x7279;&#x6027;</e></li>
+<li>public Spliterator<e> spliterator(): Java 1.8&#x7279;&#x6027;</e></li>
+<li>public boolean removeIf(Predicate&lt;? super E&gt; filter) : Java 1.8 &#x7279;&#x6027;</li>
+</ul>
+<h4 id="&#x7EE7;&#x627F;&#x7684;&#x65B9;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;"><a href="#&#x7EE7;&#x627F;&#x7684;&#x65B9;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;" class="headerlink" title="&#x7EE7;&#x627F;&#x7684;&#x65B9;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;"></a>&#x7EE7;&#x627F;&#x7684;&#x65B9;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;</h4><ul>
+<li>public Object clone(): &#x8FD4;&#x56DE;ArrayList&#x7684;&#x6D45;&#x62F7;&#x8D1D;(shallow copy)&#xFF0C;&#x5217;&#x8868;&#x5143;&#x7D20;&#x5E76;&#x6CA1;&#x6709;&#x62F7;&#x8D1D;&#x3002;</li>
+<li>protected void removeRange(int fromIndex, int toIndex): &#x8986;&#x76D6;AbstractList&#x7684;&#x65B9;&#x6CD5;&#x3002;SubList&#x548C;AbstractList&#x8C03;&#x7528;&#x8F83;&#x591A;&#xFF0C;&#x79FB;&#x52A8;&#x3001;&#x6E05;&#x7A7A;&#x3001;&#x6539;&#x53D8;size&#x5927;&#x5C0F;&#x3002;</li>
+</ul>
+<h4 id="Serialization"><a href="#Serialization" class="headerlink" title="Serialization"></a>Serialization</h4><ul>
+<li>private void writeObject(java.io.ObjectOutputStream s)</li>
+<li>private void readObject(java.io.ObjectInputStream s)<br>&#x7528;&#x4E8E;&#x6839;&#x636E;&#x8F93;&#x5165;&#x8F93;&#x51FA;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x3002;</li>
+</ul>
+<h4 id="&#x5176;&#x4ED6;&#x7684;&#x7279;&#x6709;&#x65B9;&#x6CD5;"><a href="#&#x5176;&#x4ED6;&#x7684;&#x7279;&#x6709;&#x65B9;&#x6CD5;" class="headerlink" title="&#x5176;&#x4ED6;&#x7684;&#x7279;&#x6709;&#x65B9;&#x6CD5;"></a>&#x5176;&#x4ED6;&#x7684;&#x7279;&#x6709;&#x65B9;&#x6CD5;</h4><ul>
+<li>public void trimToSize(): &#x5C06;ArrayList&#x5B9E;&#x4F8B;&#x5927;&#x5C0F;&#x7F29;&#x51CF;&#x6210;&#x73B0;&#x5728;list&#x7684;&#x5927;&#x5C0F;(elementData.length&#x6B64;&#x65F6;&#x4E0E;size&#x4E00;&#x81F4;)&#x3002;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x4F18;&#x5316;ArrayList&#x5B9E;&#x4F8B;&#x7684;&#x5B58;&#x50A8;&#x5927;&#x5C0F;&#x3002;[&#x7528;Arrays.copyOf()] </li>
+<li>public void ensureCapacity(int minCapacity): &#x786E;&#x4FDD;&#x5BB9;&#x91CF;&#x5927;&#x4E8E;minCapacity&#x3002;&#xFF08;&#x5982;&#x679C;&#x7A7A;list&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x5BB9;&#x91CF;&#x5F80;&#x5F80;&#x8FD8;&#x662F;&#x5927;&#x4E8E;10&#x7684;&#xFF09;&#x3002;&#x7528;&#x6237;&#x6307;&#x5B9A;ArrayList&#x5B9E;&#x4F8B;&#x7684;&#x5BB9;&#x91CF;&#xFF0C;&#x53EF;&#x4EE5;&#x6709;&#x6548;&#x7684;&#x964D;&#x4F4E;&#x65F6;&#x95F4;&#x6210;&#x672C;&#x3002;</li>
+</ul>
+<h4 id="&#x7EE7;&#x627F;&#x7684;&#x65B9;&#x6CD5;"><a href="#&#x7EE7;&#x627F;&#x7684;&#x65B9;&#x6CD5;" class="headerlink" title="&#x7EE7;&#x627F;&#x7684;&#x65B9;&#x6CD5;"></a>&#x7EE7;&#x627F;&#x7684;&#x65B9;&#x6CD5;</h4><blockquote>
+<p>Methods inherited from class java.util.AbstractList:</p>
+<p>equals, hashCode</p>
+<p>Methods inherited from class java.util.AbstractCollection</p>
+<p>containsAll, toString</p>
+<p>Methods inherited from class java.lang.Object</p>
+<p>finalize, getClass, notify, notifyAll, wait, wait, wait</p>
+<p>Methods inherited from interface java.util.List</p>
+<p>containsAll, equals, hashCode</p>
+<p>Methods inherited from interface java.util.Collection</p>
+<p>parallelStream, stream</p>
+</blockquote>
+<h3 id="modCount"><a href="#modCount" class="headerlink" title="modCount"></a>modCount</h3><p>&#x4F1A;&#x89E6;&#x53D1;modCount&#x53D8;&#x5316;&#x7684;&#x65B9;&#x6CD5;:</p>
+<p>trimToSize()&#xFF0C;add(), addAll()&#xFF0C;ensureCapacity()&#x5728;&#x9700;&#x8981;&#x6269;&#x5BB9;&#x7684;&#x65F6;&#x5019;&#xFF0C;remove()&#xFF0C;clear()&#xFF1B;removeAll()&#xFF0C;retainAll()&#x5728;&#x5220;&#x9664;&#x4E86;&#x4E9B;&#x5143;&#x7D20;&#x7684;&#x65F6;&#x5019;&#xFF08;modCount&#x6B64;&#x65F6;&#x53D8;&#x5316;&#x7684;&#x6B21;&#x6570;&#x7B49;&#x4E8E;removeAll()&#x4E0E;retainAll()&#x4E2D;&#x6539;&#x53D8;&#x5143;&#x7D20;&#x7684;&#x6B21;&#x6570;&#xFF0C;&#x548C;addAll()&#x4E0D;&#x540C;&#x53EF;&#x80FD;&#x662F;&#x7531;&#x4E8E;addAll()&#x8C03;&#x7528;System.arraycopy()&#x5C01;&#x88C5;&#x4E86;&#x4E00;&#x6B21;&#x79FB;&#x52A8;&#x64CD;&#x4F5C;&#xFF0C;&#x800C;&#x8FD9;&#x4E24;&#x4E2A;&#x662F;&#x51FD;&#x6570;&#x5185;&#x90E8;&#x76F4;&#x63A5;&#x5FAA;&#x73AF;&#x6539;&#x53D8;&#x7684;&#x3002;&#xFF09;</p>
+<p>&#x4E0D;&#x5305;&#x62EC;set()&#x5662;&#x3002;</p>
+<h3 id="ArrayList&#x81EA;&#x52A8;&#x6269;&#x5BB9;&#x89E3;&#x6790;"><a href="#ArrayList&#x81EA;&#x52A8;&#x6269;&#x5BB9;&#x89E3;&#x6790;" class="headerlink" title="ArrayList&#x81EA;&#x52A8;&#x6269;&#x5BB9;&#x89E3;&#x6790;"></a>ArrayList&#x81EA;&#x52A8;&#x6269;&#x5BB9;&#x89E3;&#x6790;</h3><h4 id="&#x6269;&#x5BB9;&#x51FD;&#x6570;"><a href="#&#x6269;&#x5BB9;&#x51FD;&#x6570;" class="headerlink" title="&#x6269;&#x5BB9;&#x51FD;&#x6570;"></a>&#x6269;&#x5BB9;&#x51FD;&#x6570;</h4><p>ArrayList&#x7C7B;&#x65E0;&#x8BBA;&#x662F;&#x5916;&#x90E8;&#x8C03;&#x7528;ensureCapacity()&#x51FD;&#x6570;&#x8FDB;&#x884C;&#x6269;&#x5BB9;&#xFF0C;&#x8FD8;&#x662F;&#x5185;&#x90E8;&#x56E0;&#x4E3A;add()&#x6CA1;&#x6709;&#x7A7A;&#x4F4D;&#x800C;&#x8FDB;&#x884C;&#x6269;&#x5BB9;&#xFF0C;&#x90FD;&#x4F1A;&#x6267;&#x884C;&#x5230;&#x4EE5;&#x4E0B;&#x51FD;&#x6570;:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">grow</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>{ <span class="comment">// &#x4FDD;&#x8BC1;elementData.length &gt;= minCapacity</span></span><br><span class="line">        <span class="comment">// overflow-conscious code</span></span><br><span class="line">        <span class="keyword">int</span> oldCapacity = elementData.length;</span><br><span class="line">        <span class="keyword">int</span> newCapacity = oldCapacity + (oldCapacity &gt;&gt; <span class="number">1</span>); </span><br><span class="line">        <span class="keyword">if</span> (newCapacity - minCapacity &lt; <span class="number">0</span>) </span><br><span class="line">            newCapacity = minCapacity;</span><br><span class="line">        <span class="keyword">if</span> (newCapacity - MAX_ARRAY_SIZE &gt; <span class="number">0</span>)</span><br><span class="line">            newCapacity = hugeCapacity(minCapacity);</span><br><span class="line">        <span class="comment">// minCapacity is usually close to size, so this is a win:</span></span><br><span class="line">        elementData = Arrays.copyOf(elementData, newCapacity);</span><br><span class="line">    }</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">hugeCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>{</span><br><span class="line">        <span class="keyword">if</span> (minCapacity &lt; <span class="number">0</span>) <span class="comment">// overflow</span></span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> OutOfMemoryError();</span><br><span class="line">        <span class="keyword">return</span> (minCapacity &gt; MAX_ARRAY_SIZE) ?</span><br><span class="line">            Integer.MAX_VALUE :</span><br><span class="line">            MAX_ARRAY_SIZE;</span><br><span class="line">    }</span><br></pre></td></tr></table></figure></p>
+<p>&#x65B0;&#x5BB9;&#x91CF;&#x6269;&#x5927;&#x5230;&#x539F;&#x5BB9;&#x91CF;&#x7684;1.5&#x500D;&#xFF0C;&#x53F3;&#x79FB;&#x4E00;&#x4F4D;&#x76F8;&#x5173;&#x4E8E;&#x539F;&#x6570;&#x503C;&#x9664;&#x4EE5;2&#x3002;&#x5982;&#x679C;&#x4E0D;&#x591F;&#x518D;&#x52A0;&#x5230;minCapacity, &#x8FD9;&#x6837;&#x4E5F;&#x4FDD;&#x8BC1;&#x4E86;&#x81F3;&#x5C11;&#x65B0;&#x5BB9;&#x91CF;&#x662F;&#x65E7;&#x5BB9;&#x91CF;&#x7684;1.5&#x500D;, &#x9632;&#x6B62;&#x6269;&#x5BB9;&#x6B21;&#x6570;&#x592A;&#x591A; :)</p>
+<p>MAX_ARRAY_SIZE&#x5B9A;&#x4E49;&#x4E3A;Integer.MAX_VALUE-8; &#x5373;&#x5185;&#x90E8;&#x6570;&#x7EC4;&#x5927;&#x5C0F;&#x7684;&#x6700;&#x5927;&#x503C;, &#x4FDD;&#x7559;8&#x4E2A;&#x7ED9;&#x4E00;&#x4E9B;VM&#x7528;&#x4F5C;&#x6570;&#x7EC4;&#x5934;&#x90E8;&#x4EE5;&#x5B58;&#x50A8;&#x4FE1;&#x606F;&#x3002;&#x4F46;&#x5176;&#x5B9E;MAX_ARRAY_SIZE&#x7684;&#x9650;&#x5236;&#x4E5F;&#x9632;&#x4E0D;&#x4F4F;minCapacity&#x554A;&#x2026;(&#x81F3;&#x4E8E;hugeCapacity()&#x4E2D;&#x9009;&#x62E9;&#x8FD4;&#x56DE;Integer.MAX_VALUE&#x800C;&#x4E0D;&#x662F;&#x8FD4;&#x56DE;minCapacity&#xFF0C;&#x662F;&#x56E0;&#x4E3A;&#x5C31;&#x76F8;&#x5DEE;8&#x4E2A;&#x5927;&#x5C0F;&#x8FD8;&#x4E0D;&#x5982;&#x5BB9;&#x91CF;&#x6700;&#x5927;&#x5316;&#x5462;&#x5427;)</p>
+<p>&#x5E94;&#x7528;&#x53EF;&#x4EE5;&#x5728;&#x8FDB;&#x884C;&#x5927;&#x91CF;&#x6DFB;&#x52A0;&#x64CD;&#x4F5C;&#x524D;&#x5148;&#x8FDB;&#x884C;&#x6269;&#x5BB9;&#xFF0C;&#x4F1A;&#x51CF;&#x5C11;&#x91CD;&#x65B0;&#x5206;&#x914D;&#x7684;&#x6B21;&#x6570;&#x3002;</p>
+<p>The details of the growth policy are not specified beyond the fact that adding an element has constant amortized time cost.</p>
+<h3 id="batchRemove-Collection-lt-gt-c-boolean-complement"><a href="#batchRemove-Collection-lt-gt-c-boolean-complement" class="headerlink" title="batchRemove(Collection&lt;?&gt; c, boolean complement)"></a>batchRemove(Collection&lt;?&gt; c, boolean complement)</h3><p>removeAll()&#x8C03;&#x7528;&#x4E86;&#x8BE5;&#x65B9;&#x6CD5;&#xFF0C;complement&#x53C2;&#x6570;&#x4E3A;false&#xFF1B;retainAll()&#x8C03;&#x7528;&#x4E86;&#x8BE5;&#x65B9;&#x6CD5;&#xFF0C;complement&#x53C2;&#x6570;&#x4E3A;true&#x3002;&#x5F88;&#x6709;&#x610F;&#x601D;&#x7684;&#x5B9E;&#x73B0;&#x3002;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">batchRemove</span><span class="params">(Collection&lt;?&gt; c, <span class="keyword">boolean</span> complement)</span> </span>{ <span class="comment">// complement -&gt; true: retain, false: remove</span></span><br><span class="line">        <span class="keyword">final</span> Object[] elementData = <span class="keyword">this</span>.elementData;</span><br><span class="line">        <span class="keyword">int</span> r = <span class="number">0</span>, w = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">boolean</span> modified = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">try</span> {</span><br><span class="line">            <span class="keyword">for</span> (; r &lt; size; r++)</span><br><span class="line">                <span class="keyword">if</span> (c.contains(elementData[r]) == complement) <span class="comment">// &#x8FD9;&#x91CC;&#x662F;&#x91CD;&#x70B9;</span></span><br><span class="line">                    elementData[w++] = elementData[r];</span><br><span class="line">        } <span class="keyword">finally</span> {</span><br><span class="line">            <span class="comment">// Preserve behavioral compatibility with AbstractCollection,</span></span><br><span class="line">            <span class="comment">// even if c.contains() throws. -&gt; &#x683C;&#x5F0F;&#x4E0D;&#x652F;&#x6301;&#x4EC0;&#x4E48;&#x7684;</span></span><br><span class="line">            <span class="keyword">if</span> (r != size) { <span class="comment">// &#x62A5;&#x9519;&#x7684;&#x8BDD;&#x4E5F;&#x5220;&#x9664;&#x4E86;&#x62A5;&#x9519;&#x524D;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x3002;</span></span><br><span class="line">                System.arraycopy(elementData, r,</span><br><span class="line">                                 elementData, w,</span><br><span class="line">                                 size - r);</span><br><span class="line">                w += size - r;</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">if</span> (w != size) {</span><br><span class="line">                <span class="comment">// clear to let GC do its work</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = w; i &lt; size; i++)</span><br><span class="line">                    elementData[i] = <span class="keyword">null</span>;</span><br><span class="line">                modCount += size - w; <span class="comment">// &#x6539;&#x53D8;&#x6B21;&#x6570;</span></span><br><span class="line">                size = w;</span><br><span class="line">                modified = <span class="keyword">true</span>;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> modified;</span><br><span class="line">    }</span><br></pre></td></tr></table></figure>
+<h3 id="ListItr&#x5185;&#x90E8;&#x7C7B;"><a href="#ListItr&#x5185;&#x90E8;&#x7C7B;" class="headerlink" title="ListItr&#x5185;&#x90E8;&#x7C7B;"></a>ListItr&#x5185;&#x90E8;&#x7C7B;</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ListItr</span> <span class="keyword">extends</span> <span class="title">Itr</span> <span class="keyword">implements</span> <span class="title">ListIterator</span>&lt;<span class="title">E</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>An optimized version of AbstractList.ListItr &#xFF08;&#x5E94;&#x8BE5;&#x5148;&#x770B;AbstractList&#x4E48;&#x2026;&#x7136;&#x800C;&#x5E76;&#x6CA1;&#x6709;&#xFF09;</p>
+<p>Itr&#x5185;&#x90E8;&#x7C7B;&#x6BD4;&#x8F83;&#x5BB9;&#x6613;&#xFF0C;&#x5B9E;&#x73B0;&#x4E86;Iterator&#x63A5;&#x53E3;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x7528;cursor&#x8868;&#x793A;&#x4E0B;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#x6570;&#xFF0C;lastRet&#x7528;&#x4EE5;&#x5220;&#x9664;&#x5F53;&#x524D;&#x64CD;&#x4F5C;&#x6570;(-1&#x4EE3;&#x8868;&#x5F53;&#x524D;&#x6CA1;&#x6709;&#x64CD;&#x4F5C;&#x6570;&#xFF0C;&#x4E5F;&#x9650;&#x5B9A;&#x4E86;remove()&#x65B9;&#x6CD5;&#x53EA;&#x80FD;&#x5220;&#x9664;&#x4E00;&#x4E2A;&#x5143;&#x7D20;)&#xFF0C;expectedModCount&#x7528;&#x4EE5;&#x68C0;&#x67E5;&#x6570;&#x7EC4;&#x957F;&#x5EA6;&#x4E0E;&#x904D;&#x5386;&#x524D;&#x662F;&#x5426;&#x4E00;&#x81F4;(&#x53EA;&#x6709;&#x5728;cursor&#x6539;&#x53D8;&#x65F6;&#x624D;&#x9700;&#x8981;&#x68C0;&#x67E5;&#xFF0C;&#x6709;&#x79CD;&#x5199;&#x9501;&#x7684;&#x611F;&#x89C9;&#x5462;&#x2026;)&#x3002;</p>
+<p>&#x76F8;&#x5BF9;&#x4E8E;Iter&#x52A0;&#x4E86;&#x5F88;&#x591A;&#x65B9;&#x6CD5;&#xFF0C;&#x91CD;&#x70B9;&#x8C08;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x3002;</p>
+<ul>
+<li>ListItr(int index): cursor&#x503C;&#x8BBE;&#x4E3A;index&#x3002;&#xFF08;&#x3002;&#x3002;&#x3002;&#x76F8;&#x5F53;&#x4E8E;&#x6307;&#x9488;&#x4E86;&#xFF0C;&#x53CD;&#x6B63;ArrayList&#x662F;&#x5982;&#x6B64;&#x7684;&#x6570;&#x7EC4;&#xFF09;</li>
+<li>public boolean hasPrevious(): &#x662F;&#x5426;&#x6709;&#x5148;&#x9A71;&#x3002;(&#x8FD4;&#x56DE;cursor != 0&#xFF0C;&#x4E0D;&#x5199;cursor &gt; 0&#x8FD9;&#x6837;&#xFF0C;&#x5E94;&#x8BE5;&#x662F;cursor&#x672C;&#x6765;&#x4E5F;&#x4E0D;&#x4F1A;&#x88AB;&#x4EBA;&#x64CD;&#x4F5C;&#xFF0C;&#x5728;&#x8D1F;&#x8D23;&#x533A;&#x57DF;&#x5185;&#x53EA;&#x8981;&#x4E0D;&#x8BA9;&#x5B83;&#x5C0F;&#x4E8E;0&#x5C31;&#x597D;)</li>
+<li>public int nextIndex(): &#x4E0B;&#x4E00;&#x4E2A;index&#x662F;&#x591A;&#x5C11;&#x3002;(&#x5C31;&#x662F;cursor&#x7684;&#x542B;&#x4E49;)</li>
+<li>public int previousIndex(): &#x4E0A;&#x4E00;&#x4E2A;index&#x3002;(&#x8FD9;&#x91CC;&#x8FD4;&#x56DE;-1&#x7684;&#x8BDD;&#x5C31;&#x8BF4;&#x660E;&#x662F;&#x73B0;&#x5728;&#x662F;&#x7B2C;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x4E86;&#xFF0C;&#x7528;cursor-1&#x5B9E;&#x73B0;&#x7684;)</li>
+<li>public E previous(): &#x8FD4;&#x56DE;&#x5148;&#x9A71;&#x7ED3;&#x70B9;&#x3002;&#x68C0;&#x67E5;+&#x8BFB;&#x53D6;&#x5143;&#x7D20;&#xFF0C;&#x548C;remove()&#x5B9E;&#x73B0;&#x65B9;&#x6CD5;&#x7565;&#x50CF;&#x3002;&#x8BFB;&#x53D6;&#x5143;&#x7D20;&#x524D;&#xFF0C;&#x62F7;&#x8D1D;&#x4E86;&#x4E0B;elementData&#x7684;&#x5F15;&#x7528;&#x3002;</li>
+<li>public void set(E e): &#x5C06;&#x5F53;&#x524D;&#x904D;&#x5386;&#x7684;&#x4E0A;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x8BBE;&#x7F6E;&#x4E3A;e&#x3002;&#x8BBE;&#x7F6E;lastRet&#x7684;&#x503C;&#x4E3A;e&#x3002;&#x8FD9;&#x91CC;&#x4E0D;&#x4F1A;&#x6539;&#x53D8;lastRet&#x7684;! (&#x548C;remove&#x53C8;&#x4E0D;&#x4E00;&#x6837;)&#x3002;</li>
+<li>public void add(E e): &#x5728;&#x5F53;&#x524D;&#x904D;&#x5386;&#x7684;&#x4F4D;&#x7F6E;&#x63D2;&#x5165;&#x5143;&#x7D20;e&#x3002;&#x6DFB;&#x52A0;&#x540E;&#x53C8;&#x4E00;&#x6B21;&#x7F6E;lastRet&#x4E3A;-1&#x3002;</li>
+</ul>
+<h3 id="SubList&#x5185;&#x90E8;&#x7C7B;"><a href="#SubList&#x5185;&#x90E8;&#x7C7B;" class="headerlink" title="SubList&#x5185;&#x90E8;&#x7C7B;"></a>SubList&#x5185;&#x90E8;&#x7C7B;</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">SubList</span> <span class="keyword">extends</span> <span class="title">AbstractList</span>&lt;<span class="title">E</span>&gt; <span class="keyword">implements</span> <span class="title">RandomAccess</span></span></span><br></pre></td></tr></table></figure>
+<p>&#x6210;&#x5458;&#x53D8;&#x91CF;&#xFF0C;&#x4E3B;&#x8981;&#x9488;&#x5BF9;ArrayList&#x521D;&#x59CB;&#x5316;SubList&#x548C;SubList&#x521D;&#x59CB;&#x5316;SubList&#x4E24;&#x79CD;&#x60C5;&#x51B5;:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> AbstractList&lt;E&gt; parent; <span class="comment">// &#x4E00;&#x822C;&#x662F;&#x5916;&#x90E8;&#x5BF9;&#x8C61;&#x3002;</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> parentOffset; <span class="comment">// &#x5BF9;&#x5E94;&#x5EFA;&#x7ACB;&#x5B83;&#x7684;parent&#x7684;&#x504F;&#x79FB;&#x91CF;&#x3002;</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> offset; <span class="comment">// &#x5BF9;&#x5E94;&#x5916;&#x90E8;&#x7C7B;&#x7684;elementData[]&#x4E2D;&#x7684;&#x504F;&#x79FB;&#x91CF;&#x3002;</span></span><br><span class="line"><span class="keyword">int</span> size;</span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">transient</span> <span class="keyword">int</span> modCount = <span class="number">0</span>;</span><br></pre></td></tr></table></figure></p>
+<p>&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x5F53;&#x521D;subList()&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x662F;&#x7528;&#x7684;new SubList(this, 0, fromIndex, toIndex):<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SubList(AbstractList&lt;E&gt; parent,</span><br><span class="line">                <span class="keyword">int</span> offset, <span class="keyword">int</span> fromIndex, <span class="keyword">int</span> toIndex) {</span><br><span class="line">    <span class="keyword">this</span>.parent = parent;</span><br><span class="line">    <span class="keyword">this</span>.parentOffset = fromIndex;</span><br><span class="line">    <span class="keyword">this</span>.offset = offset + fromIndex;</span><br><span class="line">    <span class="keyword">this</span>.size = toIndex - fromIndex;</span><br><span class="line">    <span class="keyword">this</span>.modCount = ArrayList.<span class="keyword">this</span>.modCount;</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x6240;&#x6709;&#x7684;&#x64CD;&#x4F5C;&#x5176;&#x5B9E;&#x90FD;&#x662F;&#x5BF9;&#x5916;&#x90E8;&#x7C7B;&#x8FDB;&#x884C;&#x7684;&#xFF0C;&#x5373;ArrayList&#x5BF9;&#x8C61;&#x8FDB;&#x884C;&#x7684;&#x3002;</p>
+<p>&#x4F46;&#x5F62;&#x5F0F;&#x4E0A;&#x5206;&#x6210;&#x5BF9;&#x5EFA;&#x7ACB;&#x5B83;&#x7684;parent&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#xFF0C;&#x6216;&#x8005;&#x5BF9;&#x5916;&#x90E8;&#x7C7B;ArrayList&#x5BF9;&#x8C61;&#x8FDB;&#x884C;&#x3002;&#x5305;&#x62EC;set()&#xFF0C;get()&#xFF0C;add()&#xFF0C;remove()&#xFF0C;removeRange()&#xFF0C;addAll()&#x3002;&#x5982;&#x679C;&#x5BF9;parent&#x64CD;&#x4F5C;&#x5462;&#xFF0C;&#x5C31;&#x7528;parentOffset&#x5BF9;&#x5E94;index&#xFF0C;&#x5982;&#x679C;&#x5BF9;ArrayList&#x5BF9;&#x8C61;&#x64CD;&#x4F5C;&#xFF0C;&#x5C31;&#x7528;offset&#x5BF9;&#x5E94;index&#x3002;&#x540E;&#x8005;&#x662F;get()&#x4E0E;set()&#x65B9;&#x6CD5;&#xFF0C;&#x524D;&#x8005;&#x662F;&#x5269;&#x4E0B;&#x7684;&#x5176;&#x4ED6;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x6BCF;&#x6B21;&#x8FDB;&#x884C;&#x4E86;&#x6539;&#x53D8;modCount&#x64CD;&#x4F5C;&#x7684;&#xFF0C;&#x90FD;&#x9700;&#x8981;&#x66F4;&#x65B0;modCount&#x3002;&#x4E5F;&#x9700;&#x8981;&#x53CA;&#x65F6;&#x66F4;&#x65B0;SubList&#x5BF9;&#x8C61;&#x7684;size&#x3002;</p>
+<p>&#x987A;&#x4FBF;&#x8FD8;&#x6D89;&#x53CA;&#x4E86;&#x5185;&#x90E8;&#x533F;&#x540D;&#x7C7B;&#xFF0C;&#x5982;ListIterator&#x7684;&#x5B9A;&#x4E49;&#xFF0C;iterator()&#x65B9;&#x6CD5;&#x4E5F;&#x8FD4;&#x56DE;&#x4E86;ListIterator&#x5185;&#x90E8;&#x7C7B;&#x3002;</p>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/Java/" rel="tag">#Java</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2017/02/21/database-isolation/" rel="next" title="数据库的事务隔离级别">
+                <i class="fa fa-chevron-left"></i> 数据库的事务隔离级别
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/05/Java-ArrayList/"
+           data-title="ArrayList类" data-url="http://ycymio.com/blog/2017/03/05/Java-ArrayList/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/uploads/avatar.jpg"
+               alt="玉宇澄清" />
+          <p class="site-author-name" itemprop="name">玉宇澄清</p>
+          <p class="site-description motion-element" itemprop="description">天气好得就好像走着走着就能遇见你</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">40</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/blog/categories">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://ycymio.com/index.html" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Website
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://ycymio.com/life/" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Life Blog
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ycymio" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/ycymio" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ArrayList-lt-E-gt-接口"><span class="nav-number">1.</span> <span class="nav-text">ArrayList<E> 接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法"><span class="nav-number">1.1.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化方法"><span class="nav-number">1.1.1.</span> <span class="nav-text">初始化方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#List接口的实现"><span class="nav-number">1.1.2.</span> <span class="nav-text">List接口的实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#继承的方法的实现"><span class="nav-number">1.1.3.</span> <span class="nav-text">继承的方法的实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Serialization"><span class="nav-number">1.1.4.</span> <span class="nav-text">Serialization</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他的特有方法"><span class="nav-number">1.1.5.</span> <span class="nav-text">其他的特有方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#继承的方法"><span class="nav-number">1.1.6.</span> <span class="nav-text">继承的方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#modCount"><span class="nav-number">1.2.</span> <span class="nav-text">modCount</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList自动扩容解析"><span class="nav-number">1.3.</span> <span class="nav-text">ArrayList自动扩容解析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#扩容函数"><span class="nav-number">1.3.1.</span> <span class="nav-text">扩容函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#batchRemove-Collection-lt-gt-c-boolean-complement"><span class="nav-number">1.4.</span> <span class="nav-text">batchRemove(Collection<?> c, boolean complement)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ListItr内部类"><span class="nav-number">1.5.</span> <span class="nav-text">ListItr内部类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SubList内部类"><span class="nav-number">1.6.</span> <span class="nav-text">SubList内部类</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">玉宇澄清</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/blog/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"ycymio"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("CYw4eqfTnGGJ358ScduxIjMN-gzGzoHsz", "DVtxWNQe67hDTYKnPMtwUKoU");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+
+</body>
+</html>

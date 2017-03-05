@@ -63,7 +63,7 @@
 <meta property="og:url" content="http://ycymio.com/blog/2017/02/01/Java-List/index.html">
 <meta property="og:site_name" content="ycy’s tech-blog">
 <meta property="og:description" content="List&amp;#x662F;&amp;#x4E00;&amp;#x79CD;&amp;#x6709;&amp;#x5E8F;&amp;#x7684;&amp;#x96C6;&amp;#x5408;&amp;#xFF0C;&amp;#x7528;&amp;#x6237;&amp;#x53EF;&amp;#x4EE5;&amp;#x7CBE;&amp;#x786E;&amp;#x63A7;&amp;#x5236;&amp;#x5143;&amp;#x7D20;&amp;#x63D2;&amp;#x5165;&amp;#x7684;&amp;#x5730;&amp;#x65B9;&amp;#x3">
-<meta property="og:updated_time" content="2017-02-15T06:08:06.000Z">
+<meta property="og:updated_time" content="2017-03-05T11:01:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="List接口">
 <meta name="twitter:description" content="List&amp;#x662F;&amp;#x4E00;&amp;#x79CD;&amp;#x6709;&amp;#x5E8F;&amp;#x7684;&amp;#x96C6;&amp;#x5408;&amp;#xFF0C;&amp;#x7528;&amp;#x6237;&amp;#x53EF;&amp;#x4EE5;&amp;#x7CBE;&amp;#x786E;&amp;#x63A7;&amp;#x5236;&amp;#x5143;&amp;#x7D20;&amp;#x63D2;&amp;#x5165;&amp;#x7684;&amp;#x5730;&amp;#x65B9;&amp;#x3">
@@ -320,7 +320,7 @@
 <li>int lastIndexOf(Object o): &#x8FD4;&#x56DE;&#x5BF9;&#x8C61;o&#x6700;&#x540E;&#x4E00;&#x6B21;&#x51FA;&#x73B0;&#x7684;&#x7D22;&#x5F15;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x5B58;&#x5728;&#x5219;&#x8FD4;&#x56DE;-1&#x3002;</li>
 <li>ListIterator<e> listIterator(): &#x8FD4;&#x56DE;&#x4E00;&#x5B9A;&#x987A;&#x5E8F;&#x4E0B;&#x7684;&#x5217;&#x8868;&#x7684;list iterator(&#x5217;&#x8868;&#x8FED;&#x4EE3;&#x5668;)</e></li>
 <li>ListIterator<e> listIterator(int index): &#x8FD4;&#x56DE;&#x4E00;&#x5B9A;&#x987A;&#x5E8F;&#x4E0B;&#x7684;&#x5217;&#x8868;&#x7684;list iterator(&#x5217;&#x8868;&#x8FED;&#x4EE3;&#x5668;)&#xFF0C;&#x8BE5;&#x8FED;&#x4EE3;&#x5668;&#x4ECE;&#x7D22;&#x5F15;index&#x4F4D;&#x7F6E;&#x5F00;&#x59CB;&#xFF08;&#x4E5F;&#x53EF;&#x4EE5;&#x5411;&#x524D;&#x904D;&#x5386;&#x7684;&#xFF09;&#x3002;</e></li>
-<li>List<e> subList(int fromIndex, int toIndex): &#x8FD4;&#x56DE;&#x4ECE;fromIndex(&#x5305;&#x62EC;)&#x5230;toIndex(&#x4E0D;&#x5305;&#x62EC;)&#x4F4D;&#x7F6E;&#x7684;list&#x3002;&#x5982;&#x679C;fromIndex&#x7B49;&#x4E8E;toIndex&#xFF0C;&#x5219;&#x8FD4;&#x56DE;list&#x4E3A;&#x7A7A;&#x3002;&#x7531;&#x4E8E;&#x4FDD;&#x7559;&#x4E86;&#x539F;&#x6709;&#x7684;&#x5F15;&#x7528;&#xFF0C;&#x5F53;&#x5F15;&#x7528;&#x5BF9;&#x8C61;&#x53D8;&#x5316;&#x65F6;&#xFF0C;&#x539F;&#x5217;&#x8868;&#x53D8;&#x5316;&#xFF08;&#x6D45;&#x62F7;&#x8D1D;&#xFF09;&#xFF0C;&#x4F46;&#x6211;&#x4EEC;&#x4E4B;&#x540E;&#x5BF9;&#x539F;&#x5217;&#x8868;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#x65F6;&#xFF0C;&#x8FD4;&#x56DE;&#x7684;&#x5217;&#x8868;&#x53D8;&#x5F97;&#x8BED;&#x4E49;&#x4E0D;&#x660E;&#x3002;<br>&#x8BE5;&#x65B9;&#x6CD5;&#x6709;&#x5229;&#x4E8E;&#x7A0B;&#x5E8F;&#x5458;&#x5BF9;&#x5B50;list&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#xFF0C;&#x8B6C;&#x5982;&#x6E05;&#x7A7A;&#x5217;&#x8868;&#x67D0;&#x8303;&#x56F4;&#x7684;&#x5143;&#x7D20;:<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list.subList(from, to).clear();</span><br></pre></td></tr></table></figure>
+<li>List<e> subList(int fromIndex, int toIndex): &#x8FD4;&#x56DE;&#x4ECE;fromIndex(&#x5305;&#x62EC;)&#x5230;toIndex(&#x4E0D;&#x5305;&#x62EC;)&#x4F4D;&#x7F6E;&#x7684;list&#x3002;&#x5982;&#x679C;fromIndex&#x7B49;&#x4E8E;toIndex&#xFF0C;&#x5219;&#x8FD4;&#x56DE;list&#x4E3A;&#x7A7A;(&#x4E0D;&#x662F;null)&#x3002;&#x7531;&#x4E8E;&#x4FDD;&#x7559;&#x4E86;&#x539F;&#x6709;&#x7684;&#x5F15;&#x7528;&#xFF0C;&#x5F53;&#x5F15;&#x7528;&#x5BF9;&#x8C61;&#x53D8;&#x5316;&#x65F6;&#xFF0C;&#x539F;&#x5217;&#x8868;&#x53D8;&#x5316;&#xFF08;&#x6D45;&#x62F7;&#x8D1D;&#xFF09;&#xFF0C;&#x4F46;&#x6211;&#x4EEC;&#x4E4B;&#x540E;&#x5BF9;&#x539F;&#x5217;&#x8868;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#x65F6;&#xFF0C;&#x8FD4;&#x56DE;&#x7684;&#x5217;&#x8868;&#x53D8;&#x5F97;&#x8BED;&#x4E49;&#x4E0D;&#x660E;&#x3002;<br>&#x8BE5;&#x65B9;&#x6CD5;&#x6709;&#x5229;&#x4E8E;&#x7A0B;&#x5E8F;&#x5458;&#x5BF9;&#x5B50;list&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#xFF0C;&#x8B6C;&#x5982;&#x6E05;&#x7A7A;&#x5217;&#x8868;&#x67D0;&#x8303;&#x56F4;&#x7684;&#x5143;&#x7D20;:<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list.subList(from, to).clear();</span><br></pre></td></tr></table></figure>
 </e></li>
 </ul>
 <p>&#x4EE5;&#x4E0B;&#x662F;Java 8&#x5F00;&#x59CB;&#x652F;&#x6301;&#x7684;&#x65B9;&#x6CD5;:</p>
@@ -428,7 +428,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-count">40</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -445,7 +445,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/blog/tags">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
