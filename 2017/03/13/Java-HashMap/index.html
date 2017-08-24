@@ -1,0 +1,935 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="HashMap&amp;#x57FA;&amp;#x4E8E;&amp;#x54C8;&amp;#x5E0C;&amp;#x8868;&amp;#x5B9E;&amp;#x73B0;&amp;#x4E86;Map&amp;#x63A5;&amp;#x53E3;&amp;#x3002;&amp;#x8BE5;&amp;#x64CD;&amp;#x4F5C;&amp;#x63D0;&amp;#x4F9B;&amp;#x6240;&amp;#x6709;&amp;#x7684;map&amp;#x53EF;&amp;#x9009;&amp;#x64CD;&amp;#x4F5C;&amp;#x">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HashMap类">
+<meta property="og:url" content="http://ycymio.com/blog/2017/03/13/Java-HashMap/index.html">
+<meta property="og:site_name" content="ycy’s tech-blog">
+<meta property="og:description" content="HashMap&amp;#x57FA;&amp;#x4E8E;&amp;#x54C8;&amp;#x5E0C;&amp;#x8868;&amp;#x5B9E;&amp;#x73B0;&amp;#x4E86;Map&amp;#x63A5;&amp;#x53E3;&amp;#x3002;&amp;#x8BE5;&amp;#x64CD;&amp;#x4F5C;&amp;#x63D0;&amp;#x4F9B;&amp;#x6240;&amp;#x6709;&amp;#x7684;map&amp;#x53EF;&amp;#x9009;&amp;#x64CD;&amp;#x4F5C;&amp;#x">
+<meta property="og:updated_time" content="2017-03-13T07:00:07.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HashMap类">
+<meta name="twitter:description" content="HashMap&amp;#x57FA;&amp;#x4E8E;&amp;#x54C8;&amp;#x5E0C;&amp;#x8868;&amp;#x5B9E;&amp;#x73B0;&amp;#x4E86;Map&amp;#x63A5;&amp;#x53E3;&amp;#x3002;&amp;#x8BE5;&amp;#x64CD;&amp;#x4F5C;&amp;#x63D0;&amp;#x4F9B;&amp;#x6240;&amp;#x6709;&amp;#x7684;map&amp;#x53EF;&amp;#x9009;&amp;#x64CD;&amp;#x4F5C;&amp;#x">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> HashMap类 | ycy’s tech-blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">ycy’s tech-blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">天气好得就好像走着走着就能遇见你</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            博客
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                HashMap类
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-13T15:00:07+08:00" content="2017-03-13">
+              2017-03-13
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2017/03/13/Java-HashMap/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/13/Java-HashMap/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/blog/2017/03/13/Java-HashMap/" class="leancloud_visitors" data-flag-title="HashMap类">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>HashMap&#x57FA;&#x4E8E;&#x54C8;&#x5E0C;&#x8868;&#x5B9E;&#x73B0;&#x4E86;Map&#x63A5;&#x53E3;&#x3002;&#x8BE5;&#x64CD;&#x4F5C;&#x63D0;&#x4F9B;&#x6240;&#x6709;&#x7684;map&#x53EF;&#x9009;&#x64CD;&#x4F5C;&#xFF0C;&#x5E76;&#x4E14;key&#x548C;value&#x503C;&#x90FD;&#x5141;&#x8BB8;&#x4E3A;null&#xFF08;HashMap&#x7C7B;&#x4E0E;Hashtable&#x7C7B;&#x76F8;&#x4F3C;&#xFF0C;&#x9664;&#x4E86;&#x5728;HashMap&#x4E0D;&#x540C;&#x6B65;&#x5E76;&#x5141;&#x8BB8;null&#x5143;&#x7D20;&#x65B9;&#x9762;&#xFF09;&#x3002;</p>
+<a id="more"></a>
+<style type="text/css">
+p{
+    margin-bottom: 10px;
+    text-indent: 28px;
+}
+</style>
+
+<h2 id="HashMap-&#x7C7B;"><a href="#HashMap-&#x7C7B;" class="headerlink" title="HashMap &#x7C7B;"></a>HashMap &#x7C7B;</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HashMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</span><br><span class="line"><span class="keyword">extends</span> <span class="title">AbstractMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</span><br><span class="line"><span class="keyword">implements</span> <span class="title">Map</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;, <span class="title">Cloneable</span>, <span class="title">Serializable</span></span></span><br></pre></td></tr></table></figure>
+<p>&#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#x7684;hash&#x503C;&#x8BA1;&#x7B97;&#x662F;&#x5143;&#x7D20;&#x539F;&#x6765;&#x7684;hash&#x503C;&#x7684;&#x9AD8;16&#x4F4D;&#x4E0E;&#x4F4E;16&#x4F4D;&#x8FDB;&#x884C;&#x5F02;&#x6216;&#x64CD;&#x4F5C;&#x5F97;&#x5230;&#x7684;&#x3002;</p>
+<p>HashMap&#x7C7B;&#x4E0D;&#x4FDD;&#x8BC1;map&#x7684;&#x987A;&#x5E8F;&#xFF0C;&#x5C24;&#x5176;&#x4E0D;&#x4FDD;&#x8BC1;&#x904D;&#x5386;&#x987A;&#x5E8F;&#x4E00;&#x76F4;&#x4E0E;&#x63D2;&#x5165;&#x987A;&#x5E8F;&#x4E00;&#x81F4;&#x3002;&#x5047;&#x8BBE;&#x54C8;&#x5E0C;&#x51FD;&#x6570;&#x4F7F;&#x5F97;&#x5143;&#x7D20;&#x6B63;&#x786E;&#x6295;&#x5C04;&#x5230;&#x76F8;&#x5E94;&#x6876;(bucket)&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5B83;&#x7684;&#x57FA;&#x7840;&#x64CD;&#x4F5C;(get&#x548C;put)&#x5448;&#x73B0;&#x5E38;&#x91CF;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x3002;&#x96C6;&#x5408;&#x7684;&#x904D;&#x5386;&#x9700;&#x8981;HashMap&#x5B9E;&#x4F8B;&#x7684;&#x5BB9;&#x91CF;(&#x6876;&#x7684;&#x5927;&#x5C0F;)&#x548C;&#x6876;&#x6240;&#x62E5;&#x6709;&#x7684;key-value&#x7684;&#x6570;&#x91CF;&#x4E4B;&#x548C;&#x6210;&#x6B63;&#x6BD4;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x8981;&#x5C06;&#x521D;&#x59CB;&#x503C;&#x8BBE;&#x7F6E;&#x7684;&#x8FC7;&#x9AD8;&#x6216;&#x8005;&#x8D1F;&#x8F7D;&#x56E0;&#x5B50;&#x8BBE;&#x7F6E;&#x7684;&#x8FC7;&#x4F4E;&#xFF0C;&#x8FD9;&#x5BF9;&#x904D;&#x5386;&#x4E0A;&#x5448;&#x73B0;&#x7684;&#x6027;&#x80FD;&#x5F88;&#x91CD;&#x8981;&#x3002;</p>
+<p>&#x4E00;&#x4E2A;HashMap&#x5B9E;&#x4F8B;&#x6709;&#x4E24;&#x4E2A;&#x5F71;&#x54CD;&#x5B83;&#x6548;&#x679C;&#x7684;&#x53C2;&#x6570;&#xFF1A;&#x521D;&#x59CB;&#x5927;&#x5C0F;&#x548C;&#x8D1F;&#x8F7D;&#x56E0;&#x5B50;&#x3002;&#x54C8;&#x5E0C;&#x8868;&#x7684;&#x5BB9;&#x91CF;(capacity)&#x6307;&#x54C8;&#x5E0C;&#x8868;&#x4E2D;&#x6876;&#x7684;&#x6570;&#x91CF;&#xFF0C;&#x521D;&#x59CB;&#x5927;&#x5C0F;&#x5C31;&#x662F;&#x4E00;&#x5F00;&#x59CB;&#x521B;&#x5EFA;&#x7684;&#x5BB9;&#x91CF;&#x3002;&#x8D1F;&#x8F7D;&#x56E0;&#x5B50;&#x7528;&#x4E8E;&#x8861;&#x91CF;&#x54C8;&#x5E0C;&#x8868;&#x5728;&#x81EA;&#x52A8;&#x6269;&#x5BB9;&#x524D;&#x7684;&#x6EE1;&#x8F7D;&#x7A0B;&#x5EA6;&#x3002;&#x5F53;&#x4E00;&#x4E2A;&#x54C8;&#x5E0C;&#x8868;&#x7684;&#x8282;&#x70B9;&#x6570;&#x8D85;&#x8FC7;&#x4E86;&#x8D1F;&#x8F7D;&#x56E0;&#x5B50;&#x4E58;&#x4EE5;&#x5F53;&#x524D;&#x5927;&#x5C0F;&#xFF0C;&#x54C8;&#x5E0C;&#x8868;&#x5C06;&#x91CD;&#x65B0;&#x54C8;&#x5E0C;&#xFF0C;&#x5185;&#x90E8;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x91CD;&#x65B0;&#x6784;&#x5EFA;&#xFF0C;&#x4F7F;&#x5F97;&#x54C8;&#x5E0C;&#x8868;&#x6709;&#x7EA6;&#x539F;&#x5148;&#x6876;&#x7684;&#x4E24;&#x500D;&#x7684;&#x6570;&#x91CF;&#x3002;</p>
+<p>&#x4E00;&#x822C;&#x800C;&#x8A00;&#xFF0C;&#x9ED8;&#x8BA4;&#x7684;&#x8D1F;&#x8F7D;&#x56E0;&#x5B50;(0.75)&#x5728;&#x65F6;&#x95F4;&#x4E0E;&#x7A7A;&#x95F4;&#x5F00;&#x9500;&#x4E0A;&#x63D0;&#x4F9B;&#x4E86;&#x5F88;&#x597D;&#x7684;&#x6743;&#x8861;&#xFF0C;&#x66F4;&#x9AD8;&#x7684;&#x503C;&#x51CF;&#x5C0F;&#x4E86;&#x7A7A;&#x95F4;&#x5F00;&#x9500;&#x4F46;&#x589E;&#x52A0;&#x4E86;&#x67E5;&#x627E;&#x7684;&#x5F00;&#x9500;(&#x53CD;&#x6620;&#x5728;&#x7EDD;&#x5927;&#x591A;&#x6570;HashMap&#x7C7B;&#x7684;&#x64CD;&#x4F5C;&#x4E2D;&#xFF0C;&#x5305;&#x62EC;get&#x548C;put)&#x3002;&#x5728;&#x8BBE;&#x7F6E;map&#x7684;&#x521D;&#x59CB;&#x5927;&#x5C0F;&#x65F6;&#x5E94;&#x8003;&#x8651;&#x9884;&#x8BA1;&#x7684;entry&#x6570;&#x91CF;&#x548C;&#x8D1F;&#x8F7D;&#x56E0;&#x5B50;&#xFF0C;&#x4ECE;&#x800C;&#x51CF;&#x5C0F;&#x518D;&#x54C8;&#x5E0C;&#x7684;&#x6B21;&#x6570;&#x3002;</p>
+<p>&#x8BE5;&#x5B9E;&#x73B0;&#x5E76;&#x4E0D;&#x540C;&#x6B65;&#xFF0C;&#x53EF;&#x901A;&#x8FC7;&#x4EE5;&#x4E0B;&#x65B9;&#x6CD5;&#x540C;&#x6B65;&#xFF08;&#x6700;&#x597D;&#x5728;&#x521B;&#x5EFA;&#x5BF9;&#x8C61;&#x65F6;&#xFF09;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Map m = Collections.synchronizedMap(<span class="keyword">new</span> HashMap(...));</span><br></pre></td></tr></table></figure></p>
+<p>&#x8FED;&#x4EE3;&#x5668;&#x652F;&#x6301;&#x5FEB;&#x901F;&#x5931;&#x8D25;&#x3002;</p>
+<h3 id="&#x6210;&#x5458;&#x53D8;&#x91CF;"><a href="#&#x6210;&#x5458;&#x53D8;&#x91CF;" class="headerlink" title="&#x6210;&#x5458;&#x53D8;&#x91CF;"></a>&#x6210;&#x5458;&#x53D8;&#x91CF;</h3><ul>
+<li>transient Node<k,v>[] table&#xFF1A;table&#xFF0C;&#x5B58;&#x50A8;hash&#x503C;&#x3002;&#x7B2C;&#x4E00;&#x6B21;&#x4F7F;&#x7528;&#x65F6;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x5927;&#x5C0F;&#x4E0D;&#x591F;&#x5219;&#x6269;&#x5BB9;&#x3002;&#x957F;&#x5EA6;&#x603B;&#x662F;2&#x7684;&#x5E42;&#x3002;</k,v></li>
+<li>transient Set<map.entry<k,v>&gt; entrySet&#xFF1A;&#x4FDD;&#x5B58;&#x7F13;&#x5B58;&#x7684;entrySet()&#x3002;</map.entry<k,v></li>
+<li>transient int size&#xFF1A;map&#x7684;&#x5927;&#x5C0F;&#x3002;</li>
+<li>transient int modCount: &#x88AB;&#x7ED3;&#x6784;&#x4FEE;&#x6539;&#x7684;&#x6B21;&#x6570;&#x3002;</li>
+<li>int threshold: &#x5F53;HashMap&#x7684;size&#x5927;&#x4E8E;threshold&#x65F6;&#x4F1A;&#x6267;&#x884C;resize&#x64CD;&#x4F5C;&#x3002;&#x6700;&#x5927;&#x5BB9;&#x91CF;&#x662F;[1 &lt;&lt; 30]&#x3002;threshold=capacity*loadFactor&#x3002;</li>
+<li>final float loadFactor: &#x54C8;&#x5E0C;&#x8868;&#x7684;&#x8D1F;&#x8F7D;&#x56E0;&#x5B50;&#x3002;&#x8868;&#x793A;&#x6563;&#x8868;&#x7684;&#x88C5;&#x6EE1;&#x7A0B;&#x5EA6;,&#x5B9A;&#x4E49;&#x4E3A;&#x6563;&#x5217;&#x8868;&#x4E2D;&#x8282;&#x70B9;&#x7684;&#x6570;&#x76EE;&#x9664;&#x4EE5;&#x57FA;&#x672C;&#x533A;&#x57DF;&#x80FD;&#x5BB9;&#x7EB3;&#x7684;&#x8282;&#x70B9;&#x6570;&#x6240;&#x5F97;&#x7684;&#x5546;&#x3002;</li>
+</ul>
+<p>AbstractMap&#x4E2D;&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;&#xFF1A;</p>
+<ul>
+<li>transient volatile Set<k>        keySet&#xFF1A;keySet&#x3002;</k></li>
+<li>transient volatile Collection<v> values&#xFF1A;</v></li>
+</ul>
+<h3 id="&#x65B9;&#x6CD5;"><a href="#&#x65B9;&#x6CD5;" class="headerlink" title="&#x65B9;&#x6CD5;"></a>&#x65B9;&#x6CD5;</h3><h4 id="&#x521D;&#x59CB;&#x5316;&#x65B9;&#x6CD5;"><a href="#&#x521D;&#x59CB;&#x5316;&#x65B9;&#x6CD5;" class="headerlink" title="&#x521D;&#x59CB;&#x5316;&#x65B9;&#x6CD5;"></a>&#x521D;&#x59CB;&#x5316;&#x65B9;&#x6CD5;</h4><ul>
+<li>public HashMap(int initialCapacity, float loadFactor)&#xFF1A;&#x7ED9;&#x5B9A;&#x6700;&#x521D;&#x5927;&#x5C0F;&#x548C;&#x8D1F;&#x8F7D;&#x56E0;&#x5B50;&#xFF0C;&#x5EFA;&#x7ACB;&#x7A7A;HashMap&#x3002;<br>tableSizeFor(capacity)&#x7528;&#x4E8E;<a href="http://www.tuicool.com/articles/yqyIVzI" target="_blank" rel="external">&#x627E;&#x5230;&#x5927;&#x4E8E;&#x7B49;&#x4E8E;&#x6307;&#x5B9A;&#x5BB9;&#x91CF;(capacity)&#x53C2;&#x6570;&#x7684;2&#x7684;&#x5E42;</a>&#x3002;</li>
+<li>public HashMap(int initialCapacity)&#xFF1A;&#x7ED9;&#x5B9A;&#x6700;&#x521D;&#x5927;&#x5C0F;&#xFF0C;&#x5EFA;&#x7ACB;&#x7A7A;HashMap&#x3002;(&#x9ED8;&#x8BA4;DEFAULT_LOAD_FACTOR&#x503C;&#x4E3A;0.75f)</li>
+<li>public HashMap()&#xFF1A;&#x5EFA;&#x7ACB;&#x7A7A;HashMap&#xFF0C;&#x9ED8;&#x8BA4;&#x5927;&#x5C0F;&#x4E3A;16&#xFF0C;&#x9ED8;&#x8BA4;&#x8D1F;&#x8F7D;&#x56E0;&#x5B50;&#x4E3A;0.75&#x3002;</li>
+<li>public HashMap(Map&lt;? extends K, ? extends V&gt; m)&#xFF1A;&#x6839;&#x636E;&#x7ED9;&#x5B9A;&#x7684;map&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;hashmap&#xFF0C;&#x8D1F;&#x8F7D;&#x56E0;&#x5B50;&#x521D;&#x59CB;&#x503C;&#x4E3A;0.75&#x3002;&#x8C03;&#x7528;&#x4E86;putMapEntries()&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x53EA;&#x6709;&#x5728;&#x521D;&#x59CB;&#x5316;&#x65F6;&#x662F;false&#x3002;</li>
+</ul>
+<h4 id="Map&#x63A5;&#x53E3;&#x7684;&#x5B9E;&#x73B0;"><a href="#Map&#x63A5;&#x53E3;&#x7684;&#x5B9E;&#x73B0;" class="headerlink" title="Map&#x63A5;&#x53E3;&#x7684;&#x5B9E;&#x73B0;"></a>Map&#x63A5;&#x53E3;&#x7684;&#x5B9E;&#x73B0;</h4><ul>
+<li>public int size()&#xFF1A;&#x8FD4;&#x56DE;size&#x3002;</li>
+<li>public boolean isEmpty()&#xFF1A;&#x8FD4;&#x56DE;map&#x662F;&#x5426;&#x4E3A;&#x7A7A;[size == 0]&#x3002;</li>
+<li>public V get(Object key)&#xFF1A;&#x4E0D;&#x5B58;&#x5728;&#x8FD4;&#x56DE;null&#xFF0C;&#x5426;&#x5219;&#x8FD4;&#x56DE;&#x5BF9;&#x5E94;&#x7684;value&#x3002;<strong>&#x67E5;&#x5230;hash&#x503C;&#x5BF9;&#x5E94;&#x7684;table&#x9879;&#xFF0C;&#x518D;&#x4E00;&#x9879;&#x4E00;&#x9879;&#x6BD4;&#x5BF9;key&#x662F;&#x5426;&#x5F15;&#x7528;&#x76F8;&#x540C;&#x6216;&#x8005;&#x503C;&#x76F8;&#x540C;&#x3002;&#x6240;&#x6709;&#x7684;&#x5339;&#x914D;&#x90FD;&#x5206;&#x4E3A;&#x4E24;&#x79CD;&#xFF1A;TreeNode&#x548C;&#x975E;TreeNode&#xFF0C;&#x5728;&#x6B64;&#x4E4B;&#x524D;&#xFF0C;&#x5148;&#x68C0;&#x67E5;&#x7B2C;&#x4E00;&#x9879;&#x7684;[&#x56E0;&#x4E3A;&#x7B2C;&#x4E00;&#x9879;&#x5C31;&#x53EF;&#x4EE5;&#x4E0D;&#x8FDB;&#x884C;&#x5339;&#x914D;&#xFF0C;&#x51B2;&#x7A81;&#x5C11;&#x7684;&#x8BDD;&#x6BD4;&#x8F83;&#x901F;&#x5EA6;]&#x3002;</strong></li>
+<li>public boolean containsKey(Object key)&#xFF1A;&#x76F4;&#x63A5;&#x8C03;&#x7528;get()&#x4E2D;&#x8C03;&#x7528;&#x7684;getNode()&#x65B9;&#x6CD5;&#xFF0C;&#x67E5;&#x770B;&#x8FD4;&#x56DE;&#x503C;&#x662F;&#x5426;&#x4E3A;null&#x3002;</li>
+<li>public V put(K key, V value)&#xFF1A;&#x5177;&#x4F53;&#x8C03;&#x7528;&#x5728;&#x540E;&#x8FB9;&#x8BB2;&#x4E86;&#x4E0B;&#x3002;&#x4E0D;&#x7BA1;&#x4E4B;&#x524D;&#x662F;&#x5426;&#x6709;K-V&#x952E;&#x503C;&#x5BF9;&#xFF0C;&#x90FD;&#x4F1A;&#x8FDB;&#x884C;&#x63D2;&#x5165;/&#x4FEE;&#x6539;&#x64CD;&#x4F5C;&#x3002;&#x8FD4;&#x56DE;&#x503C;&#x662F;&#x4E4B;&#x524D;key&#x5BF9;&#x5E94;&#x7684;&#x503C;&#x3002;</li>
+<li>public void putAll(Map&lt;? extends K, ? extends V&gt; m)&#xFF1A;&#x5C06;&#x65B0;map&#x5373;m&#x4E2D;&#x6240;&#x6709;&#x7684;&#x952E;&#x503C;&#x5BF9;&#x63D2;&#x5165;&#x8BE5;map&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x4E4B;&#x524D;&#x5B58;&#x5728;&#x952E;&#x503C;&#x5BF9;&#x5C31;&#x8986;&#x76D6;&#x3002;</li>
+<li>public V remove(Object key)&#xFF1A;&#x5982;&#x679C;key&#x5B58;&#x5728;&#x5219;&#x8FD4;&#x56DE;&#x5BF9;&#x5E94;&#x7684;value&#xFF0C;&#x5426;&#x5219;&#x8FD4;&#x56DE;null&#x3002;</li>
+<li>public void clear()&#xFF1A;&#x6E05;&#x7A7A;&#x4E86;table&#x3002;</li>
+<li>public boolean containsValue(Object value)&#xFF1A;true&#xFF1A;&#x8FD4;&#x56DE;&#x952E;&#x503C;&#x5BF9;&#x662F;&#x5426;&#x5305;&#x542B;&#x8BE5;value&#x3002;</li>
+<li>public Set<k> keySet()&#xFF1A;&#x8FD4;&#x56DE;key&#x7684;Set&#x578B;&#x96C6;&#x5408;&#x3002;</k></li>
+<li>public Collection<v> values()&#xFF1A;&#x8FD4;&#x56DE;value&#x7684;&#x96C6;&#x5408;&#x3002;</v></li>
+<li>public Set<map.entry<k,v>&gt; entrySet()&#xFF1A;&#x8FD4;&#x56DE;key-value&#x952E;&#x503C;&#x5BF9;&#x3002;  </map.entry<k,v></li>
+</ul>
+<p>&#x4EE5;&#x4E0B;&#x636E;&#x8BF4;&#x662F;Java 1.8&#x65B0;&#x589E;&#x65B9;&#x6CD5;&#x3002;</p>
+<ul>
+<li>public V getOrDefault(Object key, V defaultValue)&#xFF1A;&#x8FD4;&#x56DE;&#x7279;&#x5B9A;key&#x5BF9;&#x5E94;&#x7684;value&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x8BE5;key&#xFF0C;&#x5219;&#x8FD4;&#x56DE;&#x9ED8;&#x8BA4;&#x503C;(defaultValue)&#x3002;</li>
+<li>public V putIfAbsent(K key, V value)&#xFF1A;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x8FD9;&#x4E2A;key&#xFF0C;&#x5219;&#x6DFB;&#x52A0;&#x8BE5;K-V&#x952E;&#x503C;&#x5BF9;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;null&#x3002;&#x5426;&#x5219;&#x8FD4;&#x56DE;&#x5F53;&#x524D;&#x5BF9;&#x5E94;&#x7684;key&#x3002;</li>
+<li>public boolean remove(Object key, Object value)&#xFF1A;&#x53EA;&#x6709;&#x5F53;key&#x4E0E;&#x5176;&#x5BF9;&#x5E94;&#x7684;value&#x90FD;&#x7B49;&#x4E8E;&#x7ED9;&#x5B9A;&#x503C;&#x65F6;&#x624D;&#x5220;&#x9664;&#x3002;</li>
+<li>public boolean replace(K key, V oldValue, V newValue)&#xFF1A;&#x5982;&#x679C;&#x5F53;&#x524D;key&#x5BF9;&#x5E94;&#x7684;value&#x662F;oldValue&#x7684;&#x8BDD;&#xFF0C;&#x5C31;&#x7528;newValue&#x66FF;&#x4EE3;&#x3002;</li>
+<li>public V replace(K key, V value)&#xFF1A;&#x5982;&#x679C;&#x5F53;&#x524D;key&#x5BF9;&#x5E94;&#x5BF9;&#x5E94;&#x4E86;&#x67D0;&#x503C;&#x7684;&#x8BDD;&#xFF0C;&#x8FD4;&#x56DE;&#x5E76;&#x7528;&#x65B0;&#x503C;&#x66FF;&#x4EE3;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x5B58;&#x5728;&#x8BE5;key&#xFF0C;&#x5219;&#x8FD4;&#x56DE;null[&#x4E0D;&#x505A;&#x66FF;&#x4EE3;&#x64CD;&#x4F5C;]&#x3002;</li>
+<li>public V computeIfAbsent(K key, Function&lt;? super K,? extends V&gt; mappingFunction)</li>
+<li>public V computeIfPresent(K key, BiFunction&lt;? super K,? super V,? extends V&gt; </li>
+<li>public V compute(K key, BiFunction&lt;? super K,? super V,? extends V&gt; remappingFunction)</li>
+<li>public V merge(K key, V value, BiFunction&lt;? super V,? super V,? extends V&gt; remappingFunction)</li>
+<li>public void forEach(BiConsumer&lt;? super K,? super V&gt; action)</li>
+<li>public void replaceAll(BiFunction&lt;? super K,? super V,? extends V&gt; function)</li>
+<li>public Object clone()&#xFF1A;&#x8FD4;&#x56DE;&#x5F53;&#x524D;map&#x7684;&#x6D45;&#x590D;&#x5236;&#x3002;&#xFF08;&#x53EA;&#x590D;&#x5236;&#x4E86;&#x5F15;&#x7528;&#x5173;&#x7CFB;&#xFF09;</li>
+</ul>
+<h4 id="&#x4E00;&#x4E9B;&#x5E38;&#x91CF;"><a href="#&#x4E00;&#x4E9B;&#x5E38;&#x91CF;" class="headerlink" title="&#x4E00;&#x4E9B;&#x5E38;&#x91CF;"></a>&#x4E00;&#x4E9B;&#x5E38;&#x91CF;</h4><ul>
+<li>DEFAULT_INITIAL_CAPACITY = 1 &lt;&lt; 4&#xFF1A;&#x7D22;&#x5F15;&#x7684;&#x521D;&#x59CB;&#x5BB9;&#x91CF;</li>
+<li>MAXIMUM_CAPACITY = 1 &lt;&lt; 30&#xFF1A;&#x7D22;&#x5F15;&#x7684;&#x6700;&#x5927;&#x5BB9;&#x91CF;</li>
+<li>DEFAULT_LOAD_FACTOR = 0.75f&#xFF1A;&#x9ED8;&#x8BA4;&#x8D1F;&#x8F7D;&#x56E0;&#x5B50;</li>
+<li>TREEIFY_THRESHOLD = 8&#xFF1A;&#x5F53;&#x6876;(bucket)&#x4E0A;&#x7684;&#x94FE;&#x8868;&#x6570;&#x5927;&#x4E8E;&#x8FD9;&#x4E2A;&#x503C;&#x65F6;&#x4F1A;&#x8F6C;&#x6210;&#x7EA2;&#x9ED1;&#x6811;</li>
+<li>UNTREEIFY_THRESHOLD = 6&#xFF1A;&#x6700;&#x5C0F;&#x4E3A;6&#x662F;&#x7EA2;&#x9ED1;&#x6811;&#x4F1A;&#x8F6C;&#x5316;&#x4E3A;&#x94FE;&#x8868;&#x3002;&#xFF08;&#x4E3A;7&#x65F6;&#x4E5F;&#x53EF;&#x4EE5;&#x8F6C;&#x5316;&#xFF09;</li>
+<li>MIN_TREEIFY_CAPACITY = 64&#xFF1A;The smallest table capacity for which bins may be treeified. (Otherwise the table is resized if too many nodes in a bin.) Should be at least 4 * TREEIFY_THRESHOLD to avoid conflicts between resizing and treeification thresholds.</li>
+</ul>
+<h4 id="&#x5185;&#x90E8;&#x7C7B;"><a href="#&#x5185;&#x90E8;&#x7C7B;" class="headerlink" title="&#x5185;&#x90E8;&#x7C7B;"></a>&#x5185;&#x90E8;&#x7C7B;</h4><h5 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h5><p>&#x5B58;&#x50A8;&#x7684;&#x662F;Node&#x9759;&#x6001;&#x5185;&#x90E8;&#x7C7B;. &#x5305;&#x62EC;get, set, toString, equals, hashCode&#x3002;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x4E3B;&#x8981;&#x662F;hash&#x503C;, key, value&#x548C;&#x4E0B;&#x4E00;&#x4E2A;&#x7ED3;&#x70B9;&#x3002;</p>
+<h5 id="KeySet&#x3001;Values&#x548C;EntrySet"><a href="#KeySet&#x3001;Values&#x548C;EntrySet" class="headerlink" title="KeySet&#x3001;Values&#x548C;EntrySet"></a>KeySet&#x3001;Values&#x548C;EntrySet</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">KeySet</span> <span class="keyword">extends</span> <span class="title">AbstractSet</span>&lt;<span class="title">K</span>&gt;</span><br><span class="line"><span class="title">final</span> <span class="title">class</span> <span class="title">Values</span> <span class="keyword">extends</span> <span class="title">AbstractCollection</span>&lt;<span class="title">V</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>&#x5E76;&#x4E0D;&#x662F;&#x5B58;&#x50A8;&#x4E86;key&#x503C;/value&#x503C;/&#x952E;&#x503C;&#x5BF9;&#x3002;&#x53EA;&#x662F;&#x5728;&#x8C03;&#x7528;&#x5916;&#x90E8;&#x7C7B;&#x7684;&#x4E00;&#x4E9B;&#x4E1C;&#x897F;&#x3002;iterator()&#x8FD4;&#x56DE;&#x4E86;KeyIterator&#x7C7B;&#x578B;/ValueIterator&#x7C7B;&#x578B;/EntryIterator&#x7C7B;&#x578B;&#x3002;KeySet[size()&#xFF0C;clear()&#xFF0C;iterator()&#xFF0C;contains(Object o)&#xFF0C;remove(Object key)]&#x6CA1;&#x6709;&#x6DFB;&#x52A0;&#xFF0C;&#x5220;&#x9664;&#x662F;&#x771F;&#x7684;&#x5220;&#x9664;&#x3002;Values[size()&#xFF0C;clear()&#xFF0C;iterator()&#xFF0C;contains(Object o)]&#x6CA1;&#x6709;&#x5BF9;map&#x7684;&#x6DFB;&#x52A0;&#x5220;&#x9664;(&#x4F46;&#x53EF;&#x4EE5;clear!!!)&#x3002;EntrySet[size()&#xFF0C;clear()&#xFF0C;iterator()&#xFF0C;contains(Object o)&#xFF0C;remove()]&#x6CA1;&#x6709;&#x6DFB;&#x52A0;&#xFF0C;&#x5220;&#x9664;&#x662F;&#x771F;&#x7684;&#x5220;&#x9664;&#xFF0C;KeySet&#x7C7B;&#x7684;&#x5220;&#x9664;&#x662F;&#x9488;&#x5BF9;key&#x503C;&#xFF0C;EntrySet&#x7C7B;&#x7684;&#x5220;&#x9664;&#x5FC5;&#x987B;key-value&#x503C;&#x4E00;&#x81F4;&#x624D;&#x5220;&#x9664;&#x3002;</p>
+<h4 id="&#x5176;&#x4ED6;&#x7684;&#x7279;&#x6709;&#x65B9;&#x6CD5;"><a href="#&#x5176;&#x4ED6;&#x7684;&#x7279;&#x6709;&#x65B9;&#x6CD5;" class="headerlink" title="&#x5176;&#x4ED6;&#x7684;&#x7279;&#x6709;&#x65B9;&#x6CD5;"></a>&#x5176;&#x4ED6;&#x7684;&#x7279;&#x6709;&#x65B9;&#x6CD5;</h4><h4 id="&#x7EE7;&#x627F;&#x7684;&#x65B9;&#x6CD5;"><a href="#&#x7EE7;&#x627F;&#x7684;&#x65B9;&#x6CD5;" class="headerlink" title="&#x7EE7;&#x627F;&#x7684;&#x65B9;&#x6CD5;"></a>&#x7EE7;&#x627F;&#x7684;&#x65B9;&#x6CD5;</h4><h3 id="&#x5F88;&#x559C;&#x6B22;&#x88AB;&#x95EE;&#x5230;&#x7684;resize-&#x65B9;&#x6CD5;&#x3002;"><a href="#&#x5F88;&#x559C;&#x6B22;&#x88AB;&#x95EE;&#x5230;&#x7684;resize-&#x65B9;&#x6CD5;&#x3002;" class="headerlink" title="&#x5F88;&#x559C;&#x6B22;&#x88AB;&#x95EE;&#x5230;&#x7684;resize()&#x65B9;&#x6CD5;&#x3002;"></a>&#x5F88;&#x559C;&#x6B22;&#x88AB;&#x95EE;&#x5230;&#x7684;resize()&#x65B9;&#x6CD5;&#x3002;</h3><p>&#x521D;&#x59CB;&#x5316;table&#x6216;&#x8005;&#x53CC;&#x500D;table&#x3002;&#x5982;&#x679C;table&#x4E3A;null&#xFF0C;&#x5219;&#x6839;&#x636E;threshold&#x5206;&#x914D;&#x521D;&#x59CB;&#x5927;&#x5C0F;&#xFF0C;&#x5426;&#x5219;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x4F7F;&#x7528;2&#x6B21;&#x5E42;&#x6269;&#x5BB9;&#xFF0C;&#x6240;&#x6709;&#x7684;bin&#x4FDD;&#x6301;&#x539F;&#x6765;&#x7684;index&#xFF0C;&#x6216;&#x8005;&#x5728;&#x65B0;&#x8868;&#x4E2D;&#x79FB;&#x52A8;a power of two offset&#x3002;</p>
+<p>&#x83B7;&#x5F97;&#x539F;&#x5148;&#x5B58;&#x653E;hash&#x503C;&#x7684;&#x7D22;&#x5F15;&#x8868;&#xFF0C;&#x770B;&#x60C5;&#x51B5;(&#x5BB9;&#x91CF;&#x662F;&#x5426;&#x4F1A;&#x8D85;&#x8FC7;&#x6700;&#x5927;&#x503C;&#x8FD9;&#x6837;)&#x53CC;&#x500D;&#x6269;&#x5C55;table&#x3002;&#x518D;&#x628A;&#x539F;&#x5148;&#x7684;&#x7D22;&#x5F15;&#x8868;&#x5BF9;&#x5E94;&#x7684;node&#x6620;&#x5C04;&#x5230;&#x65B0;&#x6269;&#x5C55;&#x7684;table&#x4E2D;(&amp;&#x6700;&#x9AD8;&#x4F4D;)&#x3002;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> Node&lt;K,V&gt;[] resize() {</span><br><span class="line">    Node&lt;K,V&gt;[] oldTab = table; <span class="comment">// &#x65E7;&#x7D22;&#x5F15;&#x8868;</span></span><br><span class="line">    <span class="keyword">int</span> oldCap = (oldTab == <span class="keyword">null</span>) ? <span class="number">0</span> : oldTab.length; <span class="comment">// &#x65E7;&#x7D22;&#x5F15;&#x8868;&#x957F;&#x5EA6;</span></span><br><span class="line">    <span class="keyword">int</span> oldThr = threshold; <span class="comment">// &#x4E4B;&#x524D;&#x7684;&#x9608;&#x503C;</span></span><br><span class="line">    <span class="keyword">int</span> newCap, newThr = <span class="number">0</span>; <span class="comment">// &#x65B0;&#x8868;&#x5927;&#x5C0F;&#x4E0E;&#x9608;&#x503C;</span></span><br><span class="line">    <span class="keyword">if</span> (oldCap &gt; <span class="number">0</span>) { <span class="comment">// &#x4E4B;&#x524D;&#x7684;&#x8868;&#x5B58;&#x5728;&#x7684;&#x60C5;&#x51B5;</span></span><br><span class="line">        <span class="keyword">if</span> (oldCap &gt;= MAXIMUM_CAPACITY) { <span class="comment">// &#x5DF2;&#x7ECF;&#x6700;&#x5927;&#x4E86;&#xFF0C;&#x5C31;&#x4E0D;&#x6269;&#x5BB9;&#x4E86;</span></span><br><span class="line">            threshold = Integer.MAX_VALUE;</span><br><span class="line">            <span class="keyword">return</span> oldTab;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> ((newCap = oldCap &lt;&lt; <span class="number">1</span>) &lt; MAXIMUM_CAPACITY &amp;&amp;</span><br><span class="line">                     oldCap &gt;= DEFAULT_INITIAL_CAPACITY) <span class="comment">// &#x65B0;&#x8868;&#x5927;&#x5C0F;&#x8BBE;&#x7F6E;&#xFF0C;&#x5C0F;&#x4E8E;&#x6700;&#x5927;&#x503C;&#x3002;</span></span><br><span class="line">                newThr = oldThr &lt;&lt; <span class="number">1</span>; <span class="comment">// &#x53CC;&#x500D;&#x7684;&#x9608;&#x503C;</span></span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (oldThr &gt; <span class="number">0</span>) <span class="comment">// &#x7528;&#x539F;&#x6765;&#x7684;&#x9608;&#x503C;&#x3002;</span></span><br><span class="line">            newCap = oldThr;</span><br><span class="line">        <span class="keyword">else</span> { <span class="comment">// &#x9ED8;&#x8BA4;&#x5927;&#x5C0F;&#x3002;</span></span><br><span class="line">            newCap = DEFAULT_INITIAL_CAPACITY;</span><br><span class="line">            newThr = (<span class="keyword">int</span>)(DEFAULT_LOAD_FACTOR * DEFAULT_INITIAL_CAPACITY);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span> (newThr == <span class="number">0</span>) { <span class="comment">// &#x8BBE;&#x7F6E;&#x65B0;&#x9608;&#x503C;</span></span><br><span class="line">            <span class="keyword">float</span> ft = (<span class="keyword">float</span>)newCap * loadFactor;</span><br><span class="line">            newThr = (newCap &lt; MAXIMUM_CAPACITY &amp;&amp; ft &lt; (<span class="keyword">float</span>)MAXIMUM_CAPACITY ?</span><br><span class="line">                      (<span class="keyword">int</span>)ft : Integer.MAX_VALUE);</span><br><span class="line">        }</span><br><span class="line">        threshold = newThr;</span><br><span class="line">        <span class="annotation">@SuppressWarnings</span>({<span class="string">&quot;rawtypes&quot;</span>,<span class="string">&quot;unchecked&quot;</span>})</span><br><span class="line">        Node&lt;K,V&gt;[] newTab = (Node&lt;K,V&gt;[])<span class="keyword">new</span> Node[newCap]; <span class="comment">// &#x65B0;&#x7684;&#x7ED3;&#x70B9;&#x8868;</span></span><br><span class="line">        table = newTab;</span><br><span class="line">        <span class="keyword">if</span> (oldTab != <span class="keyword">null</span>) {</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; oldCap; ++j) {  <span class="comment">// &#x5BF9;&#x4EE5;&#x524D;&#x7684;hash&#x8868;&#x64CD;&#x4F5C;</span></span><br><span class="line">                Node&lt;K,V&gt; e;</span><br><span class="line">                <span class="keyword">if</span> ((e = oldTab[j]) != <span class="keyword">null</span>) {</span><br><span class="line">                    oldTab[j] = <span class="keyword">null</span>;</span><br><span class="line">                    <span class="keyword">if</span> (e.next == <span class="keyword">null</span>)</span><br><span class="line">                        newTab[e.hash &amp; (newCap - <span class="number">1</span>)] = e; <span class="comment">// &#x6620;&#x5C04;&#x5230;&#x65B0;&#x8868;</span></span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span> (e <span class="keyword">instanceof</span> TreeNode) <span class="comment">// &#x5982;&#x679C;&#x662F;TreeNode, &#x5206;&#x88C2;&#x3002;&#x90FD;&#x4EA4;&#x7ED9;TreeNode&#x76F4;&#x63A5;&#x5904;&#x7406;&#x4E86;&#x3002;</span></span><br><span class="line">                        ((TreeNode&lt;K,V&gt;)e).split(<span class="keyword">this</span>, newTab, j, oldCap);</span><br><span class="line">                    <span class="keyword">else</span> { <span class="comment">// preserve order &#x4FDD;&#x5B58;&#x8BE5;&#x987A;&#x5E8F;</span></span><br><span class="line">                        Node&lt;K,V&gt; loHead = <span class="keyword">null</span>, loTail = <span class="keyword">null</span>; <span class="comment">// &#x4F4E;&#x4F4D;&#x5934;&#x7ED3;&#x70B9;&#x3001;&#x5C3E;&#x7ED3;&#x70B9;</span></span><br><span class="line">                        Node&lt;K,V&gt; hiHead = <span class="keyword">null</span>, hiTail = <span class="keyword">null</span>; <span class="comment">// &#x9AD8;&#x4F4D;&#x5934;&#x7ED3;&#x70B9;&#x3001;&#x5C3E;&#x7ED3;&#x70B9;</span></span><br><span class="line">                        Node&lt;K,V&gt; next;</span><br><span class="line">                        do {</span><br><span class="line">                            next = e.next;</span><br><span class="line">                            <span class="keyword">if</span> ((e.hash &amp; oldCap) == <span class="number">0</span>) { </span><br><span class="line">                                <span class="comment">// &#x5047;&#x8BBE; oldCap 0x010000 -&gt; &#x4E00;&#x822C;&#x6620;&#x5C04;&#x5230; oldCap&#x662F;&#x901A;&#x8FC7;0x00FFFF&#x6765;&#x7684;&#x3002;&#x6240;&#x4EE5;&#x4E3A;0&#x4F1A;&#x6295;&#x5230;&#x4F4E;&#x4F4D;</span></span><br><span class="line">                                <span class="keyword">if</span> (loTail == <span class="keyword">null</span>)</span><br><span class="line">                                    loHead = e;</span><br><span class="line">                                <span class="keyword">else</span></span><br><span class="line">                                    loTail.next = e;</span><br><span class="line">                                loTail = e;</span><br><span class="line">                            }</span><br><span class="line">                            <span class="keyword">else</span> {</span><br><span class="line">                                <span class="keyword">if</span> (hiTail == <span class="keyword">null</span>)</span><br><span class="line">                                    hiHead = e;</span><br><span class="line">                                <span class="keyword">else</span></span><br><span class="line">                                    hiTail.next = e;</span><br><span class="line">                                hiTail = e;</span><br><span class="line">                            }</span><br><span class="line">                        } <span class="keyword">while</span> ((e = next) != <span class="keyword">null</span>);</span><br><span class="line">                        <span class="keyword">if</span> (loTail != <span class="keyword">null</span>) {</span><br><span class="line">                            loTail.next = <span class="keyword">null</span>;</span><br><span class="line">                            newTab[j] = loHead;</span><br><span class="line">                        }</span><br><span class="line">                        <span class="keyword">if</span> (hiTail != <span class="keyword">null</span>) {</span><br><span class="line">                            hiTail.next = <span class="keyword">null</span>;</span><br><span class="line">                            newTab[j + oldCap] = hiHead;</span><br><span class="line">                        }</span><br><span class="line">                    }</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> newTab;</span><br><span class="line">    }</span><br></pre></td></tr></table></figure></p>
+<h3 id="putVal-&#x51FD;&#x6570;"><a href="#putVal-&#x51FD;&#x6570;" class="headerlink" title="putVal()&#x51FD;&#x6570;"></a>putVal()&#x51FD;&#x6570;</h3><p>hash: &#x54C8;&#x5E0C;&#x503C;&#xFF0C;key: key&#x503C;&#xFF0C;value: value&#x503C;&#xFF0C;onlyIfAbsent: &#x7F3A;&#x5931;&#x5219;&#x63D2;&#x5165;&#xFF08;&#x4E0D;&#x8986;&#x76D6;&#x539F;&#x5148;&#x7ED3;&#x679C;&#xFF09;&#xFF0C;evict&#xFF1A;true&#x4EE3;&#x8868;&#x662F;&#x521D;&#x59CB;&#x5316;&#x64CD;&#x4F5C;&#x3002;&#x4E00;&#x822C;&#x51E0;&#x79CD;&#x8C03;&#x7528;&#xFF1A;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">putVal(hash(key), key, value, <span class="keyword">false</span>, <span class="keyword">false</span>); <span class="comment">// &#x6839;&#x636E;&#x5DF2;&#x6709;map&#x521D;&#x59CB;&#x5316;, &#x6216;&#x8005;readObject()[&#x7528;&#x4E8E;&#x53CD;&#x5C04;&#x5427;?], &#x6216;&#x8005;clone()</span></span><br><span class="line">putVal(hash(key), key, value, <span class="keyword">false</span>, <span class="keyword">true</span>); <span class="comment">// put&#x64CD;&#x4F5C;&#x8C03;&#x7528;&#xFF0C;putAll&#x64CD;&#x4F5C;&#x4E5F;&#x662F;&#x5982;&#x6B64;&#x3002;</span></span><br><span class="line">putVal(hash(key), key, value, <span class="keyword">true</span>, <span class="keyword">true</span>); <span class="comment">// putIfAbsent&#x4F1A;&#x5982;&#x6B64;&#x8C03;&#x7528;</span></span><br></pre></td></tr></table></figure>
+<p>removeNode&#x51FD;&#x6570;&#x4E5F;&#x7C7B;&#x4F3C;&#x3002;putVal&#x51FD;&#x6570;&#x7684;&#x6E90;&#x4EE3;&#x7801;:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">final</span> V <span class="title">putVal</span><span class="params">(<span class="keyword">int</span> hash, K key, V value, <span class="keyword">boolean</span> onlyIfAbsent, // onlyIfAbsent : &#x4E0D;&#x4F1A;&#x6DFB;&#x52A0;&#x5DF2;&#x5B58;&#x5728;&#x7684;key&#x7684;&#x5143;&#x7D20;.</span><br><span class="line">               <span class="keyword">boolean</span> evict)</span> </span>{ <span class="comment">// evict: &#x662F;&#x5426;&#x662F;&#x521D;&#x59CB;&#x5316;&#x8C03;&#x7528;</span></span><br><span class="line">    Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; p; <span class="keyword">int</span> n, i; <span class="comment">// tab -&gt; table, n -&gt; size, p -&gt; &#x5BF9;&#x5E94;&#x7684;&#x90A3;&#x4E2A;table&#x4E2D;&#x7684;&#x9879;&#x7684;&#x9996;&#x6307;&#x9488;.</span></span><br><span class="line">    <span class="keyword">if</span> ((tab = table) == <span class="keyword">null</span> || (n = tab.length) == <span class="number">0</span>)</span><br><span class="line">        n = (tab = resize()).length;</span><br><span class="line">    <span class="keyword">if</span> ((p = tab[i = (n - <span class="number">1</span>) &amp; hash]) == <span class="keyword">null</span>)</span><br><span class="line">        tab[i] = newNode(hash, key, value, <span class="keyword">null</span>); <span class="comment">// &#x5982;&#x679C;&#x8BE5;&#x7D22;&#x5F15;&#x4E3A;&#x7A7A;.</span></span><br><span class="line">    <span class="keyword">else</span> {</span><br><span class="line">        Node&lt;K,V&gt; e; K k;</span><br><span class="line">        <span class="keyword">if</span> (p.hash == hash &amp;&amp;</span><br><span class="line">            ((k = p.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k)))) <span class="comment">// &#x4F1A;&#x5148;&#x5224;&#x65AD;&#x5F15;&#x7528;&#x662F;&#x5426;&#x76F8;&#x7B49;~</span></span><br><span class="line">            e = p;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (p <span class="keyword">instanceof</span> TreeNode) <span class="comment">// <span class="doctag">TODO:</span> TreeNode&#x5904;&#x7406;?</span></span><br><span class="line">            e = ((TreeNode&lt;K,V&gt;)p).putTreeVal(<span class="keyword">this</span>, tab, hash, key, value);</span><br><span class="line">        <span class="keyword">else</span> {</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> binCount = <span class="number">0</span>; ; ++binCount) {</span><br><span class="line">                <span class="keyword">if</span> ((e = p.next) == <span class="keyword">null</span>) { <span class="comment">// &#x627E;&#x5230;&#x4E86;&#x94FE;&#x8868;&#x7684;&#x5C3E;&#x90E8;</span></span><br><span class="line">                    p.next = newNode(hash, key, value, <span class="keyword">null</span>);</span><br><span class="line">                    <span class="keyword">if</span> (binCount &gt;= TREEIFY_THRESHOLD - <span class="number">1</span>) <span class="comment">// -1 for 1st &#x5F53;&#x6876;(bucket)&#x4E0A;&#x7684;&#x94FE;&#x8868;&#x6570;&#x5927;&#x4E8E;&#x8FD9;&#x4E2A;&#x503C;&#x65F6;&#x4F1A;&#x8F6C;&#x6210;&#x7EA2;&#x9ED1;&#x6811;</span></span><br><span class="line">                        treeifyBin(tab, hash);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                }</span><br><span class="line">                <span class="keyword">if</span> (e.hash == hash &amp;&amp;</span><br><span class="line">                    ((k = e.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                p = e; <span class="comment">// p -&gt; pre, &#x4FDD;&#x7559;&#x539F;&#x6307;&#x9488;, &#x597D;&#x64CD;&#x4F5C;.</span></span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span> (e != <span class="keyword">null</span>) { <span class="comment">// existing mapping for key &#x5B58;&#x5728;key. -&gt; &#x65E0;&#x9700;&#x52A0;modCount, &#x65E0;&#x9700;&#x68C0;&#x67E5;&#x6269;&#x5BB9;, &#x4E5F;&#x65E0;&#x9700;&#x8FDB;&#x884C;insert&#x540E;&#x7684;&#x64CD;&#x4F5C;</span></span><br><span class="line">            V oldValue = e.value;</span><br><span class="line">            <span class="keyword">if</span> (!onlyIfAbsent || oldValue == <span class="keyword">null</span>) <span class="comment">// &#x66F4;&#x6539;&#x539F;&#x6765;&#x7684;value.</span></span><br><span class="line">                e.value = value;</span><br><span class="line">            afterNodeAccess(e); <span class="comment">// &#x4E3A;LinkedHashMap&#x4FDD;&#x7559;</span></span><br><span class="line">            <span class="keyword">return</span> oldValue;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    ++modCount;</span><br><span class="line">    <span class="keyword">if</span> (++size &gt; threshold)</span><br><span class="line">        resize();</span><br><span class="line">    afterNodeInsertion(evict); <span class="comment">// &#x4E3A;LinkedHashMap&#x4FDD;&#x7559;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/Java/" rel="tag">#Java</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2017/03/05/Java-ArrayList/" rel="next" title="ArrayList类">
+                <i class="fa fa-chevron-left"></i> ArrayList类
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2017/08/24/designpattern-observer/" rel="prev" title="Observer（观察者）——行为模型">
+                Observer（观察者）——行为模型 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/13/Java-HashMap/"
+           data-title="HashMap类" data-url="http://ycymio.com/blog/2017/03/13/Java-HashMap/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/uploads/avatar.jpg"
+               alt="玉宇澄清" />
+          <p class="site-author-name" itemprop="name">玉宇澄清</p>
+          <p class="site-description motion-element" itemprop="description">天气好得就好像走着走着就能遇见你</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/blog/categories">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://ycymio.com/index.html" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Website
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://ycymio.com/life/" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Life Blog
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ycymio" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/ycymio" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap-类"><span class="nav-number">1.</span> <span class="nav-text">HashMap 类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#成员变量"><span class="nav-number">1.1.</span> <span class="nav-text">成员变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法"><span class="nav-number">1.2.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化方法"><span class="nav-number">1.2.1.</span> <span class="nav-text">初始化方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Map接口的实现"><span class="nav-number">1.2.2.</span> <span class="nav-text">Map接口的实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一些常量"><span class="nav-number">1.2.3.</span> <span class="nav-text">一些常量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内部类"><span class="nav-number">1.2.4.</span> <span class="nav-text">内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Node"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">Node</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#KeySet、Values和EntrySet"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">KeySet、Values和EntrySet</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他的特有方法"><span class="nav-number">1.2.5.</span> <span class="nav-text">其他的特有方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#继承的方法"><span class="nav-number">1.2.6.</span> <span class="nav-text">继承的方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#很喜欢被问到的resize-方法。"><span class="nav-number">1.3.</span> <span class="nav-text">很喜欢被问到的resize()方法。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#putVal-函数"><span class="nav-number">1.4.</span> <span class="nav-text">putVal()函数</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">玉宇澄清</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/blog/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"ycymio"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("CYw4eqfTnGGJ358ScduxIjMN-gzGzoHsz", "DVtxWNQe67hDTYKnPMtwUKoU");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+
+</body>
+</html>
