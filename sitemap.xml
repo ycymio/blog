@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://ycymio.com/blog/2017/01/07/leetcode-overview/</loc>
+    
+    <lastmod>2017-09-03T14:26:03.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://ycymio.com/blog/2017/08/26/designpattern-template/</loc>
     
     <lastmod>2017-08-26T15:11:35.000Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://ycymio.com/blog/2017/08/24/designpattern-observer/</loc>
     
     <lastmod>2017-08-24T15:02:21.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://ycymio.com/blog/2017/01/07/leetcode-overview/</loc>
-    
-    <lastmod>2017-08-20T15:38:32.000Z</lastmod>
     
   </url>
   
